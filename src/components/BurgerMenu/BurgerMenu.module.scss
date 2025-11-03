@@ -1,0 +1,20 @@
+@use "../../shared/mixins/mixins.scss" as *;
+
+.burger_menu {
+  margin-right: 8px;
+
+  @include flex-center;
+}
+.burger_menu__img {
+  margin-right: 8px;
+
+  @include icon-size(24px);
+}
+.burger_menu__text {
+  margin-right: 4px;
+
+  @include medium-text(20px);
+}
+.burger_menu__arrow {
+  @include icon-size(24px);
+}
