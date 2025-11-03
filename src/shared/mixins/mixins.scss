@@ -1,7 +1,7 @@
 @use "../variables/variables" as *;
 
 @mixin container {
-  padding: 0 108px 0 108px;
+  padding: 0 108px;
 }
 
 @mixin flex-center {
@@ -21,7 +21,7 @@
   letter-spacing: 0;
 }
 
-@mixin medium-text ($size) {
+@mixin medium-text($size) {
   font-weight: 500;
   font-size: $size;
   line-height: ($size * 1.4);

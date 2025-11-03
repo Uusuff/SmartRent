@@ -7,20 +7,24 @@
   @include container;
   @include flex-center;
 }
+
 .header__logo {
   width: 155px;
   height: 45px;
 
   @include flex-center;
 }
+
 .header__buttons {
   display: flex;
   align-items: center;
 }
+
 .header__button {
   @include icon-size(24px);
   @include flex-center;
 }
+
 .landlord__button {
   padding: 17px 42px;
   margin-right: 32px;
@@ -29,8 +33,7 @@
 
   @include standard-text;
 }
+
 .favorites__button img {
   margin-right: 4px;
-}
-.user__button img {
 }

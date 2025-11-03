@@ -58,7 +58,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         <div>
           <h4 className={styles.dropdown_menu__title}>Language</h4>
           <div className={styles.options}>
-            {languages.map((value) => (
+            {languages.map(value => (
               <label key={value.lang}>
                 <input
                   type="radio"
@@ -74,7 +74,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         <div>
           <h4 className={styles.dropdown_menu__title}>Currency</h4>
           <div className={styles.options}>
-            {['USD', 'PLN', 'EUR', 'CHF', 'GBP', 'UAH'].map((curr) => (
+            {['USD', 'PLN', 'EUR', 'CHF', 'GBP', 'UAH'].map(curr => (
               <label key={curr}>
                 <input
                   type="radio"
