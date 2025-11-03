@@ -1,0 +1,93 @@
+@use "../../../shared/mixins/mixins.scss" as *;
+@use "../../../shared/variables/variables.scss" as *;
+
+.dropdown_menu {
+  position: absolute;
+  top: 76px;
+  right: 170px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px 12px;
+  width: 260px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  animation: fade-in 0.2s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
+  &__sections {
+    border-bottom: 1px solid rgba(222, 226, 230, 1);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+
+    @include medium-text(20px);
+  }
+
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 0;
+      cursor: pointer;
+
+      @include standard-text;
+
+      input[type="radio"] {
+        accent-color: #155e3b;
+      }
+    }
+  }
+
+  .apply_btn {
+    width: 126px;
+    height: 56px;
+    margin-left: auto;
+    background: $btn-default-color;
+    color: $btn-color-white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    @include standard-text;
+
+    &:hover {
+      background: $btn-hover-color;
+    }
+
+    &:active {
+      background: $btn-pressed-color;
+    }
+    &:disabled {
+      background: $btn-disabled-color;
+      color: $btn-color-gray;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

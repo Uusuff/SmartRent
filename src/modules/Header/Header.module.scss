@@ -1,0 +1,39 @@
+@use "../../shared/mixins/mixins.scss" as *;
+
+.header {
+  height: 96px;
+  justify-content: space-between;
+
+  @include container;
+  @include flex-center;
+}
+
+.header__logo {
+  width: 155px;
+  height: 45px;
+
+  @include flex-center;
+}
+
+.header__buttons {
+  display: flex;
+  align-items: center;
+}
+
+.header__button {
+  @include icon-size(24px);
+  @include flex-center;
+}
+
+.landlord__button {
+  padding: 17px 42px;
+  margin-right: 32px;
+  border: 1px solid rgba(173, 181, 189, 1);
+  border-radius: 10px;
+
+  @include standard-text;
+}
+
+.favorites__button img {
+  margin-right: 4px;
+}
