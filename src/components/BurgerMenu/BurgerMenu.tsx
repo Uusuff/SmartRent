@@ -12,10 +12,10 @@ import { Dropdown } from './Dropdawn/Dropdawn';
 
 export const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currency, setCurrency] = useState('UAH');
+  const [currency, setCurrency] = useState('USD');
   const [language, setLanguage] = useState({
-    lang: 'Українська',
-    abbreviated: 'UA',
+    lang: 'English',
+    abbreviated: 'US',
   });
 
   const flagIcons: Record<string, string> = {

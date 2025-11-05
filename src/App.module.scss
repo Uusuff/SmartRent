@@ -1,0 +1,9 @@
+@use './shared/mixins/mixins.scss' as *;
+
+.main_content {
+  height: 100%;
+  margin: 0;
+  min-height: 80vh;
+
+  @include container;
+}

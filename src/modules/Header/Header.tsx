@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import { BurgerMenu } from '../../components/BurgerMenu/BurgerMenu';
+import { useTranslation } from 'react-i18next';
 import logo from '../../assets/logo.png';
 import userIcon from '../../assets/icons/HeadersIcons/user.png';
 import favorites from '../../assets/icons/HeadersIcons/favarites.png';
-// import favorites from '../../assets/icons/favarites.png';
 import styles from './Header.module.scss';
 
 export const Header = () => {
+  const { t } = useTranslation();
+
   return (
     <header className={styles.header}>
       <div className={styles.header__logo}>
@@ -16,7 +18,9 @@ export const Header = () => {
       </div>
       <div className={styles.header__buttons}>
         <NavLink to="/landlord">
-          <button className={styles.landlord__button}>I’m a landlord</button>
+          <button className={styles.landlord__button}>
+            {t('header.buttonText')}
+          </button>
         </NavLink>
         <BurgerMenu />
         <NavLink to="/favorites" className={styles.header__button}>
