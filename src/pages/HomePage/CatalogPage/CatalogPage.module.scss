@@ -1,0 +1,76 @@
+@use '../../../shared/variables/variables.scss' as *;
+
+.catalogPage {
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    max-width: $max-width;
+    margin-inline: auto;
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
+  &__head {
+    grid-column: 1/3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &--mapOpened{
+      grid-column: 1/2;
+    }
+  }
+
+  &__title {
+    color: $black-color;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 120%;
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    grid-column: 1/2;
+    color: $gray-text;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 140%;
+  }
+
+  &__links {
+    justify-self: end;
+    display: flex;
+    gap: 24px;
+    color: $btn-default-color;
+  }
+
+  &__link {
+    border-bottom: 1px solid $btn-default-color;
+    position: relative;
+  }
+
+  &__linkItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    &--hidden{
+      display: none;
+    }
+  }
+
+  &__linkIcon {
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    &--recommended{
+      background-image: url('../../../assets/icons/cardIcons/recommended.svg');
+    }
+
+    &--map{
+      background-image: url('../../../assets/icons/cardIcons/location.svg');
+    }
+  }
+}

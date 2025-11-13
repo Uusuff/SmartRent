@@ -1,0 +1,157 @@
+@use '../../shared/variables/variables.scss' as *;
+
+.dropdown {
+  position: relative;
+
+  &__toggle {
+    width: 190px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $black-color;
+    border: 1px solid $dropdown-border;
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $btn-default-color;
+    }
+
+    &:focus {
+      filter: drop-shadow(0px 2px 4px rgba(16, 65, 44, 0.21));
+      border-width: 1.5px;
+      border-color: $btn-default-color;
+    }
+
+    &:disabled {
+      cursor: auto;
+      color: $filter-border;
+      border-color: $filter-border;
+
+      .dropdown__arrow {
+        background-image: url('../../assets/icons/BurgerMenuIcons/ArrowDownDisabled.svg');
+      }
+    }
+
+    &--allFilters{
+      padding: 16px 43.6px;
+    }
+  }
+
+  &__arrow {
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+
+    &--up {
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowUp.png');
+    }
+
+    &--down {
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowDown.png');
+    }
+  }
+
+  &__menu {
+    max-height: 288px;
+    overflow-y: auto;
+    background-color: white;
+    position: absolute;
+    z-index: 100;
+    top: 100%;
+    right: 0;
+    left: 0;
+    margin-top: 8px;
+    padding: 8px;
+    filter: drop-shadow(0px 2px 12px rgba(0, 0, 0, 0.1));
+    border-radius: 8px;
+    list-style: none;
+  }
+
+  &__menu::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &__menu::-webkit-scrollbar-thumb {
+    background-color: $filter-border;
+  }
+
+  &__item {
+    position: relative;
+    cursor: pointer;
+    padding: 12px;
+    padding-left: 44px;
+    padding-right: 36px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: $black-color;
+    word-wrap: break-word;
+
+    &:hover {
+      background-color: $option-hover;
+    }
+
+    &::before{
+      position: absolute;
+      display: block;
+      content: '';
+      width: 24px;
+      height: 24px;
+      background-image: url('../../assets/icons/FilterIcons/optionCircle.svg');
+      top: 12px;
+      left: 12px;
+    }
+
+    &::after{
+      position: absolute;
+      display: block;
+      content: '';
+      width: 24px;
+      height: 24px;
+      background-image: url('../../assets/icons/FilterIcons/optionSquare.svg');
+      top: 11px;
+      right: 12px;
+    }
+
+    &--disabled{
+      color: $filter-border;
+
+      &::before{
+        background-image: url('../../assets/icons/FilterIcons/optionCircleDisabled.svg');
+      }
+
+      &::after{
+        background-image: url('../../assets/icons/FilterIcons/optionSquareDisabled.svg');
+      }
+
+      &:hover{
+        background-color: white;
+        color: $filter-border;
+        cursor: auto;
+      }
+    }
+
+    &--active{
+      &::before{
+        background-image: url('../../assets/icons/FilterIcons/optionCircleSelected.svg');
+      }
+
+      &::after{
+        background-image: url('../../assets/icons/FilterIcons/optionSquareSelected.svg');
+      }
+    }
+  }
+
+  &__filterIcon{
+    width: 24px;
+    height: 24px;
+    background-image: url('../../assets/icons/FilterIcons/allFilters.svg');
+  }
+}

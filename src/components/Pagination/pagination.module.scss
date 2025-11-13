@@ -1,0 +1,63 @@
+@use '../../shared/variables/variables.scss' as *;
+
+.pagination {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+
+  &--mapOpened{
+    grid-column: 1/2;
+  }
+
+  &__button {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-size: 24px 24px;
+
+    &--prev{
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowLeft.svg');
+    }
+
+    &--prev-disabled{
+      cursor: auto;
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowLeftDisabled.svg');
+    }
+
+    &--next{
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowRight.svg');
+    }
+
+    &--next-disabled{
+      cursor: auto;
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowRightDisabled.svg');
+    }
+  }
+
+  &__itemList {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    &--active {
+      color: $white-color;
+      background-color: $black-color;
+    }
+  }
+
+  &__link {
+    text-align: center;
+    text-decoration: none;
+  }
+}

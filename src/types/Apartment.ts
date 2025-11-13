@@ -1,0 +1,18 @@
+export type Apartment = {
+  id: number;
+  title: string;
+  description: string;
+  city: string;
+  address: string;
+  neighborhood: string;
+  price: number;
+  bedrooms: number;
+  bathrooms: number;
+  squareMeters: number;
+  contact: string;
+  petFriendly: boolean;
+  availableFrom: string;
+  propertyType: string;
+  new: boolean;
+  image: string;
+};
