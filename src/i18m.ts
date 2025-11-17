@@ -9,6 +9,7 @@ const resources = {
         dropdownLanguage: 'Language',
         dropdownCurrency: 'Currency',
       },
+
       footer: {
         footer_top_social_media: {
           subtitle: 'Your trusted partner',
@@ -42,6 +43,88 @@ const resources = {
         },
         footer_bottom_text: 'All rights reserved.',
         backToTop: 'Back to top',
+      },
+
+      catalog_page: {
+        catalog_page_head: {
+          title: '{{propertyType}} to rent in {{city}}',
+          quantity: '{{quantity}} results',
+          links: {
+            recommended: 'Recommended',
+            map: 'Map',
+          },
+        },
+        catalog_page_filter: {
+          categories: {
+            cities: {
+              kyiv: 'Kyiv',
+              lviv: 'Lviv',
+              dnipro: 'Dnipro',
+              odesa: 'Odesa',
+              khakiv: 'Kharkiv',
+              vinnytsia: 'Vinnytsia',
+              ternopil: 'Ternopil',
+              frankivsk: 'Ivano-Frankivsk',
+              zaporizhzhia: 'Zaporizhzhia',
+              chernihiv: 'Chernihiv',
+            },
+
+            property_types: {
+              apartment: 'apartment',
+              room: 'room',
+              house: 'house',
+              studio: 'studio',
+            },
+            price: {
+              upTo: 'up to',
+            },
+            neighborhoods: {
+              downtown: 'Downtown',
+              riverside: 'Riverside',
+              university: 'University District',
+              suburb: 'Suburb',
+              park: 'Near Park',
+              industrial: 'Industrial Zone',
+              oldTown: 'Old Town',
+            },
+          },
+
+          titles: {
+            location: 'Location',
+            date: 'Date',
+            neighborhood: 'Neighborhood',
+            price: 'Price',
+            propertyType: 'Property type',
+            allFilters: 'All filters',
+            showAll: 'Show all',
+          },
+        },
+      },
+
+      apartment_card: {
+        apartment_card_head: {
+          title: '{{propertyType}} in {{city}}',
+        },
+
+        apartment_card_badges: {
+          pet_friendly: 'Pet-Friendly',
+          new: 'New',
+        },
+
+        apartment_card_details: {
+          contacts: 'Text landlord',
+          utilities: 'excl. utilities',
+          price: '{{price}}/month',
+          available: 'Available now',
+          not_available: 'Available from',
+        },
+      },
+
+      apartments_map: {
+        apartment_map_buttons: {
+          hide: 'Hide map',
+          expand: 'Expand',
+        },
       },
     },
   },
@@ -257,6 +340,83 @@ const resources = {
         },
         footer_bottom_text: 'Всі права захищені.',
         backToTop: 'Повернутися до початку',
+      },
+      catalog_page: {
+        catalog_page_head: {
+          title: '{{propertyType}} для оренди в {{city}}',
+          quantity: 'Результати пошуку: {{quantity}}',
+          links: {
+            recommended: 'Рекомендовані',
+            map: 'Карта',
+          },
+        },
+        catalog_page_filter: {
+          categories: {
+            cities: {
+              kyiv: 'Київ',
+              lviv: 'Львів',
+              dnipro: 'Дніпро',
+              odesa: 'Одеса',
+              khakiv: 'Харків',
+              vinnytsia: 'Вінниця',
+              ternopil: 'Тернопіль',
+              frankivsk: 'Івано-Франківськ',
+              zaporizhzhia: 'Запоріжжя',
+              chernihiv: 'Чернігів',
+            },
+            property_types: {
+              apartment: 'квартира',
+              room: 'кімната',
+              house: 'будинок',
+              studio: 'студія',
+            },
+            price: {
+              upTo: 'до',
+            },
+            neighborhoods: {
+              downtown: 'Центр',
+              riverside: 'Набережна',
+              university: 'Університетський район',
+              suburb: 'Передмістя',
+              park: 'Біля парку',
+              industrial: 'Промислова зона',
+              oldTown: 'Старе місто',
+            },
+          },
+          titles: {
+            location: 'Локація',
+            date: 'Дата',
+            neighborhood: 'Район',
+            price: 'Ціна',
+            propertyType: 'Тип житла',
+            allFilters: 'Усі фільтри',
+            showAll: 'Показати всі',
+          },
+        },
+      },
+
+      apartment_card: {
+        apartment_card_head: {
+          title: '{{propertyType}} у {{city}}',
+        },
+        apartment_card_badges: {
+          pet_friendly: 'Дозволені тварини',
+          new: 'Нове',
+        },
+        apartment_card_details: {
+          contacts: 'Написати орендодавцю',
+          utilities: 'без комунальних',
+          price: '{{price}}/місяць',
+          available: 'Доступно зараз',
+          not_available: 'Доступно з',
+        },
+      },
+
+      apartments_map: {
+        apartment_map_buttons: {
+          hide: 'Сховати карту',
+          expand: 'Розгорнути',
+        },
       },
     },
   },

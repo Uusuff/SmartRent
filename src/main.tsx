@@ -8,10 +8,10 @@ import './i18m';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-      <ApartmentsProvider>
-        <FavoritesProvider>
-          <RouterProvider router={router} />
-        </FavoritesProvider>
-      </ApartmentsProvider>
+    <ApartmentsProvider>
+      <FavoritesProvider>
+        <RouterProvider router={router} />
+      </FavoritesProvider>
+    </ApartmentsProvider>
   </React.StrictMode>,
 );

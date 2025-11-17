@@ -8,6 +8,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Apartment } from '../../../types/Apartment';
 import ApartmentMap from '../../../components/apartmentMap/apartmentMap';
 import { Loader } from '../../../components/Loader/Loader';
+import { useTranslation } from 'react-i18next';
 
 export const CatalogPage = () => {
   const { apartments, loading } = useApartments();
@@ -15,7 +16,8 @@ export const CatalogPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams] = useSearchParams();
   const [location, setLocation] = useState(searchParams.get('city') || '');
-  const [isMapOpened, setIsMapOpened] = useState(true);
+  const [isMapOpened, setIsMapOpened] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (location.length > 0) {
@@ -47,11 +49,16 @@ export const CatalogPage = () => {
               className={`${styles.catalogPage__head} ${isMapOpened && styles[`catalogPage__head--mapOpened`]}`}
             >
               <h2 className={styles.catalogPage__title}>
-                Apartments to rent {location ? `in ${location}` : ''}
+                {t('catalog_page.catalog_page_head.title', {
+                  propertyType: '',
+                  city: 'Kyiv',
+                })}
               </h2>
 
               <p className={styles.catalogPage__quantity}>
-                {filteredApartments.length} results
+                {t('catalog_page.catalog_page_head.quantity', {
+                  quantity: filteredApartments.length,
+                })}
               </p>
 
               <div className={styles.catalogPage__links}>
@@ -63,7 +70,7 @@ export const CatalogPage = () => {
                     className={`${styles.catalogPage__link}`}
                     href="recommeded"
                   >
-                    Recommended
+                    {t('catalog_page.catalog_page_head.links.recommended')}
                   </a>
                 </div>
 
@@ -77,7 +84,7 @@ export const CatalogPage = () => {
                     className={`${styles.catalogPage__link}`}
                     onClick={() => setIsMapOpened(!isMapOpened)}
                   >
-                    Map
+                    {t('catalog_page.catalog_page_head.links.map')}
                   </button>
                 </div>
               </div>

@@ -1,5 +1,14 @@
 @use '../variables/variables' as *;
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @mixin container {
   padding: 0 108px;
 }
@@ -106,6 +115,17 @@
   height: 12px;
   left: 0px;
   top: 23px;
+}
+
+@mixin cardOnMap {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: $btn-color-white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 3000;
+  animation: fadeIn 0.15s ease-out;
+  pointer-events: none;
 }
 
 @mixin semiBold-text($size: 48px, $height: 1.2) {

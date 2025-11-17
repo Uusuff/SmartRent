@@ -1,16 +1,8 @@
 @use '../../shared/variables/variables.scss' as *;
 @use '../../shared/mixins/mixins.scss' as *;
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .apartmentCard {
+  z-index: 1;
   width: 600px;
   border: 1px solid $filter-border;
   border-radius: 15px;
@@ -21,24 +13,12 @@
   }
 
   &--onMap {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: #fff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    z-index: 3000;
-    animation: fadeIn 0.15s ease-out;
-    pointer-events: none;
+    @include cardOnMap;
   }
 
   &--persistent {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: #fff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    z-index: 4000;
-    animation: fadeIn 0.15s ease-out;
+    @include cardOnMap;
+
     pointer-events: auto;
   }
 
@@ -113,7 +93,7 @@
       }
 
       .swiper-pagination-bullet-active {
-        background: #ffffff;
+        background: $btn-color-white;
       }
     }
 
@@ -144,10 +124,10 @@
   }
 
   &__image {
-    object-position: center;
-    object-fit: cover;
     width: 100%;
     height: 367px;
+    object-position: center;
+    object-fit: cover;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 

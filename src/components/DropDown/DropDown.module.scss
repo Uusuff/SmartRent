@@ -2,6 +2,7 @@
 @use '../../shared/mixins/mixins.scss' as *;
 
 .dropdown {
+  z-index: 1;
   position: relative;
 
   &__toggle {
@@ -64,7 +65,7 @@
   &__menu {
     max-height: 288px;
     overflow-y: auto;
-    background-color: white;
+    background-color: $btn-color-white;
     position: absolute;
     z-index: 100;
     top: 100%;
@@ -135,7 +136,7 @@
       }
 
       &:hover {
-        background-color: white;
+        background-color: $btn-color-white;
         color: $filter-border;
         cursor: auto;
       }

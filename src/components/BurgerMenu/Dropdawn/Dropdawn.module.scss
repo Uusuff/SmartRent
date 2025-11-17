@@ -2,6 +2,7 @@
 @use "../../../shared/variables/variables.scss" as *;
 
 .dropdown_menu {
+  z-index: 100;
   position: absolute;
   top: 76px;
   right: 170px;

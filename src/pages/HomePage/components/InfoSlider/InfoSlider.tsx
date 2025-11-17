@@ -57,9 +57,9 @@ export const InfoSlider = () => {
   const [current, setCurrent] = useState(0);
   const [isClicked, setIsClicked] = useState<string | boolean>(false);
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
+  const nextSlide = () => setCurrent(prev => (prev + 1) % slides.length);
   const prevSlide = () =>
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+    setCurrent(prev => (prev - 1 + slides.length) % slides.length);
 
   useEffect(() => {
     const timer = setInterval(() => {
