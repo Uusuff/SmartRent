@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import styles from './Dropdawn.module.scss';
 import { useState } from 'react';
+import { t } from 'i18next';
 
 interface DropdownProps {
   language: { lang: string; abbreviated: string };
@@ -18,11 +20,12 @@ export const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const [selectedLang, setSelectedLang] = useState(language);
   const [selectedCurr, setSelectedCurr] = useState(currency);
+  const { i18n } = useTranslation();
 
   const languages = [
     {
       lang: 'English',
-      abbreviated: 'US',
+      abbreviated: 'ENG',
     },
     {
       lang: 'Español',
@@ -50,13 +53,16 @@ export const Dropdown: React.FC<DropdownProps> = ({
     setLanguage(selectedLang);
     setCurrency(selectedCurr);
     closeDropdown();
+    i18n.changeLanguage(selectedLang.abbreviated);
   };
 
   return (
     <div className={styles.dropdown_menu}>
       <div className={styles.dropdown_menu__sections}>
         <div>
-          <h4 className={styles.dropdown_menu__title}>Language</h4>
+          <h4 className={styles.dropdown_menu__title}>
+            {t('header.dropdownLanguage')}
+          </h4>
           <div className={styles.options}>
             {languages.map(value => (
               <label key={value.lang}>
@@ -72,7 +78,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
           </div>
         </div>
         <div>
-          <h4 className={styles.dropdown_menu__title}>Currency</h4>
+          <h4 className={styles.dropdown_menu__title}>
+            {t('header.dropdownCurrency')}
+          </h4>
           <div className={styles.options}>
             {['USD', 'PLN', 'EUR', 'CHF', 'GBP', 'UAH'].map(curr => (
               <label key={curr}>

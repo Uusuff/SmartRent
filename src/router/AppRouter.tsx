@@ -17,7 +17,6 @@ export const router = createHashRouter([
       // { path: 'accessories', element: <AccessoriesPage /> },
       // { path: 'accessories/:id', element: <AccessoriesPage /> },
       // { path: 'favorites', element: <FavoritesPage /> },
-      // { path: 'cart', element: <CartPage /> },
       // { path: '*', element: <NotFoundPage /> },
     ],
   },

@@ -15,7 +15,7 @@
 .burger_menu__text {
   margin-right: 4px;
 
-  @include medium-text(20px);
+  @include medium-text(20px, 1.4);
 }
 
 .burger_menu__arrow {
