@@ -49,6 +49,7 @@ export const CatalogPage = () => {
               className={`${styles.catalogPage__head} ${isMapOpened && styles[`catalogPage__head--mapOpened`]}`}
             >
               <h2 className={styles.catalogPage__title}>
+                Apartment
                 {t('catalog_page.catalog_page_head.title', {
                   propertyType: '',
                   city: 'Kyiv',

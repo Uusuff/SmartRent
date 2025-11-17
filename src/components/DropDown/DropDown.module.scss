@@ -2,7 +2,7 @@
 @use '../../shared/mixins/mixins.scss' as *;
 
 .dropdown {
-  z-index: 1;
+  z-index: 20;
   position: relative;
 
   &__toggle {
