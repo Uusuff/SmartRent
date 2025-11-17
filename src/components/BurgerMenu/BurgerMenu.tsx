@@ -1,5 +1,5 @@
 import iconUK from '../../assets/icons/BurgerMenuIcons/ukraine.png';
-import iconUS from '../../assets/icons/BurgerMenuIcons/USA.png';
+import iconENG from '../../assets/icons/BurgerMenuIcons/USA.png';
 import iconFR from '../../assets/icons/BurgerMenuIcons/france.png';
 import iconES from '../../assets/icons/BurgerMenuIcons/spain.png';
 import iconDE from '../../assets/icons/BurgerMenuIcons/germany.png';
@@ -15,12 +15,12 @@ export const BurgerMenu = () => {
   const [currency, setCurrency] = useState('USD');
   const [language, setLanguage] = useState({
     lang: 'English',
-    abbreviated: 'US',
+    abbreviated: 'ENG',
   });
 
   const flagIcons: Record<string, string> = {
     UA: iconUK,
-    US: iconUS,
+    ENG: iconENG,
     FR: iconFR,
     ES: iconES,
     DE: iconDE,

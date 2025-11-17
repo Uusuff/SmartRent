@@ -1,0 +1,8 @@
+@use "../../shared/mixins/mixins.scss" as *;
+
+.social_media__logo {
+  color: rgba(20, 20, 20, 1);
+  width: max-content;
+
+  @include medium-text(32px, 1.2);
+}

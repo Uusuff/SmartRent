@@ -25,7 +25,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const languages = [
     {
       lang: 'English',
-      abbreviated: 'US',
+      abbreviated: 'ENG',
     },
     {
       lang: 'Español',

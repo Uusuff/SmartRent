@@ -14,16 +14,99 @@
   height: $size;
 }
 
-@mixin standard-text {
+@mixin standard-text($size: 16px, $height: 1.2) {
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: $size;
+  line-height: ($size * $height);
   letter-spacing: 0;
 }
 
-@mixin medium-text($size) {
+@mixin medium-text($size, $height) {
   font-weight: 500;
   font-size: $size;
-  line-height: ($size * 1.4);
+  line-height: ($size * $height);
   letter-spacing: 0;
+}
+
+@mixin semiBold-text($size: 48px, $height: 1.2) {
+  font-weight: 600;
+  font-size: $size;
+  line-height: ($size * $height);
+  letter-spacing: 0;
+}
+
+@mixin primary-button {
+  color: $btn-color-white;
+  border-radius: $border-radius;
+  background-color: $btn-default-color;
+
+  &:hover {
+    background-color: $btn-hover-color;
+  }
+
+  &:active {
+    background-color: $btn-pressed-color;
+  }
+
+  &:disabled {
+    color: $btn-color-gray;
+    background-color: $btn-disabled-color;
+  }
+}
+
+@mixin secondary-button {
+  color: $btn-color-strong-gray;
+  border-radius: $border-radius;
+  border: 1px solid $btn-default-color;
+
+  &:hover {
+    border: 1px solid $btn-hover-color;
+  }
+
+  &:active {
+    border: 1px solid $btn-pressed-color;
+  }
+
+  &:disabled {
+    color: $btn-color-gray;
+    border: 1px solid $btn-disabled-color;
+  }
+}
+
+@mixin small-button {
+  background-color: $btn-disabled-color;
+
+  &:hover {
+    background-color: rgba(222, 226, 230, 1);
+  }
+
+  &:active {
+    background-color: rgba(73, 80, 87, 1);
+  }
+
+  &:disabled {
+    background-color: $btn-disabled-color;
+  }
+}
+
+@mixin search-input {
+  color: rgba(29, 29, 29, 1);
+  border-radius: $border-radius;
+  background-color: rgb(228, 230, 233);
+  padding: 17px 16px;
+
+  @include standard-text;
+
+  &::placeholder {
+    color: rgba(134, 142, 150, 1);
+  }
+
+  &:focus-within {
+    border: 1px solid rgba(134, 142, 150, 1);
+  }
+
+  &:disabled {
+    background-color: rgba(248, 249, 250, 1);
+    color: rgba(173, 181, 189, 1);
+  }
 }

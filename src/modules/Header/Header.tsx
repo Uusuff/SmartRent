@@ -5,17 +5,17 @@ import logo from '../../assets/logo.png';
 import userIcon from '../../assets/icons/HeadersIcons/user.png';
 import favorites from '../../assets/icons/HeadersIcons/favarites.png';
 import styles from './Header.module.scss';
+import { Logo } from '../../components/logo/Logo';
 
 export const Header = () => {
   const { t } = useTranslation();
 
   return (
     <header className={styles.header}>
-      <div className={styles.header__logo}>
-        <NavLink to="/">
-          <img src={logo} alt="Logo" />
-        </NavLink>
-      </div>
+      <NavLink to="/">
+        <Logo />
+      </NavLink>
+
       <div className={styles.header__buttons}>
         <NavLink to="/landlord">
           <button className={styles.landlord__button}>

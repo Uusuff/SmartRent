@@ -5,6 +5,7 @@ import tikTokIcon from '../../assets/icons/FooterIcons/TikTok.png';
 import youTubeIcon from '../../assets/icons/FooterIcons/YouTube.png';
 import backToTop from '../../assets/icons/FooterIcons/BackToTop.png';
 import styles from './Footer.module.scss';
+import { Logo } from '../../components/logo/Logo';
 
 export const Footer = () => {
   const { t } = useTranslation();
@@ -13,7 +14,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footer__top}>
         <div className={styles.top__social_media}>
-          <h3 className={styles.social_media__logo}>SmartRent</h3>
+          <Logo />
           <h5 className={styles.social_media__title}>
             {t('footer.footer_top_social_media.subtitle')}
           </h5>
