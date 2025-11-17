@@ -1,4 +1,5 @@
 @use '../../shared/variables/variables.scss' as *;
+@use '../../shared/mixins/mixins.scss' as *;
 
 .dropdown {
   position: relative;
@@ -39,7 +40,9 @@
       }
     }
 
-    &--allFilters{
+    &--allFilters {
+      @include white-button-styles;
+
       padding: 16px 43.6px;
     }
   }
@@ -98,7 +101,7 @@
       background-color: $option-hover;
     }
 
-    &::before{
+    &::before {
       position: absolute;
       display: block;
       content: '';
@@ -109,7 +112,7 @@
       left: 12px;
     }
 
-    &::after{
+    &::after {
       position: absolute;
       display: block;
       content: '';
@@ -120,38 +123,42 @@
       right: 12px;
     }
 
-    &--disabled{
+    &--disabled {
       color: $filter-border;
 
-      &::before{
+      &::before {
         background-image: url('../../assets/icons/FilterIcons/optionCircleDisabled.svg');
       }
 
-      &::after{
+      &::after {
         background-image: url('../../assets/icons/FilterIcons/optionSquareDisabled.svg');
       }
 
-      &:hover{
+      &:hover {
         background-color: white;
         color: $filter-border;
         cursor: auto;
       }
     }
 
-    &--active{
-      &::before{
+    &--active {
+      &::before {
         background-image: url('../../assets/icons/FilterIcons/optionCircleSelected.svg');
       }
 
-      &::after{
+      &::after {
         background-image: url('../../assets/icons/FilterIcons/optionSquareSelected.svg');
       }
     }
   }
 
-  &__filterIcon{
+  &__filterIcon {
     width: 24px;
     height: 24px;
     background-image: url('../../assets/icons/FilterIcons/allFilters.svg');
+
+    &--disabled {
+      background-image: url('../../assets/icons/FilterIcons/allFiltersDisabled.svg');
+    }
   }
 }

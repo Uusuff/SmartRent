@@ -1,20 +1,15 @@
 @use '../../shared/variables/variables.scss' as *;
+@use '../../shared/mixins/mixins.scss' as *;
 
 .pagination {
-  grid-column: 1/-1;
   display: flex;
   justify-content: center;
   list-style: none;
 
-  &--mapOpened{
-    grid-column: 1/2;
-  }
-
   &__button {
-    display: block;
+    @include icons-styles;
     width: 40px;
     height: 40px;
-    background-position: center;
     background-size: 24px 24px;
 
     &--prev{

@@ -1,9 +1,13 @@
 @use '../../../shared/variables/variables.scss' as *;
+@use '../../../shared/mixins/mixins.scss' as *;
 
 .catalogPage {
   &__content {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    align-content: start;
+    align-items: start;
     column-gap: 24px;
     max-width: $max-width;
     margin-inline: auto;
@@ -12,16 +16,12 @@
   }
 
   &__head {
-    grid-column: 1/3;
     display: grid;
     grid-template-columns: 1fr 1fr;
-
-    &--mapOpened{
-      grid-column: 1/2;
-    }
   }
 
   &__title {
+    grid-column: 1/-1;
     color: $black-color;
     font-weight: 500;
     font-size: 32px;
@@ -41,11 +41,11 @@
     justify-self: end;
     display: flex;
     gap: 24px;
-    color: $btn-default-color;
   }
 
   &__link {
-    border-bottom: 1px solid $btn-default-color;
+    @include link-styles;
+
     position: relative;
   }
 
@@ -55,7 +55,7 @@
     justify-content: center;
     gap: 8px;
 
-    &--hidden{
+    &--hidden {
       display: none;
     }
   }
@@ -65,12 +65,18 @@
     width: 24px;
     height: 24px;
 
-    &--recommended{
+    &--recommended {
       background-image: url('../../../assets/icons/cardIcons/recommended.svg');
     }
 
-    &--map{
-      background-image: url('../../../assets/icons/cardIcons/location.svg');
+    &--map {
+      background-image: url('../../../assets/icons/mapIcons/location.svg');
     }
+  }
+
+  &__notFound {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 30px;
   }
 }

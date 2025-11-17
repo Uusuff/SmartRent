@@ -1,21 +1,11 @@
 @use '../../shared/variables/variables.scss' as *;
 
 .catalogList{
-  grid-column: 1/3;
-
-  &--mapOpened{
-    grid-column: 1/2;
-  }
-
   &__content{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    row-gap: 24px;
+    gap: 24px;
     padding-top: 24px;
     padding-bottom: 40px;
-
-    &--mapOpened{
-      grid-template-columns: 1fr;
-    }
   }
 }

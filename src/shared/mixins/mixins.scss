@@ -1,4 +1,4 @@
-@use "../variables/variables" as *;
+@use '../variables/variables' as *;
 
 @mixin container {
   padding: 0 108px;
@@ -26,4 +26,84 @@
   font-size: $size;
   line-height: ($size * 1.4);
   letter-spacing: 0;
+}
+
+@mixin icons-styles {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@mixin icons-styles-mapOpened {
+  width: 16px;
+  height: 16px;
+}
+
+@mixin link-styles {
+  color: $btn-default-color;
+  font-size: 16px;
+  font-weight: 400;
+  border-bottom: 1px solid $btn-default-color;
+  cursor: pointer;
+
+  &:hover {
+    color: $btn-hover-color;
+  }
+
+  &:disabled {
+    color: $btn-disabled-color;
+  }
+
+  &:active {
+    color: $btn-pressed-color;
+  }
+}
+
+@mixin white-button-styles {
+  border: 1px solid $btn-default-color;
+
+  &:hover {
+    border-color: $btn-hover-color;
+  }
+
+  &:active,
+  &:focus {
+    border-color: $btn-pressed-color;
+  }
+
+  &:disabled {
+    color: $btn-default-color;
+    border-color: $btn-disabled-color;
+  }
+}
+
+@mixin cardButton {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 3;
+  background-color: $white-color;
+  padding: 8px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin availabilityIcon {
+  position: absolute;
+  content: '';
+  display: block;
+  background-size: contain;
+  background-position: center;
+  width: 12px;
+  height: 12px;
+  left: 0px;
+  top: 23px;
 }

@@ -7,9 +7,10 @@ import { Pagination } from '../../../components/Pagination/pagination';
 import { useSearchParams } from 'react-router-dom';
 import { Apartment } from '../../../types/Apartment';
 import ApartmentMap from '../../../components/apartmentMap/apartmentMap';
+import { Loader } from '../../../components/Loader/Loader';
 
 export const CatalogPage = () => {
-  const { apartments } = useApartments();
+  const { apartments, loading } = useApartments();
   const [filteredApartments, setFilteredApartments] = useState<Apartment[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams] = useSearchParams();
@@ -37,55 +38,77 @@ export const CatalogPage = () => {
         setLocation={setLocation}
       />
 
-      <div className={styles.catalogPage__content}>
-        <div
-          className={`${styles.catalogPage__head} ${isMapOpened && styles[`catalogPage__head--mapOpened`]}`}
-        >
-          <h2 className={styles.catalogPage__title}>
-            Apartments to rent {location ? `in ${location}` : ''}
-          </h2>
+      {loading && <Loader />}
 
-          <p className={styles.catalogPage__quantity}>
-            {filteredApartments.length} results
-          </p>
-
-          <div className={styles.catalogPage__links}>
-            <div className={styles.catalogPage__linkItem}>
-              <a
-                className={`${styles.catalogPage__linkIcon} ${styles[`catalogPage__linkIcon--recommended`]}`}
-              ></a>
-              <a className={`${styles.catalogPage__link}`} href="recommeded">
-                Recommended
-              </a>
-            </div>
-
+      {!loading && (
+        <div className={styles.catalogPage__content}>
+          <div className={styles.catalogPage__contentInfo}>
             <div
-              className={`${styles.catalogPage__linkItem} ${isMapOpened && styles[`catalogPage__linkItem--hidden`]}`}
+              className={`${styles.catalogPage__head} ${isMapOpened && styles[`catalogPage__head--mapOpened`]}`}
             >
-              <a
-                className={`${styles.catalogPage__linkIcon} ${styles[`catalogPage__linkIcon--map`]}`}
-              ></a>
-              <button
-                className={`${styles.catalogPage__link}`}
-                onClick={() => setIsMapOpened(!isMapOpened)}
-              >
-                Map
-              </button>
-            </div>
-          </div>
-        </div>
+              <h2 className={styles.catalogPage__title}>
+                Apartments to rent {location ? `in ${location}` : ''}
+              </h2>
 
-        <CatalogList apartments={currentItems} isMapOpened={isMapOpened} />
-        <Pagination
-          total={filteredApartments.length}
-          currentPage={currentPage}
-          onPageChange={(p: number) => {
-            setCurrentPage(p);
-          }}
-          isMapOpened={isMapOpened}
-        />
-        {isMapOpened && <ApartmentMap />}
-      </div>
+              <p className={styles.catalogPage__quantity}>
+                {filteredApartments.length} results
+              </p>
+
+              <div className={styles.catalogPage__links}>
+                <div className={styles.catalogPage__linkItem}>
+                  <a
+                    className={`${styles.catalogPage__linkIcon} ${styles[`catalogPage__linkIcon--recommended`]}`}
+                  ></a>
+                  <a
+                    className={`${styles.catalogPage__link}`}
+                    href="recommeded"
+                  >
+                    Recommended
+                  </a>
+                </div>
+
+                <div
+                  className={`${styles.catalogPage__linkItem} ${isMapOpened && styles[`catalogPage__linkItem--hidden`]}`}
+                >
+                  <a
+                    className={`${styles.catalogPage__linkIcon} ${styles[`catalogPage__linkIcon--map`]}`}
+                  ></a>
+                  <button
+                    className={`${styles.catalogPage__link}`}
+                    onClick={() => setIsMapOpened(!isMapOpened)}
+                  >
+                    Map
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {!loading && currentItems.length > 0 ? (
+              <CatalogList
+                apartments={currentItems}
+                isMapOpened={isMapOpened}
+              />
+            ) : (
+              <p className={styles.catalogPage__notFound}>
+                There are no results found!
+              </p>
+            )}
+
+            {currentItems.length > 0 && (
+              <Pagination
+                total={filteredApartments.length}
+                currentPage={currentPage}
+                onPageChange={(p: number) => {
+                  setCurrentPage(p);
+                }}
+                isMapOpened={isMapOpened}
+              />
+            )}
+          </div>
+
+          {isMapOpened && <ApartmentMap setIsMapOpened={setIsMapOpened} />}
+        </div>
+      )}
     </section>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import {
   createContext,
   useContext,
@@ -22,28 +23,26 @@ interface Props {
   children: ReactNode;
 }
 
-const API_URL =
-  'https://smart-rent-backend-bw9v080h4-viktoriamyhailiaks-projects.vercel.app';
-
 export const ApartmentsProvider = ({ children }: Props) => {
   const [apartments, setApartments] = useState<Apartment[]>([]);
   const [loading, setLoading] = useState(true);
   const { lang } = useLang();
 
+  const API_URL = `https://smart-rent-backend.vercel.app/apartments?lang=${lang}`;
+
   const fetchApartments = async () => {
     setLoading(true);
     try {
-      const response = await axios.get<Apartment[]>(API_URL, {
+      const response = await axios.get<Apartment[]>(`${API_URL}/apartments`, {
         params: { lang },
       });
 
       setApartments(response.data);
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error('Error fetching apartments:', error);
       setApartments([]);
     } finally {
-      setLoading(false);
+      setTimeout(() => setLoading(false), 1000);
     }
   };
 

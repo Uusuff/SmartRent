@@ -16,7 +16,13 @@ export const CatalogList: React.FC<Props> = ({ apartments, isMapOpened }) => {
         className={`${styles.catalogList__content} ${isMapOpened && styles[`catalogList__content--mapOpened`]}`}
       >
         {apartments.map((apartment, i) => {
-          return <ApartmentCard key={i} apartment={apartment} />;
+          return (
+            <ApartmentCard
+              key={i}
+              apartment={apartment}
+              isMapOpened={isMapOpened}
+            />
+          );
         })}
       </ul>
     </div>

@@ -14,5 +14,7 @@ export type Apartment = {
   availableFrom: string;
   propertyType: string;
   new: boolean;
-  image: string;
+  images: string[];
+  lat: number;
+  lng: number;
 };
