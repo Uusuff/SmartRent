@@ -276,12 +276,19 @@
     &--mapOpened {
       font-size: 12px;
     }
+
+    &--block{
+      display: block;
+      padding-left: 0px;
+    }
   }
 
   &__contacts {
     display: flex;
     align-items: center;
+    justify-content: end;
     gap: 8px;
+    text-align: right;
 
     &--mapOpened {
       gap: 4px;
@@ -300,6 +307,9 @@
 
   &__contactsText {
     @include link-styles;
+
+    text-align: right;
+    width: max-content;
 
     &--mapOpened {
       font-size: 14px;
@@ -401,7 +411,7 @@
       background-size: 16px 16px;
     }
 
-    &--persistent{
+    &--persistent {
       right: 42px;
     }
   }

@@ -21,6 +21,9 @@ export const CatalogList: React.FC<Props> = ({ apartments, isMapOpened }) => {
               key={i}
               apartment={apartment}
               isMapOpened={isMapOpened}
+              isCardOnMap={false}
+              persistent={false}
+              setActiveApartment={() => {}}
             />
           );
         })}

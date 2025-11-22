@@ -61,15 +61,29 @@ const resources = {
               lviv: 'Lviv',
               dnipro: 'Dnipro',
               odesa: 'Odesa',
-              khakiv: 'Kharkiv',
+              kharkiv: 'Kharkiv',
               vinnytsia: 'Vinnytsia',
               ternopil: 'Ternopil',
-              frankivsk: 'Ivano-Frankivsk',
+              'ivano-frankivsk': 'Ivano-Frankivsk',
+              zaporizhzhia: 'Zaporizhzhia',
+              chernihiv: 'Chernihiv',
+            },
+
+            cities_title: {
+              kyiv: 'Kyiv',
+              lviv: 'Lviv',
+              dnipro: 'Dnipro',
+              odesa: 'Odesa',
+              kharkiv: 'Kharkiv',
+              vinnytsia: 'Vinnytsia',
+              ternopil: 'Ternopil',
+              'ivano-frankivsk': 'Ivano-Frankivsk',
               zaporizhzhia: 'Zaporizhzhia',
               chernihiv: 'Chernihiv',
             },
 
             property_types: {
+              all: 'All apartments',
               apartment: 'apartment',
               room: 'room',
               house: 'house',
@@ -81,11 +95,11 @@ const resources = {
             neighborhoods: {
               downtown: 'Downtown',
               riverside: 'Riverside',
-              university: 'University District',
+              'university district': 'University District',
               suburb: 'Suburb',
-              park: 'Near Park',
-              industrial: 'Industrial Zone',
-              oldTown: 'Old Town',
+              'near park': 'Near Park',
+              'industrial zone': 'Industrial Zone',
+              'old town': 'Old Town',
             },
           },
 
@@ -117,14 +131,32 @@ const resources = {
           price: '{{price}}/month',
           available: 'Available now',
           not_available: 'Available from',
+          month: 'month',
+        },
+
+        months: {
+          '1': 'January',
+          '2': 'February',
+          '3': 'March',
+          '4': 'April',
+          '5': 'May',
+          '6': 'June',
+          '7': 'July',
+          '8': 'August',
+          '9': 'September',
+          '10': 'October',
+          '11': 'November',
+          '12': 'December',
         },
       },
 
       apartments_map: {
-        apartment_map_buttons: {
-          hide: 'Hide map',
-          expand: 'Expand',
-        },
+        hide: 'Hide map',
+        expand: 'Expand',
+        collapse: 'Collapse',
+      },
+      errors: {
+        notFound: 'There are no results found!',
       },
     },
   },
@@ -169,6 +201,119 @@ const resources = {
         footer_bottom_text: 'Alla rättigheter förbehållna.',
         backToTop: 'Tillbaka till toppen',
       },
+      catalog_page: {
+        catalog_page_head: {
+          title: '{{propertyType}} en alquiler en {{city}}',
+          quantity: '{{quantity}} resultados',
+          links: {
+            recommended: 'Recomendado',
+            map: 'Mapa',
+          },
+        },
+        catalog_page_filter: {
+          categories: {
+            cities: {
+              kyiv: 'Kyiv',
+              lviv: 'Lviv',
+              dnipro: 'Dnipro',
+              odesa: 'Odesa',
+              kharkiv: 'Járkov',
+              vinnytsia: 'Vinnytsia',
+              ternopil: 'Ternópil',
+              'ivano-frankivsk': 'Ivano-Frankivsk',
+              zaporizhzhia: 'Zaporiyia',
+              chernihiv: 'Chernígov',
+            },
+
+            cities_title: {
+              kyiv: 'Kyiv',
+              lviv: 'Lviv',
+              dnipro: 'Dnipro',
+              odesa: 'Odesa',
+              kharkiv: 'Járkov',
+              vinnytsia: 'Vinnytsia',
+              ternopil: 'Ternópil',
+              'ivano-frankivsk': 'Ivano-Frankivsk',
+              zaporizhzhia: 'Zaporiyia',
+              chernihiv: 'Chernígov',
+            },
+
+            property_types: {
+              all: 'Todos los apartamentos',
+              apartment: 'departamento',
+              room: 'habitación',
+              house: 'casa',
+              studio: 'estudio',
+            },
+            price: {
+              upTo: 'arriba a',
+            },
+            neighborhoods: {
+              downtown: 'Centro',
+              riverside: 'Orilla',
+              'university district': 'Distrito Universitario',
+              suburb: 'Suburbio',
+              'near park': 'Cerca del parque',
+              'industrial zone': 'Zona industrial',
+              'old town': 'Casco antiguo',
+            },
+          },
+
+          titles: {
+            location: 'Ubicación',
+            date: 'Fecha',
+            neighborhood: 'Vecindario',
+            price: 'Precio',
+            propertyType: 'Tipo de propiedad',
+            allFilters: 'Todos los filtros',
+            showAll: 'Mostrar todo',
+          },
+        },
+      },
+
+      apartment_card: {
+        apartment_card_head: {
+          title: '{{propertyType}} en {{city}}',
+        },
+
+        apartment_card_badges: {
+          pet_friendly: 'Se admiten mascotas',
+          new: 'Nueva',
+        },
+
+        apartment_card_details: {
+          contacts: 'Propietario de texto',
+          utilities: 'Servicios públicos excluidos',
+          price: '{{price}}/mes',
+          available: 'Ya disponible',
+          not_available: 'Disponible en',
+          month: 'mes',
+        },
+
+        months: {
+          '1': 'Enero',
+          '2': 'Febrero',
+          '3': 'Marzo',
+          '4': 'Abril',
+          '5': 'Puede',
+          '6': 'Junio',
+          '7': 'Julio',
+          '8': 'Agosto',
+          '9': 'Septiembre',
+          '10': 'Octubre',
+          '11': 'Noviembre',
+          '12': 'Diciembre',
+        },
+      },
+
+      apartments_map: {
+        hide: 'Ocultar mapa',
+        expand: 'Expandir',
+        collapse: 'Colapsar',
+      },
+      errors: {
+        notFound: '¡No se han encontrado resultados!',
+      },
     },
   },
   DE: {
@@ -211,6 +356,119 @@ const resources = {
         },
         footer_bottom_text: 'Alle Rechte vorbehalten.',
         backToTop: 'Zurück nach oben',
+      },
+      catalog_page: {
+        catalog_page_head: {
+          title: '{{propertyType}} zu mieten in {{city}}',
+          quantity: '{{quantity}} ergebnisse',
+          links: {
+            recommended: 'Empfohlen',
+            map: 'Karte',
+          },
+        },
+        catalog_page_filter: {
+          categories: {
+            cities: {
+              kyiv: 'Kiew',
+              lviv: 'Lemberg',
+              dnipro: 'Dnipro',
+              odesa: 'Odessa',
+              kharkiv: 'Charkiw',
+              vinnytsia: 'Winnyzja',
+              ternopil: 'Ternopil',
+              'ivano-frankivsk': 'Iwano-Frankiwsk',
+              zaporizhzhia: 'Saporischschja',
+              chernihiv: 'Tschernihiw',
+            },
+
+            cities_title: {
+              kyiv: 'Kiew',
+              lviv: 'Lemberg',
+              dnipro: 'Dnipro',
+              odesa: 'Odessa',
+              kharkiv: 'Charkiw',
+              vinnytsia: 'Winnyzja',
+              ternopil: 'Ternopil',
+              'ivano-frankivsk': 'Iwano-Frankiwsk',
+              zaporizhzhia: 'Saporischschja',
+              chernihiv: 'Tschernihiw',
+            },
+
+            property_types: {
+              all: 'Alle wohnungen',
+              apartment: 'wohnung',
+              room: 'zimmer',
+              house: 'haus',
+              studio: 'studio',
+            },
+            price: {
+              upTo: 'bis zu',
+            },
+            neighborhoods: {
+              downtown: 'Innenstadt',
+              riverside: 'Flussufer',
+              'university district': 'Universitätsviertel',
+              suburb: 'Vorort',
+              'near park': 'In der Nähe des Parks',
+              'industrial zone': 'Industriegebiet',
+              'old town': 'Altstadt',
+            },
+          },
+
+          titles: {
+            location: 'Standort',
+            date: 'Datum',
+            neighborhood: 'Nachbarschaft',
+            price: 'Preis',
+            propertyType: 'Immobilientyp',
+            allFilters: 'Alle filter',
+            showAll: 'Alle anzeigen',
+          },
+        },
+      },
+
+      apartment_card: {
+        apartment_card_head: {
+          title: '{{propertyType}} in {{city}}',
+        },
+
+        apartment_card_badges: {
+          pet_friendly: 'Haustierfreundlich',
+          new: 'Neu',
+        },
+
+        apartment_card_details: {
+          contacts: 'Vermieter per SMS kontaktieren',
+          utilities: 'ausgenommen Versorgungsleistungen',
+          price: '{{price}}/monat',
+          available: 'Jetzt erhältlich',
+          not_available: 'Erhältlich ab',
+          month: 'monat',
+        },
+
+        months: {
+          '1': 'Januar',
+          '2': 'Februar',
+          '3': 'Marsch',
+          '4': 'April',
+          '5': 'Mai',
+          '6': 'Juni',
+          '7': 'Juli',
+          '8': 'August',
+          '9': 'September',
+          '10': 'Oktober',
+          '11': 'November',
+          '12': 'Dezember',
+        },
+      },
+
+      apartments_map: {
+        hide: 'Karte ausblenden',
+        expand: 'Expandieren',
+        collapse: 'Zusammenbruch',
+      },
+      errors: {
+        notFound: 'Es wurden keine Ergebnisse gefunden!',
       },
     },
   },
@@ -255,6 +513,119 @@ const resources = {
         footer_bottom_text: 'Tutti i diritti riservati.',
         backToTop: 'Torna su',
       },
+      catalog_page: {
+        catalog_page_head: {
+          title: '{{propertyType}} affittare in {{city}}',
+          quantity: '{{quantity}} risultati',
+          links: {
+            recommended: 'Consigliato',
+            map: 'Mappa',
+          },
+        },
+        catalog_page_filter: {
+          categories: {
+            cities: {
+              kyiv: 'Kiev',
+              lviv: 'Leopoli',
+              dnipro: 'Dnipro',
+              odesa: 'Odessa',
+              kharkiv: 'Kharkiv',
+              vinnytsia: 'Vinnytsia',
+              ternopil: 'Ternopil',
+              'ivano-frankivsk': 'Ivano-Frankivsk',
+              zaporizhzhia: 'Zaporizhia',
+              chernihiv: 'Černihiv',
+            },
+
+            cities_title: {
+              kyiv: 'Kiev',
+              lviv: 'Leopoli',
+              dnipro: 'Dnipro',
+              odesa: 'Odessa',
+              kharkiv: 'Kharkiv',
+              vinnytsia: 'Vinnytsia',
+              ternopil: 'Ternopil',
+              'ivano-frankivsk': 'Ivano-Frankivsk',
+              zaporizhzhia: 'Zaporizhia',
+              chernihiv: 'Černihiv',
+            },
+
+            property_types: {
+              all: 'Tutti gli appartamenti',
+              apartment: 'appartamento',
+              room: 'camera',
+              house: 'casa',
+              studio: 'studio',
+            },
+            price: {
+              upTo: 'fino a',
+            },
+            neighborhoods: {
+              downtown: 'Centro',
+              riverside: 'Lungofiume',
+              'university district': 'Distretto universitario',
+              suburb: 'Sobborgo',
+              'near park': 'Vicino al parco',
+              'industrial zone': 'Zona industriale',
+              'old town': 'Città Vecchia',
+            },
+          },
+
+          titles: {
+            location: 'Posizione',
+            date: 'Data',
+            neighborhood: 'Quartiere',
+            price: 'Prezzo',
+            propertyType: 'Tipo di proprietà',
+            allFilters: 'Tutti i filtri',
+            showAll: 'Mostra tutto',
+          },
+        },
+      },
+
+      apartment_card: {
+        apartment_card_head: {
+          title: '{{propertyType}} nella {{city}}',
+        },
+
+        apartment_card_badges: {
+          pet_friendly: 'Animali ammessi',
+          new: 'Nuova',
+        },
+
+        apartment_card_details: {
+          contacts: 'Invia un messaggio al proprietario',
+          utilities: 'escl. utenze',
+          price: '{{price}}/mese',
+          available: 'Disponibile ora',
+          not_available: 'Disponibile da',
+          month: 'mese',
+        },
+
+        months: {
+          '1': 'Gennaio',
+          '2': 'Febbraio',
+          '3': 'Marzo',
+          '4': 'Aprile',
+          '5': 'Maggio',
+          '6': 'Giugno',
+          '7': 'Luglio',
+          '8': 'Agosto',
+          '9': 'Settembre',
+          '10': 'Ottobre',
+          '11': 'Novembre',
+          '12': 'Dicembre',
+        },
+      },
+
+      apartments_map: {
+        hide: 'Nascondi mappa',
+        expand: 'Espandere',
+        collapse: 'Crollo',
+      },
+      errors: {
+        notFound: 'Nessun risultato trovato!',
+      },
     },
   },
   FR: {
@@ -297,6 +668,119 @@ const resources = {
         },
         footer_bottom_text: 'Tous droits réservés.',
         backToTop: 'Retourner en haut',
+      },
+      catalog_page: {
+        catalog_page_head: {
+          title: '{{propertyType}} louer à {{city}}',
+          quantity: '{{quantity}} résultats',
+          links: {
+            recommended: 'Recommandée',
+            map: 'Carte',
+          },
+        },
+        catalog_page_filter: {
+          categories: {
+            cities: {
+              kyiv: 'Kyiv',
+              lviv: 'Lviv',
+              dnipro: 'Dnipro',
+              odesa: 'Odessa',
+              kharkiv: 'Kharkiv',
+              vinnytsia: 'Vinnytsia',
+              ternopil: 'Ternopil',
+              'ivano-frankivsk': 'Ivano-Frankivsk',
+              zaporizhzhia: 'Zaporizhzhia',
+              chernihiv: 'Tchernihiv',
+            },
+
+            cities_title: {
+              kyiv: 'Kyiv',
+              lviv: 'Lviv',
+              dnipro: 'Dnipro',
+              odesa: 'Odessa',
+              kharkiv: 'Kharkiv',
+              vinnytsia: 'Vinnytsia',
+              ternopil: 'Ternopil',
+              'ivano-frankivsk': 'Ivano-Frankivsk',
+              zaporizhzhia: 'Zaporizhzhia',
+              chernihiv: 'Tchernihiv',
+            },
+
+            property_types: {
+              all: 'Tous les appartements',
+              apartment: 'appartement',
+              room: 'chambre',
+              house: 'maison',
+              studio: 'studio',
+            },
+            price: {
+              upTo: "jusqu'à",
+            },
+            neighborhoods: {
+              downtown: 'Centre-ville',
+              riverside: 'Riverside',
+              'university district': 'Quartier universitaire',
+              suburb: 'Banlieue',
+              'near park': 'À proximité du parc',
+              'industrial zone': 'Zone industrielle',
+              'old town': 'Vieille ville',
+            },
+          },
+
+          titles: {
+            location: 'Emplacement',
+            date: 'Date',
+            neighborhood: 'Quartier',
+            price: 'Prix',
+            propertyType: 'Type de propriété',
+            allFilters: 'Tous les filtres',
+            showAll: 'Afficher tout',
+          },
+        },
+      },
+
+      apartment_card: {
+        apartment_card_head: {
+          title: '{{propertyType}} dans {{city}}',
+        },
+
+        apartment_card_badges: {
+          pet_friendly: 'Animaux acceptés',
+          new: 'Nouvelle',
+        },
+
+        apartment_card_details: {
+          contacts: 'SMS au propriétaire',
+          utilities: 'exclusions services publics',
+          price: '{{price}}/mois',
+          available: 'Disponible dès maintenant',
+          not_available: 'Disponible chez',
+          month: 'mois',
+        },
+
+        months: {
+          '1': 'Janvier',
+          '2': 'Février',
+          '3': 'Mars',
+          '4': 'Avril',
+          '5': 'Peut',
+          '6': 'Juin',
+          '7': 'Juillet',
+          '8': 'Août',
+          '9': 'Septembre',
+          '10': 'Octobre',
+          '11': 'Novembre',
+          '12': 'Décembre',
+        },
+      },
+
+      apartments_map: {
+        hide: 'Masquer la carte',
+        expand: 'Développer',
+        collapse: 'Effondrement',
+      },
+      errors: {
+        notFound: 'Aucun résultat trouvé !',
       },
     },
   },
@@ -343,7 +827,7 @@ const resources = {
       },
       catalog_page: {
         catalog_page_head: {
-          title: '{{propertyType}} для оренди в {{city}}',
+          title: '{{propertyType}} для оренди у {{city}}',
           quantity: 'Результати пошуку: {{quantity}}',
           links: {
             recommended: 'Рекомендовані',
@@ -357,14 +841,27 @@ const resources = {
               lviv: 'Львів',
               dnipro: 'Дніпро',
               odesa: 'Одеса',
-              khakiv: 'Харків',
+              kharkiv: 'Харків',
               vinnytsia: 'Вінниця',
               ternopil: 'Тернопіль',
-              frankivsk: 'Івано-Франківськ',
+              'ivano-frankivsk': 'Івано-Франківськ',
               zaporizhzhia: 'Запоріжжя',
               chernihiv: 'Чернігів',
             },
+            cities_title: {
+              kyiv: 'Києві',
+              lviv: 'Львові',
+              dnipro: 'Дніпрі',
+              odesa: 'Одесі',
+              kharkiv: 'Харкові',
+              vinnytsia: 'Вінниці',
+              ternopil: 'Тернополі',
+              'ivano-frankivsk': 'Івано-Франківську',
+              zaporizhzhia: 'Запоріжжі',
+              chernihiv: 'Чернігові',
+            },
             property_types: {
+              all: 'Всі апартаменти',
               apartment: 'квартира',
               room: 'кімната',
               house: 'будинок',
@@ -376,11 +873,11 @@ const resources = {
             neighborhoods: {
               downtown: 'Центр',
               riverside: 'Набережна',
-              university: 'Університетський район',
+              'university district': 'Університетський район',
               suburb: 'Передмістя',
-              park: 'Біля парку',
-              industrial: 'Промислова зона',
-              oldTown: 'Старе місто',
+              'near park': 'Біля парку',
+              'industrial zone': 'Промислова зона',
+              'old town': 'Старе місто',
             },
           },
           titles: {
@@ -405,18 +902,37 @@ const resources = {
         },
         apartment_card_details: {
           contacts: 'Написати орендодавцю',
-          utilities: 'без комунальних',
+          utilities: 'без комунал.',
           price: '{{price}}/місяць',
           available: 'Доступно зараз',
           not_available: 'Доступно з',
+          month: 'місяць',
+        },
+
+        months: {
+          '1': 'Січня',
+          '2': 'Лютого',
+          '3': 'Березня',
+          '4': 'Квітня',
+          '5': 'Травня',
+          '6': 'Червня',
+          '7': 'Липня',
+          '8': 'Серпня',
+          '9': 'Вересня',
+          '10': 'Жовтня',
+          '11': 'Листопада',
+          '12': 'Грудня',
         },
       },
 
       apartments_map: {
-        apartment_map_buttons: {
-          hide: 'Сховати карту',
-          expand: 'Розгорнути',
-        },
+        hide: 'Сховати карту',
+        expand: 'Розгорнути',
+        collapse: 'Згорнути',
+      },
+
+      errors: {
+        notFound: 'Результатів не знайдено!',
       },
     },
   },
@@ -424,7 +940,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'ENG',
+  lng: localStorage.getItem('lang') || 'ENG',
   fallbackLng: 'ENG',
   interpolation: {
     escapeValue: false,

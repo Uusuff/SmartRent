@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { BurgerMenu } from '../../components/BurgerMenu/BurgerMenu';
 import { useTranslation } from 'react-i18next';
-import logo from '../../assets/logo.png';
 import userIcon from '../../assets/icons/HeadersIcons/user.png';
 import favorites from '../../assets/icons/HeadersIcons/favarites.png';
 import styles from './Header.module.scss';

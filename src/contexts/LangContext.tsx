@@ -6,21 +6,19 @@ import {
   useEffect,
 } from 'react';
 
-type Lang = 'en' | 'ua';
-
 interface LangContextType {
-  lang: Lang;
-  setLang: (lang: Lang) => void;
+  lang: string;
+  setLang: (lang: string) => void;
 }
 
 const LangContext = createContext<LangContextType>({
-  lang: 'en',
+  lang: 'ENG',
   setLang: () => {},
 });
 
 export const LangProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<Lang>(
-    (localStorage.getItem('lang') as Lang) || 'en',
+  const [lang, setLang] = useState<string>(
+    (localStorage.getItem('lang') as string) || 'ENG',
   );
 
   useEffect(() => {

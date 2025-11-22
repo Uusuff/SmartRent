@@ -15,6 +15,14 @@
     padding-bottom: 64px;
   }
 
+  &__contentInfo{
+    grid-column: 1/-1;
+
+    &--mapOpened{
+      grid-column: 1/2;
+    }
+  }
+
   &__head {
     display: grid;
     grid-template-columns: 1fr 1fr;

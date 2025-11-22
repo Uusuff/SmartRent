@@ -6,11 +6,14 @@ import styles from './ApartmentMap.module.scss';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
-import { useLang } from '../../contexts/LangContext';
 import { useApartments } from '../../contexts/ApartmentsContext';
 import { Loader } from '../Loader/Loader';
 import { Apartment } from '../../types/Apartment';
 import { ApartmentCard } from '../apartmentCard/apartmentCard';
+import { useTranslation } from 'react-i18next';
+import { useCurrency } from '../../contexts/CurrencyContext';
+import { convertPrice } from '../../shared/utils/convertPrice';
+import { conversionRates } from '../../shared/utils/currencyUtils';
 
 L.Icon.Default.mergeOptions({
   iconUrl,
@@ -23,7 +26,7 @@ type Props = {
 };
 
 const ApartmentMap: React.FC<Props> = ({ setIsMapOpened }) => {
-  const { lang } = useLang();
+  const { t } = useTranslation();
   const { apartments, loading } = useApartments();
   const [isExpanded, setIsExpanded] = useState(false);
   const [zoom, setZoom] = useState(13);
@@ -32,6 +35,7 @@ const ApartmentMap: React.FC<Props> = ({ setIsMapOpened }) => {
   const [activeApartment, setActiveApartment] = useState<Apartment | null>(
     null,
   );
+  const { currency } = useCurrency();
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
@@ -64,17 +68,14 @@ const ApartmentMap: React.FC<Props> = ({ setIsMapOpened }) => {
   };
 
   const createPriceIcon = (price: number) => {
-    const isCheap = price < 500;
+    const priceInUsd = price / conversionRates[currency];
+    const isCheap = priceInUsd < 500;
     const width = isCheap ? 90 : 92;
     const height = isCheap ? 36 : 40;
     const zoomThreshold = isCheap ? 15 : 14;
     const showPrice = zoom >= zoomThreshold;
-
-    const htmlContent = showPrice
-      ? lang === 'en'
-        ? `$${price.toLocaleString('en-US')}`
-        : `${(price * 40).toLocaleString('uk-UA')} грн`
-      : '';
+    const { label } = convertPrice(price, 'USD', currency);
+    const htmlContent = showPrice ? label : '';
 
     return L.divIcon({
       className: 'price-marker',
@@ -142,7 +143,7 @@ const ApartmentMap: React.FC<Props> = ({ setIsMapOpened }) => {
             <span
               className={`${styles['map-wrapper__buttonIcon']} ${styles['map-wrapper__buttonIcon--hide']}`}
             ></span>
-            Hide map
+            {t('apartments_map.hide')}
           </button>
 
           <button
@@ -152,7 +153,9 @@ const ApartmentMap: React.FC<Props> = ({ setIsMapOpened }) => {
             <span
               className={`${styles['map-wrapper__buttonIcon']} ${styles['map-wrapper__buttonIcon--expand']}`}
             ></span>
-            {isExpanded ? 'Collapse' : 'Expand'}
+            {isExpanded
+              ? t('apartments_map.collapse')
+              : t('apartments_map.expand')}
           </button>
 
           <ResizeMap expanded={isExpanded} />

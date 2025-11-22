@@ -1,196 +1,218 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable max-len */
 import { Dropdown } from '../DropDown/DropDown';
 import styles from './CatalogFilter.module.scss';
-import { useSearchParams } from 'react-router-dom';
-import { useLang } from '../../contexts/LangContext';
-import {
-  locations,
-  neighborhoods,
-  prices,
-  propertyTypes,
-} from '../../translatedData/translatedData';
-import { Apartment } from '../../types/Apartment';
+import { useTranslation } from 'react-i18next';
+import { Option } from '../../types/Option';
+import { useCurrency } from '../../contexts/CurrencyContext';
+import { convertPrice } from '../../shared/utils/convertPrice';
+import { conversionRates, priceValues } from '../../shared/utils/currencyUtils';
 
 type Props = {
-  apartments: Apartment[];
-  setFilteredApartments: React.Dispatch<React.SetStateAction<Apartment[]>>;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-  currentPage: number;
-  location: string;
-  setLocation: React.Dispatch<React.SetStateAction<string>>;
+  setCity: React.Dispatch<React.SetStateAction<string>>;
+  propertyType: string;
+  setPropertyType: React.Dispatch<React.SetStateAction<string>>;
+  cityKey: string;
+  setCityKey: React.Dispatch<React.SetStateAction<string>>;
+  date: string;
+  neighborhood: string;
+  setNeighborhood: React.Dispatch<React.SetStateAction<string>>;
+  priceUSD: number | null;
+  setPrice: React.Dispatch<React.SetStateAction<number | string>>;
+  setPriceUSD: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
 export const CatalogFilter: React.FC<Props> = ({
-  apartments,
-  setFilteredApartments,
-  setCurrentPage,
-  currentPage,
-  location,
-  setLocation,
+  setCity,
+  propertyType,
+  setPropertyType,
+  cityKey,
+  setCityKey,
+  date,
+  neighborhood,
+  setNeighborhood,
+  priceUSD,
+  setPrice,
+  setPriceUSD,
 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [date, setDate] = useState('Show all');
-  const [neighborhood, setNeighborhood] = useState(
-    searchParams.get('neighborhood') || 'Show all',
-  );
-  const [price, setPrice] = useState(searchParams.get('price') || 'Show all');
-  const [propertyType, setPropertyType] = useState(
-    searchParams.get('propertyType') || 'Show all',
-  );
-  const { lang } = useLang();
-  const [moveIn, setMoveIn] = useState(searchParams.get('MOVE_IN'));
-  const [moveOut, setMoveOut] = useState(searchParams.get('MOVE_OUT'));
+  const { t } = useTranslation();
+  const { currency } = useCurrency();
+  const showAllLabel = t('catalog_page.catalog_page_filter.titles.showAll');
+  const propertyTypes: Option[] = [
+    {
+      value: 'apartment',
+      label: t(
+        'catalog_page.catalog_page_filter.categories.property_types.apartment',
+      ),
+    },
+    {
+      value: 'room',
+      label: t(
+        'catalog_page.catalog_page_filter.categories.property_types.room',
+      ),
+    },
+    {
+      value: 'studio',
+      label: t(
+        'catalog_page.catalog_page_filter.categories.property_types.studio',
+      ),
+    },
+    {
+      value: 'house',
+      label: t(
+        'catalog_page.catalog_page_filter.categories.property_types.house',
+      ),
+    },
+  ];
 
-  useEffect(() => {
-    if (moveIn && moveOut) {
-      const inDate = new Date(moveIn);
-      const outDate = new Date(moveOut);
+  const locations: Option[] = [
+    {
+      value: 'kyiv',
+      label: t('catalog_page.catalog_page_filter.categories.cities.kyiv'),
+    },
+    {
+      value: 'lviv',
+      label: t('catalog_page.catalog_page_filter.categories.cities.lviv'),
+    },
+    {
+      value: 'dnipro',
+      label: t('catalog_page.catalog_page_filter.categories.cities.dnipro'),
+    },
+    {
+      value: 'odesa',
+      label: t('catalog_page.catalog_page_filter.categories.cities.odesa'),
+    },
+    {
+      value: 'kharkiv',
+      label: t('catalog_page.catalog_page_filter.categories.cities.kharkiv'),
+    },
+    {
+      value: 'vinnytsia',
+      label: t('catalog_page.catalog_page_filter.categories.cities.vinnytsia'),
+    },
+    {
+      value: 'ternopil',
+      label: t('catalog_page.catalog_page_filter.categories.cities.ternopil'),
+    },
+    {
+      value: 'ivano-frankivsk',
+      label: t(
+        'catalog_page.catalog_page_filter.categories.cities.ivano-frankivsk',
+      ),
+    },
+    {
+      value: 'zaporizhzhia',
+      label: t(
+        'catalog_page.catalog_page_filter.categories.cities.zaporizhzhia',
+      ),
+    },
+    {
+      value: 'chernihiv',
+      label: t('catalog_page.catalog_page_filter.categories.cities.chernihiv'),
+    },
+  ];
 
-      const formatOptions: Intl.DateTimeFormatOptions = {
-        month: 'short',
-        day: 'numeric',
-      };
+  const neighborhoods: Option[] = [
+    {
+      value: 'downtown',
+      label: t(
+        'catalog_page.catalog_page_filter.categories.neighborhoods.downtown',
+      ),
+    },
+    {
+      value: 'riverside',
+      label: t(
+        'catalog_page.catalog_page_filter.categories.neighborhoods.riverside',
+      ),
+    },
+    {
+      value: 'university district',
+      label: t(
+        // eslint-disable-next-line max-len
+        'catalog_page.catalog_page_filter.categories.neighborhoods.university district',
+      ),
+    },
+    {
+      value: 'suburb',
+      label: t(
+        'catalog_page.catalog_page_filter.categories.neighborhoods.suburb',
+      ),
+    },
+    {
+      value: 'near park',
+      label: t(
+        'catalog_page.catalog_page_filter.categories.neighborhoods.near park',
+      ),
+    },
+    {
+      value: 'industrial zone',
+      label: t(
+        // eslint-disable-next-line max-len
+        'catalog_page.catalog_page_filter.categories.neighborhoods.industrial zone',
+      ),
+    },
+    {
+      value: 'old town',
+      label: t(
+        'catalog_page.catalog_page_filter.categories.neighborhoods.old town',
+      ),
+    },
+  ];
 
-      const inMonthDay = inDate.toLocaleDateString('en-US', formatOptions);
-      const outMonthDay = outDate.toLocaleDateString('en-US', formatOptions);
+  const priceOptions = priceValues.map(p => {
+    const { converted, label } = convertPrice(p, 'USD', currency);
 
-      const inYear = inDate.getFullYear();
-      const outYear = outDate.getFullYear();
+    return { value: converted, label };
+  });
 
-      let formattedDate;
+  const handlePriceChange = (value: number) => {
+    setPrice(value);
+    setPriceUSD(value / conversionRates[currency]);
+  };
 
-      if (inYear === outYear) {
-        formattedDate = `${inMonthDay} - ${outMonthDay} ${outYear}`;
-      } else {
-        formattedDate = `${inMonthDay} ${inYear} - ${outMonthDay} ${outYear}`;
-      }
-
-      setDate(formattedDate);
-    } else {
-      setDate('Show all');
-    }
-  }, [moveIn, moveOut]);
-
-  useEffect(() => {
-    const params: Record<string, string> = {};
-
-    if (location && location !== 'Show all') {
-      params.city = location;
-    }
-
-    if (neighborhood && neighborhood !== 'Show all') {
-      params.neighborhood = neighborhood;
-    }
-
-    if (price && price !== 'Show all') {
-      params.price = price.toString();
-    }
-
-    if (propertyType && propertyType !== 'Show all') {
-      params.propertyType = propertyType;
-    }
-
-    if (moveIn) {
-      params.MOVE_IN = moveIn;
-    }
-
-    if (moveOut) {
-      params.MOVE_OUT = moveOut;
-    }
-
-    if (currentPage > 1) {
-      params.page = currentPage.toString();
-    }
-
-    setSearchParams(params);
-  }, [
-    location,
-    neighborhood,
-    price,
-    propertyType,
-    moveIn,
-    moveOut,
-    currentPage,
-    setSearchParams,
-  ]);
-
-  useEffect(() => {
-    let result = [...apartments];
-
-    if (location !== 'Show all') {
-      result = result.filter(a => a.city === location);
-    }
-
-    if (neighborhood !== 'Show all') {
-      result = result.filter(a => a.neighborhood === neighborhood);
-    }
-
-    if (price !== 'Show all') {
-      const normalizedPrice =
-        lang === 'en' ? +price.split(' ')[2].slice(1) : +price.split(' ')[1];
-
-      result = result.filter(a => +a.price <= normalizedPrice);
-    }
-
-    if (propertyType !== 'Show all') {
-      result = result.filter(a => a.propertyType === propertyType);
-    }
-
-    if (moveIn) {
-      const moveInDate = new Date(moveIn);
-
-      result = result.filter(a => new Date(a.availableFrom) <= moveInDate);
-    }
-
-    setFilteredApartments(result);
-    setCurrentPage(1);
-  }, [
-    location,
-    neighborhood,
-    price,
-    propertyType,
-    moveIn,
-    moveOut,
-    apartments,
-  ]);
+  const currentPriceOption =
+    priceUSD !== null
+      ? convertPrice(priceUSD, 'USD', currency).converted
+      : showAllLabel;
 
   return (
     <div className={styles.filter}>
       <form className={styles.filter__form}>
         <div className={styles.filter__element}>
           <label htmlFor="location" className={styles.filter__label}>
-            Location
+            {t('catalog_page.catalog_page_filter.titles.location')}
           </label>
 
           <Dropdown
-            options={locations.map(loc => (lang === 'en' ? loc.en : loc.ua))}
-            value={location}
-            onChange={val => setLocation(val as string)}
+            options={locations}
+            value={cityKey.toLowerCase()}
+            onChange={val => {
+              const selected = locations.find(loc => loc.value === val);
+
+              if (selected) {
+                setCityKey(selected.value.toString());
+                setCity(selected.label);
+              }
+            }}
             isAllFilters={false}
           />
         </div>
 
         <div className={styles.filter__element}>
-          <label htmlFor="location" className={styles.filter__label}>
-            Date
+          <label htmlFor="date" className={styles.filter__label}>
+            {t('catalog_page.catalog_page_filter.titles.date')}
           </label>
 
-          <Dropdown
-            options={locations.map(loc => (lang === 'en' ? loc.en : loc.ua))}
-            value={date}
-            onChange={val => setLocation(val as string)}
-            isAllFilters={false}
-          />
+          <Dropdown options={[]} value={date} isAllFilters={false} />
         </div>
 
         <div className={styles.filter__element}>
           <label htmlFor="neighborhood" className={styles.filter__label}>
-            Neighborhood
+            {t('catalog_page.catalog_page_filter.titles.neighborhood')}
           </label>
 
           <Dropdown
-            options={neighborhoods.map(n => (lang === 'en' ? n.en : n.ua))}
-            value={neighborhood}
+            options={neighborhoods}
+            value={neighborhood.toLowerCase()}
             onChange={val => setNeighborhood(val as string)}
             isAllFilters={false}
           />
@@ -198,31 +220,24 @@ export const CatalogFilter: React.FC<Props> = ({
 
         <div className={styles.filter__element}>
           <label htmlFor="price" className={styles.filter__label}>
-            Price
+            {t('catalog_page.catalog_page_filter.titles.price')}
           </label>
 
           <Dropdown
-            options={prices.map(p =>
-              lang === 'en' ? `$${p.usd}` : `p.uah грн`,
-            )}
-            value={price}
-            onChange={val =>
-              setPrice(
-                lang === 'ua' ? `до ${val} грн` : (`up to ${val}` as string),
-              )
-            }
+            options={priceOptions}
+            value={currentPriceOption}
+            onChange={val => handlePriceChange(+val)}
             isAllFilters={false}
           />
         </div>
 
         <div className={styles.filter__element}>
           <label htmlFor="propertyType" className={styles.filter__label}>
-            Property type
+            {t('catalog_page.catalog_page_filter.titles.propertyType')}
           </label>
-
           <Dropdown
-            options={propertyTypes.map(p => (lang === 'en' ? p.en : p.ua))}
-            value={propertyType}
+            options={propertyTypes}
+            value={propertyType.toLowerCase()}
             onChange={val => setPropertyType(val as string)}
             isAllFilters={false}
           />
@@ -231,7 +246,7 @@ export const CatalogFilter: React.FC<Props> = ({
         <div className={styles.filter__element}>
           <Dropdown
             options={[]}
-            value="All filters"
+            value={t('catalog_page.catalog_page_filter.titles.allFilters')}
             onChange={() => {}}
             isAllFilters={true}
           />

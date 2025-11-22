@@ -5,10 +5,12 @@ import styles from './apartmentCard.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
-
+import { useTranslation } from 'react-i18next';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useCurrency } from '../../contexts/CurrencyContext';
+import { convertPrice } from '../../shared/utils/convertPrice';
 
 type Props = {
   apartment: Apartment;
@@ -25,19 +27,18 @@ export const ApartmentCard: React.FC<Props> = ({
   persistent,
   setActiveApartment,
 }) => {
+  const { t } = useTranslation();
   const { lang } = useLang();
+  const { currency } = useCurrency();
   const today = new Date();
   const availableDate = new Date(apartment.availableFrom);
   const isAvailableNow = availableDate <= today;
   const { toggleFavorite, isFavorite } = useFavorites();
   const favorite = isFavorite(apartment.id);
-  const formattedDate = availableDate.toLocaleDateString(
-    lang === 'en' ? 'en-GB' : 'uk-UA',
-    {
-      day: 'numeric',
-      month: 'long',
-    },
-  );
+  const day = availableDate.getDate();
+  const month = availableDate.getMonth() + 1;
+  const formattedDate = `${day} ${t(`apartment_card.months.${month}`)}`;
+  const { label } = convertPrice(apartment.price, 'USD', currency);
 
   return (
     <article
@@ -58,7 +59,7 @@ export const ApartmentCard: React.FC<Props> = ({
             <div
               className={`${styles.apartmentCard__badge} ${isMapOpened && styles[`apartmentCard__badge--mapOpened`]}  ${styles['apartmentCard__badge--new']}`}
             >
-              New
+              {t('apartment_card.apartment_card_badges.new')}
             </div>
           )}
 
@@ -66,7 +67,7 @@ export const ApartmentCard: React.FC<Props> = ({
             <div
               className={`${styles.apartmentCard__badge} ${isMapOpened && styles[`apartmentCard__badge--mapOpened`]}  ${styles['apartmentCard__badge--pet-friendly']}`}
             >
-              Pet-Friendly
+              {t('apartment_card.apartment_card_badges.pet_friendly')}
             </div>
           )}
         </div>
@@ -107,9 +108,21 @@ export const ApartmentCard: React.FC<Props> = ({
         <h5
           className={`${styles.apartmentCard__title} ${isMapOpened && styles[`apartmentCard__title--mapOpened`]}`}
         >
-          {apartment.propertyType.slice(0, 1).toUpperCase() +
-            apartment.propertyType.slice(1)}{' '}
-          in {apartment.city}
+          {t('apartment_card.apartment_card_head.title', {
+            propertyType:
+              t(
+                `catalog_page.catalog_page_filter.categories.property_types.${apartment.propertyType.toLowerCase()}`,
+              )
+                .slice(0, 1)
+                .toUpperCase() +
+              t(
+                `catalog_page.catalog_page_filter.categories.property_types.${apartment.propertyType.toLowerCase()}`,
+              ).slice(1),
+
+            city: t(
+              `catalog_page.catalog_page_filter.categories.cities_title.${apartment.city.toLowerCase()}`,
+            ),
+          })}
           <span
             className={`${styles.apartmentCard__id} ${isMapOpened && styles[`apartmentCard__id--mapOpened`]}`}
           >
@@ -170,13 +183,11 @@ export const ApartmentCard: React.FC<Props> = ({
           <p
             className={`${styles.apartmentCard__price} ${isMapOpened && styles[`apartmentCard__price--mapOpened`]}`}
           >
-            {lang === 'en' ? '$' : ''}
-            {apartment.price}
-            {lang === 'ua' ? 'грн' : ''}/month
+            {label}/{t('apartment_card.apartment_card_details.month')}
             <span
-              className={`${styles.apartmentCard__priceDetails} ${isMapOpened && styles[`apartmentCard__priceDetails--mapOpened`]}`}
+              className={`${styles.apartmentCard__priceDetails} ${isMapOpened && styles[`apartmentCard__priceDetails--mapOpened`]} ${(lang === 'UA' || lang === 'IT' || lang === 'ES' || lang === 'FR' || lang === 'DE') && styles[`apartmentCard__priceDetails--block`]}`}
             >
-              excl. utilities
+              {t('apartment_card.apartment_card_details.utilities')}
             </span>
           </p>
 
@@ -199,7 +210,7 @@ export const ApartmentCard: React.FC<Props> = ({
               }
               className={`${styles.apartmentCard__contactsText} ${isMapOpened && styles[`apartmentCard__contactsText--mapOpened`]}`}
             >
-              Text landlord
+              {t('apartment_card.apartment_card_details.contacts')}
             </a>
           </div>
         </div>
@@ -212,10 +223,10 @@ export const ApartmentCard: React.FC<Props> = ({
           }`}
         >
           {isAvailableNow ? (
-            'Available now'
+            t('apartment_card.apartment_card_details.available')
           ) : (
             <>
-              Available from{' '}
+              {t('apartment_card.apartment_card_details.not_available')}{' '}
               <span className={styles.apartmentCard__date}>
                 {formattedDate}
               </span>

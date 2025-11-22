@@ -28,12 +28,13 @@ export const ApartmentsProvider = ({ children }: Props) => {
   const [loading, setLoading] = useState(true);
   const { lang } = useLang();
 
-  const API_URL = `https://smart-rent-backend.vercel.app/apartments?lang=${lang}`;
+  const API_URL = `https://smart-rent-backend.vercel.app/apartments`;
 
   const fetchApartments = async () => {
     setLoading(true);
+
     try {
-      const response = await axios.get<Apartment[]>(`${API_URL}/apartments`, {
+      const response = await axios.get<Apartment[]>(`${API_URL}`, {
         params: { lang },
       });
 
