@@ -155,6 +155,13 @@ const resources = {
         expand: 'Expand',
         collapse: 'Collapse',
       },
+
+      favorites: {
+        title: 'Favorites',
+        item: '1 favorite',
+        items: '{{count}} favorites',
+      },
+
       errors: {
         notFound: 'There are no results found!',
       },
@@ -929,6 +936,12 @@ const resources = {
         hide: 'Сховати карту',
         expand: 'Розгорнути',
         collapse: 'Згорнути',
+      },
+
+      favorites: {
+        title: 'Обрані',
+        item: '1 обране',
+        items: '{{count}} обраних',
       },
 
       errors: {

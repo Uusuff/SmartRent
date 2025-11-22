@@ -1,0 +1,41 @@
+@use '../../../shared/variables/variables.scss' as *;
+@use '../../../shared/mixins/mixins.scss' as *;
+
+.favorites {
+  max-width: $max-width;
+  margin-inline: auto;
+  padding-top: 40px;
+
+  &__homeLink {
+    position: relative;
+    margin-left: 20px;
+
+    @include link-styles;
+
+    &::before {
+      position: absolute;
+      display: block;
+      content: '';
+      top: 2px;
+      left: -20px;
+      background-image: url('../../../assets/icons/BurgerMenuIcons/ArrowLeft.svg');
+      background-position: center;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__title {
+    color: $black-color;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 120%;
+  }
+
+  &__quantity {
+    margin-top: 8px;
+    margin-bottom: 30px;
+    line-height: 21px;
+    color: $gray-text;
+  }
+}
