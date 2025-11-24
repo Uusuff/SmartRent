@@ -8,7 +8,6 @@ import {
 } from 'react';
 import axios from 'axios';
 import { Apartment } from '../types/Apartment';
-import { useLang } from './LangContext';
 
 interface ApartmentsContextType {
   apartments: Apartment[];
@@ -26,9 +25,8 @@ interface Props {
 export const ApartmentsProvider = ({ children }: Props) => {
   const [apartments, setApartments] = useState<Apartment[]>([]);
   const [loading, setLoading] = useState(true);
-  const { lang } = useLang();
-
   const API_URL = `https://smart-rent-backend.vercel.app/apartments`;
+  const lang = 'EN';
 
   const fetchApartments = async () => {
     setLoading(true);

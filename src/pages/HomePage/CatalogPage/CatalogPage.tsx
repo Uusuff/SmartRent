@@ -43,7 +43,7 @@ export const CatalogPage = () => {
   const [priceUSD, setPriceUSD] = useState<number | null>(
     searchParams.get('price')
       ? Number(searchParams.get('price')) / conversionRates[currency]
-      : 0,
+      : null,
   );
   const [price, setPrice] = useState<number | string>(
     priceUSD !== null

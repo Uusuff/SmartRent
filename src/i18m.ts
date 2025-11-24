@@ -160,6 +160,7 @@ const resources = {
         title: 'Favorites',
         item: '1 favorite',
         items: '{{count}} favorites',
+        'no-favorites': 'You have no favorites',
       },
 
       errors: {
@@ -318,6 +319,14 @@ const resources = {
         expand: 'Expandir',
         collapse: 'Colapsar',
       },
+
+      favorites: {
+        title: 'Favoritas',
+        item: '1 favorito',
+        items: '{{count}} favoritas',
+        'no-favorites': 'No tienes favoritas',
+      },
+
       errors: {
         notFound: '¡No se han encontrado resultados!',
       },
@@ -474,6 +483,14 @@ const resources = {
         expand: 'Expandieren',
         collapse: 'Zusammenbruch',
       },
+
+      favorites: {
+        title: 'Favoriten',
+        item: '1 favoritin',
+        items: '{{count}} favoriten',
+        'no-favorites': 'Es sind keine Favoriten gespeichert',
+      },
+
       errors: {
         notFound: 'Es wurden keine Ergebnisse gefunden!',
       },
@@ -630,6 +647,14 @@ const resources = {
         expand: 'Espandere',
         collapse: 'Crollo',
       },
+
+      favorites: {
+        title: 'Preferite',
+        item: '1 preferita',
+        items: '{{count}} preferite',
+        'no-favorites': 'Non hai preferiti',
+      },
+
       errors: {
         notFound: 'Nessun risultato trovato!',
       },
@@ -786,6 +811,14 @@ const resources = {
         expand: 'Développer',
         collapse: 'Effondrement',
       },
+
+      favorites: {
+        title: 'Favoris',
+        item: '1 préférée',
+        items: '{{count}} favoris',
+        'no-favorites': "Vous n'avez pas de favoris",
+      },
+
       errors: {
         notFound: 'Aucun résultat trouvé !',
       },
@@ -942,6 +975,7 @@ const resources = {
         title: 'Обрані',
         item: '1 обране',
         items: '{{count}} обраних',
+        'no-favorites': 'У вас немає обраних',
       },
 
       errors: {
