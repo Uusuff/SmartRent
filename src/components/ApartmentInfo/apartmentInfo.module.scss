@@ -1,0 +1,197 @@
+@use '../../shared/variables/variables.scss' as *;
+@use '../../shared/mixins/mixins.scss' as *;
+
+.apartmentInfo {
+  grid-column: 1/5;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  &__article {
+    border-bottom: 1px solid $filter-border;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    @include medium-text(24px, 1.4);
+    color: $black-color;
+
+    &--head {
+      color: $total-black;
+    }
+  }
+
+  &__specs {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__spec {
+    position: relative;
+    color: $gray-text;
+    font-size: 16px;
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: '';
+      background-color: $filter-border;
+      height: 20px;
+      width: 1px;
+      right: -9px;
+      top: 2px;
+    }
+
+    &:last-child::after {
+      content: none;
+    }
+  }
+
+  &__price {
+    @include medium-text(32px, 1.2);
+
+    color: $black-color;
+  }
+
+  &__priceDetails {
+    @include medium-text(20px, 1.4);
+
+    color: $gray-light;
+  }
+
+  &__descriptionText {
+    @include standard-text(16px, 1.4);
+
+    color: $btn-color-strong-gray;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+
+    &--expanded {
+      -webkit-line-clamp: unset;
+      max-height: none;
+    }
+  }
+
+  &__descriptionButton {
+    @include apartment-page-button;
+  }
+
+  &__featuresList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 16px;
+    column-gap: 24px;
+    margin-bottom: 24px;
+    margin-top: 16px;
+  }
+
+  &__feature {
+    display: flex;
+    gap: 8px;
+    color: $gray-text;
+  }
+
+  &__featureIcon {
+    @include icons-styles;
+
+    &--wifi {
+      background-image: url('../../assets/icons/apartmentIcons/wifi.svg');
+    }
+
+    &--kitchen {
+      background-image: url('../../assets/icons/apartmentIcons/kitchen.svg');
+    }
+
+    &--tv {
+      background-image: url('../../assets/icons/apartmentIcons/tv.svg');
+    }
+
+    &--conditioner {
+      background-image: url('../../assets/icons/apartmentIcons/conditioner.svg');
+    }
+
+    &--workspace {
+      background-image: url('../../assets/icons/apartmentIcons/workspace.svg');
+    }
+
+    &--furniture {
+      background-image: url('../../assets/icons/apartmentIcons/furniture.svg');
+    }
+
+    &--washing-machine {
+      background-image: url('../../assets/icons/apartmentIcons/washing-machine.svg');
+    }
+
+    &--heating {
+      background-image: url('../../assets/icons/apartmentIcons/heating.svg');
+    }
+
+    &--bath {
+      background-image: url('../../assets/icons/apartmentIcons/bath.svg');
+    }
+
+    &--elevator {
+      background-image: url('../../assets/icons/apartmentIcons/elevator.svg');
+    }
+  }
+
+  &__featuresButton {
+    @include apartment-page-button;
+  }
+
+  &__lists {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: inside;
+
+    &--cancel {
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__cancelationLink {
+    @include link-styles;
+
+    display: block;
+    width: max-content;
+    margin-bottom: 32px;
+    margin-left: 33px;
+  }
+
+  &__listItem {
+    color: $total-black;
+    padding-left: 10px;
+  }
+
+  &__listLabel {
+    color: $gray-light;
+  }
+
+  &__listTitle {
+    @include medium-text(20px, 1.4);
+
+    color: $black-color;
+    margin-bottom: 8px;
+  }
+}

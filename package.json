@@ -22,6 +22,7 @@
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/axios": "^0.9.36",
+    "@types/google.maps": "^3.58.1",
     "@types/leaflet": "^1.9.21",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",

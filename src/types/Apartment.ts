@@ -1,10 +1,26 @@
+export type MultiLangText = {
+  ENG: string;
+  UA: string;
+  DE: string;
+  FR: string;
+  IT: string;
+  ES: string;
+};
+
+export type Landlord = {
+  name: MultiLangText;
+  gender: 'm' | 'f';
+  rate: number;
+};
+
 export type Apartment = {
   id: number;
-  title: string;
-  description: string;
-  city: string;
-  address: string;
-  neighborhood: string;
+  title: MultiLangText;
+  description: MultiLangText;
+  city: MultiLangText;
+  address: MultiLangText;
+  neighborhood: MultiLangText;
+  propertyType: MultiLangText;
   price: number;
   bedrooms: number;
   bathrooms: number;
@@ -12,9 +28,11 @@ export type Apartment = {
   contact: string;
   petFriendly: boolean;
   availableFrom: string;
-  propertyType: string;
   new: boolean;
   images: string[];
   lat: number;
   lng: number;
+  landlord: Landlord;
+  utilitiesPerMonth: number;
+  tenantProtection: number;
 };

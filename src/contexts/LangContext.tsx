@@ -5,10 +5,11 @@ import {
   ReactNode,
   useEffect,
 } from 'react';
+import { MultiLangText } from '../types/Apartment';
 
 interface LangContextType {
-  lang: string;
-  setLang: (lang: string) => void;
+  lang: keyof MultiLangText;
+  setLang: (lang: keyof MultiLangText) => void;
 }
 
 const LangContext = createContext<LangContextType>({
@@ -17,8 +18,8 @@ const LangContext = createContext<LangContextType>({
 });
 
 export const LangProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<string>(
-    (localStorage.getItem('lang') as string) || 'ENG',
+  const [lang, setLang] = useState(
+    (localStorage.getItem('lang') as keyof MultiLangText) || 'ENG',
   );
 
   useEffect(() => {

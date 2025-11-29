@@ -1,14 +1,5 @@
 @use '../variables/variables' as *;
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 @mixin container {
   padding: 0 108px;
 }
@@ -71,21 +62,11 @@
   }
 }
 
-@mixin white-button-styles {
-  border: 1px solid $btn-default-color;
+@mixin button-on-hover{
+  transition: all 0.5s;
 
-  &:hover {
-    border-color: $btn-hover-color;
-  }
-
-  &:active,
-  &:focus {
-    border-color: $btn-pressed-color;
-  }
-
-  &:disabled {
-    color: $btn-default-color;
-    border-color: $btn-disabled-color;
+  &:hover{
+    transform: scale(1.02);
   }
 }
 
@@ -209,4 +190,16 @@
     background-color: rgba(248, 249, 250, 1);
     color: rgba(173, 181, 189, 1);
   }
+}
+
+@mixin apartment-page-button{
+  @include standard-text(16px, 1.4);
+  @include secondary-button;
+  @include button-on-hover;
+
+  color: $btn-color-strong-gray;
+  min-width: 184px;
+  height: 48px;
+  margin-bottom: 32px;
+  padding: 13px 12px;
 }

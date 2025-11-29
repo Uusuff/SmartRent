@@ -8,8 +8,7 @@
 
   &__button {
     @include icons-styles;
-    width: 40px;
-    height: 40px;
+    @include icon-size(40px, 40px);
     background-size: 24px 24px;
 
     &--prev{
@@ -38,11 +37,10 @@
   }
 
   &__item {
-    display: flex;
-    align-items: center;
+    @include flex-center;
+    @include icon-size(40px, 40px);
+
     justify-content: center;
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
 
     &--active {

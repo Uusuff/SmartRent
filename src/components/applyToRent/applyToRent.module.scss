@@ -1,0 +1,157 @@
+@use '../../shared/variables/variables.scss' as *;
+@use '../../shared/mixins/mixins.scss' as *;
+
+.applyToRent {
+  padding: 24px 16px;
+  grid-column: 5/-1;
+  grid-row: 2/4;
+  border: 1px solid $filter-border;
+  border-radius: 15px;
+
+  &__landlord {
+    @include flex-center;
+
+    justify-content: space-between;
+    border-bottom: 1px solid $filter-border;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__landlord-left {
+    @include flex-center;
+
+    gap: 12px;
+  }
+
+  &__landlordPhoto {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    display: inline-block;
+    width: 65px;
+    height: 65px;
+  }
+
+  &__landlord-published {
+    @include standard-text(12px, 1.4);
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: $gray-text;
+  }
+
+  &__landlordName {
+    @include standard-text(16px, 1.4);
+
+    color: $gray-text;
+    text-decoration: underline;
+  }
+
+  &__landlordRate {
+    position: relative;
+    color: $black-color;
+    font-size: 14px;
+
+    &::before {
+      @include icon-size(16px, 16px);
+
+      position: absolute;
+      display: block;
+      content: '';
+      background-image: url('../../assets/icons/apartmentIcons/star.svg');
+      left: -18px;
+      top: 2.5px;
+    }
+  }
+
+  &__costDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $filter-border;
+  }
+
+  &__costItem {
+    @include standard-text(16px, 1.4);
+    @include flex-center;
+
+    justify-content: space-between;
+    color: $gray-text;
+  }
+
+  &__costRight{
+    @include flex-center;
+
+    max-width: 216px;
+    min-width: 100px;
+    justify-content: space-between;
+  }
+
+  &__costDescription-total {
+    @include medium-text(20px, 1.4);
+    color: $black-color;
+  }
+
+  &__cost {
+    float: right;
+    color: $gray-text;
+  }
+
+  &__button {
+    @include button-on-hover;
+
+    display: block;
+    width: 360px;
+    height: 56px;
+    text-align: center;
+    line-height: 56px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &--apply {
+      margin-bottom: 8px;
+      margin-top: 32px;
+
+      @include primary-button;
+      @include button-on-hover
+    }
+
+    &--contact {
+      @include secondary-button;
+    }
+  }
+
+  &__contactIcon {
+    @include icon-size(24px, 24px);
+    position: relative;
+    top: 7px;
+    left: -6px;
+    display: inline-block;
+    background-image: url('../../assets/icons/cardIcons/contacts.svg');
+  }
+
+  &__dateContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__date {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__date-label {
+    @include medium-text(20px, 1.4);
+    color: $black-color;
+  }
+
+  &__infoIcon{
+    @include icon-size(16px, 16px);
+    display: inline-block;
+    background-image: url('../../assets/icons/apartmentIcons/info-icon.svg');
+  }
+}

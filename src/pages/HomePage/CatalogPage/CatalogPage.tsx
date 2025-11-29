@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable no-console */
 import { CatalogFilter } from '../../../components/CatalogFilter/CatalogFilter';
@@ -20,22 +21,20 @@ export const CatalogPage = () => {
   const [filteredApartments, setFilteredApartments] = useState<Apartment[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
-  const showAllLabel = t('catalog_page.catalog_page_filter.titles.showAll');
-  const [city, setCity] = useState(searchParams.get('city') || showAllLabel);
+  const [city, setCity] = useState(searchParams.get('city') || 'showAll');
   const [cityKey, setCityKey] = useState<string>(
-    searchParams.get('city')?.toLowerCase() ||
-      t('catalog_page.catalog_page_filter.categories.cities.kyiv'),
+    searchParams.get('city')?.toLowerCase() || 'showAll',
   );
   const [propertyType, setPropertyType] = useState(
-    searchParams.get('propertyType') || showAllLabel,
+    searchParams.get('propertyType') || 'showAll',
   );
   const [isMapOpened, setIsMapOpened] = useState(false);
   const startIndex = (currentPage - 1) * 8;
   const endIndex = startIndex + 8;
   const currentItems = filteredApartments.slice(startIndex, endIndex);
-  const [date, setDate] = useState(showAllLabel);
+  const [date, setDate] = useState('showAll');
   const [neighborhood, setNeighborhood] = useState(
-    searchParams.get('neighborhood') || showAllLabel,
+    searchParams.get('neighborhood') || 'showAll',
   );
   const { currency } = useCurrency();
   const [moveIn] = useState(searchParams.get('MOVE_IN'));
@@ -48,7 +47,7 @@ export const CatalogPage = () => {
   const [price, setPrice] = useState<number | string>(
     priceUSD !== null
       ? Math.round(priceUSD * conversionRates[currency])
-      : showAllLabel,
+      : 'showAll',
   );
 
   useEffect(() => {
@@ -95,23 +94,23 @@ export const CatalogPage = () => {
     const params: Record<string, string> = {};
     let result = [...apartments];
 
-    if (city) {
+    if (cityKey && cityKey !== 'showAll') {
       params.city = cityKey;
 
       result = result.filter(
-        a => a.city.toLowerCase() === cityKey.toLowerCase(),
+        a => a.city.ENG.toLowerCase() === cityKey.toLowerCase(),
       );
     }
 
-    if (neighborhood && neighborhood !== showAllLabel) {
+    if (neighborhood && neighborhood !== 'showAll') {
       params.neighborhood = neighborhood;
 
       result = result.filter(
-        a => a.neighborhood.toLowerCase() === neighborhood.toLowerCase(),
+        a => a.neighborhood.ENG.toLowerCase() === neighborhood.toLowerCase(),
       );
     }
 
-    if (price && price !== showAllLabel) {
+    if (price && price !== 'showAll') {
       params.price = price.toString();
 
       const priceInUSD = Number(price) / conversionRates[currency];
@@ -119,11 +118,11 @@ export const CatalogPage = () => {
       result = result.filter(a => a.price <= priceInUSD);
     }
 
-    if (propertyType && propertyType !== showAllLabel) {
+    if (propertyType && propertyType !== 'showAll') {
       params.propertyType = propertyType;
 
       result = result.filter(
-        a => a.propertyType.toLowerCase() === propertyType.toLowerCase(),
+        a => a.propertyType.ENG.toLowerCase() === propertyType.toLowerCase(),
       );
     }
 
@@ -142,6 +141,8 @@ export const CatalogPage = () => {
     if (currentPage > 1) {
       params.page = currentPage.toString();
     }
+
+    console.log(propertyType);
 
     setSearchParams(params);
     setFilteredApartments(result);
@@ -187,25 +188,48 @@ export const CatalogPage = () => {
               className={`${styles.catalogPage__head} ${isMapOpened && styles[`catalogPage__head--mapOpened`]}`}
             >
               <h2 className={styles.catalogPage__title}>
-                {t('catalog_page.catalog_page_head.title', {
-                  propertyType:
-                    propertyType === showAllLabel
-                      ? t(
+                {cityKey === 'showAll'
+                  ? propertyType === 'showAll'
+                    ? t('catalog_page.catalog_page_head.titleNoCity', {
+                        propertyType: t(
                           `catalog_page.catalog_page_filter.categories.property_types.all`,
-                        )
-                      : t(
-                          `catalog_page.catalog_page_filter.categories.property_types.${propertyType.toLowerCase()}`,
-                        )
-                          .slice(0, 1)
-                          .toUpperCase() +
-                        t(
-                          `catalog_page.catalog_page_filter.categories.property_types.${propertyType.toLowerCase()}`,
-                        ).slice(1),
+                        ),
+                      })
+                    : t('catalog_page.catalog_page_head.titleNoCity', {
+                        propertyType:
+                          t(
+                            `catalog_page.catalog_page_filter.categories.property_types.${propertyType.toLowerCase()}`,
+                          )
+                            .slice(0, 1)
+                            .toUpperCase() +
+                          t(
+                            `catalog_page.catalog_page_filter.categories.property_types.${propertyType.toLowerCase()}`,
+                          ).slice(1),
+                      })
+                  : propertyType === 'showAll'
+                    ? t('catalog_page.catalog_page_head.title', {
+                        propertyType: t(
+                          `catalog_page.catalog_page_filter.categories.property_types.all`,
+                        ),
+                        city: t(
+                          `catalog_page.catalog_page_filter.categories.cities_title.${cityKey.toLowerCase()}`,
+                        ),
+                      })
+                    : t('catalog_page.catalog_page_head.title', {
+                        propertyType:
+                          t(
+                            `catalog_page.catalog_page_filter.categories.property_types.${propertyType.toLowerCase()}`,
+                          )
+                            .slice(0, 1)
+                            .toUpperCase() +
+                          t(
+                            `catalog_page.catalog_page_filter.categories.property_types.${propertyType.toLowerCase()}`,
+                          ).slice(1),
 
-                  city: t(
-                    `catalog_page.catalog_page_filter.categories.cities_title.${cityKey.toLowerCase()}`,
-                  ),
-                })}
+                        city: t(
+                          `catalog_page.catalog_page_filter.categories.cities_title.${cityKey.toLowerCase()}`,
+                        ),
+                      })}
               </h2>
 
               <p className={styles.catalogPage__quantity}>

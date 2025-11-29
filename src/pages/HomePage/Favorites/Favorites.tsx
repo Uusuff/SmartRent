@@ -21,8 +21,12 @@ export const Favorites = () => {
         Back home
       </a>
 
-      {favorites.length > 0 && (
+      {favorites.length > 0 ? (
         <CatalogList apartments={favorites} isMapOpened={false} />
+      ) : (
+        <p className={styles.favorites__noResults}>
+          {t('favorites.no-favorites')}
+        </p>
       )}
     </section>
   );

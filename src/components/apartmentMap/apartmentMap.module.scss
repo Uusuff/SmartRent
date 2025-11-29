@@ -61,12 +61,11 @@
   }
 
   .map-wrapper__button {
-    @include white-button-styles;
+    @include secondary-button;
+    @include flex-center;
 
     position: absolute;
     top: 16px;
-    display: flex;
-    align-items: center;
     justify-content: center;
     width: 137px;
     height: 48px;
@@ -150,8 +149,8 @@
   }
 
   :global(.price-marker) {
-    display: flex;
-    align-items: center;
+    @include flex-center;
+
     justify-content: center;
   }
 
