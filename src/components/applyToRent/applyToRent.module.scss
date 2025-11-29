@@ -54,7 +54,7 @@
     font-size: 14px;
 
     &::before {
-      @include icon-size(16px, 16px);
+      @include icon-size(16px);
 
       position: absolute;
       display: block;
@@ -125,7 +125,7 @@
   }
 
   &__contactIcon {
-    @include icon-size(24px, 24px);
+    @include icon-size(24px);
     position: relative;
     top: 7px;
     left: -6px;
@@ -150,7 +150,7 @@
   }
 
   &__infoIcon{
-    @include icon-size(16px, 16px);
+    @include icon-size(16px);
     display: inline-block;
     background-image: url('../../assets/icons/apartmentIcons/info-icon.svg');
   }

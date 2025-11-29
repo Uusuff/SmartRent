@@ -8,7 +8,7 @@
 
   &__button {
     @include icons-styles;
-    @include icon-size(40px, 40px);
+    @include icon-size(40px);
     background-size: 24px 24px;
 
     &--prev{
@@ -38,7 +38,7 @@
 
   &__item {
     @include flex-center;
-    @include icon-size(40px, 40px);
+    @include icon-size(40px);
 
     justify-content: center;
     border-radius: 50%;

@@ -40,7 +40,7 @@
   }
 
   .leaflet-touch .leaflet-bar a {
-    @include icon-size(40px, 40px);
+    @include icon-size(40px);
     line-height: 35px;
   }
 

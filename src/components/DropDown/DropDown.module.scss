@@ -47,7 +47,7 @@
   }
 
   &__arrow {
-    @include icon-size(24px, 24px);
+    @include icon-size(24px);
     background-size: contain;
 
     &--up {
@@ -98,7 +98,7 @@
     }
 
     &::before {
-      @include icon-size(24px, 24px);
+      @include icon-size(24px);
       position: absolute;
       display: block;
       content: '';
@@ -108,7 +108,7 @@
     }
 
     &::after {
-      @include icon-size(24px, 24px);
+      @include icon-size(24px);
       position: absolute;
       display: block;
       content: '';
@@ -147,7 +147,7 @@
   }
 
   &__filterIcon {
-    @include icon-size(24px, 24px);
+    @include icon-size(24px);
     background-image: url('../../assets/icons/FilterIcons/allFilters.svg');
 
     &--disabled {
