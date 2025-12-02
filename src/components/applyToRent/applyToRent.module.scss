@@ -44,7 +44,7 @@
   &__landlordName {
     @include standard-text(16px, 1.4);
 
-    color: $gray-text;
+    color: $black-color;
     text-decoration: underline;
   }
 
@@ -85,9 +85,10 @@
   &__costRight{
     @include flex-center;
 
-    max-width: 216px;
+    flex-grow: 4;
     min-width: 100px;
     justify-content: space-between;
+    margin-left: 10px
   }
 
   &__costDescription-total {

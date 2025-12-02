@@ -19,6 +19,10 @@ type Props = {
   priceUSD: number | null;
   setPrice: React.Dispatch<React.SetStateAction<number | string>>;
   setPriceUSD: React.Dispatch<React.SetStateAction<number | null>>;
+  moveIn?: string | null;
+  moveOut?: string | null;
+  setMoveIn?: React.Dispatch<React.SetStateAction<string | null>>;
+  setMoveOut?: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export const CatalogFilter: React.FC<Props> = ({
@@ -33,6 +37,10 @@ export const CatalogFilter: React.FC<Props> = ({
   priceUSD,
   setPrice,
   setPriceUSD,
+  moveIn,
+  moveOut,
+  setMoveIn,
+  setMoveOut,
 }) => {
   const { t } = useTranslation();
   const { currency } = useCurrency();

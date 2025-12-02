@@ -248,9 +248,9 @@ export const ApartmentInfo: React.FC<Props> = ({ apartment }) => {
       <article
         className={`${styles.apartmentInfo__cancelation} ${styles.apartmentInfo__article}`}
       >
-        <h5 className={styles.apartmentInfo__title}>
+        <h3 className={styles.apartmentInfo__title}>
           {t('apartment_page.cancelation.title')}
-        </h5>
+        </h3>
 
         <ul
           className={`${styles.apartmentInfo__list} ${styles[`apartmentInfo__list--cancel`]}`}

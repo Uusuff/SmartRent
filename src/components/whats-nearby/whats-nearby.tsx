@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
@@ -5,17 +6,28 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './whats-nearby.module.scss';
 import shopIcon from '../../assets/icons/mapIcons/shops.svg';
+import shopIconActive from '../../assets/icons/mapIcons/shops-active.svg';
 import restaurantIcon from '../../assets/icons/mapIcons/restaurants.svg';
+import restaurantIconActive from '../../assets/icons/mapIcons/restaurants-active.svg';
 import gymIcon from '../../assets/icons/mapIcons/gym.svg';
+import gymIconActive from '../../assets/icons/mapIcons/gym-active.svg';
 import supermarketIcon from '../../assets/icons/mapIcons/supermarkets.svg';
+import supermarketIconActive from '../../assets/icons/mapIcons/supermarkets-active.svg';
 import transportIcon from '../../assets/icons/mapIcons/transport.svg';
+import transportIconActive from '../../assets/icons/mapIcons/transport-active.svg';
 import schoolIcon from '../../assets/icons/mapIcons/school.svg';
+import schoolIconActive from '../../assets/icons/mapIcons/school-active.svg';
 import barIcon from '../../assets/icons/mapIcons/bars.svg';
+import barIconActive from '../../assets/icons/mapIcons/bars-active.svg';
 import hospitalIcon from '../../assets/icons/mapIcons/hospital.svg';
+import hospitalIconActive from '../../assets/icons/mapIcons/hospital-active.svg';
 import parkIcon from '../../assets/icons/mapIcons/parks.svg';
+import parkIconActive from '../../assets/icons/mapIcons/parks-active.svg';
 import parkingIcon from '../../assets/icons/mapIcons/parking-lots.svg';
+import parkingIconActive from '../../assets/icons/mapIcons/parking-lots-active.svg';
 import home from '../../assets/icons/mapIcons/home.svg';
 import { useTranslation } from 'react-i18next';
+import { MultiLangText } from '../../types/Apartment';
 
 export type POI = {
   id: number;
@@ -23,316 +35,498 @@ export type POI = {
   type: string;
   lat: number;
   lng: number;
-  address?: string;
-  stars?: number;
+  address: string;
+  stars: number;
 };
 
 interface WhatsNearbyProps {
   apartmentLat: number;
   apartmentLng: number;
+  apartmentAddress: MultiLangText;
   radius?: number;
 }
 
 export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
   apartmentLat,
   apartmentLng,
-  radius = 500,
+  apartmentAddress,
+  radius = 1500,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [pois, setPois] = useState<POI[]>([]);
   const [activeCategories, setActiveCategories] = useState<string[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [activePoiId, setActivePoiId] = useState<number | null>(null);
+  const mapRef = React.useRef<L.Map | null>(null);
+
+  const langKeys = ['ENG', 'UA', 'DE', 'FR', 'IT', 'ES'] as const;
+
+  type LangKey = (typeof langKeys)[number];
+
+  const normalizeLang = (lng: string): LangKey => {
+    const short = lng.split('-')[0];
+
+    if (short === 'en') {
+      return 'ENG';
+    }
+
+    if (short === 'ua') {
+      return 'UA';
+    }
+
+    if (short === 'de') {
+      return 'DE';
+    }
+
+    if (short === 'fr') {
+      return 'FR';
+    }
+
+    if (short === 'it') {
+      return 'IT';
+    }
+
+    if (short === 'es') {
+      return 'ES';
+    }
+
+    return 'ENG';
+  };
+
+  const currentLang: LangKey = normalizeLang(i18n.language);
 
   const filters = [
     {
       name: t('apartment_page.whatsNearby.filters.supermarkets'),
       type: 'supermarket',
       icon: supermarketIcon,
+      activeIcon: supermarketIconActive,
     },
     {
       name: t('apartment_page.whatsNearby.filters.transport'),
       type: 'transport',
       icon: transportIcon,
+      activeIcon: transportIconActive,
     },
     {
       name: t('apartment_page.whatsNearby.filters.gyms'),
       type: 'gym',
       icon: gymIcon,
+      activeIcon: gymIconActive,
     },
     {
       name: t('apartment_page.whatsNearby.filters.restaurants'),
       type: 'restaurant',
       icon: restaurantIcon,
+      activeIcon: restaurantIconActive,
     },
     {
       name: t('apartment_page.whatsNearby.filters.schools'),
       type: 'school',
       icon: schoolIcon,
+      activeIcon: schoolIconActive,
     },
     {
       name: t('apartment_page.whatsNearby.filters.shops'),
       type: 'shop',
       icon: shopIcon,
+      activeIcon: shopIconActive,
     },
     {
       name: t('apartment_page.whatsNearby.filters.bars'),
       type: 'bar',
       icon: barIcon,
+      activeIcon: barIconActive,
     },
     {
       name: t('apartment_page.whatsNearby.filters.hospitals'),
       type: 'hospital',
       icon: hospitalIcon,
+      activeIcon: hospitalIconActive,
     },
     {
       name: t('apartment_page.whatsNearby.filters.parks'),
       type: 'park',
       icon: parkIcon,
+      activeIcon: parkIconActive,
     },
     {
       name: t('apartment_page.whatsNearby.filters.parking'),
       type: 'parking',
       icon: parkingIcon,
+      activeIcon: parkingIconActive,
     },
   ];
 
-  const getDivIcon = (iconUrl: string) => {
+  const getApartmentIcon = () =>
+    L.divIcon({
+      className: '',
+      html: `<div style="width:60px;height:65px;background-image:url(${home});background-position:center;background-repeat:no-repeat;cursor:pointer;"></div>`,
+      iconSize: [50, 50],
+      iconAnchor: [25, 50],
+      popupAnchor: [0, -50],
+    });
+
+  const getDivIcon = (
+    iconUrl: string,
+    activeIconUrl: string,
+    isActive?: boolean,
+  ) => {
+    const bgColor = isActive ? '#165A43' : '#EDF2F1';
+
     return L.divIcon({
       className: '',
-      html: `<div style="
-        width: 40px;
-        height: 40px;
-        background-color: #EDF2F1;
-        background-image: url(${iconUrl});
-        background-size: 16px 16px;
-        background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 50%;
-        border: 1px solid #165A43;
-        box-shadow: 0 0 3px rgba(0,0,0,0.3);
-      "></div>`,
+      html: `<div style="width:40px;height:40px;background-image:url(${isActive ? activeIconUrl : iconUrl});background-size:16px 16px;background-repeat:no-repeat;background-position:center;background-color:${bgColor};border-radius:50%;border:1px solid #165A43;cursor:pointer;transition:all 0.2s;"></div>`,
       iconSize: [40, 40],
       iconAnchor: [20, 40],
       popupAnchor: [0, -40],
     });
   };
 
-  const getApartmentIcon = () => {
-    return L.divIcon({
-      className: '',
-      html: `<div style="
-        width: 60px;
-        height: 65px;
-        background-image: url(${home});
-        background-position: center;
-        background-repeat: no-repeat;
-        cursor: pointer;
-      "></div>`,
-      iconSize: [50, 50],
-      iconAnchor: [25, 50],
-      popupAnchor: [0, -50],
-    });
-  };
-
   const mapOverpassToFilterType = (el: any) => {
-    if (el.tags.shop === 'supermarket') {
-      return 'supermarket';
-    }
+    if (el.tags) {
+      if (el.tags.shop === 'supermarket') {
+        return 'supermarket';
+      }
 
-    if (el.tags.shop) {
-      return 'shop';
-    }
+      if (el.tags.shop) {
+        return 'shop';
+      }
 
-    if (el.tags.amenity === 'restaurant' || el.tags.amenity === 'cafe') {
-      return 'restaurant';
-    }
+      if (el.tags.amenity === 'restaurant' || el.tags.amenity === 'cafe') {
+        return 'restaurant';
+      }
 
-    if (el.tags.amenity === 'bar') {
-      return 'bar';
-    }
+      if (el.tags.amenity === 'bar') {
+        return 'bar';
+      }
 
-    if (el.tags.amenity === 'school') {
-      return 'school';
-    }
+      if (el.tags.amenity === 'school' || el.tags.amenity === 'university') {
+        return 'school';
+      }
 
-    if (el.tags.amenity === 'hospital') {
-      return 'hospital';
-    }
+      if (
+        el.tags.amenity === 'hospital' ||
+        el.tags.healthcare === 'hospital' ||
+        el.tags.amenity === 'clinic' ||
+        el.tags.healthcare === 'clinic'
+      ) {
+        return 'hospital';
+      }
 
-    if (el.tags.amenity === 'parking') {
-      return 'parking';
-    }
+      if (el.tags.amenity === 'parking' || el.tags.parking) {
+        return 'parking';
+      }
 
-    if (el.tags.leisure === 'park') {
-      return 'park';
-    }
+      if (
+        el.tags.leisure === 'park' ||
+        el.tags.leisure === 'garden' ||
+        el.tags.leisure === 'nature_reserve' ||
+        el.tags.landuse === 'forest' ||
+        el.tags.leisure === 'recreation_ground' ||
+        el.tags.leisure === 'grass' ||
+        el.tags.landuse === 'forest'
+      ) {
+        return 'park';
+      }
 
-    if (el.tags.leisure === 'fitness_centre') {
-      return 'gym';
-    }
+      if (
+        el.tags.leisure === 'fitness_centre' ||
+        el.tags.leisure === 'gym' ||
+        el.tags.sport === 'gym' ||
+        el.tags.sport === 'fitness'
+      ) {
+        return 'gym';
+      }
 
-    if (el.tags.amenity === 'bus_station') {
-      return 'transport';
+      if (
+        el.tags.amenity === 'bus_station' ||
+        el.tags.highway === 'bus_stop' ||
+        el.tags.railway === 'station' ||
+        el.tags.railway === 'tram_stop' ||
+        el.tags.railway === 'halt' ||
+        el.tags.public_transport === 'platform'
+      ) {
+        return 'transport';
+      }
     }
 
     return 'shop';
   };
 
-  useEffect(() => {
-    if (apartmentLat && apartmentLng) {
-      const fetchPOIs = async () => {
-        const query = `
-          [out:json];
-          (
-            node["amenity"="restaurant"](around:${radius},${apartmentLat},${apartmentLng});
-            node["amenity"="cafe"](around:${radius},${apartmentLat},${apartmentLng});
-            node["amenity"="bar"](around:${radius},${apartmentLat},${apartmentLng});
-            node["amenity"="school"](around:${radius},${apartmentLat},${apartmentLng});
-            node["amenity"="hospital"](around:${radius},${apartmentLat},${apartmentLng});
-            node["leisure"="park"](around:${radius},${apartmentLat},${apartmentLng});
-            node["shop"](around:${radius},${apartmentLat},${apartmentLng});
-            node["amenity"="parking"](around:${radius},${apartmentLat},${apartmentLng});
-            node["leisure"="fitness_centre"](around:${radius},${apartmentLat},${apartmentLng});
-            node["amenity"="bus_station"](around:${radius},${apartmentLat},${apartmentLng});
-          );
-          out;
-        `;
-        const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
+  const getRandomStars = () => Math.floor(Math.random() * 4) + 2;
 
-        try {
-          const response = await fetch(url);
-          const data = await response.json();
-          const poisData: POI[] = data.elements.map((el: any) => {
-            const poi: POI = {
-              id: el.id,
-              name: el.tags.name || 'Unknown',
-              type: mapOverpassToFilterType(el),
-              lat: el.lat,
-              lng: el.lon,
-            };
-            if (el.tags['addr:street'] || el.tags['addr:housenumber']) {
-              poi.address = [
-                el.tags['addr:street'],
-                el.tags['addr:housenumber'],
-              ]
-                .filter(Boolean)
-                .join(' ');
-            }
-            if (el.tags.stars) {
-              poi.stars = Number(el.tags.stars);
-            }
-            return poi;
-          });
-          setPois(poisData);
-        } catch (err) {
-          console.error('Failed to fetch POIs', err);
-        }
-      };
+  const getWalkingMinutes = (
+    lat1: number,
+    lon1: number,
+    lat2: number,
+    lon2: number,
+  ) => {
+    const toRad = (value: number) => (value * Math.PI) / 180;
+    const R = 6371;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distanceMeters = R * c * 1000;
 
-      fetchPOIs();
-    }
-  }, [apartmentLat, apartmentLng, radius]);
-
-  const handleExpand = () => {
-    setIsExpanded(prev => !prev);
+    return Math.round(distanceMeters / 83);
   };
 
+  const renderStars = (stars: number) => {
+    const fullStars = Math.floor(stars);
+    const starsArray = Array.from({ length: 5 }, (_, i) =>
+      i < fullStars ? 'active' : 'inactive',
+    );
+
+    return (
+      <div className={styles['popup-stars']}>
+        <span className={styles['popup-rate']}>{fullStars}/5</span>
+        {starsArray.map((status, idx) => (
+          <span
+            key={idx}
+            className={`${styles['popup-stars__star']} ${status === 'active' ? styles['popup-stars__star--active'] : styles['popup-stars__star--inactive']}`}
+          />
+        ))}
+      </div>
+    );
+  };
+
+  const generateRandomHouseNumber = (existingAddress: string) => {
+    const matches = existingAddress.match(/\d+/);
+    const existingNumber = matches ? Number(matches[0]) : null;
+    let randomNumber = Math.floor(Math.random() * 200) + 1;
+
+    while (randomNumber === existingNumber) {
+      randomNumber = Math.floor(Math.random() * 200) + 1;
+    }
+
+    return randomNumber;
+  };
+
+  useEffect(() => {
+    if (!apartmentLat || !apartmentLng) {
+      return;
+    }
+
+    const fetchPOIs = async () => {
+      const query = `
+        [out:json][timeout:25];
+        (
+          node["amenity"="restaurant"](around:${radius},${apartmentLat},${apartmentLng});
+          node["amenity"="cafe"](around:${radius},${apartmentLat},${apartmentLng});
+          node["amenity"="bar"](around:${radius},${apartmentLat},${apartmentLng});
+          node["amenity"="school"](around:${radius},${apartmentLat},${apartmentLng});
+          node["amenity"="university"](around:${radius},${apartmentLat},${apartmentLng});
+          node["amenity"="hospital"](around:${radius},${apartmentLat},${apartmentLng});
+          node["healthcare"="hospital"](around:${radius},${apartmentLat},${apartmentLng});
+          node["amenity"="clinic"](around:${radius},${apartmentLat},${apartmentLng});
+          node["healthcare"="clinic"](around:${radius},${apartmentLat},${apartmentLng});
+          node["leisure"="park"](around:${radius},${apartmentLat},${apartmentLng});
+          node["leisure"="garden"](around:${radius},${apartmentLat},${apartmentLng});
+          node["leisure"="nature_reserve"](around:${radius},${apartmentLat},${apartmentLng});
+          node["landuse"="forest"](around:${radius},${apartmentLat},${apartmentLng});
+          node["leisure"="recreation_ground"](around:${radius},${apartmentLat},${apartmentLng});
+          node["leisure"="grass"](around:${radius},${apartmentLat},${apartmentLng});
+          node["leisure"="fitness_centre"](around:${radius},${apartmentLat},${apartmentLng});
+          node["leisure"="gym"](around:${radius},${apartmentLat},${apartmentLng});
+          node["sport"="gym"](around:${radius},${apartmentLat},${apartmentLng});
+          node["sport"="fitness"](around:${radius},${apartmentLat},${apartmentLng});
+          node["amenity"="bus_station"](around:${radius},${apartmentLat},${apartmentLng});
+          node["highway"="bus_stop"](around:${radius},${apartmentLat},${apartmentLng});
+          node["railway"="station"](around:${radius},${apartmentLat},${apartmentLng});
+          node["railway"="tram_stop"](around:${radius},${apartmentLat},${apartmentLng});
+          node["railway"="halt"](around:${radius},${apartmentLat},${apartmentLng});
+          node["public_transport"="platform"](around:${radius},${apartmentLat},${apartmentLng});
+          node["shop"="supermarket"](around:${radius},${apartmentLat},${apartmentLng});
+          node["shop"](around:${radius},${apartmentLat},${apartmentLng});
+          node["amenity"="parking"](around:${radius},${apartmentLat},${apartmentLng});
+          node["parking"](around:${radius},${apartmentLat},${apartmentLng});
+        );
+        out center;
+      `;
+      const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const poisData: POI[] = data.elements.map((el: any) => {
+          let address = '';
+
+          if (el.tags['addr:street']?.trim()) {
+            address = el.tags['addr:street'].trim();
+          } else {
+            const street = apartmentAddress[currentLang]
+              .replace(/\d+/, '')
+              .trim();
+
+            address = `${street} ${generateRandomHouseNumber(apartmentAddress[currentLang])}`;
+          }
+
+          return {
+            id: el.id,
+            name:
+              el.tags.name ||
+              t(
+                `apartment_page.whatsNearby.mapMarkers.${mapOverpassToFilterType(el)}`,
+              ),
+            type: mapOverpassToFilterType(el),
+            lat: el.lat || el.center?.lat,
+            lng: el.lon || el.center?.lon,
+            address,
+            stars: el.tags.stars ? Number(el.tags.stars) : getRandomStars(),
+          };
+        });
+
+        setPois(poisData);
+      } catch (err) {
+        console.error('Failed to fetch POIs', err);
+      }
+    };
+
+    fetchPOIs();
+  }, [apartmentLat, apartmentLng, radius, apartmentAddress, currentLang, t]);
+
+  const handleExpand = () => setIsExpanded(prev => !prev);
   const ResizeMap = ({ expanded }: { expanded: boolean }) => {
     const map = useMap();
 
     useEffect(() => {
-      setTimeout(() => {
+      if (!map) {
+        return;
+      }
+
+      map.invalidateSize();
+
+      const timeout = setTimeout(() => {
         map.invalidateSize();
-      }, 300);
+      }, 550);
+
+      return () => clearTimeout(timeout);
     }, [expanded, map]);
 
     return null;
   };
 
+  useEffect(() => {
+    if (!mapRef.current) {
+      return;
+    }
+
+    mapRef.current.invalidateSize();
+    const timeout = setTimeout(() => {
+      mapRef.current?.invalidateSize();
+    }, 600);
+
+    return () => clearTimeout(timeout);
+  }, [isExpanded]);
+
   return (
-    <section className={styles.whatsNearby}>
+    <section className={styles.whatsNearby} id="map">
       <h3 className={styles.whatsNearby__title}>
         {t('apartment_page.whatsNearby.title')}
       </h3>
-
       <div className={styles.whatsNearby__filters}>
-        {filters.map(category => {
-          return (
-            <button
-              key={category.type}
-              className={`${styles.whatsNearby__filterButton} ${activeCategories.includes(category.type) ? styles['whatsNearby__filterButton--active'] : ''}`}
-              onClick={() => {
-                if (activeCategories.includes(category.type)) {
-                  setActiveCategories(prev =>
-                    prev.filter(c => c !== category.type),
-                  );
-                } else {
-                  setActiveCategories(prev => [...prev, category.type]);
-                }
-              }}
-            >
-              <img src={category.icon} alt={category.name} />
-              {category.name}
-            </button>
-          );
-        })}
+        {filters.map(category => (
+          <button
+            key={category.type}
+            className={`${styles.whatsNearby__filterButton} ${activeCategories.includes(category.type) ? styles['whatsNearby__filterButton--active'] : ''}`}
+            onClick={() =>
+              setActiveCategories(prev =>
+                prev.includes(category.type)
+                  ? prev.filter(c => c !== category.type)
+                  : [...prev, category.type],
+              )
+            }
+          >
+            <img src={category.icon} alt={category.name} />
+            {category.name}
+          </button>
+        ))}
       </div>
 
-      <MapContainer
-        center={[apartmentLat, apartmentLng]}
-        zoom={16}
-        style={{ width: '100%', height: '500px' }}
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <div className={styles.whatsNearby_container}>
+        {isExpanded && <div className={styles.overlay}></div>}
 
-        {pois
-          .filter(poi => {
-            if (activeCategories.includes(poi.type)) {
-              return true;
-            } else {
-              return false;
-            }
-          })
-          .map(poi => {
-            return (
-              <Marker
-                key={poi.id}
-                position={[poi.lat, poi.lng]}
-                icon={getDivIcon(
-                  filters.find(f => f.type === poi.type)?.icon || shopIcon,
-                )}
-              >
-                <Popup>
-                  <strong>{poi.name}</strong>
-                  <br />
-                  {poi.address && <span>{poi.address}</span>}
-                  {poi.stars && <span> ⭐ {poi.stars}</span>}
-                </Popup>
-              </Marker>
-            );
-          })}
-
-        <Marker
-          position={[apartmentLat, apartmentLng]}
-          icon={getApartmentIcon()}
+        <div
+          className={`${styles['map-wrapper']} ${
+            isExpanded ? styles['map-wrapper--expanded'] : ''
+          }`}
         >
-          <Popup>{t('apartment_page.whatsNearby.apartment')}</Popup>
-        </Marker>
+          <MapContainer
+            center={[apartmentLat, apartmentLng]}
+            zoom={16}
+            className={styles['map-container']}
+          >
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            {pois
+              .filter(poi => activeCategories.includes(poi.type))
+              .map(poi => {
+                const distance = getWalkingMinutes(
+                  apartmentLat,
+                  apartmentLng,
+                  poi.lat,
+                  poi.lng,
+                );
+                const filter = filters.find(f => f.type === poi.type);
 
-        <button
-          className={`${styles['whats-nearby__button']} ${styles['map-wrapper__button--mapSize']}`}
-          onClick={handleExpand}
-        >
-          <span
-            className={`${styles['map-wrapper__buttonIcon']} ${styles['map-wrapper__buttonIcon--expand']}`}
-          ></span>
-          {isExpanded
-            ? t('apartments_map.collapse')
-            : t('apartments_map.expand')}
-        </button>
+                return (
+                  <Marker
+                    key={poi.id}
+                    position={[poi.lat, poi.lng]}
+                    icon={getDivIcon(
+                      filter?.icon || shopIcon,
+                      filter?.activeIcon || shopIconActive,
+                      poi.id === activePoiId,
+                    )}
+                    eventHandlers={{
+                      click: () =>
+                        setActivePoiId(prev =>
+                          prev === poi.id ? null : poi.id,
+                        ),
+                    }}
+                  >
+                    <Popup>
+                      <strong className={styles['popup-name']}>
+                        {poi.name}
+                      </strong>
+                      <span className={styles['popup-address']}>
+                        {poi.address}
+                      </span>
+                      {renderStars(poi.stars)}
+                      <span className={styles['popup-distance']}>
+                        {distance === 0 ? 1 : distance}
+                        {t('apartment_page.whatsNearby.distance')}
+                      </span>
+                    </Popup>
+                  </Marker>
+                );
+              })}
+            <Marker
+              position={[apartmentLat, apartmentLng]}
+              icon={getApartmentIcon()}
+            >
+              <Popup>{t('apartment_page.whatsNearby.apartment')}</Popup>
+            </Marker>
 
-        <ResizeMap expanded={isExpanded} />
-      </MapContainer>
+            <button
+              className={`${styles['map-wrapper__button']} ${styles['map-wrapper__button--mapSize']}`}
+              onClick={handleExpand}
+            >
+              <span
+                className={`${styles['map-wrapper__buttonIcon']} ${styles['map-wrapper__buttonIcon--expand']}`}
+              ></span>
+              {isExpanded
+                ? t('apartments_map.collapse')
+                : t('apartments_map.expand')}
+            </button>
+
+            <ResizeMap expanded={isExpanded} />
+          </MapContainer>
+        </div>
+      </div>
     </section>
   );
 };

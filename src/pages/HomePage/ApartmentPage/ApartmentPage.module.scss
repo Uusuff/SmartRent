@@ -21,18 +21,18 @@
     margin-bottom: 16px;
 
     &::before {
+      @include icon-size(24px);
+
       display: block;
       position: absolute;
       content: '';
       top: 0px;
       left: 0px;
       background-image: url('../../../assets/icons/apartmentIcons/back-icon.svg');
-      width: 24px;
-      height: 24px;
     }
 
     &:hover {
-      color: #165A43;
+      color: $btn-default-color;
     }
   }
 
@@ -82,7 +82,7 @@
       grid-row: 4/7;
       align-self: self-start;
       padding: 24px 16px;
-      border: 1px solid #dee2e6;
+      border: 1px solid $filter-border;
       border-radius: 15px;
       margin-top: 24px;
     }
@@ -124,7 +124,7 @@
 
   &__question {
     position: relative;
-    background-color: #edf2f1;
+    background-color: $option-hover;
     padding: 17px 24px;
     border-radius: 12px;
 
@@ -137,13 +137,13 @@
     }
 
     &::after {
+      @include icon-size(16px);
+
       display: block;
       content: ' ';
       position: absolute;
       background-image: url('../../../assets/icons/apartmentIcons/plus.svg');
       background-repeat: no-repeat;
-      width: 16px;
-      height: 16px;
       right: 23px;
       top: 30px;
       transform: translateY(-50%) rotate(0deg);
@@ -172,15 +172,14 @@
     border-radius: 12px;
 
     &--guarantees {
-      color: #495057;
-      background-color: #edf2f1;
+      color: $gray-text;
+      background-color: $filter-border;
     }
   }
 
   &__questionIcon {
+    @include icon-size(40px);
     position: absolute;
-    width: 40px;
-    height: 40px;
     left: 0px;
     top: 0px;
 
@@ -212,7 +211,7 @@
     cursor: pointer;
 
     &--active{
-      border: 3px solid #165A43;
+      border: 3px solid $btn-default-color;
     }
   }
 }

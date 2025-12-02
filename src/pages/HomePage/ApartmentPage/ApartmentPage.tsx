@@ -98,7 +98,16 @@ export const ApartmentPage = () => {
               <span
                 className={`${styles.apartmentPage__navIcon} ${styles[`apartmentPage__navIcon--map`]}`}
               ></span>
-              <a href="" className={`${styles.apartmentPage__navLink}`}>
+              <a
+                href="#map"
+                className={`${styles.apartmentPage__navLink}`}
+                onClick={e => {
+                  e.preventDefault();
+                  const mapElement = document.getElementById('map');
+
+                  mapElement?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 {t('apartment_page.nav.map')}
               </a>
             </div>
@@ -235,6 +244,7 @@ export const ApartmentPage = () => {
           <WhatsNearby
             apartmentLat={apartment.lat}
             apartmentLng={apartment.lng}
+            apartmentAddress={apartment.address}
           />
         </div>
       )}

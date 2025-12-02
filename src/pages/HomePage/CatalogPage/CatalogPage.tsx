@@ -37,8 +37,8 @@ export const CatalogPage = () => {
     searchParams.get('neighborhood') || 'showAll',
   );
   const { currency } = useCurrency();
-  const [moveIn] = useState(searchParams.get('MOVE_IN'));
-  const [moveOut] = useState(searchParams.get('MOVE_OUT'));
+  const [moveIn, setMoveIn] = useState(searchParams.get('MOVE_IN'));
+  const [moveOut, setMoveOut] = useState(searchParams.get('MOVE_OUT'));
   const [priceUSD, setPriceUSD] = useState<number | null>(
     searchParams.get('price')
       ? Number(searchParams.get('price')) / conversionRates[currency]
@@ -72,10 +72,8 @@ export const CatalogPage = () => {
 
       const inMonthDay = inDate.toLocaleDateString('en-US', formatOptions);
       const outMonthDay = outDate.toLocaleDateString('en-US', formatOptions);
-
       const inYear = inDate.getFullYear();
       const outYear = outDate.getFullYear();
-
       let formattedDate;
 
       if (inYear === outYear) {
@@ -154,7 +152,6 @@ export const CatalogPage = () => {
     propertyType,
     moveIn,
     moveOut,
-    currentPage,
     apartments,
     cityKey,
   ]);
@@ -173,6 +170,10 @@ export const CatalogPage = () => {
         neighborhood={neighborhood}
         setNeighborhood={setNeighborhood}
         date={date}
+        moveIn={moveIn}
+        moveOut={moveOut}
+        setMoveIn={setMoveIn}
+        setMoveOut={setMoveOut}
       />
 
       {loading && <Loader />}

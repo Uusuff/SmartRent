@@ -13,11 +13,8 @@
 
       top: 184px !important;
       background-color: $white-color;
-      background-repeat: no-repeat;
-      background-position: center;
       background-size: 16px 16px;
       border-radius: 10000px;
-      cursor: pointer;
       z-index: 100;
 
       &:hover {
@@ -195,7 +192,7 @@
     @include cardButton;
 
     top: 24px;
-    right: 70px;
+    right: 73px;
     background-image: url('../../assets/icons/apartmentIcons/share-icon.svg');
     background-size: 24px 24px;
   }

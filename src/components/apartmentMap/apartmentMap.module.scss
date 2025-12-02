@@ -1,17 +1,6 @@
 @use '../../shared/variables/variables.scss' as *;
 @use '../../shared/mixins/mixins.scss' as *;
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .pageContainer {
   position: relative;
   grid-column: 2/-1;
@@ -19,41 +8,14 @@
 }
 
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 2;
-  animation: fadeIn 0.3s ease;
+  @include overlay-styles;
 }
 
 .map-wrapper {
-  position: relative;
-  width: 100%;
+  @include map-styles;
+
   height: 724px;
   border-radius: 10px;
-  overflow: hidden;
-  z-index: 21;
-  transition: height 0.5s ease;
-  transition:
-    height 0.5s ease,
-    width 0.5s ease,
-    left 0.5s ease,
-    top 0.5s ease,
-    transform 0.5s ease;
-
-  &--expanded {
-    z-index: 1000;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 80vw;
-    height: 90vh;
-    transform: translate(-50%, -50%);
-  }
 
   .map-container {
     width: 100%;

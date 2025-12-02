@@ -76,7 +76,11 @@ export const ApartmentSwiper: React.FC<Props> = ({
         className={`${styles.apartmentSwiper__favs} ${isMapOpened && styles[`apartmentSwiper__favs--mapOpened`]} ${persistent && styles[`apartmentSwiper__favs--persistent`]} ${
           favorite ? styles['apartmentSwiper__favs--selected'] : ''
         }`}
-        onClick={() => toggleFavorite(apartment)}
+        onClick={e => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleFavorite(apartment);
+        }}
       ></button>
 
       {persistent && (

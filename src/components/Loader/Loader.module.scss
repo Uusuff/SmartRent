@@ -1,8 +1,9 @@
 @use '../../shared/variables/variables.scss' as *;
+@use '../../shared/mixins/mixins.scss' as *;
 
 .Loader {
-  display: flex;
-  align-items: center;
+  @include flex-center;
+
   justify-content: center;
   width: 100%;
 

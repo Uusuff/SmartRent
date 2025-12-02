@@ -13,6 +13,8 @@
     @include link-styles;
 
     &::before {
+      @include icon-size(16px);
+
       position: absolute;
       display: block;
       content: '';
@@ -20,16 +22,13 @@
       left: -20px;
       background-image: url('../../../assets/icons/BurgerMenuIcons/ArrowLeft.svg');
       background-position: center;
-      width: 16px;
-      height: 16px;
     }
   }
 
   &__title {
+    @include medium-text(32px, 1.2);
+
     color: $black-color;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 120%;
   }
 
   &__quantity {
@@ -40,9 +39,9 @@
   }
 
   &__noResults{
+    @include medium-text(24px, 1.4);
+
     color: $gray-text;
-    font-size: 24px;
-    font-weight: 500;
     margin-block: 40px;
   }
 }

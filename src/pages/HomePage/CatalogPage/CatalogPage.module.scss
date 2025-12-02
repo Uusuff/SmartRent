@@ -29,20 +29,17 @@
   }
 
   &__title {
+    @include medium-text(32px, 1.2);
+
     grid-column: 1/-1;
     color: $black-color;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 120%;
     margin-bottom: 8px;
   }
 
   &__quantity {
+    @include medium-text(20px, 1.4);
     grid-column: 1/2;
     color: $gray-text;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 140%;
   }
 
   &__links {
@@ -58,8 +55,8 @@
   }
 
   &__linkItem {
-    display: flex;
-    align-items: center;
+    @include flex-center;
+
     justify-content: center;
     gap: 8px;
 
@@ -69,9 +66,9 @@
   }
 
   &__linkIcon {
+    @include icon-size(24px);
+
     display: block;
-    width: 24px;
-    height: 24px;
 
     &--recommended {
       background-image: url('../../../assets/icons/cardIcons/recommended.svg');
@@ -83,8 +80,8 @@
   }
 
   &__notFound {
-    font-size: 18px;
-    font-weight: 500;
+    @include medium-text(18px, 1.4);
+
     margin-top: 30px;
   }
 }
