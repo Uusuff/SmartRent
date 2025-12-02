@@ -11,32 +11,31 @@
   height: 610px;
   border-radius: 15px;
 
-    :global {
-      .leaflet-control-zoom {
-        border: none !important;
-        margin: 0px !important;
-        background-color: none;
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        top: 650px;
-        left: 24px;
-        border: none;
-        border-radius: 20px;
-        overflow: hidden;
-        z-index: 1000;
+  :global {
+    .leaflet-control-zoom {
+      border: none !important;
+      margin: 0px !important;
+      background-color: none;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      top: 650px;
+      left: 24px;
+      border: none;
+      border-radius: 20px;
+      overflow: hidden;
+      z-index: 1000;
 
-        a {
-          z-index: 500;
-          background-color: $btn-color-white;
-          color: $black-color;
-          transition: all 0.2s ease;
-          border-radius: 50%;
+      a {
+        z-index: 500;
+        background-color: $btn-color-white;
+        color: $black-color;
+        transition: all 0.2s ease;
+        border-radius: 50%;
 
-          &:hover {
-            background-color: $white-color;
-          }
+        &:hover {
+          background-color: $white-color;
         }
       }
     }
