@@ -182,7 +182,7 @@
   @include standard-text;
 
   &::placeholder {
-    color: rgba(134, 142, 150, 1);
+    color: $btn-disabled-color;
   }
 
   &:focus-within {
