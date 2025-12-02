@@ -121,6 +121,7 @@
   color: $btn-color-white;
   border-radius: $border-radius;
   background-color: $btn-default-color;
+  cursor: pointer;
 
   &:hover {
     background-color: $btn-hover-color;
@@ -140,6 +141,7 @@
   color: $btn-color-strong-gray;
   border-radius: $border-radius;
   border: 1px solid $btn-default-color;
+  cursor: pointer;
 
   &:hover {
     border: 1px solid $btn-hover-color;

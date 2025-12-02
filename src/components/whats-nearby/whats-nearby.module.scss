@@ -223,8 +223,10 @@
   }
 
   &__filterButton {
+    @include secondary-button;
     @include standard-text(14px, 1.4);
     @include flex-center;
+    @include button-on-hover;
 
     gap: 4px;
     height: 48px;
@@ -233,8 +235,6 @@
     border-radius: 1000px;
 
     &--active {
-      @include secondary-button;
-
       background-color: $option-hover;
       border-radius: 1000px;
     }
