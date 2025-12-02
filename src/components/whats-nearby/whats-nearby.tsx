@@ -5,27 +5,37 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './whats-nearby.module.scss';
-import shopIcon from '../../assets/icons/mapIcons/shops.svg';
-import shopIconActive from '../../assets/icons/mapIcons/shops-active.svg';
-import restaurantIcon from '../../assets/icons/mapIcons/restaurants.svg';
-import restaurantIconActive from '../../assets/icons/mapIcons/restaurants-active.svg';
-import gymIcon from '../../assets/icons/mapIcons/gym.svg';
-import gymIconActive from '../../assets/icons/mapIcons/gym-active.svg';
-import supermarketIcon from '../../assets/icons/mapIcons/supermarkets.svg';
-import supermarketIconActive from '../../assets/icons/mapIcons/supermarkets-active.svg';
-import transportIcon from '../../assets/icons/mapIcons/transport.svg';
-import transportIconActive from '../../assets/icons/mapIcons/transport-active.svg';
-import schoolIcon from '../../assets/icons/mapIcons/school.svg';
-import schoolIconActive from '../../assets/icons/mapIcons/school-active.svg';
-import barIcon from '../../assets/icons/mapIcons/bars.svg';
-import barIconActive from '../../assets/icons/mapIcons/bars-active.svg';
-import hospitalIcon from '../../assets/icons/mapIcons/hospital.svg';
-import hospitalIconActive from '../../assets/icons/mapIcons/hospital-active.svg';
-import parkIcon from '../../assets/icons/mapIcons/parks.svg';
-import parkIconActive from '../../assets/icons/mapIcons/parks-active.svg';
-import parkingIcon from '../../assets/icons/mapIcons/parking-lots.svg';
-import parkingIconActive from '../../assets/icons/mapIcons/parking-lots-active.svg';
-import home from '../../assets/icons/mapIcons/home.svg';
+import shopIconPath from '../../assets/icons/mapIcons/shops.svg';
+import shopIconActivePath from '../../assets/icons/mapIcons/shops-active.svg';
+
+import restaurantIconPath from '../../assets/icons/mapIcons/restaurants.svg';
+import restaurantIconActivePath from '../../assets/icons/mapIcons/restaurants-active.svg';
+
+import gymIconPath from '../../assets/icons/mapIcons/gym.svg';
+import gymIconActivePath from '../../assets/icons/mapIcons/gym-active.svg';
+
+import supermarketIconPath from '../../assets/icons/mapIcons/supermarkets.svg';
+import supermarketIconActivePath from '../../assets/icons/mapIcons/supermarkets-active.svg';
+
+import transportIconPath from '../../assets/icons/mapIcons/transport.svg';
+import transportIconActivePath from '../../assets/icons/mapIcons/transport-active.svg';
+
+import schoolIconPath from '../../assets/icons/mapIcons/school.svg';
+import schoolIconActivePath from '../../assets/icons/mapIcons/school-active.svg';
+
+import barIconPath from '../../assets/icons/mapIcons/bars.svg';
+import barIconActivePath from '../../assets/icons/mapIcons/bars-active.svg';
+
+import hospitalIconPath from '../../assets/icons/mapIcons/hospital.svg';
+import hospitalIconActivePath from '../../assets/icons/mapIcons/hospital-active.svg';
+
+import parkIconPath from '../../assets/icons/mapIcons/parks.svg';
+import parkIconActivePath from '../../assets/icons/mapIcons/parks-active.svg';
+
+import parkingIconPath from '../../assets/icons/mapIcons/parking-lots.svg';
+import parkingIconActivePath from '../../assets/icons/mapIcons/parking-lots-active.svg';
+
+import homeIconPath from '../../assets/icons/mapIcons/home.svg';
 import { useTranslation } from 'react-i18next';
 import { MultiLangText } from '../../types/Apartment';
 
@@ -58,6 +68,46 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [activePoiId, setActivePoiId] = useState<number | null>(null);
   const mapRef = React.useRef<L.Map | null>(null);
+  const shopIcon = new URL(shopIconPath, import.meta.url).href;
+  const shopIconActive = new URL(shopIconActivePath, import.meta.url).href;
+
+  const restaurantIcon = new URL(restaurantIconPath, import.meta.url).href;
+  const restaurantIconActive = new URL(
+    restaurantIconActivePath,
+    import.meta.url,
+  ).href;
+
+  const gymIcon = new URL(gymIconPath, import.meta.url).href;
+  const gymIconActive = new URL(gymIconActivePath, import.meta.url).href;
+
+  const supermarketIcon = new URL(supermarketIconPath, import.meta.url).href;
+  const supermarketIconActive = new URL(
+    supermarketIconActivePath,
+    import.meta.url,
+  ).href;
+
+  const transportIcon = new URL(transportIconPath, import.meta.url).href;
+  const transportIconActive = new URL(transportIconActivePath, import.meta.url)
+    .href;
+
+  const schoolIcon = new URL(schoolIconPath, import.meta.url).href;
+  const schoolIconActive = new URL(schoolIconActivePath, import.meta.url).href;
+
+  const barIcon = new URL(barIconPath, import.meta.url).href;
+  const barIconActive = new URL(barIconActivePath, import.meta.url).href;
+
+  const hospitalIcon = new URL(hospitalIconPath, import.meta.url).href;
+  const hospitalIconActive = new URL(hospitalIconActivePath, import.meta.url)
+    .href;
+
+  const parkIcon = new URL(parkIconPath, import.meta.url).href;
+  const parkIconActive = new URL(parkIconActivePath, import.meta.url).href;
+
+  const parkingIcon = new URL(parkingIconPath, import.meta.url).href;
+  const parkingIconActive = new URL(parkingIconActivePath, import.meta.url)
+    .href;
+
+  const homeIcon = new URL(homeIconPath, import.meta.url).href;
 
   const langKeys = ['ENG', 'UA', 'DE', 'FR', 'IT', 'ES'] as const;
 
@@ -161,7 +211,17 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
   const getApartmentIcon = () =>
     L.divIcon({
       className: '',
-      html: `<div style="width:60px;height:65px;background-image:url(${home});background-position:center;background-repeat:no-repeat;cursor:pointer;"></div>`,
+      html: `
+        <div style="
+          width: 60px;
+          height: 65px;
+          background-image: url('${homeIcon}');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          cursor: pointer;
+        "></div>
+      `,
       iconSize: [50, 50],
       iconAnchor: [25, 50],
       popupAnchor: [0, -50],
@@ -171,17 +231,27 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     iconUrl: string,
     activeIconUrl: string,
     isActive?: boolean,
-  ) => {
-    const bgColor = isActive ? '#165A43' : '#EDF2F1';
-
-    return L.divIcon({
+  ) =>
+    L.divIcon({
       className: '',
-      html: `<div style="width:40px;height:40px;background-image:url(${isActive ? activeIconUrl : iconUrl});background-size:16px 16px;background-repeat:no-repeat;background-position:center;background-color:${bgColor};border-radius:50%;border:1px solid #165A43;cursor:pointer;transition:all 0.2s;"></div>`,
+      html: `
+          <div style="
+            width: 40px;
+            height: 40px;
+            background-image: url('${isActive ? activeIconUrl : iconUrl}');
+            background-size: 16px 16px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: ${isActive ? '#165A43' : '#EDF2F1'};
+            border-radius: 50%;
+            border: 1px solid #165A43;
+            cursor: pointer;
+          "></div>
+        `,
       iconSize: [40, 40],
       iconAnchor: [20, 40],
       popupAnchor: [0, -40],
     });
-  };
 
   const mapOverpassToFilterType = (el: any) => {
     if (el.tags) {
