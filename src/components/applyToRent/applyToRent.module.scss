@@ -93,6 +93,7 @@
 
   &__costDescription-total {
     @include medium-text(20px, 1.4);
+
     color: $black-color;
   }
 
@@ -127,6 +128,7 @@
 
   &__contactIcon {
     @include icon-size(24px);
+
     position: relative;
     top: 7px;
     left: -6px;
@@ -147,11 +149,13 @@
 
   &__date-label {
     @include medium-text(20px, 1.4);
+
     color: $black-color;
   }
 
   &__infoIcon{
     @include icon-size(16px);
+
     display: inline-block;
     background-image: url('../../assets/icons/apartmentIcons/info-icon.svg');
   }

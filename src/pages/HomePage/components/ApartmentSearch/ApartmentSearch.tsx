@@ -3,7 +3,6 @@ import styles from './ApartmentSearch.module.scss';
 import { SearchLocation } from './components/SearchLocation';
 import { SearchDateInCalendar } from './components/SearchDateInCalendar';
 import { useState } from 'react';
-import { set } from 'date-fns';
 
 export const ApartmentSearch = () => {
   const [location, setLocation] = useState<string | null>(null);
@@ -21,7 +20,7 @@ export const ApartmentSearch = () => {
       checkIn: null,
       checkOut: null,
     });
-  }
+  };
 
   const handleSearch = () => {
     clearForm();

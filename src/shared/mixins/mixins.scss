@@ -1,4 +1,4 @@
-@use '../variables/variables' as *;
+@use "../variables/variables" as *;
 
 @mixin container {
   padding: 0 108px;
@@ -38,7 +38,7 @@
   cursor: pointer;
 }
 
-@mixin icons-styles-mapOpened {
+@mixin icons-styles-map-opened {
   width: 16px;
   height: 16px;
 }
@@ -71,7 +71,7 @@
   }
 }
 
-@mixin cardButton {
+@mixin card-button {
   position: absolute;
   border-radius: 50%;
   z-index: 3;
@@ -87,30 +87,30 @@
   }
 }
 
-@mixin availabilityIcon {
+@mixin availability-icon {
   position: absolute;
-  content: '';
+  content: "";
   display: block;
   background-size: contain;
   background-position: center;
   width: 12px;
   height: 12px;
-  left: 0px;
+  left: 0;
   top: 23px;
 }
 
-@mixin cardOnMap {
+@mixin card-on-map {
   position: absolute;
   bottom: 20px;
   left: 20px;
   background: $btn-color-white;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   z-index: 3000;
-  animation: fadeIn 0.15s ease-out;
+  animation: fade-in 0.15s ease-out;
   pointer-events: none;
 }
 
-@mixin semiBold-text($size: 48px, $height: 1.2) {
+@mixin semi-bold-text($size: 48px, $height: 1.2) {
   font-weight: 600;
   font-size: $size;
   line-height: ($size * $height);
@@ -208,7 +208,7 @@
 }
 
 @mixin overlay-styles {
-  @keyframes fadeIn {
+  @keyframes fade-in {
     from {
       opacity: 0;
       transform: translateY(5px);
@@ -226,7 +226,7 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 2;
-  animation: fadeIn 0.3s ease;
+  animation: fade-in 0.3s ease;
 }
 
 @mixin map-styles {

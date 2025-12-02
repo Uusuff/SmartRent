@@ -1,9 +1,24 @@
+/* stylelint-disable no-descending-specificity, no-duplicate-selectors */
 @use '../../shared/variables/variables.scss' as *;
 @use '../../shared/mixins/mixins.scss' as *;
 
 .dropdown {
   z-index: 100;
   position: relative;
+
+  &__arrow {
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+
+    &--up {
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowUp.png');
+    }
+
+    &--down {
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowDown.png');
+    }
+  }
 
   &__toggle {
     @include standard-text(16px, 1.4);
@@ -24,7 +39,7 @@
     }
 
     &:focus {
-      filter: drop-shadow(0px 2px 4px rgba(16, 65, 44, 0.21));
+      filter: drop-shadow(0 2px 4px rgba(16, 65, 44, 0.21));
       border-width: 1.5px;
       border-color: $btn-default-color;
     }
@@ -48,6 +63,7 @@
 
   &__arrow {
     @include icon-size(24px);
+
     background-size: contain;
 
     &--up {
@@ -70,7 +86,7 @@
     left: 0;
     margin-top: 8px;
     padding: 8px;
-    filter: drop-shadow(0px 2px 12px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.1));
     border-radius: 8px;
     list-style: none;
   }
@@ -85,6 +101,7 @@
 
   &__item {
     @include standard-text(16px, 1.4);
+
     position: relative;
     cursor: pointer;
     padding: 12px;
@@ -99,6 +116,7 @@
 
     &::before {
       @include icon-size(24px);
+
       position: absolute;
       display: block;
       content: '';
@@ -109,6 +127,7 @@
 
     &::after {
       @include icon-size(24px);
+
       position: absolute;
       display: block;
       content: '';
@@ -148,6 +167,7 @@
 
   &__filterIcon {
     @include icon-size(24px);
+
     background-image: url('../../assets/icons/FilterIcons/allFilters.svg');
 
     &--disabled {

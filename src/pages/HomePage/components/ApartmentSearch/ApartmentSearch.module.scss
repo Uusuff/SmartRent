@@ -14,9 +14,9 @@
 
 .apartment_search__title {
   color: $btn-color-white;
-  margin: 264px 0 8px 0;
+  margin: 264px 0 8px;
 
-  @include semiBold-text;
+  @include semi-bold-text;
 }
 
 .apartment_search__subtitle {
@@ -33,11 +33,6 @@
   gap: 8px;
 
   @include flex-center;
-}
-
-
-
-.apartment_search__button {
 }
 
 .apartment_search__button {

@@ -83,7 +83,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
 
     regionsList.forEach(([regionName, districts]) => {
       Object.entries(districts).forEach(([districtName, citiesList]) => {
-        citiesList.forEach((city) => {
+        citiesList.forEach(city => {
           if (city.toLowerCase().includes(q)) {
             cities.push({
               city,
@@ -97,7 +97,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
 
     setFilteredRegions(reg);
     setFilteredCities(cities);
-  }, [query]);
+  }, [query, regionsList]);
 
   useEffect(() => {
     if (location === null) {
@@ -117,7 +117,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
           className={styles.location__input}
           placeholder="Enter a region, city"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={e => setQuery(e.target.value)}
           onFocus={() => setDropdownOpen(true)}
         />
       </div>
@@ -126,7 +126,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
         <>
           {query && filteredCities.length > 0 && (
             <ul className={styles.cities_list}>
-              {filteredCities.map((item) => (
+              {filteredCities.map(item => (
                 <li
                   key={`${item.city}-${item.district}`}
                   className={styles.city_item}
@@ -143,7 +143,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
 
           {query === '' && !selectedRegion && (
             <ul className={styles.regions_list}>
-              {filteredRegions.map((region) => (
+              {filteredRegions.map(region => (
                 <li
                   key={region[0]}
                   className={styles.region_item}
@@ -165,7 +165,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
                 {'< назад'}
               </li>
 
-              {Object.keys(selectedRegion[1]).map((district) => (
+              {Object.keys(selectedRegion[1]).map(district => (
                 <li
                   key={district}
                   className={styles.city_item}
@@ -187,7 +187,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
                 {'< назад'}
               </li>
 
-              {selectedRegion[1][selectedDistrict].map((city) => (
+              {selectedRegion[1][selectedDistrict].map(city => (
                 <li
                   key={city}
                   className={styles.city_item}

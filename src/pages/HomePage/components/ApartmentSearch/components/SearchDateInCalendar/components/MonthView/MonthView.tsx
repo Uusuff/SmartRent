@@ -151,7 +151,7 @@ export const MonthView: React.FC<MonthViewProps> = ({
 
       <div className={styles.monthFooter}>
         <div className={styles.weekdaysRow}>
-          {['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((d) => (
+          {['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map(d => (
             <div key={d} className={styles.weekday}>
               {d}
             </div>

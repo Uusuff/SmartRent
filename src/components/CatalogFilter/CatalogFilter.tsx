@@ -37,10 +37,6 @@ export const CatalogFilter: React.FC<Props> = ({
   priceUSD,
   setPrice,
   setPriceUSD,
-  moveIn,
-  moveOut,
-  setMoveIn,
-  setMoveOut,
 }) => {
   const { t } = useTranslation();
   const { currency } = useCurrency();

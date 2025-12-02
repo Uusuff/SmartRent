@@ -9,6 +9,7 @@
 
   @include flex-center;
 }
+
 .platform_stats__item {
   width: 392px;
   background-color: rgba(255, 255, 255, 1);
@@ -21,9 +22,11 @@
   align-items: center;
   gap: 16px;
 }
+
 .platform_stats__item_count {
-  @include semiBold-text(44px, 1.2);
+  @include semi-bold-text(44px, 1.2);
 }
+
 .platform_stats__item_text {
   @include standard-text(16px, 1.4);
 }

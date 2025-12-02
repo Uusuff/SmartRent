@@ -1,3 +1,5 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+/* stylelint-disable no-descending-specificity */
 @use '../../shared/variables/variables.scss' as *;
 @use '../../shared/mixins/mixins.scss' as *;
 
@@ -177,6 +179,7 @@
 
     &--mapOpened {
       @include icon-size(24px);
+
       top: 12px;
       right: 12px;
       background-size: 16px 16px;

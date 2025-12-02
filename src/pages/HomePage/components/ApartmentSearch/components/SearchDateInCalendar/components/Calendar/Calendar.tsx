@@ -28,7 +28,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   const month1 = generateMonth(baseDate.getFullYear(), baseDate.getMonth());
   const month2 = generateMonth(baseDate.getFullYear(), baseDate.getMonth() + 1);
 
-  const handleSelect = (day) => {
+  const handleSelect = day => {
     if (!day) {
       return;
     }

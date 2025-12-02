@@ -1,12 +1,14 @@
-@use '../../shared/variables/variables.scss' as *;
-@use '../../shared/mixins/mixins.scss' as *;
+/* stylelint-disable selector-pseudo-class-no-unknown */
+@use "../../shared/variables/variables.scss" as *;
+@use "../../shared/mixins/mixins.scss" as *;
 
 .apartmentCard {
   z-index: 1;
   width: 600px;
   border: 1px solid $filter-border;
   border-radius: 15px;
-  filter: drop-shadow(0px 1px 12px rgba(0, 0, 0, 0.14));
+
+  filter: drop-shadow(0 1px 12px rgba(0, 0, 0, 0.14));
   transition: 0.5s ease;
 
   &:hover {
@@ -18,11 +20,11 @@
   }
 
   &--onMap {
-    @include cardOnMap;
+    @include card-on-map;
   }
 
   &--persistent {
-    @include cardOnMap;
+    @include card-on-map;
 
     pointer-events: auto;
   }
@@ -69,10 +71,11 @@
   }
 
   &__features {
-    @include flex-center;
     gap: 16px;
     padding-top: 24px;
     padding-bottom: 40px;
+
+    @include flex-center;
 
     &--mapOpened {
       padding-block: 8px;
@@ -81,14 +84,15 @@
   }
 
   &__feature {
-    @include flex-center;
     position: relative;
     gap: 8px;
+
+    @include flex-center;
 
     &::after {
       position: absolute;
       display: block;
-      content: '';
+      content: "";
       background-color: $filter-border;
       height: 20px;
       width: 1px;
@@ -107,23 +111,24 @@
   }
 
   &__featureIcon {
-    @include icons-styles;
     display: block;
+
+    @include icons-styles;
 
     &--mapOpened {
       @include icons-styles-mapOpened;
     }
 
     &--bedrooms {
-      background-image: url('../../assets/icons/cardIcons/bedrooms.svg');
+      background-image: url("../../assets/icons/cardIcons/bedrooms.svg");
     }
 
     &--bathrooms {
-      background-image: url('../../assets/icons/cardIcons/bathrooms.svg');
+      background-image: url("../../assets/icons/cardIcons/bathrooms.svg");
     }
 
     &--squares {
-      background-image: url('../../assets/icons/cardIcons/squares.svg');
+      background-image: url("../../assets/icons/cardIcons/squares.svg");
     }
   }
 
@@ -162,7 +167,7 @@
 
     &--block {
       display: block;
-      padding-left: 0px;
+      padding-left: 0;
     }
   }
 
@@ -181,10 +186,10 @@
   &__contactsIcon {
     @include icons-styles;
 
-    background-image: url('../../assets/icons/cardIcons/contacts.svg');
+    background-image: url("../../assets/icons/cardIcons/contacts.svg");
 
     &--mapOpened {
-      @include icons-styles-mapOpened;
+      @include icons-styles-map-opened;
     }
   }
 
@@ -200,18 +205,19 @@
   }
 
   &__availability {
-    @include standard-text(20px, 1.4);
     position: relative;
-    padding: 16px 20px 0px 20px;
+    padding: 16px 20px 0;
     border-top: 1px solid $filter-border;
+    
+    @include standard-text(20px, 1.4);
 
     &--available {
       color: $black-color;
 
       &::before {
-        background-image: url('../../assets/icons/cardIcons/available.svg');
+        background-image: url("../../assets/icons/cardIcons/available.svg");
 
-        @include availabilityIcon;
+        @include availability-icon;
       }
     }
 
@@ -219,9 +225,9 @@
       color: $gray-light;
 
       &::before {
-        background-image: url('../../assets/icons/cardIcons/notAvailable.svg');
+        background-image: url("../../assets/icons/cardIcons/notAvailable.svg");
 
-        @include availabilityIcon;
+        @include availability-icon;
       }
     }
 
@@ -240,5 +246,77 @@
 
   &__date {
     color: $black-color;
+  }
+
+  &__badges {
+    position: absolute;
+    top: 29px;
+    left: 24px;
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+
+    &--mapOpened {
+      top: 12px;
+      left: 12px;
+    }
+  }
+
+  &__badge {
+    padding: 4px 16px;
+    border-radius: 4px;
+
+    &--new {
+      color: $white-color;
+      background-color: $btn-hover-color;
+    }
+
+    &--pet-friendly {
+      color: $black-color;
+      background-color: $white-color;
+    }
+
+    &--mapOpened {
+      padding: 1.5px 8px;
+      font-size: 12px;
+    }
+  }
+
+  &__favs {
+    top: 24px;
+    right: 19px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../assets/icons/HeadersIcons/favarites.png");
+    background-size: 24px 24px;
+
+    @include card-button;
+
+    &--mapOpened {
+      width: 24px;
+      height: 24px;
+      top: 12px;
+      right: 12px;
+      background-size: 16px 16px;
+    }
+
+    &--persistent {
+      right: 42px;
+    }
+  }
+
+  &__favs--selected {
+    background-image: url("../../assets/icons/cardIcons/favsSelected.svg");
+  }
+
+  &__close {
+    top: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    background-image: url("../../assets/icons/BurgerMenuIcons/close.svg");
+    background-size: 16px 16px;
+
+    @include card-button;
   }
 }
