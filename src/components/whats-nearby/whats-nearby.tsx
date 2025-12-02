@@ -5,39 +5,41 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './whats-nearby.module.scss';
-import shopIconPath from '../../assets/icons/mapIcons/shops.svg';
-import shopIconActivePath from '../../assets/icons/mapIcons/shops-active.svg';
-
-import restaurantIconPath from '../../assets/icons/mapIcons/restaurants.svg';
-import restaurantIconActivePath from '../../assets/icons/mapIcons/restaurants-active.svg';
-
-import gymIconPath from '../../assets/icons/mapIcons/gym.svg';
-import gymIconActivePath from '../../assets/icons/mapIcons/gym-active.svg';
-
-import supermarketIconPath from '../../assets/icons/mapIcons/supermarkets.svg';
-import supermarketIconActivePath from '../../assets/icons/mapIcons/supermarkets-active.svg';
-
-import transportIconPath from '../../assets/icons/mapIcons/transport.svg';
-import transportIconActivePath from '../../assets/icons/mapIcons/transport-active.svg';
-
-import schoolIconPath from '../../assets/icons/mapIcons/school.svg';
-import schoolIconActivePath from '../../assets/icons/mapIcons/school-active.svg';
-
-import barIconPath from '../../assets/icons/mapIcons/bars.svg';
-import barIconActivePath from '../../assets/icons/mapIcons/bars-active.svg';
-
-import hospitalIconPath from '../../assets/icons/mapIcons/hospital.svg';
-import hospitalIconActivePath from '../../assets/icons/mapIcons/hospital-active.svg';
-
-import parkIconPath from '../../assets/icons/mapIcons/parks.svg';
-import parkIconActivePath from '../../assets/icons/mapIcons/parks-active.svg';
-
-import parkingIconPath from '../../assets/icons/mapIcons/parking-lots.svg';
-import parkingIconActivePath from '../../assets/icons/mapIcons/parking-lots-active.svg';
-
-import homeIconPath from '../../assets/icons/mapIcons/home.svg';
 import { useTranslation } from 'react-i18next';
 import { MultiLangText } from '../../types/Apartment';
+
+// Іконки
+import shopIcon from '../../assets/icons/mapIcons/shops.svg';
+import shopIconActive from '../../assets/icons/mapIcons/shops-active.svg';
+
+import restaurantIcon from '../../assets/icons/mapIcons/restaurants.svg';
+import restaurantIconActive from '../../assets/icons/mapIcons/restaurants-active.svg';
+
+import gymIcon from '../../assets/icons/mapIcons/gym.svg';
+import gymIconActive from '../../assets/icons/mapIcons/gym-active.svg';
+
+import supermarketIcon from '../../assets/icons/mapIcons/supermarkets.svg';
+import supermarketIconActive from '../../assets/icons/mapIcons/supermarkets-active.svg';
+
+import transportIcon from '../../assets/icons/mapIcons/transport.svg';
+import transportIconActive from '../../assets/icons/mapIcons/transport-active.svg';
+
+import schoolIcon from '../../assets/icons/mapIcons/school.svg';
+import schoolIconActive from '../../assets/icons/mapIcons/school-active.svg';
+
+import barIcon from '../../assets/icons/mapIcons/bars.svg';
+import barIconActive from '../../assets/icons/mapIcons/bars-active.svg';
+
+import hospitalIcon from '../../assets/icons/mapIcons/hospital.svg';
+import hospitalIconActive from '../../assets/icons/mapIcons/hospital-active.svg';
+
+import parkIcon from '../../assets/icons/mapIcons/parks.svg';
+import parkIconActive from '../../assets/icons/mapIcons/parks-active.svg';
+
+import parkingIcon from '../../assets/icons/mapIcons/parking-lots.svg';
+import parkingIconActive from '../../assets/icons/mapIcons/parking-lots-active.svg';
+
+import homeIcon from '../../assets/icons/mapIcons/home.svg';
 
 export type POI = {
   id: number;
@@ -68,78 +70,18 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [activePoiId, setActivePoiId] = useState<number | null>(null);
   const mapRef = React.useRef<L.Map | null>(null);
-  const shopIcon = new URL(shopIconPath, import.meta.url).href;
-  const shopIconActive = new URL(shopIconActivePath, import.meta.url).href;
-
-  const restaurantIcon = new URL(restaurantIconPath, import.meta.url).href;
-  const restaurantIconActive = new URL(
-    restaurantIconActivePath,
-    import.meta.url,
-  ).href;
-
-  const gymIcon = new URL(gymIconPath, import.meta.url).href;
-  const gymIconActive = new URL(gymIconActivePath, import.meta.url).href;
-
-  const supermarketIcon = new URL(supermarketIconPath, import.meta.url).href;
-  const supermarketIconActive = new URL(
-    supermarketIconActivePath,
-    import.meta.url,
-  ).href;
-
-  const transportIcon = new URL(transportIconPath, import.meta.url).href;
-  const transportIconActive = new URL(transportIconActivePath, import.meta.url)
-    .href;
-
-  const schoolIcon = new URL(schoolIconPath, import.meta.url).href;
-  const schoolIconActive = new URL(schoolIconActivePath, import.meta.url).href;
-
-  const barIcon = new URL(barIconPath, import.meta.url).href;
-  const barIconActive = new URL(barIconActivePath, import.meta.url).href;
-
-  const hospitalIcon = new URL(hospitalIconPath, import.meta.url).href;
-  const hospitalIconActive = new URL(hospitalIconActivePath, import.meta.url)
-    .href;
-
-  const parkIcon = new URL(parkIconPath, import.meta.url).href;
-  const parkIconActive = new URL(parkIconActivePath, import.meta.url).href;
-
-  const parkingIcon = new URL(parkingIconPath, import.meta.url).href;
-  const parkingIconActive = new URL(parkingIconActivePath, import.meta.url)
-    .href;
-
-  const homeIcon = new URL(homeIconPath, import.meta.url).href;
 
   const langKeys = ['ENG', 'UA', 'DE', 'FR', 'IT', 'ES'] as const;
-
   type LangKey = (typeof langKeys)[number];
 
   const normalizeLang = (lng: string): LangKey => {
     const short = lng.split('-')[0];
-
-    if (short === 'en') {
-      return 'ENG';
-    }
-
-    if (short === 'ua') {
-      return 'UA';
-    }
-
-    if (short === 'de') {
-      return 'DE';
-    }
-
-    if (short === 'fr') {
-      return 'FR';
-    }
-
-    if (short === 'it') {
-      return 'IT';
-    }
-
-    if (short === 'es') {
-      return 'ES';
-    }
-
+    if (short === 'en') return 'ENG';
+    if (short === 'ua') return 'UA';
+    if (short === 'de') return 'DE';
+    if (short === 'fr') return 'FR';
+    if (short === 'it') return 'IT';
+    if (short === 'es') return 'ES';
     return 'ENG';
   };
 
@@ -235,19 +177,19 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     L.divIcon({
       className: '',
       html: `
-          <div style="
-            width: 40px;
-            height: 40px;
-            background-image: url('${isActive ? activeIconUrl : iconUrl}');
-            background-size: 16px 16px;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-color: ${isActive ? '#165A43' : '#EDF2F1'};
-            border-radius: 50%;
-            border: 1px solid #165A43;
-            cursor: pointer;
-          "></div>
-        `,
+        <div style="
+          width: 40px;
+          height: 40px;
+          background-image: url('${isActive ? activeIconUrl : iconUrl}');
+          background-size: 16px 16px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-color: ${isActive ? '#165A43' : '#EDF2F1'};
+          border-radius: 50%;
+          border: 1px solid #165A43;
+          cursor: pointer;
+        "></div>
+      `,
       iconSize: [40, 40],
       iconAnchor: [20, 40],
       popupAnchor: [0, -40],
@@ -255,60 +197,37 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
 
   const mapOverpassToFilterType = (el: any) => {
     if (el.tags) {
-      if (el.tags.shop === 'supermarket') {
-        return 'supermarket';
-      }
-
-      if (el.tags.shop) {
-        return 'shop';
-      }
-
-      if (el.tags.amenity === 'restaurant' || el.tags.amenity === 'cafe') {
+      if (el.tags.shop === 'supermarket') return 'supermarket';
+      if (el.tags.shop) return 'shop';
+      if (el.tags.amenity === 'restaurant' || el.tags.amenity === 'cafe')
         return 'restaurant';
-      }
-
-      if (el.tags.amenity === 'bar') {
-        return 'bar';
-      }
-
-      if (el.tags.amenity === 'school' || el.tags.amenity === 'university') {
+      if (el.tags.amenity === 'bar') return 'bar';
+      if (el.tags.amenity === 'school' || el.tags.amenity === 'university')
         return 'school';
-      }
-
       if (
         el.tags.amenity === 'hospital' ||
         el.tags.healthcare === 'hospital' ||
         el.tags.amenity === 'clinic' ||
         el.tags.healthcare === 'clinic'
-      ) {
+      )
         return 'hospital';
-      }
-
-      if (el.tags.amenity === 'parking' || el.tags.parking) {
-        return 'parking';
-      }
-
+      if (el.tags.amenity === 'parking' || el.tags.parking) return 'parking';
       if (
         el.tags.leisure === 'park' ||
         el.tags.leisure === 'garden' ||
         el.tags.leisure === 'nature_reserve' ||
         el.tags.landuse === 'forest' ||
         el.tags.leisure === 'recreation_ground' ||
-        el.tags.leisure === 'grass' ||
-        el.tags.landuse === 'forest'
-      ) {
+        el.tags.leisure === 'grass'
+      )
         return 'park';
-      }
-
       if (
         el.tags.leisure === 'fitness_centre' ||
         el.tags.leisure === 'gym' ||
         el.tags.sport === 'gym' ||
         el.tags.sport === 'fitness'
-      ) {
+      )
         return 'gym';
-      }
-
       if (
         el.tags.amenity === 'bus_station' ||
         el.tags.highway === 'bus_stop' ||
@@ -316,11 +235,9 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
         el.tags.railway === 'tram_stop' ||
         el.tags.railway === 'halt' ||
         el.tags.public_transport === 'platform'
-      ) {
+      )
         return 'transport';
-      }
     }
-
     return 'shop';
   };
 
@@ -341,7 +258,6 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
       Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distanceMeters = R * c * 1000;
-
     return Math.round(distanceMeters / 83);
   };
 
@@ -368,18 +284,14 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     const matches = existingAddress.match(/\d+/);
     const existingNumber = matches ? Number(matches[0]) : null;
     let randomNumber = Math.floor(Math.random() * 200) + 1;
-
     while (randomNumber === existingNumber) {
       randomNumber = Math.floor(Math.random() * 200) + 1;
     }
-
     return randomNumber;
   };
 
   useEffect(() => {
-    if (!apartmentLat || !apartmentLng) {
-      return;
-    }
+    if (!apartmentLat || !apartmentLng) return;
 
     const fetchPOIs = async () => {
       const query = `
@@ -417,24 +329,18 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
         );
         out center;
       `;
-      const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
 
       try {
+        const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
         const response = await fetch(url);
         const data = await response.json();
         const poisData: POI[] = data.elements.map((el: any) => {
-          let address = '';
-
-          if (el.tags['addr:street']?.trim()) {
-            address = el.tags['addr:street'].trim();
-          } else {
-            const street = apartmentAddress[currentLang]
-              .replace(/\d+/, '')
-              .trim();
-
-            address = `${street} ${generateRandomHouseNumber(apartmentAddress[currentLang])}`;
-          }
-
+          const street = apartmentAddress[currentLang]
+            .replace(/\d+/, '')
+            .trim();
+          const address =
+            el.tags['addr:street']?.trim() ||
+            `${street} ${generateRandomHouseNumber(apartmentAddress[currentLang])}`;
           return {
             id: el.id,
             name:
@@ -449,7 +355,6 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
             stars: el.tags.stars ? Number(el.tags.stars) : getRandomStars(),
           };
         });
-
         setPois(poisData);
       } catch (err) {
         console.error('Failed to fetch POIs', err);
@@ -460,36 +365,22 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
   }, [apartmentLat, apartmentLng, radius, apartmentAddress, currentLang, t]);
 
   const handleExpand = () => setIsExpanded(prev => !prev);
+
   const ResizeMap = ({ expanded }: { expanded: boolean }) => {
     const map = useMap();
-
     useEffect(() => {
-      if (!map) {
-        return;
-      }
-
+      if (!map) return;
       map.invalidateSize();
-
-      const timeout = setTimeout(() => {
-        map.invalidateSize();
-      }, 550);
-
+      const timeout = setTimeout(() => map.invalidateSize(), 550);
       return () => clearTimeout(timeout);
     }, [expanded, map]);
-
     return null;
   };
 
   useEffect(() => {
-    if (!mapRef.current) {
-      return;
-    }
-
+    if (!mapRef.current) return;
     mapRef.current.invalidateSize();
-    const timeout = setTimeout(() => {
-      mapRef.current?.invalidateSize();
-    }, 600);
-
+    const timeout = setTimeout(() => mapRef.current?.invalidateSize(), 600);
     return () => clearTimeout(timeout);
   }, [isExpanded]);
 
@@ -519,16 +410,14 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
 
       <div className={styles.whatsNearby_container}>
         {isExpanded && <div className={styles.overlay}></div>}
-
         <div
-          className={`${styles['map-wrapper']} ${
-            isExpanded ? styles['map-wrapper--expanded'] : ''
-          }`}
+          className={`${styles['map-wrapper']} ${isExpanded ? styles['map-wrapper--expanded'] : ''}`}
         >
           <MapContainer
             center={[apartmentLat, apartmentLng]}
             zoom={16}
             className={styles['map-container']}
+            ref={mapRef}
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {pois
@@ -541,7 +430,6 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
                   poi.lng,
                 );
                 const filter = filters.find(f => f.type === poi.type);
-
                 return (
                   <Marker
                     key={poi.id}

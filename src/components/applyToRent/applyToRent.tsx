@@ -1,9 +1,12 @@
+/* eslint-disable max-len */
 import { useLang } from '../../contexts/LangContext';
 import { Apartment } from '../../types/Apartment';
 import styles from './applyToRent.module.scss';
 import { useCurrency } from '../../contexts/CurrencyContext';
 import { convertPrice } from '../../shared/utils/convertPrice';
 import { useTranslation } from 'react-i18next';
+import landlordPhotoMale from './../../assets/icons/apartmentIcons/male.svg';
+import landlordPhotoFemale from './../../assets/icons/apartmentIcons/landlord-female.webp';
 
 type Props = {
   apartment: Apartment;
@@ -23,13 +26,13 @@ export const ApplyToRent: React.FC<Props> = ({ apartment }) => {
         <div className={styles[`applyToRent__landlord-left`]}>
           {apartment.landlord.gender === 'f' ? (
             <img
-              src="src/assets/icons/apartmentIcons/landlord-female.webp"
+              src={landlordPhotoFemale}
               alt={t('apartment_page.applyToRent.landlordPhoto')}
               className={styles.applyToRent__landlordPhoto}
             />
           ) : (
             <img
-              src="src/assets/icons/apartmentIcons/male.svg"
+              src={landlordPhotoMale}
               alt={t('apartment_page.applyToRent.landlordPhoto')}
               className={styles.applyToRent__landlordPhoto}
             />
