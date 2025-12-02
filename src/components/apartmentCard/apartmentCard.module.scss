@@ -208,7 +208,7 @@
     position: relative;
     padding: 16px 20px 0;
     border-top: 1px solid $filter-border;
-    
+
     @include standard-text(20px, 1.4);
 
     &--available {
