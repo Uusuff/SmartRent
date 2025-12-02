@@ -12,7 +12,7 @@
 
 .social_media__title {
   color: rgba(52, 58, 64, 1);
-  margin: 8px 0 24px 0;
+  margin: 8px 0 24px;
 
   @include standard-text;
 }
@@ -120,6 +120,7 @@
 
 .BackToTop__text {
   border-bottom: 1px solid $btn-default-color;
+
   @include standard-text;
 
   &:hover {

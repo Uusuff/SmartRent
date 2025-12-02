@@ -1,5 +1,7 @@
-@use '../../shared/variables/variables.scss' as *;
-@use '../../shared/mixins/mixins.scss' as *;
+/* stylelint-disable selector-pseudo-class-no-unknown */
+/* stylelint-disable no-descending-specificity */
+@use "../../shared/variables/variables.scss" as *;
+@use "../../shared/mixins/mixins.scss" as *;
 
 .pageContainer {
   position: relative;
@@ -52,15 +54,15 @@
     padding-right: 10px;
 
     &--hide {
-      background-image: url('../../assets/icons/mapIcons/closeLocation.svg');
+      background-image: url("../../assets/icons/mapIcons/closeLocation.svg");
     }
 
     &--expand {
-      background-image: url('../../assets/icons/mapIcons/expand.svg');
+      background-image: url("../../assets/icons/mapIcons/expand.svg");
     }
 
     &--collapse {
-      background-image: url('../../assets/icons/mapIcons/collapse.svg');
+      background-image: url("../../assets/icons/mapIcons/collapse.svg");
     }
   }
 

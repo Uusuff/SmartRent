@@ -164,7 +164,7 @@ const ApartmentMap: React.FC<Props> = ({ setIsMapOpened }) => {
             <ApartmentCard
               apartment={hoverApartment}
               isMapOpened={true}
-              isCardOnMap={true}
+              iscard-on-map={true}
               persistent={false}
               setActiveApartment={() => {}}
             />
@@ -174,7 +174,7 @@ const ApartmentMap: React.FC<Props> = ({ setIsMapOpened }) => {
             <ApartmentCard
               apartment={activeApartment}
               isMapOpened={true}
-              isCardOnMap={true}
+              iscard-on-map={true}
               persistent={true}
               setActiveApartment={setActiveApartment}
             />

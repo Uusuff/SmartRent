@@ -1,3 +1,5 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+/* stylelint-disable no-descending-specificity */
 @use '../../shared/variables/variables.scss' as *;
 @use '../../shared/mixins/mixins.scss' as *;
 
@@ -14,7 +16,7 @@
   :global {
     .leaflet-control-zoom {
       border: none !important;
-      margin: 0px !important;
+      margin: 0 !important;
       background-color: none;
       position: absolute;
       display: flex;
@@ -22,7 +24,6 @@
       gap: 8px;
       top: 650px;
       left: 24px;
-      border: none;
       border-radius: 20px;
       overflow: hidden;
       z-index: 1000;
@@ -101,7 +102,7 @@
 
   .leaflet-control-zoom {
     border: none !important;
-    margin: 0px !important;
+    margin: 0 !important;
     background-color: none;
     position: absolute;
     display: flex;
@@ -109,7 +110,6 @@
     gap: 8px;
     top: 500px;
     left: 24px;
-    border: none;
     border-radius: 20px;
     overflow: hidden;
     z-index: 1000;
@@ -129,11 +129,12 @@
 
   .leaflet-touch .leaflet-bar a {
     @include icon-size(40px);
+
     line-height: 35px;
   }
 
   .leaflet-popup-content {
-    margin: 0px;
+    margin: 0;
     padding: 8px 16px;
   }
 

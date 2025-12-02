@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @use '../../../shared/variables/variables.scss' as *;
 @use '../../../shared/mixins/mixins.scss' as *;
 
@@ -26,8 +27,8 @@
       display: block;
       position: absolute;
       content: '';
-      top: 0px;
-      left: 0px;
+      top: 0;
+      left: 0;
       background-image: url('../../../assets/icons/apartmentIcons/back-icon.svg');
     }
 
@@ -159,7 +160,7 @@
         width: 24px;
         height: 24px;
         top: 8px;
-        right: 0px;
+        right: 0;
         transform: rotate(0deg);
       }
     }
@@ -179,9 +180,10 @@
 
   &__questionIcon {
     @include icon-size(40px);
+
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
 
     &--deposit {
       background-image: url('../../../assets/icons/apartmentIcons/deposit.svg');

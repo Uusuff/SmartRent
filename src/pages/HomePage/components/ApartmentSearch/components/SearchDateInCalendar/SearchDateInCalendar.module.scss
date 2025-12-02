@@ -1,0 +1,34 @@
+@use "../../../../../../shared/mixins/mixins.scss" as *;
+@use "../../../../../../shared/variables/variables.scss" as *;
+
+.calendar {
+  position: relative;
+  display: flex;
+  gap: 8px;
+}
+
+.apartment_search__moveIn,
+.apartment_search__moveOut {
+  position: relative;
+}
+
+.apartment_search__moveIn {
+  width: 184px;
+
+  @include search-input;
+}
+
+.apartment_search__moveOut {
+  width: 184px;
+
+  @include search-input;
+}
+
+.calendarWrapper {
+  position: absolute;
+  top: 80px;
+  right: -115px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 15px;
+  z-index: 10;
+}

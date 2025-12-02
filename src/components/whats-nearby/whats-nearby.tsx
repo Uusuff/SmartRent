@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
