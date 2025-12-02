@@ -72,16 +72,36 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
   const mapRef = React.useRef<L.Map | null>(null);
 
   const langKeys = ['ENG', 'UA', 'DE', 'FR', 'IT', 'ES'] as const;
+  
   type LangKey = (typeof langKeys)[number];
 
   const normalizeLang = (lng: string): LangKey => {
     const short = lng.split('-')[0];
-    if (short === 'en') return 'ENG';
-    if (short === 'ua') return 'UA';
-    if (short === 'de') return 'DE';
-    if (short === 'fr') return 'FR';
-    if (short === 'it') return 'IT';
-    if (short === 'es') return 'ES';
+
+    if (short === 'en') {
+      return 'ENG';
+    }
+
+    if (short === 'ua') {
+      return 'UA';
+    }
+
+    if (short === 'de') {
+      return 'DE';
+    }
+
+    if (short === 'fr') {
+      return 'FR';
+    }
+
+    if (short === 'it') {
+      return 'IT';
+    }
+
+    if (short === 'es') {
+      return 'ES';
+    }
+
     return 'ENG';
   };
 
@@ -235,9 +255,11 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
         el.tags.railway === 'tram_stop' ||
         el.tags.railway === 'halt' ||
         el.tags.public_transport === 'platform'
-      )
+      ) {
         return 'transport';
+      }
     }
+
     return 'shop';
   };
 
@@ -258,6 +280,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
       Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distanceMeters = R * c * 1000;
+
     return Math.round(distanceMeters / 83);
   };
 
@@ -284,14 +307,18 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     const matches = existingAddress.match(/\d+/);
     const existingNumber = matches ? Number(matches[0]) : null;
     let randomNumber = Math.floor(Math.random() * 200) + 1;
+
     while (randomNumber === existingNumber) {
       randomNumber = Math.floor(Math.random() * 200) + 1;
     }
+
     return randomNumber;
   };
 
   useEffect(() => {
-    if (!apartmentLat || !apartmentLng) return;
+    if (!apartmentLat || !apartmentLng) {
+      return;
+    }
 
     const fetchPOIs = async () => {
       const query = `
@@ -341,6 +368,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
           const address =
             el.tags['addr:street']?.trim() ||
             `${street} ${generateRandomHouseNumber(apartmentAddress[currentLang])}`;
+
           return {
             id: el.id,
             name:
@@ -355,6 +383,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
             stars: el.tags.stars ? Number(el.tags.stars) : getRandomStars(),
           };
         });
+
         setPois(poisData);
       } catch (err) {
         console.error('Failed to fetch POIs', err);
@@ -368,19 +397,29 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
 
   const ResizeMap = ({ expanded }: { expanded: boolean }) => {
     const map = useMap();
+
     useEffect(() => {
-      if (!map) return;
+      if (!map) {
+        return;
+      }
+
       map.invalidateSize();
       const timeout = setTimeout(() => map.invalidateSize(), 550);
+
       return () => clearTimeout(timeout);
     }, [expanded, map]);
+
     return null;
   };
 
   useEffect(() => {
-    if (!mapRef.current) return;
+    if (!mapRef.current) {
+      return;
+    }
+
     mapRef.current.invalidateSize();
     const timeout = setTimeout(() => mapRef.current?.invalidateSize(), 600);
+
     return () => clearTimeout(timeout);
   }, [isExpanded]);
 
@@ -430,6 +469,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
                   poi.lng,
                 );
                 const filter = filters.find(f => f.type === poi.type);
+
                 return (
                   <Marker
                     key={poi.id}
