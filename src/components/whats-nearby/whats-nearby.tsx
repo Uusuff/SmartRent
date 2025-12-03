@@ -7,8 +7,6 @@ import 'leaflet/dist/leaflet.css';
 import styles from './whats-nearby.module.scss';
 import { useTranslation } from 'react-i18next';
 import { MultiLangText } from '../../types/Apartment';
-
-// Іконки
 import shopIcon from '../../assets/icons/mapIcons/shops.svg';
 import shopIconActive from '../../assets/icons/mapIcons/shops-active.svg';
 
@@ -58,6 +56,37 @@ interface WhatsNearbyProps {
   radius?: number;
 }
 
+type OverpassTags = {
+  name?: string;
+  stars?: string;
+  'addr:street'?: string;
+
+  shop?: string;
+  amenity?: string;
+  healthcare?: string;
+  leisure?: string;
+  landuse?: string;
+  sport?: string;
+  parking?: string;
+
+  highway?: string;
+  railway?: string;
+  public_transport?: string;
+
+  [key: string]: string | undefined;
+};
+
+type OverpassElement = {
+  id: number;
+  lat?: number;
+  lon?: number;
+  center?: {
+    lat: number;
+    lon: number;
+  };
+  tags: OverpassTags;
+};
+
 export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
   apartmentLat,
   apartmentLng,
@@ -72,7 +101,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
   const mapRef = React.useRef<L.Map | null>(null);
 
   const langKeys = ['ENG', 'UA', 'DE', 'FR', 'IT', 'ES'] as const;
-  
+
   type LangKey = (typeof langKeys)[number];
 
   const normalizeLang = (lng: string): LangKey => {
@@ -173,17 +202,15 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
   const getApartmentIcon = () =>
     L.divIcon({
       className: '',
-      html: `
-        <div style="
-          width: 60px;
-          height: 65px;
-          background-image: url('${homeIcon}');
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-          cursor: pointer;
-        "></div>
-      `,
+      html: `<div style="
+      width: 60px;
+      height: 65px;
+      background-image: url(${homeIcon});
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+    "></div>`,
       iconSize: [50, 50],
       iconAnchor: [25, 50],
       popupAnchor: [0, -50],
@@ -215,23 +242,41 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
       popupAnchor: [0, -40],
     });
 
-  const mapOverpassToFilterType = (el: any) => {
+  const mapOverpassToFilterType = (el: OverpassElement): string => {
     if (el.tags) {
-      if (el.tags.shop === 'supermarket') return 'supermarket';
-      if (el.tags.shop) return 'shop';
-      if (el.tags.amenity === 'restaurant' || el.tags.amenity === 'cafe')
+      if (el.tags.shop === 'supermarket') {
+        return 'supermarket';
+      }
+
+      if (el.tags.shop) {
+        return 'shop';
+      }
+
+      if (el.tags.amenity === 'restaurant' || el.tags.amenity === 'cafe') {
         return 'restaurant';
-      if (el.tags.amenity === 'bar') return 'bar';
-      if (el.tags.amenity === 'school' || el.tags.amenity === 'university')
+      }
+
+      if (el.tags.amenity === 'bar') {
+        return 'bar';
+      }
+
+      if (el.tags.amenity === 'school' || el.tags.amenity === 'university') {
         return 'school';
+      }
+
       if (
         el.tags.amenity === 'hospital' ||
         el.tags.healthcare === 'hospital' ||
         el.tags.amenity === 'clinic' ||
         el.tags.healthcare === 'clinic'
-      )
+      ) {
         return 'hospital';
-      if (el.tags.amenity === 'parking' || el.tags.parking) return 'parking';
+      }
+
+      if (el.tags.amenity === 'parking' || el.tags.parking) {
+        return 'parking';
+      }
+
       if (
         el.tags.leisure === 'park' ||
         el.tags.leisure === 'garden' ||
@@ -239,15 +284,19 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
         el.tags.landuse === 'forest' ||
         el.tags.leisure === 'recreation_ground' ||
         el.tags.leisure === 'grass'
-      )
+      ) {
         return 'park';
+      }
+
       if (
         el.tags.leisure === 'fitness_centre' ||
         el.tags.leisure === 'gym' ||
         el.tags.sport === 'gym' ||
         el.tags.sport === 'fitness'
-      )
+      ) {
         return 'gym';
+      }
+
       if (
         el.tags.amenity === 'bus_station' ||
         el.tags.highway === 'bus_stop' ||
@@ -361,7 +410,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
         const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
         const response = await fetch(url);
         const data = await response.json();
-        const poisData: POI[] = data.elements.map((el: any) => {
+        const poisData: POI[] = data.elements.map((el: OverpassElement) => {
           const street = apartmentAddress[currentLang]
             .replace(/\d+/, '')
             .trim();
