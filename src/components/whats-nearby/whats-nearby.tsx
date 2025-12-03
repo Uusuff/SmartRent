@@ -288,7 +288,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
         <div style="
           width: 40px;
           height: 40px;
-          background-image: url('${isActive ? activeIconUrl : iconUrl}');
+          background-image: url(${isActive ? activeIconUrl : iconUrl});
           background-size: 16px 16px;
           background-repeat: no-repeat;
           background-position: center;
