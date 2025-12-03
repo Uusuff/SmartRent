@@ -8,27 +8,97 @@ import 'leaflet/dist/leaflet.css';
 import styles from './whats-nearby.module.scss';
 import { useTranslation } from 'react-i18next';
 import { MultiLangText } from '../../types/Apartment';
-const shopIcon = '/icons/mapIcons/shops.svg';
-const shopIconActive = '/icons/mapIcons/shops-active.svg';
-const restaurantIcon = '/icons/mapIcons/restaurants.svg';
-const restaurantIconActive = '/icons/mapIcons/restaurants-active.svg';
-const gymIcon = '/icons/mapIcons/gym.svg';
-const gymIconActive = '/icons/mapIcons/gym-active.svg';
-const supermarketIcon = '/icons/mapIcons/supermarkets.svg';
-const supermarketIconActive = '/icons/mapIcons/supermarkets-active.svg';
-const transportIcon = '/icons/mapIcons/transport.svg';
-const transportIconActive = '/icons/mapIcons/transport-active.svg';
-const schoolIcon = '/icons/mapIcons/school.svg';
-const schoolIconActive = '/icons/mapIcons/school-active.svg';
-const barIcon = '/icons/mapIcons/bars.svg';
-const barIconActive = '/icons/mapIcons/bars-active.svg';
-const hospitalIcon = '/icons/mapIcons/hospital.svg';
-const hospitalIconActive = '/icons/mapIcons/hospital-active.svg';
-const parkIcon = '/icons/mapIcons/parks.svg';
-const parkIconActive = '/icons/mapIcons/parks-active.svg';
-const parkingIcon = '/icons/mapIcons/parking-lots.svg';
-const parkingIconActive = '/icons/mapIcons/parking-lots-active.svg';
-const homeIcon = '/icons/mapIcons/home.svg';
+
+const shopIcon = new URL(
+  '../../assets/icons/mapIcons/shops.svg',
+  import.meta.url,
+).href;
+const shopIconActive = new URL(
+  '../../assets/icons/mapIcons/shops-active.svg',
+  import.meta.url,
+).href;
+
+const restaurantIcon = new URL(
+  '../../assets/icons/mapIcons/restaurants.svg',
+  import.meta.url,
+).href;
+const restaurantIconActive = new URL(
+  '../../assets/icons/mapIcons/restaurants-active.svg',
+  import.meta.url,
+).href;
+
+const gymIcon = new URL('../../assets/icons/mapIcons/gym.svg', import.meta.url)
+  .href;
+const gymIconActive = new URL(
+  '../../assets/icons/mapIcons/gym-active.svg',
+  import.meta.url,
+).href;
+
+const supermarketIcon = new URL(
+  '../../assets/icons/mapIcons/supermarkets.svg',
+  import.meta.url,
+).href;
+const supermarketIconActive = new URL(
+  '../../assets/icons/mapIcons/supermarkets-active.svg',
+  import.meta.url,
+).href;
+
+const transportIcon = new URL(
+  '../../assets/icons/mapIcons/transport.svg',
+  import.meta.url,
+).href;
+const transportIconActive = new URL(
+  '../../assets/icons/mapIcons/transport-active.svg',
+  import.meta.url,
+).href;
+
+const schoolIcon = new URL(
+  '../../assets/icons/mapIcons/school.svg',
+  import.meta.url,
+).href;
+const schoolIconActive = new URL(
+  '../../assets/icons/mapIcons/school-active.svg',
+  import.meta.url,
+).href;
+
+const barIcon = new URL('../../assets/icons/mapIcons/bars.svg', import.meta.url)
+  .href;
+const barIconActive = new URL(
+  '../../assets/icons/mapIcons/bars-active.svg',
+  import.meta.url,
+).href;
+
+const hospitalIcon = new URL(
+  '../../assets/icons/mapIcons/hospital.svg',
+  import.meta.url,
+).href;
+const hospitalIconActive = new URL(
+  '../../assets/icons/mapIcons/hospital-active.svg',
+  import.meta.url,
+).href;
+
+const parkIcon = new URL(
+  '../../assets/icons/mapIcons/parks.svg',
+  import.meta.url,
+).href;
+const parkIconActive = new URL(
+  '../../assets/icons/mapIcons/parks-active.svg',
+  import.meta.url,
+).href;
+
+const parkingIcon = new URL(
+  '../../assets/icons/mapIcons/parking-lots.svg',
+  import.meta.url,
+).href;
+const parkingIconActive = new URL(
+  '../../assets/icons/mapIcons/parking-lots-active.svg',
+  import.meta.url,
+).href;
+
+const homeIcon = new URL(
+  '../../assets/icons/mapIcons/home.svg',
+  import.meta.url,
+).href;
 
 export type POI = {
   id: number;
@@ -215,87 +285,102 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     L.divIcon({
       className: '',
       html: `
-          <div
-            style="
-              width: 40px;
-              height: 40px;
-              background-color: ${isActive ? '#165A43' : '#EDF2F1'};
-              background-image: url(${isActive ? activeIconUrl : iconUrl});
-              background-size: 16px 16px;
-              background-repeat: no-repeat;
-              background-position: center;
-              border-radius: 50%;
-              border: 1px solid #165A43;
-              cursor: pointer;
-            "
-          ></div>
-        `,
+        <div style="
+          width: 40px;
+          height: 40px;
+          background-image: url('${isActive ? activeIconUrl : iconUrl}');
+          background-size: 16px 16px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-color: ${isActive ? '#165A43' : '#EDF2F1'};
+          border-radius: 50%;
+          border: 1px solid #165A43;
+          cursor: pointer;
+        "></div>
+      `,
       iconSize: [40, 40],
       iconAnchor: [20, 40],
       popupAnchor: [0, -40],
     });
 
   const mapOverpassToFilterType = (el: OverpassElement): string => {
-    const tag = el.tags || {};
+    if (el.tags) {
+      if (el.tags.shop === 'supermarket') {
+        return 'supermarket';
+      }
 
-    if (tag.shop === 'supermarket') {
-      return 'supermarket';
-    }
+      if (el.tags.shop) {
+        return 'shop';
+      }
 
-    if (tag.shop) {
-      return 'shop';
-    }
+      if (el.tags.amenity === 'restaurant' || el.tags.amenity === 'cafe') {
+        return 'restaurant';
+      }
 
-    if (['restaurant', 'cafe'].includes(tag.amenity || '')) {
-      return 'restaurant';
-    }
+      if (el.tags.amenity === 'bar') {
+        return 'bar';
+      }
 
-    if (tag.amenity === 'bar') {
-      return 'bar';
-    }
+      if (el.tags.amenity === 'school' || el.tags.amenity === 'university') {
+        return 'school';
+      }
 
-    if (['school', 'university'].includes(tag.amenity || '')) {
-      return 'school';
-    }
+      if (
+        el.tags.amenity === 'hospital' ||
+        el.tags.healthcare === 'hospital' ||
+        el.tags.amenity === 'clinic' ||
+        el.tags.healthcare === 'clinic'
+      ) {
+        return 'hospital';
+      }
 
-    if (
-      ['hospital', 'clinic'].includes(tag.amenity || '') ||
-      ['hospital', 'clinic'].includes(tag.healthcare || '')
-    ) {
-      return 'hospital';
-    }
+      if (el.tags.amenity === 'parking' || el.tags.parking) {
+        return 'parking';
+      }
 
-    if (tag.amenity === 'parking' || tag.parking) {
-      return 'parking';
-    }
+      if (
+        el.tags.leisure === 'park' ||
+        el.tags.leisure === 'garden' ||
+        el.tags.leisure === 'nature_reserve' ||
+        el.tags.landuse === 'forest' ||
+        el.tags.leisure === 'recreation_ground' ||
+        el.tags.leisure === 'grass'
+      ) {
+        return 'park';
+      }
 
-    if (
-      [
-        'park',
-        'garden',
-        'nature_reserve',
-        'recreation_ground',
-        'grass',
-      ].includes(tag.leisure || '') ||
-      tag.landuse === 'forest'
-    ) {
-      return 'park';
-    }
+      if (
+        [
+          'park',
+          'garden',
+          'nature_reserve',
+          'recreation_ground',
+          'grass',
+        ].includes(el.tags.leisure || '') ||
+        el.tags.landuse === 'forest'
+      ) {
+        return 'park';
+      }
 
-    if (
-      ['fitness_centre', 'gym'].includes(tag.leisure || '') ||
-      ['gym', 'fitness'].includes(tag.sport || '')
-    ) {
-      return 'gym';
-    }
+      if (
+        el.tags.leisure === 'fitness_centre' ||
+        el.tags.leisure === 'gym' ||
+        el.tags.sport === 'gym' ||
+        el.tags.sport === 'fitness'
+      ) {
+        return 'gym';
+      }
 
-    if (
-      ['bus_station'].includes(tag.amenity || '') ||
-      tag.highway === 'bus_stop' ||
-      ['station', 'tram_stop', 'halt'].includes(tag.railway || '') ||
-      tag.public_transport === 'platform'
-    ) {
-      return 'transport';
+      if (
+        el.tags.amenity === 'bus_station' ||
+        el.tags.highway === 'bus_stop' ||
+        el.tags.railway === 'station' ||
+        el.tags.railway === 'tram_stop' ||
+        el.tags.railway === 'halt' ||
+        el.tags.public_transport === 'platform'
+      ) {
+        return 'transport';
+      }
     }
 
     return 'shop';
