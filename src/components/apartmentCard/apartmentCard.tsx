@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useCurrency } from '../../contexts/CurrencyContext';
 import { convertPrice } from '../../shared/utils/convertPrice';
 import { ApartmentSwiper } from '../apartmentSwiper/apartmentSwiper';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 type Props = {
   apartment: Apartment;
@@ -32,10 +32,14 @@ export const ApartmentCard: React.FC<Props> = ({
   const month = availableDate.getMonth() + 1;
   const formattedDate = `${day} ${t(`apartment_card.months.${month}`)}`;
   const { label } = convertPrice(apartment.price, 'USD', currency);
+  const [searchParams] = useSearchParams();
 
   return (
     <Link
-      to={`/apartment/${apartment.id}`}
+      to={{
+        pathname: `/apartment/${apartment.id}`,
+        search: searchParams.toString(),
+      }}
       className={styles.apartmentCard__linkWrapper}
     >
       <article

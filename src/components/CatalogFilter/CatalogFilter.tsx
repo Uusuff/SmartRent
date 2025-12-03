@@ -37,6 +37,10 @@ export const CatalogFilter: React.FC<Props> = ({
   priceUSD,
   setPrice,
   setPriceUSD,
+  moveIn,
+  moveOut,
+  setMoveIn,
+  setMoveOut,
 }) => {
   const { t } = useTranslation();
   const { currency } = useCurrency();
@@ -198,6 +202,12 @@ export const CatalogFilter: React.FC<Props> = ({
               }
             }}
             isAllFilters={false}
+            isCalendar={false}
+            moveIn={moveIn}
+            moveOut={moveOut}
+            setMoveIn={setMoveIn}
+            setMoveOut={setMoveOut}
+            isApartmentPage={false}
           />
         </div>
 
@@ -206,7 +216,18 @@ export const CatalogFilter: React.FC<Props> = ({
             {t('catalog_page.catalog_page_filter.titles.date')}
           </label>
 
-          <Dropdown options={[]} value={date} isAllFilters={false} />
+          <Dropdown
+            options={[]}
+            value={date}
+            isAllFilters={false}
+            isCalendar={true}
+            moveIn={moveIn}
+            moveOut={moveOut}
+            setMoveIn={setMoveIn}
+            setMoveOut={setMoveOut}
+            onChange={() => {}}
+            isApartmentPage={false}
+          />
         </div>
 
         <div className={styles.filter__element}>
@@ -219,6 +240,12 @@ export const CatalogFilter: React.FC<Props> = ({
             value={neighborhood.toLowerCase()}
             onChange={val => setNeighborhood(val as string)}
             isAllFilters={false}
+            isCalendar={false}
+            moveIn={moveIn}
+            moveOut={moveOut}
+            setMoveIn={setMoveIn}
+            setMoveOut={setMoveOut}
+            isApartmentPage={false}
           />
         </div>
 
@@ -232,6 +259,12 @@ export const CatalogFilter: React.FC<Props> = ({
             value={currentPriceOption}
             onChange={val => handlePriceChange(+val)}
             isAllFilters={false}
+            isCalendar={false}
+            moveIn={moveIn}
+            moveOut={moveOut}
+            setMoveIn={setMoveIn}
+            setMoveOut={setMoveOut}
+            isApartmentPage={false}
           />
         </div>
 
@@ -244,6 +277,12 @@ export const CatalogFilter: React.FC<Props> = ({
             value={propertyType.toLowerCase()}
             onChange={val => setPropertyType(val as string)}
             isAllFilters={false}
+            isCalendar={false}
+            moveIn={moveIn}
+            moveOut={moveOut}
+            setMoveIn={setMoveIn}
+            setMoveOut={setMoveOut}
+            isApartmentPage={false}
           />
         </div>
 
@@ -253,6 +292,12 @@ export const CatalogFilter: React.FC<Props> = ({
             value={t('catalog_page.catalog_page_filter.titles.allFilters')}
             onChange={() => {}}
             isAllFilters={true}
+            isCalendar={false}
+            moveIn={moveIn}
+            moveOut={moveOut}
+            setMoveIn={setMoveIn}
+            setMoveOut={setMoveOut}
+            isApartmentPage={false}
           />
         </div>
       </form>

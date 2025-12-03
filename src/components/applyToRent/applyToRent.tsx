@@ -7,6 +7,9 @@ import { convertPrice } from '../../shared/utils/convertPrice';
 import { useTranslation } from 'react-i18next';
 import landlordPhotoMale from './../../assets/icons/apartmentIcons/male.svg';
 import landlordPhotoFemale from './../../assets/icons/apartmentIcons/landlord-female.webp';
+import { Dropdown } from '../DropDown/DropDown';
+import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 type Props = {
   apartment: Apartment;
@@ -19,6 +22,46 @@ export const ApplyToRent: React.FC<Props> = ({ apartment }) => {
   const convert = (value: number) => convertPrice(value, 'USD', currency).label;
   const total =
     apartment.price + apartment.utilitiesPerMonth + apartment.tenantProtection;
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [moveIn, setMoveIn] = useState<string | null>(
+    searchParams.get('moveIn') || null,
+  );
+  const [moveOut, setMoveOut] = useState<string | null>(
+    searchParams.get('moveOut') || null,
+  );
+
+  useEffect(() => {
+    const moveInParam = searchParams.get('MOVE_IN');
+    const moveOutParam = searchParams.get('MOVE_OUT');
+
+    if (moveInParam) {
+      setMoveIn(moveInParam);
+    }
+
+    if (moveOutParam) {
+      setMoveOut(moveOutParam);
+    }
+  }, [searchParams]);
+
+  const handleDateChange = (checkIn: Date | null, checkOut: Date | null) => {
+    const moveInStr = checkIn ? checkIn.toISOString().split('T')[0] : null;
+    const moveOutStr = checkOut ? checkOut.toISOString().split('T')[0] : null;
+
+    setMoveIn(moveInStr);
+    setMoveOut(moveOutStr);
+
+    const params: Record<string, string> = {};
+
+    if (moveInStr) {
+      params.moveIn = moveInStr;
+    }
+
+    if (moveOutStr) {
+      params.moveOut = moveOutStr;
+    }
+
+    setSearchParams(params);
+  };
 
   return (
     <article className={styles.applyToRent}>
@@ -58,6 +101,20 @@ export const ApplyToRent: React.FC<Props> = ({ apartment }) => {
           <label htmlFor="moveIn" className={styles[`applyToRent__date-label`]}>
             {t('apartment_page.applyToRent.moveIn')}
           </label>
+
+          <Dropdown
+            options={[]}
+            value={moveIn || 'Choose date'}
+            isAllFilters={false}
+            isCalendar={true}
+            moveIn={moveIn}
+            moveOut={moveOut}
+            setMoveIn={setMoveIn}
+            setMoveOut={setMoveOut}
+            onChange={() => {}}
+            onDateChange={handleDateChange}
+            isApartmentPage={true}
+          />
         </div>
         <div
           className={`${styles.applyToRent__date} ${styles[`applyToRent__date--moveOut`]}`}
@@ -68,6 +125,19 @@ export const ApplyToRent: React.FC<Props> = ({ apartment }) => {
           >
             {t('apartment_page.applyToRent.moveOut')}
           </label>
+
+          <Dropdown
+            options={[]}
+            value={moveOut || 'Choose date'}
+            isAllFilters={false}
+            isCalendar={true}
+            moveIn={moveIn}
+            moveOut={moveOut}
+            setMoveIn={setMoveIn}
+            setMoveOut={setMoveOut}
+            onChange={() => {}}
+            isApartmentPage={true}
+          />
         </div>
       </div>
 

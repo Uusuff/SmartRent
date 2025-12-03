@@ -20,6 +20,10 @@
     }
   }
 
+  &--apartmentPage{
+    position: static;
+  }
+
   &__toggle {
     @include standard-text(16px, 1.4);
     @include flex-center;
@@ -59,6 +63,17 @@
 
       padding: 16px 43.6px;
     }
+
+    &--date{
+      padding: 10px;
+      width: 210px;
+    }
+
+    &--apartmentPage{
+      width: 176px;
+      height: 56px;
+      padding: 16px;
+    }
   }
 
   &__arrow {
@@ -73,6 +88,14 @@
     &--down {
       background-image: url('../../assets/icons/BurgerMenuIcons/ArrowDown.png');
     }
+  }
+
+  &__calendar{
+    @include icon-size(24px);
+
+    display: inline-block;
+    background-image: url('../../assets/icons/apartmentIcons/calendar.svg');
+
   }
 
   &__menu {

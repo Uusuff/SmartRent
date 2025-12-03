@@ -1,14 +1,23 @@
+/* eslint-disable max-len */
 import { useState, useRef, useEffect } from 'react';
 import styles from './Dropdown.module.scss';
 import { Option } from '../../types/Option';
 import { useTranslation } from 'react-i18next';
 import { useCurrency } from '../../contexts/CurrencyContext';
+import { Calendar } from '../../pages/HomePage/components/ApartmentSearch/components/SearchDateInCalendar/components/Calendar/Calendar';
 
 type Props = {
   options: Option[];
   value: string | number;
   onChange: (val: string | number) => void;
   isAllFilters: boolean;
+  isCalendar: boolean;
+  moveIn?: string | null;
+  moveOut?: string | null;
+  setMoveIn?: React.Dispatch<React.SetStateAction<string | null>>;
+  setMoveOut?: React.Dispatch<React.SetStateAction<string | null>>;
+  isApartmentPage: boolean;
+  onDateChange?: (checkIn: Date | null, checkOut: Date | null) => void;
 };
 
 export const Dropdown: React.FC<Props> = ({
@@ -16,6 +25,13 @@ export const Dropdown: React.FC<Props> = ({
   value,
   onChange,
   isAllFilters,
+  isCalendar,
+  moveIn,
+  moveOut,
+  setMoveIn,
+  setMoveOut,
+  isApartmentPage,
+  onDateChange,
 }) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
@@ -66,6 +82,42 @@ export const Dropdown: React.FC<Props> = ({
             <span className={styles.dropdown__filterIcon}></span>
             {value}
           </button>
+        </div>
+      ) : isCalendar ? (
+        <div
+          className={`${styles.dropdown} ${isApartmentPage && styles[`dropdown--apartmentPage`]}`}
+          ref={dropdownRef}
+        >
+          <button
+            type="button"
+            className={`${styles.dropdown__toggle} ${styles[`dropdown__toggle--date`]}  ${isApartmentPage && styles[`dropdown__toggle--apartmentPage`]}`}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {value}
+            <span
+              className={`${!isApartmentPage && styles.dropdown__arrow} ${isOpen && !isApartmentPage ? styles['dropdown__arrow--up'] : isApartmentPage ? styles.dropdown__calendar : styles['dropdown__arrow--down']}`}
+            ></span>
+          </button>
+
+          {isOpen && (
+            <Calendar
+              reservation={{
+                checkIn: moveIn ? new Date(moveIn) : null,
+                checkOut: moveOut ? new Date(moveOut) : null,
+              }}
+              onChange={({ checkIn, checkOut }) => {
+                setMoveIn?.(
+                  checkIn ? checkIn.toISOString().split('T')[0] : null,
+                );
+                setMoveOut?.(
+                  checkOut ? checkOut.toISOString().split('T')[0] : null,
+                );
+                onDateChange?.(checkIn, checkOut);
+              }}
+              isCatalogPage={true}
+              isApartmentPage={isApartmentPage}
+            />
+          )}
         </div>
       ) : (
         <div className={styles.dropdown} ref={dropdownRef}>

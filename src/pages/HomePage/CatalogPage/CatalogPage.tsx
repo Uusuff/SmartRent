@@ -72,15 +72,8 @@ export const CatalogPage = () => {
 
       const inMonthDay = inDate.toLocaleDateString('en-US', formatOptions);
       const outMonthDay = outDate.toLocaleDateString('en-US', formatOptions);
-      const inYear = inDate.getFullYear();
       const outYear = outDate.getFullYear();
-      let formattedDate;
-
-      if (inYear === outYear) {
-        formattedDate = `${inMonthDay} - ${outMonthDay} ${outYear}`;
-      } else {
-        formattedDate = `${inMonthDay} ${inYear} - ${outMonthDay} ${outYear}`;
-      }
+      const formattedDate = `${inMonthDay}-${outMonthDay}, ${outYear}`;
 
       setDate(formattedDate);
     } else {
@@ -126,10 +119,17 @@ export const CatalogPage = () => {
 
     if (moveIn) {
       params.MOVE_IN = moveIn;
-
       const moveInDate = new Date(moveIn);
 
-      result = result.filter(a => new Date(a.availableFrom) <= moveInDate);
+      moveInDate.setHours(0, 0, 0, 0);
+
+      result = result.filter(a => {
+        const availableFromDate = new Date(a.availableFrom);
+
+        availableFromDate.setHours(0, 0, 0, 0);
+
+        return availableFromDate <= moveInDate;
+      });
     }
 
     if (moveOut) {

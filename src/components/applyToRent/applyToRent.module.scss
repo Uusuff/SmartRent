@@ -7,6 +7,7 @@
   grid-row: 2/4;
   border: 1px solid $filter-border;
   border-radius: 15px;
+  align-self: flex-start;
 
   &__landlord {
     @include flex-center;
@@ -137,6 +138,7 @@
   }
 
   &__dateContainer {
+    position: relative;
     display: flex;
     justify-content: space-between;
   }

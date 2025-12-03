@@ -83,7 +83,11 @@ export const SearchDateInCalendar: React.FC<SearchDateInCalendarProps> = ({
       </div>
       {openCalendar && (
         <div className={styles.calendarWrapper}>
-          <Calendar onChange={handleCalendarChange} reservation={reservation} />
+          <Calendar
+            onChange={handleCalendarChange}
+            reservation={reservation}
+            isCatalogPage={false}
+          />
         </div>
       )}
     </div>

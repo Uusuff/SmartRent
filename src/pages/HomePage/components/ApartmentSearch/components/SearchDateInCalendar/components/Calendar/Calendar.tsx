@@ -13,11 +13,15 @@ type CalendarProps = {
     checkIn: Date | null;
     checkOut: Date | null;
   };
+  isCatalogPage: boolean;
+  isApartmentPage: boolean;
 };
 
 export const Calendar: React.FC<CalendarProps> = ({
   onChange,
   reservation,
+  isCatalogPage,
+  isApartmentPage,
 }) => {
   const today = new Date();
   const [offset, setOffset] = useState(0);
@@ -52,7 +56,9 @@ export const Calendar: React.FC<CalendarProps> = ({
   };
 
   return (
-    <div className={styles.calendar}>
+    <div
+      className={`${styles.calendar} ${isCatalogPage && styles[`calendar--catalogPage`]} ${isApartmentPage && styles[`calendar--apartmentPage`]}`}
+    >
       <div className={styles.calendarWrapper}>
         <MonthView
           month={'left'}
