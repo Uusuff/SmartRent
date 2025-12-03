@@ -95,19 +95,21 @@ Error generating stack: `+o.message+`
       background-position: center;
       cursor: pointer;
     "></div>`,iconSize:[50,50],iconAnchor:[25,50],popupAnchor:[0,-50]}),y=(B,j,G)=>Cu.divIcon({className:"",html:`
-        <div style="
-          width: 40px;
-          height: 40px;
-          background-image: url('${G?j:B}');
-          background-size: 16px 16px;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-color: ${G?"#165A43":"#EDF2F1"};
-          border-radius: 50%;
-          border: 1px solid #165A43;
-          cursor: pointer;
-        "></div>
-      `,iconSize:[40,40],iconAnchor:[20,40],popupAnchor:[0,-40]}),E=B=>{const j=B.tags||{};return j.shop==="supermarket"?"supermarket":j.shop?"shop":["restaurant","cafe"].includes(j.amenity||"")?"restaurant":j.amenity==="bar"?"bar":["school","university"].includes(j.amenity||"")?"school":["hospital","clinic"].includes(j.amenity||"")||["hospital","clinic"].includes(j.healthcare||"")?"hospital":j.amenity==="parking"||j.parking?"parking":["park","garden","nature_reserve","recreation_ground","grass"].includes(j.leisure||"")||j.landuse==="forest"?"park":["fitness_centre","gym"].includes(j.leisure||"")||["gym","fitness"].includes(j.sport||"")?"gym":["bus_station"].includes(j.amenity||"")||j.highway==="bus_stop"||["station","tram_stop","halt"].includes(j.railway||"")||j.public_transport==="platform"?"transport":"shop"},M=()=>Math.floor(Math.random()*4)+2,H=(B,j,G,Q)=>{const ce=ne=>ne*Math.PI/180,de=ce(G-B),O=ce(Q-j),K=Math.sin(de/2)**2+Math.cos(ce(B))*Math.cos(ce(G))*Math.sin(O/2)**2,J=6371*(2*Math.atan2(Math.sqrt(K),Math.sqrt(1-K)))*1e3;return Math.round(J/83)},T=B=>{const j=Math.floor(B),G=Array.from({length:5},(Q,ce)=>ce<j?"active":"inactive");return v.jsxs("div",{className:tt["popup-stars"],children:[v.jsxs("span",{className:tt["popup-rate"],children:[j,"/5"]}),G.map((Q,ce)=>v.jsx("span",{className:`${tt["popup-stars__star"]} ${Q==="active"?tt["popup-stars__star--active"]:tt["popup-stars__star--inactive"]}`},ce))]})},k=B=>{const j=B.match(/\d+/),G=j?Number(j[0]):null;let Q=Math.floor(Math.random()*200)+1;for(;Q===G;)Q=Math.floor(Math.random()*200)+1;return Q};I.useEffect(()=>{if(!e||!t)return;(async()=>{const j=`
+          <div
+            style="
+              width: 40px;
+              height: 40px;
+              background-color: ${G?"#165A43":"#EDF2F1"};
+              background-image: url(${G?j:B});
+              background-size: 16px 16px;
+              background-repeat: no-repeat;
+              background-position: center;
+              border-radius: 50%;
+              border: 1px solid #165A43;
+              cursor: pointer;
+            "
+          ></div>
+        `,iconSize:[40,40],iconAnchor:[20,40],popupAnchor:[0,-40]}),E=B=>{const j=B.tags||{};return j.shop==="supermarket"?"supermarket":j.shop?"shop":["restaurant","cafe"].includes(j.amenity||"")?"restaurant":j.amenity==="bar"?"bar":["school","university"].includes(j.amenity||"")?"school":["hospital","clinic"].includes(j.amenity||"")||["hospital","clinic"].includes(j.healthcare||"")?"hospital":j.amenity==="parking"||j.parking?"parking":["park","garden","nature_reserve","recreation_ground","grass"].includes(j.leisure||"")||j.landuse==="forest"?"park":["fitness_centre","gym"].includes(j.leisure||"")||["gym","fitness"].includes(j.sport||"")?"gym":["bus_station"].includes(j.amenity||"")||j.highway==="bus_stop"||["station","tram_stop","halt"].includes(j.railway||"")||j.public_transport==="platform"?"transport":"shop"},M=()=>Math.floor(Math.random()*4)+2,H=(B,j,G,Q)=>{const ce=ne=>ne*Math.PI/180,de=ce(G-B),O=ce(Q-j),K=Math.sin(de/2)**2+Math.cos(ce(B))*Math.cos(ce(G))*Math.sin(O/2)**2,J=6371*(2*Math.atan2(Math.sqrt(K),Math.sqrt(1-K)))*1e3;return Math.round(J/83)},T=B=>{const j=Math.floor(B),G=Array.from({length:5},(Q,ce)=>ce<j?"active":"inactive");return v.jsxs("div",{className:tt["popup-stars"],children:[v.jsxs("span",{className:tt["popup-rate"],children:[j,"/5"]}),G.map((Q,ce)=>v.jsx("span",{className:`${tt["popup-stars__star"]} ${Q==="active"?tt["popup-stars__star--active"]:tt["popup-stars__star--inactive"]}`},ce))]})},k=B=>{const j=B.match(/\d+/),G=j?Number(j[0]):null;let Q=Math.floor(Math.random()*200)+1;for(;Q===G;)Q=Math.floor(Math.random()*200)+1;return Q};I.useEffect(()=>{if(!e||!t)return;(async()=>{const j=`
         [out:json][timeout:25];
         (
           node["amenity"="restaurant"](around:${i},${e},${t});
