@@ -234,6 +234,7 @@
     padding: 14px;
     border: 1px solid $pagination-bullet-bg;
     border-radius: 1000px;
+    background-color: red;
 
     &--active {
       background-color: $option-hover;
