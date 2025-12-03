@@ -8,37 +8,97 @@ import 'leaflet/dist/leaflet.css';
 import styles from './whats-nearby.module.scss';
 import { useTranslation } from 'react-i18next';
 import { MultiLangText } from '../../types/Apartment';
-import shopIcon from '../../assets/icons/mapIcons/shops.svg';
-import shopIconActive from '../../assets/icons/mapIcons/shops-active.svg';
 
-import restaurantIcon from '../../assets/icons/mapIcons/restaurants.svg';
-import restaurantIconActive from '../../assets/icons/mapIcons/restaurants-active.svg';
+const shopIcon = new URL(
+  '../../assets/icons/mapIcons/shops.svg',
+  import.meta.url,
+).href;
+const shopIconActive = new URL(
+  '../../assets/icons/mapIcons/shops-active.svg',
+  import.meta.url,
+).href;
 
-import gymIcon from '../../assets/icons/mapIcons/gym.svg';
-import gymIconActive from '../../assets/icons/mapIcons/gym-active.svg';
+const restaurantIcon = new URL(
+  '../../assets/icons/mapIcons/restaurants.svg',
+  import.meta.url,
+).href;
+const restaurantIconActive = new URL(
+  '../../assets/icons/mapIcons/restaurants-active.svg',
+  import.meta.url,
+).href;
 
-import supermarketIcon from '../../assets/icons/mapIcons/supermarkets.svg';
-import supermarketIconActive from '../../assets/icons/mapIcons/supermarkets-active.svg';
+const gymIcon = new URL('../../assets/icons/mapIcons/gym.svg', import.meta.url)
+  .href;
+const gymIconActive = new URL(
+  '../../assets/icons/mapIcons/gym-active.svg',
+  import.meta.url,
+).href;
 
-import transportIcon from '../../assets/icons/mapIcons/transport.svg';
-import transportIconActive from '../../assets/icons/mapIcons/transport-active.svg';
+const supermarketIcon = new URL(
+  '../../assets/icons/mapIcons/supermarkets.svg',
+  import.meta.url,
+).href;
+const supermarketIconActive = new URL(
+  '../../assets/icons/mapIcons/supermarkets-active.svg',
+  import.meta.url,
+).href;
 
-import schoolIcon from '../../assets/icons/mapIcons/school.svg';
-import schoolIconActive from '../../assets/icons/mapIcons/school-active.svg';
+const transportIcon = new URL(
+  '../../assets/icons/mapIcons/transport.svg',
+  import.meta.url,
+).href;
+const transportIconActive = new URL(
+  '../../assets/icons/mapIcons/transport-active.svg',
+  import.meta.url,
+).href;
 
-import barIcon from '../../assets/icons/mapIcons/bars.svg';
-import barIconActive from '../../assets/icons/mapIcons/bars-active.svg';
+const schoolIcon = new URL(
+  '../../assets/icons/mapIcons/school.svg',
+  import.meta.url,
+).href;
+const schoolIconActive = new URL(
+  '../../assets/icons/mapIcons/school-active.svg',
+  import.meta.url,
+).href;
 
-import hospitalIcon from '../../assets/icons/mapIcons/hospital.svg';
-import hospitalIconActive from '../../assets/icons/mapIcons/hospital-active.svg';
+const barIcon = new URL('../../assets/icons/mapIcons/bars.svg', import.meta.url)
+  .href;
+const barIconActive = new URL(
+  '../../assets/icons/mapIcons/bars-active.svg',
+  import.meta.url,
+).href;
 
-import parkIcon from '../../assets/icons/mapIcons/parks.svg';
-import parkIconActive from '../../assets/icons/mapIcons/parks-active.svg';
+const hospitalIcon = new URL(
+  '../../assets/icons/mapIcons/hospital.svg',
+  import.meta.url,
+).href;
+const hospitalIconActive = new URL(
+  '../../assets/icons/mapIcons/hospital-active.svg',
+  import.meta.url,
+).href;
 
-import parkingIcon from '../../assets/icons/mapIcons/parking-lots.svg';
-import parkingIconActive from '../../assets/icons/mapIcons/parking-lots-active.svg';
+const parkIcon = new URL(
+  '../../assets/icons/mapIcons/parks.svg',
+  import.meta.url,
+).href;
+const parkIconActive = new URL(
+  '../../assets/icons/mapIcons/parks-active.svg',
+  import.meta.url,
+).href;
 
-import homeIcon from '../../assets/icons/mapIcons/home.svg';
+const parkingIcon = new URL(
+  '../../assets/icons/mapIcons/parking-lots.svg',
+  import.meta.url,
+).href;
+const parkingIconActive = new URL(
+  '../../assets/icons/mapIcons/parking-lots-active.svg',
+  import.meta.url,
+).href;
+
+const homeIcon = new URL(
+  '../../assets/icons/mapIcons/home.svg',
+  import.meta.url,
+).href;
 
 export type POI = {
   id: number;
@@ -244,70 +304,66 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     });
 
   const mapOverpassToFilterType = (el: OverpassElement): string => {
-    if (el.tags) {
-      if (el.tags.shop === 'supermarket') {
-        return 'supermarket';
-      }
+    const tag = el.tags || {};
 
-      if (el.tags.shop) {
-        return 'shop';
-      }
+    if (tag.shop === 'supermarket') {
+      return 'supermarket';
+    }
 
-      if (el.tags.amenity === 'restaurant' || el.tags.amenity === 'cafe') {
-        return 'restaurant';
-      }
+    if (tag.shop) {
+      return 'shop';
+    }
 
-      if (el.tags.amenity === 'bar') {
-        return 'bar';
-      }
+    if (['restaurant', 'cafe'].includes(tag.amenity || '')) {
+      return 'restaurant';
+    }
 
-      if (el.tags.amenity === 'school' || el.tags.amenity === 'university') {
-        return 'school';
-      }
+    if (tag.amenity === 'bar') {
+      return 'bar';
+    }
 
-      if (
-        el.tags.amenity === 'hospital' ||
-        el.tags.healthcare === 'hospital' ||
-        el.tags.amenity === 'clinic' ||
-        el.tags.healthcare === 'clinic'
-      ) {
-        return 'hospital';
-      }
+    if (['school', 'university'].includes(tag.amenity || '')) {
+      return 'school';
+    }
 
-      if (el.tags.amenity === 'parking' || el.tags.parking) {
-        return 'parking';
-      }
+    if (
+      ['hospital', 'clinic'].includes(tag.amenity || '') ||
+      ['hospital', 'clinic'].includes(tag.healthcare || '')
+    ) {
+      return 'hospital';
+    }
 
-      if (
-        el.tags.leisure === 'park' ||
-        el.tags.leisure === 'garden' ||
-        el.tags.leisure === 'nature_reserve' ||
-        el.tags.landuse === 'forest' ||
-        el.tags.leisure === 'recreation_ground' ||
-        el.tags.leisure === 'grass'
-      ) {
-        return 'park';
-      }
+    if (tag.amenity === 'parking' || tag.parking) {
+      return 'parking';
+    }
 
-      if (
-        el.tags.leisure === 'fitness_centre' ||
-        el.tags.leisure === 'gym' ||
-        el.tags.sport === 'gym' ||
-        el.tags.sport === 'fitness'
-      ) {
-        return 'gym';
-      }
+    if (
+      [
+        'park',
+        'garden',
+        'nature_reserve',
+        'recreation_ground',
+        'grass',
+      ].includes(tag.leisure || '') ||
+      tag.landuse === 'forest'
+    ) {
+      return 'park';
+    }
 
-      if (
-        el.tags.amenity === 'bus_station' ||
-        el.tags.highway === 'bus_stop' ||
-        el.tags.railway === 'station' ||
-        el.tags.railway === 'tram_stop' ||
-        el.tags.railway === 'halt' ||
-        el.tags.public_transport === 'platform'
-      ) {
-        return 'transport';
-      }
+    if (
+      ['fitness_centre', 'gym'].includes(tag.leisure || '') ||
+      ['gym', 'fitness'].includes(tag.sport || '')
+    ) {
+      return 'gym';
+    }
+
+    if (
+      ['bus_station'].includes(tag.amenity || '') ||
+      tag.highway === 'bus_stop' ||
+      ['station', 'tram_stop', 'halt'].includes(tag.railway || '') ||
+      tag.public_transport === 'platform'
+    ) {
+      return 'transport';
     }
 
     return 'shop';
