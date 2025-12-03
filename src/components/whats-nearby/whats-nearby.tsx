@@ -8,97 +8,27 @@ import 'leaflet/dist/leaflet.css';
 import styles from './whats-nearby.module.scss';
 import { useTranslation } from 'react-i18next';
 import { MultiLangText } from '../../types/Apartment';
-
-const shopIcon = new URL(
-  '../../assets/icons/mapIcons/shops.svg',
-  import.meta.url,
-).href;
-const shopIconActive = new URL(
-  '../../assets/icons/mapIcons/shops-active.svg',
-  import.meta.url,
-).href;
-
-const restaurantIcon = new URL(
-  '../../assets/icons/mapIcons/restaurants.svg',
-  import.meta.url,
-).href;
-const restaurantIconActive = new URL(
-  '../../assets/icons/mapIcons/restaurants-active.svg',
-  import.meta.url,
-).href;
-
-const gymIcon = new URL('../../assets/icons/mapIcons/gym.svg', import.meta.url)
-  .href;
-const gymIconActive = new URL(
-  '../../assets/icons/mapIcons/gym-active.svg',
-  import.meta.url,
-).href;
-
-const supermarketIcon = new URL(
-  '../../assets/icons/mapIcons/supermarkets.svg',
-  import.meta.url,
-).href;
-const supermarketIconActive = new URL(
-  '../../assets/icons/mapIcons/supermarkets-active.svg',
-  import.meta.url,
-).href;
-
-const transportIcon = new URL(
-  '../../assets/icons/mapIcons/transport.svg',
-  import.meta.url,
-).href;
-const transportIconActive = new URL(
-  '../../assets/icons/mapIcons/transport-active.svg',
-  import.meta.url,
-).href;
-
-const schoolIcon = new URL(
-  '../../assets/icons/mapIcons/school.svg',
-  import.meta.url,
-).href;
-const schoolIconActive = new URL(
-  '../../assets/icons/mapIcons/school-active.svg',
-  import.meta.url,
-).href;
-
-const barIcon = new URL('../../assets/icons/mapIcons/bars.svg', import.meta.url)
-  .href;
-const barIconActive = new URL(
-  '../../assets/icons/mapIcons/bars-active.svg',
-  import.meta.url,
-).href;
-
-const hospitalIcon = new URL(
-  '../../assets/icons/mapIcons/hospital.svg',
-  import.meta.url,
-).href;
-const hospitalIconActive = new URL(
-  '../../assets/icons/mapIcons/hospital-active.svg',
-  import.meta.url,
-).href;
-
-const parkIcon = new URL(
-  '../../assets/icons/mapIcons/parks.svg',
-  import.meta.url,
-).href;
-const parkIconActive = new URL(
-  '../../assets/icons/mapIcons/parks-active.svg',
-  import.meta.url,
-).href;
-
-const parkingIcon = new URL(
-  '../../assets/icons/mapIcons/parking-lots.svg',
-  import.meta.url,
-).href;
-const parkingIconActive = new URL(
-  '../../assets/icons/mapIcons/parking-lots-active.svg',
-  import.meta.url,
-).href;
-
-const homeIcon = new URL(
-  '../../assets/icons/mapIcons/home.svg',
-  import.meta.url,
-).href;
+const shopIcon = '/icons/mapIcons/shops.svg';
+const shopIconActive = '/icons/mapIcons/shops-active.svg';
+const restaurantIcon = '/icons/mapIcons/restaurants.svg';
+const restaurantIconActive = '/icons/mapIcons/restaurants-active.svg';
+const gymIcon = '/icons/mapIcons/gym.svg';
+const gymIconActive = '/icons/mapIcons/gym-active.svg';
+const supermarketIcon = '/icons/mapIcons/supermarkets.svg';
+const supermarketIconActive = '/icons/mapIcons/supermarkets-active.svg';
+const transportIcon = '/icons/mapIcons/transport.svg';
+const transportIconActive = '/icons/mapIcons/transport-active.svg';
+const schoolIcon = '/icons/mapIcons/school.svg';
+const schoolIconActive = '/icons/mapIcons/school-active.svg';
+const barIcon = '/icons/mapIcons/bars.svg';
+const barIconActive = '/icons/mapIcons/bars-active.svg';
+const hospitalIcon = '/icons/mapIcons/hospital.svg';
+const hospitalIconActive = '/icons/mapIcons/hospital-active.svg';
+const parkIcon = '/icons/mapIcons/parks.svg';
+const parkIconActive = '/icons/mapIcons/parks-active.svg';
+const parkingIcon = '/icons/mapIcons/parking-lots.svg';
+const parkingIconActive = '/icons/mapIcons/parking-lots-active.svg';
+const homeIcon = '/icons/mapIcons/home.svg';
 
 export type POI = {
   id: number;
