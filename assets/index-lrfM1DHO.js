@@ -98,7 +98,7 @@ Error generating stack: `+o.message+`
         <div style="
           width: 40px;
           height: 40px;
-          background-image: url('${G?j:M}');
+          background-image: url(${G?j:M});
           background-size: 16px 16px;
           background-repeat: no-repeat;
           background-position: center;
