@@ -285,19 +285,21 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     L.divIcon({
       className: '',
       html: `
-        <div style="
-          width: 40px;
-          height: 40px;
-          background-image: url('${isActive ? activeIconUrl : iconUrl}');
-          background-size: 16px 16px;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-color: ${isActive ? '#165A43' : '#EDF2F1'};
-          border-radius: 50%;
-          border: 1px solid #165A43;
-          cursor: pointer;
-        "></div>
-      `,
+          <div
+            style="
+              width: 40px;
+              height: 40px;
+              background-color: ${isActive ? '#165A43' : '#EDF2F1'};
+              background-image: url(${isActive ? activeIconUrl : iconUrl});
+              background-size: 16px 16px;
+              background-repeat: no-repeat;
+              background-position: center;
+              border-radius: 50%;
+              border: 1px solid #165A43;
+              cursor: pointer;
+            "
+          ></div>
+        `,
       iconSize: [40, 40],
       iconAnchor: [20, 40],
       popupAnchor: [0, -40],
