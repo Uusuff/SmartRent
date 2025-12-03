@@ -9,6 +9,7 @@
   &__button {
     @include icons-styles;
     @include icon-size(40px);
+
     background-size: 24px 24px;
 
     &--prev{

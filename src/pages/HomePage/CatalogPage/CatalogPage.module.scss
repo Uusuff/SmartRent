@@ -38,6 +38,7 @@
 
   &__quantity {
     @include medium-text(20px, 1.4);
+
     grid-column: 1/2;
     color: $gray-text;
   }

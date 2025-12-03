@@ -15,7 +15,7 @@
   width: 100%;
   color: rgba(29, 29, 29, 1);
 
-  @include semiBold-text(44px, 1.2);
+  @include semi-bold-text(44px, 1.2);
 }
 
 .how_it_works__steps {
@@ -33,16 +33,19 @@
   flex-direction: column;
   gap: 16px;
 }
+
 .step_number {
   color: rgba(22, 90, 67, 1);
 
   @include medium-text(60px, 1.5);
 }
+
 .step_title {
   color: rgba(52, 58, 64, 1);
 
   @include medium-text(32px, 1.2);
 }
+
 .step_description {
   color: rgba(73, 80, 87, 1);
 
