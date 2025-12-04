@@ -17,7 +17,6 @@ const shopIconActive = new URL(
   '../../assets/icons/mapIcons/shops-active.svg',
   import.meta.url,
 ).href;
-
 const restaurantIcon = new URL(
   '../../assets/icons/mapIcons/restaurants.svg',
   import.meta.url,
@@ -26,14 +25,12 @@ const restaurantIconActive = new URL(
   '../../assets/icons/mapIcons/restaurants-active.svg',
   import.meta.url,
 ).href;
-
 const gymIcon = new URL('../../assets/icons/mapIcons/gym.svg', import.meta.url)
   .href;
 const gymIconActive = new URL(
   '../../assets/icons/mapIcons/gym-active.svg',
   import.meta.url,
 ).href;
-
 const supermarketIcon = new URL(
   '../../assets/icons/mapIcons/supermarkets.svg',
   import.meta.url,
@@ -42,7 +39,6 @@ const supermarketIconActive = new URL(
   '../../assets/icons/mapIcons/supermarkets-active.svg',
   import.meta.url,
 ).href;
-
 const transportIcon = new URL(
   '../../assets/icons/mapIcons/transport.svg',
   import.meta.url,
@@ -51,7 +47,6 @@ const transportIconActive = new URL(
   '../../assets/icons/mapIcons/transport-active.svg',
   import.meta.url,
 ).href;
-
 const schoolIcon = new URL(
   '../../assets/icons/mapIcons/school.svg',
   import.meta.url,
@@ -60,14 +55,12 @@ const schoolIconActive = new URL(
   '../../assets/icons/mapIcons/school-active.svg',
   import.meta.url,
 ).href;
-
 const barIcon = new URL('../../assets/icons/mapIcons/bars.svg', import.meta.url)
   .href;
 const barIconActive = new URL(
   '../../assets/icons/mapIcons/bars-active.svg',
   import.meta.url,
 ).href;
-
 const hospitalIcon = new URL(
   '../../assets/icons/mapIcons/hospital.svg',
   import.meta.url,
@@ -76,7 +69,6 @@ const hospitalIconActive = new URL(
   '../../assets/icons/mapIcons/hospital-active.svg',
   import.meta.url,
 ).href;
-
 const parkIcon = new URL(
   '../../assets/icons/mapIcons/parks.svg',
   import.meta.url,
@@ -85,7 +77,6 @@ const parkIconActive = new URL(
   '../../assets/icons/mapIcons/parks-active.svg',
   import.meta.url,
 ).href;
-
 const parkingIcon = new URL(
   '../../assets/icons/mapIcons/parking-lots.svg',
   import.meta.url,
@@ -94,7 +85,6 @@ const parkingIconActive = new URL(
   '../../assets/icons/mapIcons/parking-lots-active.svg',
   import.meta.url,
 ).href;
-
 const homeIcon = new URL(
   '../../assets/icons/mapIcons/home.svg',
   import.meta.url,
@@ -260,48 +250,48 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     },
   ];
 
-  const getApartmentIcon = () =>
-    L.divIcon({
-      className: '',
-      html: `<div style="
-      width: 60px;
-      height: 65px;
-      background-image: url(${homeIcon});
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      cursor: pointer;
-    "></div>`,
-      iconSize: [50, 50],
-      iconAnchor: [25, 50],
-      popupAnchor: [0, -50],
-    });
-
   const getDivIcon = (
     iconUrl: string,
     activeIconUrl: string,
-    isActive?: boolean,
-  ) =>
-    L.divIcon({
+    isActive = false,
+  ) => {
+    return L.divIcon({
       className: '',
-      html: `
-        <div style="
-          width: 40px;
-          height: 40px;
-          background-image: url(${isActive ? activeIconUrl : iconUrl});
-          background-size: 16px 16px;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-color: ${isActive ? '#165A43' : '#EDF2F1'};
-          border-radius: 50%;
-          border: 1px solid #165A43;
-          cursor: pointer;
-        "></div>
-      `,
+      html: `<div style="
+        width: 40px;
+        height: 40px;
+        background-image: url(${isActive ? activeIconUrl : iconUrl});
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: ${isActive ? '#165A43' : '#EDF2F1'};
+        border-radius: 50%;
+        border: 1px solid #165A43;
+        cursor: pointer;
+      "></div>`,
       iconSize: [40, 40],
       iconAnchor: [20, 40],
       popupAnchor: [0, -40],
     });
+  };
+
+  const getApartmentIcon = () => {
+    return L.divIcon({
+      className: '',
+      html: `<div style="
+        width: 60px;
+        height: 65px;
+        background-image: url(${homeIcon});
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+      "></div>`,
+      iconSize: [50, 50],
+      iconAnchor: [25, 50],
+      popupAnchor: [0, -50],
+    });
+  };
 
   const mapOverpassToFilterType = (el: OverpassElement): string => {
     if (el.tags) {
@@ -350,19 +340,6 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
       }
 
       if (
-        [
-          'park',
-          'garden',
-          'nature_reserve',
-          'recreation_ground',
-          'grass',
-        ].includes(el.tags.leisure || '') ||
-        el.tags.landuse === 'forest'
-      ) {
-        return 'park';
-      }
-
-      if (
         el.tags.leisure === 'fitness_centre' ||
         el.tags.leisure === 'gym' ||
         el.tags.sport === 'gym' ||
@@ -386,7 +363,9 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     return 'shop';
   };
 
-  const getRandomStars = () => Math.floor(Math.random() * 4) + 2;
+  const getRandomStars = () => {
+    return Math.floor(Math.random() * 4) + 2;
+  };
 
   const getWalkingMinutes = (
     lat1: number,
@@ -394,7 +373,10 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     lat2: number,
     lon2: number,
   ) => {
-    const toRad = (value: number) => (value * Math.PI) / 180;
+    const toRad = (value: number) => {
+      return (value * Math.PI) / 180;
+    };
+
     const R = 6371;
     const dLat = toRad(lat2 - lat1);
     const dLon = toRad(lon2 - lon1);
@@ -516,7 +498,9 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     fetchPOIs();
   }, [apartmentLat, apartmentLng, radius, apartmentAddress, currentLang, t]);
 
-  const handleExpand = () => setIsExpanded(prev => !prev);
+  const handleExpand = () => {
+    setIsExpanded(prev => !prev);
+  };
 
   const ResizeMap = ({ expanded }: { expanded: boolean }) => {
     const map = useMap();
@@ -556,13 +540,15 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
           <button
             key={category.type}
             className={`${styles.whatsNearby__filterButton} ${activeCategories.includes(category.type) ? styles['whatsNearby__filterButton--active'] : ''}`}
-            onClick={() =>
-              setActiveCategories(prev =>
-                prev.includes(category.type)
-                  ? prev.filter(c => c !== category.type)
-                  : [...prev, category.type],
-              )
-            }
+            onClick={() => {
+              setActiveCategories(prev => {
+                if (prev.includes(category.type)) {
+                  return prev.filter(c => c !== category.type);
+                } else {
+                  return [...prev, category.type];
+                }
+              });
+            }}
           >
             <img src={category.icon} alt={category.name} />
             {category.name}
@@ -582,6 +568,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
             ref={mapRef}
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
             {pois
               .filter(poi => activeCategories.includes(poi.type))
               .map(poi => {
@@ -603,10 +590,11 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
                       poi.id === activePoiId,
                     )}
                     eventHandlers={{
-                      click: () =>
+                      click: () => {
                         setActivePoiId(prev =>
                           prev === poi.id ? null : poi.id,
-                        ),
+                        );
+                      },
                     }}
                   >
                     <Popup>
@@ -625,6 +613,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
                   </Marker>
                 );
               })}
+
             <Marker
               position={[apartmentLat, apartmentLng]}
               icon={getApartmentIcon()}
