@@ -2,6 +2,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
+
 const resources = {
   ENG: {
     translation: {
@@ -9,6 +10,10 @@ const resources = {
         buttonText: 'I’m a landlord',
         dropdownLanguage: 'Language',
         dropdownCurrency: 'Currency',
+      },
+
+      omePage: {
+        regions: 'RE',
       },
 
       footer: {

@@ -1,0 +1,283 @@
+{
+  "Kyiv Oblast": {
+    "Kyiv Ragion": [
+      { "city": "Kyiv", "abriviatur": "Kyiv" },
+      { "city": "Brovary", "abriviatur": "Brovary" }
+    ],
+    "Bucha Ragion": [
+      { "city": "Bucha", "abriviatur": "Bucha" },
+      { "city": "Irpin", "abriviatur": "Irpin" },
+      { "city": "Vyshneve", "abriviatur": "Vyshneve" }
+    ],
+    "Bila Tserkva Ragion": [
+      { "city": "Bila Tserkva", "abriviatur": "Bila Tserkva" },
+      { "city": "Tetiyiv", "abriviatur": "Tetiyiv" },
+      { "city": "Rokytne", "abriviatur": "Rokytne" }
+    ]
+  },
+  "Lviv Oblast": {
+    "Lviv Ragion": [
+      { "city": "Lviv", "abriviatur": "Lviv" },
+      { "city": "Vynnyky", "abriviatur": "Vynnyky" },
+      { "city": "Bryukhovychi", "abriviatur": "Bryukhovychi" }
+    ],
+    "Drohobych Ragion": [
+      { "city": "Drohobych", "abriviatur": "Drohobych" },
+      { "city": "Truskavets", "abriviatur": "Truskavets" },
+      { "city": "Boryslav", "abriviatur": "Boryslav" }
+    ]
+  },
+  "Vinnytsia Oblast": {
+    "Vinnytsia Ragion": [
+      { "city": "Vinnytsia", "abriviatur": "Vinnytsia" },
+      { "city": "Stryzhavka", "abriviatur": "Stryzhavka" },
+      { "city": "Ahronomichne", "abriviatur": "Ahronomichne" }
+    ],
+    "Haisyn Ragion": [
+      { "city": "Haisyn", "abriviatur": "Haisyn" },
+      { "city": "Ladyzhyn", "abriviatur": "Ladyzhyn" }
+    ]
+  },
+  "Volyn Oblast": {
+    "Lutsk Ragion": [
+      { "city": "Lutsk", "abriviatur": "Lutsk" },
+      { "city": "Rokyni", "abriviatur": "Rokyni" },
+      { "city": "Horodok", "abriviatur": "Horodok" }
+    ],
+    "Kovel Ragion": [
+      { "city": "Kovel", "abriviatur": "Kovel" },
+      { "city": "Lyublynets", "abriviatur": "Lyublynets" }
+    ]
+  },
+  "Dnipropetrovsk Oblast": {
+    "Dnipro Ragion": [
+      { "city": "Dnipro", "abriviatur": "Dnipro" },
+      { "city": "Pidhodne", "abriviatur": "Pidhodne" },
+      { "city": "Slobozhanske", "abriviatur": "Slobozhanske" }
+    ],
+    "Kryvyi Rih Ragion": [
+      { "city": "Kryvyi Rih", "abriviatur": "Kryvyi Rih" },
+      { "city": "Apostolove", "abriviatur": "Apostolove" },
+      { "city": "Inhulets", "abriviatur": "Inhulets" }
+    ]
+  },
+  "Zhytomyr Oblast": {
+    "Zhytomyr Ragion": [
+      { "city": "Zhytomyr", "abriviatur": "Zhytomyr" },
+      { "city": "Novograd-Volynskyi", "abriviatur": "Novograd-Volynskyi" },
+      { "city": "Radomyshl", "abriviatur": "Radomyshl" }
+    ],
+    "Korosten Ragion": [
+      { "city": "Korosten", "abriviatur": "Korosten" },
+      { "city": "Ovruch", "abriviatur": "Ovruch" },
+      { "city": "Berdychiv", "abriviatur": "Berdychiv" }
+    ]
+  },
+  "Zakarpattia Oblast": {
+    "Uzhhorod Ragion": [
+      { "city": "Uzhhorod", "abriviatur": "Uzhhorod" },
+      { "city": "Chop", "abriviatur": "Chop" },
+      { "city": "Perechyn", "abriviatur": "Perechyn" }
+    ],
+    "Mukachevo Ragion": [
+      { "city": "Mukachevo", "abriviatur": "Mukachevo" },
+      { "city": "Vynohradiv", "abriviatur": "Vynohradiv" },
+      { "city": "Irshava", "abriviatur": "Irshava" }
+    ]
+  },
+  "Zaporizhzhia Oblast": {
+    "Zaporizhzhia Ragion": [
+      { "city": "Zaporizhzhia", "abriviatur": "Zaporizhzhia" },
+      { "city": "Orikhiv", "abriviatur": "Orikhiv" },
+      { "city": "Tokmak", "abriviatur": "Tokmak" }
+    ],
+    "Melitopol Ragion": [
+      { "city": "Melitopol", "abriviatur": "Melitopol" },
+      { "city": "Yakymivka", "abriviatur": "Yakymivka" },
+      { "city": "Bilmak", "abriviatur": "Bilmak" }
+    ]
+  },
+  "Ivano-Frankivsk Oblast": {
+    "Ivano-Frankivsk Ragion": [
+      { "city": "Ivano-Frankivsk", "abriviatur": "Ivano-Frankivsk" },
+      { "city": "Bohorodchany", "abriviatur": "Bohorodchany" },
+      { "city": "Kalush", "abriviatur": "Kalush" }
+    ],
+    "Kolomyia Ragion": [
+      { "city": "Kolomyia", "abriviatur": "Kolomyia" },
+      { "city": "Sniatyn", "abriviatur": "Sniatyn" },
+      { "city": "Pechenizhyn", "abriviatur": "Pechenizhyn" }
+    ]
+  },
+  "Kirovohrad Oblast": {
+    "Kropyvnytskyi Ragion": [
+      { "city": "Kropyvnytskyi", "abriviatur": "Kropyvnytskyi" },
+      { "city": "Oleksandriia", "abriviatur": "Oleksandriia" },
+      { "city": "Svitlovodsk", "abriviatur": "Svitlovodsk" }
+    ],
+    "Malovyskivskyi Ragion": [
+      { "city": "Mala Vyska", "abriviatur": "Mala Vyska" },
+      { "city": "Novomyrhorod", "abriviatur": "Novomyrhorod" }
+    ]
+  },
+  "Luhansk Oblast": {
+    "Sievierodonetsk Ragion": [
+      { "city": "Sievierodonetsk", "abriviatur": "Sievierodonetsk" },
+      { "city": "Lysychansk", "abriviatur": "Lysychansk" },
+      { "city": "Rubizhne", "abriviatur": "Rubizhne" }
+    ],
+    "Starobilsk Ragion": [
+      { "city": "Starobilsk", "abriviatur": "Starobilsk" },
+      { "city": "Bilovodsk", "abriviatur": "Bilovodsk" },
+      { "city": "Svatove", "abriviatur": "Svatove" }
+    ]
+  },
+  "Mykolaiv Oblast": {
+    "Mykolaiv Ragion": [
+      { "city": "Mykolaiv", "abriviatur": "Mykolaiv" },
+      { "city": "Voznesensk", "abriviatur": "Voznesensk" },
+      { "city": "Ochakiv", "abriviatur": "Ochakiv" }
+    ],
+    "Kryvoozerskyi Ragion": [
+      { "city": "Kryve Ozero", "abriviatur": "Kryve Ozero" },
+      { "city": "Novyi Buh", "abriviatur": "Novyi Buh" }
+    ]
+  },
+  "Odesa Oblast": {
+    "Odesa Ragion": [
+      { "city": "Odesa", "abriviatur": "Odesa" },
+      { "city": "Chornomorsk", "abriviatur": "Chornomorsk" },
+      { "city": "Illichivsk", "abriviatur": "Illichivsk" }
+    ],
+    "Bilhorod-Dnistrovskyi Ragion": [
+      {
+        "city": "Bilhorod-Dnistrovskyi",
+        "abriviatur": "Bilhorod-Dnistrovskyi"
+      },
+      { "city": "Saratska", "abriviatur": "Saratska" },
+      { "city": "Tatarbunary", "abriviatur": "Tatarbunary" }
+    ]
+  },
+  "Poltava Oblast": {
+    "Poltava Ragion": [
+      { "city": "Poltava", "abriviatur": "Poltava" },
+      { "city": "Kremenchuk", "abriviatur": "Kremenchuk" },
+      { "city": "Lubny", "abriviatur": "Lubny" }
+    ],
+    "Kremenchuk Ragion": [
+      { "city": "Hradizk", "abriviatur": "Hradizk" },
+      { "city": "Myrhorod", "abriviatur": "Myrhorod" },
+      { "city": "Khorol", "abriviatur": "Khorol" }
+    ]
+  },
+  "Rivne Oblast": {
+    "Rivne Ragion": [
+      { "city": "Rivne", "abriviatur": "Rivne" },
+      { "city": "Klevan", "abriviatur": "Klevan" },
+      { "city": "Mlyniv", "abriviatur": "Mlyniv" }
+    ],
+    "Dubno Ragion": [
+      { "city": "Dubno", "abriviatur": "Dubno" },
+      { "city": "Radyvyliv", "abriviatur": "Radyvyliv" }
+    ]
+  },
+  "Sumy Oblast": {
+    "Sumy Ragion": [
+      { "city": "Sumy", "abriviatur": "Sumy" },
+      { "city": "Konotop", "abriviatur": "Konotop" },
+      { "city": "Shostka", "abriviatur": "Shostka" }
+    ],
+    "Hlukhiv Ragion": [
+      { "city": "Hlukhiv", "abriviatur": "Hlukhiv" },
+      { "city": "Velyka Pysarivka", "abriviatur": "Velyka Pysarivka" }
+    ]
+  },
+  "Ternopil Oblast": {
+    "Ternopil Ragion": [
+      { "city": "Ternopil", "abriviatur": "Ternopil" },
+      { "city": "Zbarazh", "abriviatur": "Zbarazh" },
+      { "city": "Berezhany", "abriviatur": "Berezhany" }
+    ],
+    "Chortkiv Ragion": [
+      { "city": "Chortkiv", "abriviatur": "Chortkiv" },
+      { "city": "Buchach", "abriviatur": "Buchach" }
+    ]
+  },
+  "Kharkiv Oblast": {
+    "Kharkiv Ragion": [
+      { "city": "Kharkiv", "abriviatur": "Kharkiv" },
+      { "city": "Lozova", "abriviatur": "Lozova" },
+      { "city": "Izium", "abriviatur": "Izium" }
+    ],
+    "Chuhuiv Ragion": [
+      { "city": "Chuhuiv", "abriviatur": "Chuhuiv" },
+      { "city": "Kupiansk", "abriviatur": "Kupiansk" }
+    ]
+  },
+  "Kherson Oblast": {
+    "Kherson Ragion": [
+      { "city": "Kherson", "abriviatur": "Kherson" },
+      { "city": "Nova Kakhovka", "abriviatur": "Nova Kakhovka" },
+      { "city": "Kakhovka", "abriviatur": "Kakhovka" }
+    ],
+    "Kakhovka Ragion": [
+      { "city": "Henichesk", "abriviatur": "Henichesk" },
+      { "city": "Skadovsk", "abriviatur": "Skadovsk" }
+    ]
+  },
+  "Khmelnytskyi Oblast": {
+    "Khmelnytskyi Ragion": [
+      { "city": "Khmelnytskyi", "abriviatur": "Khmelnytskyi" },
+      { "city": "Shepetivka", "abriviatur": "Shepetivka" },
+      { "city": "Netishyn", "abriviatur": "Netishyn" }
+    ],
+    "Kamianets-Podilskyi Ragion": [
+      { "city": "Kamianets-Podilskyi", "abriviatur": "Kamianets-Podilskyi" },
+      { "city": "Dunaivtsi", "abriviatur": "Dunaivtsi" }
+    ]
+  },
+  "Cherkasy Oblast": {
+    "Cherkasy Ragion": [
+      { "city": "Cherkasy", "abriviatur": "Cherkasy" },
+      { "city": "Zolotonosha", "abriviatur": "Zolotonosha" },
+      { "city": "Uman", "abriviatur": "Uman" }
+    ],
+    "Kaniv Ragion": [
+      { "city": "Kaniv", "abriviatur": "Kaniv" },
+      { "city": "Smila", "abriviatur": "Smila" }
+    ]
+  },
+  "Chernivtsi Oblast": {
+    "Chernivtsi Ragion": [
+      { "city": "Chernivtsi", "abriviatur": "Chernivtsi" },
+      { "city": "Novodnistrovsk", "abriviatur": "Novodnistrovsk" }
+    ],
+    "Khotyn Ragion": [
+      { "city": "Khotyn", "abriviatur": "Khotyn" },
+      { "city": "Kelmentsi", "abriviatur": "Kelmentsi" }
+    ]
+  },
+  "Chernihiv Oblast": {
+    "Chernihiv Ragion": [
+      { "city": "Chernihiv", "abriviatur": "Chernihiv" },
+      { "city": "Nizhyn", "abriviatur": "Nizhyn" },
+      { "city": "Pryluky", "abriviatur": "Pryluky" }
+    ],
+    "Bakhmach Ragion": [
+      { "city": "Bakhmach", "abriviatur": "Bakhmach" },
+      { "city": "Mena", "abriviatur": "Mena" }
+    ]
+  },
+  "Donetsk Oblast": {
+    "Donetsk Ragion": [
+      { "city": "Donetsk", "abriviatur": "Donetsk" },
+      { "city": "Avdiivka", "abriviatur": "Avdiivka" },
+      { "city": "Marinka", "abriviatur": "Marinka" }
+    ],
+    "Mariupol Ragion": [
+      { "city": "Mariupol", "abriviatur": "Mariupol" },
+      { "city": "Volnovakha", "abriviatur": "Volnovakha" },
+      { "city": "Mangush", "abriviatur": "Mangush" }
+    ]
+  }
+}

@@ -1,19 +1,32 @@
 import locIco from '../../../../../../assets/icons/ApartSearchIco/locatio.png';
 import arrRight from '../../../../../../assets/icons/SliderIco/arrow_right.png';
-import { useEffect, useRef, useState } from 'react';
-import regions from '../../../../../../api/regions.json';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import regionsUA from '../../../../../../api/Regions/regions-UA.json';
+import regionsENG from '../../../../../../api/Regions/regions-ENG.json';
+import i18n from 'i18next';
 import styles from './SearchLocation.module.scss';
 
 type SearchLocationProps = {
   location: string | null;
   setLocation: (value: string | null) => void;
+  setSelectCity: (value: string | null) => void;
 };
-type RegionEntry = [string, { [district: string]: string[] }];
-type FilteredRegions = { city: string; district: string; region: string }[];
+
+type RegionEntry = [
+  string,
+  { [district: string]: { city: string; abriviatur: string }[] },
+];
+type FilteredCities = {
+  city: string;
+  abriviatur: string;
+  district: string;
+  region: string;
+}[];
 
 export const SearchLocation: React.FC<SearchLocationProps> = ({
   location,
   setLocation,
+  setSelectCity,
 }) => {
   const [query, setQuery] = useState('');
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -23,11 +36,19 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
   );
   const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
 
-  const regionsList = Object.entries(regions) as RegionEntry[];
+  const regionsList = useMemo(() => {
+    return Object.entries(
+      i18n.language === 'ENG'
+        ? regionsENG
+        : i18n.language === 'UA'
+          ? regionsUA
+          : regionsENG,
+    ) as RegionEntry[];
+  }, [i18n.language]);
 
   const [filteredRegions, setFilteredRegions] =
     useState<RegionEntry[]>(regionsList);
-  const [filteredCities, setFilteredCities] = useState<FilteredRegions>([]);
+  const [filteredCities, setFilteredCities] = useState<FilteredCities>([]);
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
 
@@ -40,9 +61,16 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
     setSelectedDistrict(district);
   };
 
-  const selectCity = (city: string) => {
-    setQuery(`${city}, ${selectedDistrict}, ${selectedRegion?.[0]}`);
-    setLocation(`${city}, ${selectedDistrict}, ${selectedRegion?.[0]}`);
+  const selectCity = (city: { city: string; abriviatur: string }) => {
+    if (!selectedRegion || !selectedDistrict) {
+      return;
+    }
+
+    const fullLocation = `${city.city}, ${selectedDistrict}, ${selectedRegion[0]}`;
+
+    setQuery(fullLocation);
+    setLocation(fullLocation);
+    setSelectCity(city.abriviatur);
     setDropdownOpen(false);
     setSelectedRegion(null);
     setSelectedDistrict(null);
@@ -79,14 +107,15 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
       regionName.toLowerCase().includes(q),
     );
 
-    const cities: { city: string; district: string; region: string }[] = [];
+    const cities: FilteredCities = [];
 
     regionsList.forEach(([regionName, districts]) => {
       Object.entries(districts).forEach(([districtName, citiesList]) => {
-        citiesList.forEach(city => {
-          if (city.toLowerCase().includes(q)) {
+        citiesList.forEach((cityObj) => {
+          if (cityObj.city.toLowerCase().includes(q)) {
             cities.push({
-              city,
+              city: cityObj.city,
+              abriviatur: cityObj.abriviatur,
               district: districtName,
               region: regionName,
             });
@@ -117,7 +146,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
           className={styles.location__input}
           placeholder="Enter a region, city"
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setDropdownOpen(true)}
         />
       </div>
@@ -126,13 +155,11 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
         <>
           {query && filteredCities.length > 0 && (
             <ul className={styles.cities_list}>
-              {filteredCities.map(item => (
+              {filteredCities.map((item) => (
                 <li
                   key={`${item.city}-${item.district}`}
                   className={styles.city_item}
-                  onClick={() =>
-                    setQuery(`${item.city}, ${item.district}, ${item.region}`)
-                  }
+                  onClick={() => selectCity(item)}
                 >
                   {`${item.city}, ${item.district}, ${item.region}`}
                   <img src={arrRight} alt="arrow right" />
@@ -143,7 +170,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
 
           {query === '' && !selectedRegion && (
             <ul className={styles.regions_list}>
-              {filteredRegions.map(region => (
+              {filteredRegions.map((region) => (
                 <li
                   key={region[0]}
                   className={styles.region_item}
@@ -187,13 +214,13 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
                 {'< назад'}
               </li>
 
-              {selectedRegion[1][selectedDistrict].map(city => (
+              {selectedRegion[1][selectedDistrict].map(cityObj => (
                 <li
-                  key={city}
+                  key={cityObj.abriviatur}
                   className={styles.city_item}
-                  onClick={() => selectCity(city)}
+                  onClick={() => selectCity(cityObj)}
                 >
-                  {city}
+                  {cityObj.city}
                 </li>
               ))}
             </ul>

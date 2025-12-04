@@ -1,11 +1,13 @@
-import searchIcon from '../../../../assets/icons/ApartSearchIco/search.png';
-import styles from './ApartmentSearch.module.scss';
+import { useState } from 'react';
 import { SearchLocation } from './components/SearchLocation';
 import { SearchDateInCalendar } from './components/SearchDateInCalendar';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import searchIcon from '../../../../assets/icons/ApartSearchIco/search.png';
+import styles from './ApartmentSearch.module.scss';
 
 export const ApartmentSearch = () => {
   const [location, setLocation] = useState<string | null>(null);
+  const [selectCity, setSelectCity] = useState<string | null>(null);
   const [reservation, setReservation] = useState<{
     checkIn: Date | null;
     checkOut: Date | null;
@@ -13,6 +15,8 @@ export const ApartmentSearch = () => {
     checkIn: null,
     checkOut: null,
   });
+
+  const navigate = useNavigate();
 
   const clearForm = () => {
     setLocation(null);
@@ -23,6 +27,17 @@ export const ApartmentSearch = () => {
   };
 
   const handleSearch = () => {
+    if (!location || !reservation.checkIn || !reservation.checkOut) {
+      return;
+    }
+
+    const params = new URLSearchParams({
+      city: selectCity ?? '',
+      MOVE_IN: reservation.checkIn.toISOString().split('T')[0],
+      MOVE_OUT: reservation.checkOut.toISOString().split('T')[0],
+    });
+
+    navigate(`/apartments?${params.toString()}`);
     clearForm();
   };
 
@@ -33,7 +48,11 @@ export const ApartmentSearch = () => {
         Rent without the commission
       </p>
       <div className={styles.apartment_search__inputContainer}>
-        <SearchLocation location={location} setLocation={setLocation} />
+        <SearchLocation
+          location={location}
+          setLocation={setLocation}
+          setSelectCity={setSelectCity}
+        />
         <SearchDateInCalendar
           reservation={reservation}
           setReservation={setReservation}

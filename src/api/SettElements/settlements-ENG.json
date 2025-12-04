@@ -1,0 +1,282 @@
+[
+  {
+    "name": "Vyshneve",
+    "district": "Bucha Raion",
+    "region": "Kyiv Oblast"
+  },
+  {
+    "name": "Irpin",
+    "district": "Bucha Raion",
+    "region": "Kyiv Oblast"
+  },
+  {
+    "name": "Bucha",
+    "district": "Bucha Raion",
+    "region": "Kyiv Oblast"
+  },
+  {
+    "name": "Bila Tserkva",
+    "district": "Bila Tserkva Raion",
+    "region": "Kyiv Oblast"
+  },
+  {
+    "name": "Tetiyiv",
+    "district": "Bila Tserkva Raion",
+    "region": "Kyiv Oblast"
+  },
+  {
+    "name": "Lviv",
+    "district": "Lviv Raion",
+    "region": "Lviv Oblast"
+  },
+  {
+    "name": "Vynnyky",
+    "district": "Lviv Raion",
+    "region": "Lviv Oblast"
+  },
+  {
+    "name": "Bryukhovychi",
+    "district": "Lviv Raion",
+    "region": "Lviv Oblast"
+  },
+  {
+    "name": "Drohobych",
+    "district": "Drohobych Raion",
+    "region": "Lviv Oblast"
+  },
+  {
+    "name": "Truskavets",
+    "district": "Drohobych Raion",
+    "region": "Lviv Oblast"
+  },
+  {
+    "name": "Boryslav",
+    "district": "Drohobych Raion",
+    "region": "Lviv Oblast"
+  },
+  {
+    "name": "Odesa",
+    "district": "Odesa Raion",
+    "region": "Odesa Oblast"
+  },
+  {
+    "name": "Chornomorsk",
+    "district": "Odesa Raion",
+    "region": "Odesa Oblast"
+  },
+  {
+    "name": "Illichivsk",
+    "district": "Odesa Raion",
+    "region": "Odesa Oblast"
+  },
+  {
+    "name": "Bilhorod-Dnistrovskyi",
+    "district": "Bilhorod-Dnistrovskyi Raion",
+    "region": "Odesa Oblast"
+  },
+  {
+    "name": "Saratska",
+    "district": "Bilhorod-Dnistrovskyi Raion",
+    "region": "Odesa Oblast"
+  },
+  {
+    "name": "Vinnytsia",
+    "district": "Vinnytsia Raion",
+    "region": "Vinnytsia Oblast"
+  },
+  {
+    "name": "Stryzhavka",
+    "district": "Vinnytsia Raion",
+    "region": "Vinnytsia Oblast"
+  },
+  {
+    "name": "Ahronomichne",
+    "district": "Vinnytsia Raion",
+    "region": "Vinnytsia Oblast"
+  },
+  {
+    "name": "Haisyn",
+    "district": "Haisyn Raion",
+    "region": "Vinnytsia Oblast"
+  },
+  {
+    "name": "Ladyzhyn",
+    "district": "Haisyn Raion",
+    "region": "Vinnytsia Oblast"
+  },
+  {
+    "name": "Lutsk",
+    "district": "Lutsk Raion",
+    "region": "Volyn Oblast"
+  },
+  {
+    "name": "Rokyni",
+    "district": "Lutsk Raion",
+    "region": "Volyn Oblast"
+  },
+  {
+    "name": "Horodok",
+    "district": "Lutsk Raion",
+    "region": "Volyn Oblast"
+  },
+  {
+    "name": "Kovel",
+    "district": "Kovel Raion",
+    "region": "Volyn Oblast"
+  },
+  {
+    "name": "Lyublynets",
+    "district": "Kovel Raion",
+    "region": "Volyn Oblast"
+  },
+  {
+    "name": "Dnipro",
+    "district": "Dnipro Raion",
+    "region": "Dnipropetrovsk Oblast"
+  },
+  {
+    "name": "Pidhodne",
+    "district": "Dnipro Raion",
+    "region": "Dnipropetrovsk Oblast"
+  },
+  {
+    "name": "Slobozhanske",
+    "district": "Dnipro Raion",
+    "region": "Dnipropetrovsk Oblast"
+  },
+  {
+    "name": "Kryvyi Rih",
+    "district": "Kryvyi Rih Raion",
+    "region": "Dnipropetrovsk Oblast"
+  },
+  {
+    "name": "Apostolove",
+    "district": "Kryvyi Rih Raion",
+    "region": "Dnipropetrovsk Oblast"
+  },
+  {
+    "name": "Inhulets",
+    "district": "Kryvyi Rih Raion",
+    "region": "Dnipropetrovsk Oblast"
+  },
+  {
+    "name": "Zhytomyr",
+    "district": "Zhytomyr Raion",
+    "region": "Zhytomyr Oblast"
+  },
+  {
+    "name": "Novograd-Volynskyi",
+    "district": "Zhytomyr Raion",
+    "region": "Zhytomyr Oblast"
+  },
+  {
+    "name": "Radomyshl",
+    "district": "Zhytomyr Raion",
+    "region": "Zhytomyr Oblast"
+  },
+  {
+    "name": "Korosten",
+    "district": "Korosten Raion",
+    "region": "Zhytomyr Oblast"
+  },
+  {
+    "name": "Ovruch",
+    "district": "Korosten Raion",
+    "region": "Zhytomyr Oblast"
+  },
+  {
+    "name": "Berdychiv",
+    "district": "Korosten Raion",
+    "region": "Zhytomyr Oblast"
+  },
+  {
+    "name": "Uzhhorod",
+    "district": "Uzhhorod Raion",
+    "region": "Zakarpattia Oblast"
+  },
+  {
+    "name": "Chop",
+    "district": "Uzhhorod Raion",
+    "region": "Zakarpattia Oblast"
+  },
+  {
+    "name": "Perechyn",
+    "district": "Uzhhorod Raion",
+    "region": "Zakarpattia Oblast"
+  },
+  {
+    "name": "Mukachevo",
+    "district": "Mukachevo Raion",
+    "region": "Zakarpattia Oblast"
+  },
+  {
+    "name": "Vynohradiv",
+    "district": "Mukachevo Raion",
+    "region": "Zakarpattia Oblast"
+  },
+  {
+    "name": "Irshava",
+    "district": "Mukachevo Raion",
+    "region": "Zakarpattia Oblast"
+  },
+  {
+    "name": "Zaporizhzhia",
+    "district": "Zaporizhzhia Raion",
+    "region": "Zaporizhzhia Oblast"
+  },
+  {
+    "name": "Orikhiv",
+    "district": "Zaporizhzhia Raion",
+    "region": "Zaporizhzhia Oblast"
+  },
+  {
+    "name": "Tokmak",
+    "district": "Zaporizhzhia Raion",
+    "region": "Zaporizhzhia Oblast"
+  },
+  {
+    "name": "Melitopol",
+    "district": "Melitopol Raion",
+    "region": "Zaporizhzhia Oblast"
+  },
+  {
+    "name": "Yakymivka",
+    "district": "Melitopol Raion",
+    "region": "Zaporizhzhia Oblast"
+  },
+  {
+    "name": "Bilmak",
+    "district": "Melitopol Raion",
+    "region": "Zaporizhzhia Oblast"
+  },
+  {
+    "name": "Ivano-Frankivsk",
+    "district": "Ivano-Frankivsk Raion",
+    "region": "Ivano-Frankivsk Oblast"
+  },
+  {
+    "name": "Bohorodchany",
+    "district": "Ivano-Frankivsk Raion",
+    "region": "Ivano-Frankivsk Oblast"
+  },
+  {
+    "name": "Kalush",
+    "district": "Ivano-Frankivsk Raion",
+    "region": "Ivano-Frankivsk Oblast"
+  },
+  {
+    "name": "Kolomyia",
+    "district": "Kolomyia Raion",
+    "region": "Ivano-Frankivsk Oblast"
+  },
+  {
+    "name": "Sniatyn",
+    "district": "Kolomyia Raion",
+    "region": "Ivano-Frankivsk Oblast"
+  },
+  {
+    "name": "Pechenizhyn",
+    "district": "Kolomyia Raion",
+    "region": "Ivano-Frankivsk Oblast"
+  }
+]
