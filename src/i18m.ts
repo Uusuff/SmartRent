@@ -11,6 +11,10 @@ const resources = {
         dropdownCurrency: 'Currency',
       },
 
+      omePage: {
+        regions: 'RE',
+      },
+
       footer: {
         footer_top_social_media: {
           subtitle: 'Your trusted partner',

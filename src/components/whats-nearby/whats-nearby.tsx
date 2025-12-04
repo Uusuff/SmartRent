@@ -9,86 +9,37 @@ import styles from './whats-nearby.module.scss';
 import { useTranslation } from 'react-i18next';
 import { MultiLangText } from '../../types/Apartment';
 
-const shopIcon = new URL(
-  '../../assets/icons/mapIcons/shops.svg',
-  import.meta.url,
-).href;
-const shopIconActive = new URL(
-  '../../assets/icons/mapIcons/shops-active.svg',
-  import.meta.url,
-).href;
-const restaurantIcon = new URL(
-  '../../assets/icons/mapIcons/restaurants.svg',
-  import.meta.url,
-).href;
-const restaurantIconActive = new URL(
-  '../../assets/icons/mapIcons/restaurants-active.svg',
-  import.meta.url,
-).href;
-const gymIcon = new URL('../../assets/icons/mapIcons/gym.svg', import.meta.url)
-  .href;
-const gymIconActive = new URL(
-  '../../assets/icons/mapIcons/gym-active.svg',
-  import.meta.url,
-).href;
-const supermarketIcon = new URL(
-  '../../assets/icons/mapIcons/supermarkets.svg',
-  import.meta.url,
-).href;
-const supermarketIconActive = new URL(
-  '../../assets/icons/mapIcons/supermarkets-active.svg',
-  import.meta.url,
-).href;
-const transportIcon = new URL(
-  '../../assets/icons/mapIcons/transport.svg',
-  import.meta.url,
-).href;
-const transportIconActive = new URL(
-  '../../assets/icons/mapIcons/transport-active.svg',
-  import.meta.url,
-).href;
-const schoolIcon = new URL(
-  '../../assets/icons/mapIcons/school.svg',
-  import.meta.url,
-).href;
-const schoolIconActive = new URL(
-  '../../assets/icons/mapIcons/school-active.svg',
-  import.meta.url,
-).href;
-const barIcon = new URL('../../assets/icons/mapIcons/bars.svg', import.meta.url)
-  .href;
-const barIconActive = new URL(
-  '../../assets/icons/mapIcons/bars-active.svg',
-  import.meta.url,
-).href;
-const hospitalIcon = new URL(
-  '../../assets/icons/mapIcons/hospital.svg',
-  import.meta.url,
-).href;
-const hospitalIconActive = new URL(
-  '../../assets/icons/mapIcons/hospital-active.svg',
-  import.meta.url,
-).href;
-const parkIcon = new URL(
-  '../../assets/icons/mapIcons/parks.svg',
-  import.meta.url,
-).href;
-const parkIconActive = new URL(
-  '../../assets/icons/mapIcons/parks-active.svg',
-  import.meta.url,
-).href;
-const parkingIcon = new URL(
-  '../../assets/icons/mapIcons/parking-lots.svg',
-  import.meta.url,
-).href;
-const parkingIconActive = new URL(
-  '../../assets/icons/mapIcons/parking-lots-active.svg',
-  import.meta.url,
-).href;
-const homeIcon = new URL(
-  '../../assets/icons/mapIcons/home.svg',
-  import.meta.url,
-).href;
+import shopIcon from '../../assets/icons/mapIcons/shops.svg';
+import shopIconActive from '../../assets/icons/mapIcons/shops-active.svg';
+
+import restaurantIcon from '../../assets/icons/mapIcons/restaurants.svg';
+import restaurantIconActive from '../../assets/icons/mapIcons/restaurants-active.svg';
+
+import gymIcon from '../../assets/icons/mapIcons/gym.svg';
+import gymIconActive from '../../assets/icons/mapIcons/gym-active.svg';
+
+import supermarketIcon from '../../assets/icons/mapIcons/supermarkets.svg';
+import supermarketIconActive from '../../assets/icons/mapIcons/supermarkets-active.svg';
+
+import transportIcon from '../../assets/icons/mapIcons/transport.svg';
+import transportIconActive from '../../assets/icons/mapIcons/transport-active.svg';
+
+import schoolIcon from '../../assets/icons/mapIcons/school.svg';
+import schoolIconActive from '../../assets/icons/mapIcons/school-active.svg';
+
+import barIcon from '../../assets/icons/mapIcons/bars.svg';
+import barIconActive from '../../assets/icons/mapIcons/bars-active.svg';
+
+import hospitalIcon from '../../assets/icons/mapIcons/hospital.svg';
+import hospitalIconActive from '../../assets/icons/mapIcons/hospital-active.svg';
+
+import parkIcon from '../../assets/icons/mapIcons/parks.svg';
+import parkIconActive from '../../assets/icons/mapIcons/parks-active.svg';
+
+import parkingIcon from '../../assets/icons/mapIcons/parking-lots.svg';
+import parkingIconActive from '../../assets/icons/mapIcons/parking-lots-active.svg';
+
+import homeIcon from '../../assets/icons/mapIcons/home.svg';
 
 export type POI = {
   id: number;
@@ -255,20 +206,19 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     activeIconUrl: string,
     isActive = false,
   ) => {
+
     return L.divIcon({
       className: '',
-      html: `<div style="
+      html: `
+      <div style="
         width: 40px;
         height: 40px;
-        background-image: url(${isActive ? activeIconUrl : iconUrl});
-        background-size: 16px 16px;
-        background-repeat: no-repeat;
-        background-position: center;
         background-color: ${isActive ? '#165A43' : '#EDF2F1'};
         border-radius: 50%;
         border: 1px solid #165A43;
         cursor: pointer;
-      "></div>`,
+      "><img src="${isActive ? activeIconUrl : iconUrl}" style="width: 16px; height: 16px; margin: 12px;" /></div>
+    `,
       iconSize: [40, 40],
       iconAnchor: [20, 40],
       popupAnchor: [0, -40],
@@ -504,7 +454,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
   }, [apartmentLat, apartmentLng, radius, apartmentAddress, currentLang, t]);
 
   const handleExpand = () => {
-    setIsExpanded(prev => !prev);
+    setIsExpanded((prev) => !prev);
   };
 
   const ResizeMap = ({ expanded }: { expanded: boolean }) => {
@@ -541,14 +491,14 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
         {t('apartment_page.whatsNearby.title')}
       </h3>
       <div className={styles.whatsNearby__filters}>
-        {filters.map(category => (
+        {filters.map((category) => (
           <button
             key={category.type}
             className={`${styles.whatsNearby__filterButton} ${activeCategories.includes(category.type) ? styles['whatsNearby__filterButton--active'] : ''}`}
             onClick={() => {
-              setActiveCategories(prev => {
+              setActiveCategories((prev) => {
                 if (prev.includes(category.type)) {
-                  return prev.filter(c => c !== category.type);
+                  return prev.filter((c) => c !== category.type);
                 } else {
                   return [...prev, category.type];
                 }
@@ -575,15 +525,15 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
             {pois
-              .filter(poi => activeCategories.includes(poi.type))
-              .map(poi => {
+              .filter((poi) => activeCategories.includes(poi.type))
+              .map((poi) => {
                 const distance = getWalkingMinutes(
                   apartmentLat,
                   apartmentLng,
                   poi.lat,
                   poi.lng,
                 );
-                const filter = filters.find(f => f.type === poi.type);
+                const filter = filters.find((f) => f.type === poi.type);
 
                 return (
                   <Marker
@@ -596,7 +546,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
                     )}
                     eventHandlers={{
                       click: () => {
-                        setActivePoiId(prev =>
+                        setActivePoiId((prev) =>
                           prev === poi.id ? null : poi.id,
                         );
                       },
