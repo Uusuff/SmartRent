@@ -23,14 +23,13 @@ const restaurantIcon = new URL(
   import.meta.url,
 ).href;
 const restaurantIconActive = new URL(
-  '/assets/icons/mapIcons/restaurants-active.svg',
+  'assets/icons/mapIcons/restaurants-active.svg',
   import.meta.url,
 ).href;
 
-const gymIcon = new URL('../../assets/icons/mapIcons/gym.svg', import.meta.url)
-  .href;
+const gymIcon = new URL('assets/icons/mapIcons/gym.svg', import.meta.url).href;
 const gymIconActive = new URL(
-  '../../assets/icons/mapIcons/gym-active.svg',
+  'assets/icons/mapIcons/gym-active.svg',
   import.meta.url,
 ).href;
 
