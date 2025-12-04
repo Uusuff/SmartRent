@@ -9,12 +9,10 @@ import styles from './whats-nearby.module.scss';
 import { useTranslation } from 'react-i18next';
 import { MultiLangText } from '../../types/Apartment';
 
-const shopIcon = new URL(
-  '../../assets/icons/mapIcons/shops.svg',
-  import.meta.url,
-).href;
+const shopIcon = new URL('src/assets/icons/mapIcons/shops.svg', import.meta.url)
+  .href;
 const shopIconActive = new URL(
-  '../../assets/icons/mapIcons/shops-active.svg',
+  'src/assets/icons/mapIcons/shops-active.svg',
   import.meta.url,
 ).href;
 
@@ -35,7 +33,7 @@ const gymIconActive = new URL(
 ).href;
 
 const supermarketIcon = new URL(
-  '../../assets/icons/mapIcons/supermarkets.svg',
+  'src/assets/icons/mapIcons/supermarkets.svg',
   import.meta.url,
 ).href;
 const supermarketIconActive = new URL(
