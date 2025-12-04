@@ -19,11 +19,11 @@ const shopIconActive = new URL(
 ).href;
 
 const restaurantIcon = new URL(
-  '../../assets/icons/mapIcons/restaurants.svg',
+  'assets/icons/mapIcons/restaurants.svg',
   import.meta.url,
 ).href;
 const restaurantIconActive = new URL(
-  '../../assets/icons/mapIcons/restaurants-active.svg',
+  '/assets/icons/mapIcons/restaurants-active.svg',
   import.meta.url,
 ).href;
 
