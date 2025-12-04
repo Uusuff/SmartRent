@@ -1,0 +1,30 @@
+@use '../../shared/mixins/mixins.scss' as *;
+
+.notFound{
+  flex: 1;
+
+  &__content{
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  &__title{
+    font-size: 40px;
+    text-align: center;
+  }
+
+  &__photo{
+    margin-inline: auto;
+    padding-left: 20px;
+    width: 600px;
+    height: 400px;
+  }
+
+  &__link{
+    @include link-styles;
+
+    margin-top: 10px;
+    text-decoration: none;
+  }
+}

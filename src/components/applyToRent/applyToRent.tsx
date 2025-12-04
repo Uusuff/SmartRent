@@ -104,7 +104,7 @@ export const ApplyToRent: React.FC<Props> = ({ apartment }) => {
 
           <Dropdown
             options={[]}
-            value={moveIn || 'Choose date'}
+            value={moveIn || t('apartment_page.applyToRent.date')}
             isAllFilters={false}
             isCalendar={true}
             moveIn={moveIn}
@@ -128,7 +128,7 @@ export const ApplyToRent: React.FC<Props> = ({ apartment }) => {
 
           <Dropdown
             options={[]}
-            value={moveOut || 'Choose date'}
+            value={moveOut || t('apartment_page.applyToRent.date')}
             isAllFilters={false}
             isCalendar={true}
             moveIn={moveIn}

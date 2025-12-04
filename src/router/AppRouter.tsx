@@ -4,6 +4,7 @@ import { HomePage } from '../pages/HomePage';
 import { CatalogPage } from '../pages/HomePage/CatalogPage/CatalogPage';
 import { Favorites } from '../pages/HomePage/Favorites/Favorites';
 import { ApartmentPage } from '../pages/HomePage/ApartmentPage/ApartmentPage';
+import { NotFound } from '../pages/notFoundPage/notFoundPage';
 
 export const router = createHashRouter([
   {
@@ -14,14 +15,7 @@ export const router = createHashRouter([
       { path: 'apartments', element: <CatalogPage /> },
       { path: 'favorites', element: <Favorites /> },
       { path: 'apartment/:id', element: <ApartmentPage /> },
-      // { path: 'phones', element: <PhonesPage /> },
-      // { path: 'phones/:id', element: <PhonesPage /> },
-      // { path: 'tablets', element: <TabletsPage /> },
-      // { path: 'tablets/:id', element: <TabletsPage /> },
-      // { path: 'accessories', element: <AccessoriesPage /> },
-      // { path: 'accessories/:id', element: <AccessoriesPage /> },
-      // { path: 'favorites', element: <FavoritesPage /> },
-      // { path: '*', element: <NotFoundPage /> },
+      { path: '*', element: <NotFound /> },
     ],
   },
 ]);

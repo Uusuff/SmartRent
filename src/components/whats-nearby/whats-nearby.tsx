@@ -328,13 +328,18 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
         return 'parking';
       }
 
+      const parkTags = [
+        'park',
+        'garden',
+        'nature_reserve',
+        'recreation_ground',
+        'grass',
+        'forest',
+      ];
+
       if (
-        el.tags.leisure === 'park' ||
-        el.tags.leisure === 'garden' ||
-        el.tags.leisure === 'nature_reserve' ||
-        el.tags.landuse === 'forest' ||
-        el.tags.leisure === 'recreation_ground' ||
-        el.tags.leisure === 'grass'
+        (el.tags.leisure && parkTags.includes(el.tags.leisure)) ||
+        (el.tags.landuse && parkTags.includes(el.tags.landuse))
       ) {
         return 'park';
       }
