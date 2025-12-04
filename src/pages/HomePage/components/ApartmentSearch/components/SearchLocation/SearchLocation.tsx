@@ -111,7 +111,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
 
     regionsList.forEach(([regionName, districts]) => {
       Object.entries(districts).forEach(([districtName, citiesList]) => {
-        citiesList.forEach((cityObj) => {
+        citiesList.forEach(cityObj => {
           if (cityObj.city.toLowerCase().includes(q)) {
             cities.push({
               city: cityObj.city,
@@ -146,7 +146,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
           className={styles.location__input}
           placeholder="Enter a region, city"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={e => setQuery(e.target.value)}
           onFocus={() => setDropdownOpen(true)}
         />
       </div>
@@ -155,7 +155,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
         <>
           {query && filteredCities.length > 0 && (
             <ul className={styles.cities_list}>
-              {filteredCities.map((item) => (
+              {filteredCities.map(item => (
                 <li
                   key={`${item.city}-${item.district}`}
                   className={styles.city_item}
@@ -170,7 +170,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
 
           {query === '' && !selectedRegion && (
             <ul className={styles.regions_list}>
-              {filteredRegions.map((region) => (
+              {filteredRegions.map(region => (
                 <li
                   key={region[0]}
                   className={styles.region_item}
