@@ -26,15 +26,12 @@ export const ApartmentsProvider = ({ children }: Props) => {
   const [apartments, setApartments] = useState<Apartment[]>([]);
   const [loading, setLoading] = useState(true);
   const API_URL = `https://smart-rent-backend.vercel.app/apartments`;
-  const lang = 'EN';
 
   const fetchApartments = async () => {
     setLoading(true);
 
     try {
-      const response = await axios.get<Apartment[]>(`${API_URL}`, {
-        params: { lang },
-      });
+      const response = await axios.get<Apartment[]>(`${API_URL}`);
 
       setApartments(response.data);
     } catch (error) {
@@ -47,7 +44,7 @@ export const ApartmentsProvider = ({ children }: Props) => {
 
   useEffect(() => {
     fetchApartments();
-  }, [lang]);
+  }, []);
 
   return (
     <ApartmentsContext.Provider value={{ apartments, loading }}>

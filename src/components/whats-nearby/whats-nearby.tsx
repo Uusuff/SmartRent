@@ -570,7 +570,9 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
               position={[apartmentLat, apartmentLng]}
               icon={getApartmentIcon()}
             >
-              <Popup>{t('apartment_page.whatsNearby.apartment')}</Popup>
+              <Popup className="myCustomPopup">
+                {t('apartment_page.whatsNearby.apartment')}
+              </Popup>
             </Marker>
 
             <button
