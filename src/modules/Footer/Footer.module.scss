@@ -2,6 +2,8 @@
 @use "../../shared/variables/variables.scss" as *;
 
 .footer {
+  margin-top: 80px;
+
   @include container;
 }
 

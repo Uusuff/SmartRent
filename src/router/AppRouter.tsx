@@ -1,9 +1,9 @@
 import { createHashRouter } from 'react-router-dom';
 import { App } from '../App';
 import { HomePage } from '../pages/HomePage';
-import { CatalogPage } from '../pages/HomePage/CatalogPage/CatalogPage';
-import { Favorites } from '../pages/HomePage/Favorites/Favorites';
-import { ApartmentPage } from '../pages/HomePage/ApartmentPage/ApartmentPage';
+import { CatalogPage } from '../pages/CatalogPage/CatalogPage';
+import { Favorites } from '../pages/Favorites/Favorites';
+import { ApartmentPage } from '../pages/ApartmentPage/ApartmentPage';
 
 export const router = createHashRouter([
   {

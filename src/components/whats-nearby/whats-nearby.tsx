@@ -206,7 +206,6 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
     activeIconUrl: string,
     isActive = false,
   ) => {
-
     return L.divIcon({
       className: '',
       html: `
@@ -449,7 +448,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
   }, [apartmentLat, apartmentLng, radius, apartmentAddress, currentLang, t]);
 
   const handleExpand = () => {
-    setIsExpanded((prev) => !prev);
+    setIsExpanded(prev => !prev);
   };
 
   const ResizeMap = ({ expanded }: { expanded: boolean }) => {
@@ -486,14 +485,14 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
         {t('apartment_page.whatsNearby.title')}
       </h3>
       <div className={styles.whatsNearby__filters}>
-        {filters.map((category) => (
+        {filters.map(category => (
           <button
             key={category.type}
             className={`${styles.whatsNearby__filterButton} ${activeCategories.includes(category.type) ? styles['whatsNearby__filterButton--active'] : ''}`}
             onClick={() => {
-              setActiveCategories((prev) => {
+              setActiveCategories(prev => {
                 if (prev.includes(category.type)) {
-                  return prev.filter((c) => c !== category.type);
+                  return prev.filter(c => c !== category.type);
                 } else {
                   return [...prev, category.type];
                 }
@@ -520,15 +519,15 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
             {pois
-              .filter((poi) => activeCategories.includes(poi.type))
-              .map((poi) => {
+              .filter(poi => activeCategories.includes(poi.type))
+              .map(poi => {
                 const distance = getWalkingMinutes(
                   apartmentLat,
                   apartmentLng,
                   poi.lat,
                   poi.lng,
                 );
-                const filter = filters.find((f) => f.type === poi.type);
+                const filter = filters.find(f => f.type === poi.type);
 
                 return (
                   <Marker
@@ -541,7 +540,7 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
                     )}
                     eventHandlers={{
                       click: () => {
-                        setActivePoiId((prev) =>
+                        setActivePoiId(prev =>
                           prev === poi.id ? null : poi.id,
                         );
                       },

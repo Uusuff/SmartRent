@@ -1,12 +1,12 @@
 /* eslint-disable max-len */
 import { useState } from 'react';
-import { ApartmentInfo } from '../../../components/ApartmentInfo/apartmentInfo';
-import { ApartmentSwiper } from '../../../components/apartmentSwiper/apartmentSwiper';
-import { ApplyToRent } from '../../../components/applyToRent/applyToRent';
-import { Loader } from '../../../components/Loader/Loader';
-import { Reviews } from '../../../components/Reviews/Reviews';
-import { WhatsNearby } from '../../../components/whats-nearby/whats-nearby';
-import { useApartments } from '../../../contexts/ApartmentsContext';
+import { ApartmentInfo } from '../../components/ApartmentInfo/apartmentInfo';
+import { ApartmentSwiper } from '../../components/apartmentSwiper/apartmentSwiper';
+import { ApplyToRent } from '../../components/applyToRent/applyToRent';
+import { Loader } from '../../components/Loader/Loader';
+import { Reviews } from '../../components/Reviews/Reviews';
+import { WhatsNearby } from '../../components/whats-nearby/whats-nearby';
+import { useApartments } from '../../contexts/ApartmentsContext';
 import styles from './ApartmentPage.module.scss';
 import { NavLink, useParams } from 'react-router-dom';
 import type { Swiper as SwiperClass } from 'swiper';
@@ -16,7 +16,11 @@ export const ApartmentPage = () => {
   const { t } = useTranslation();
   const { id } = useParams();
   const { apartments, loading } = useApartments();
-  const apartment = id ? apartments.find(x => x.id === Number(id)) : undefined;
+  const apartment = id
+    ? apartments.find((x) => {
+      return x.id === Number(id);
+    })
+    : undefined;
   const [activeIndex, setActiveIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState<SwiperClass | null>(
     null,
@@ -101,7 +105,7 @@ export const ApartmentPage = () => {
               <a
                 href="#map"
                 className={`${styles.apartmentPage__navLink}`}
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
                   const mapElement = document.getElementById('map');
 

@@ -166,7 +166,7 @@ export const CatalogFilter: React.FC<Props> = ({
     },
   ];
 
-  const priceOptions = priceValues.map(p => {
+  const priceOptions = priceValues.map((p) => {
     const { converted, label } = convertPrice(p, 'USD', currency);
 
     return { value: converted, label };
@@ -193,8 +193,8 @@ export const CatalogFilter: React.FC<Props> = ({
           <Dropdown
             options={locations}
             value={cityKey.toLowerCase()}
-            onChange={val => {
-              const selected = locations.find(loc => loc.value === val);
+            onChange={(val) => {
+              const selected = locations.find((loc) => loc.value === val);
 
               if (selected) {
                 setCityKey(selected.value.toString());
@@ -238,7 +238,7 @@ export const CatalogFilter: React.FC<Props> = ({
           <Dropdown
             options={neighborhoods}
             value={neighborhood.toLowerCase()}
-            onChange={val => setNeighborhood(val as string)}
+            onChange={(val) => setNeighborhood(val as string)}
             isAllFilters={false}
             isCalendar={false}
             moveIn={moveIn}
@@ -257,7 +257,7 @@ export const CatalogFilter: React.FC<Props> = ({
           <Dropdown
             options={priceOptions}
             value={currentPriceOption}
-            onChange={val => handlePriceChange(+val)}
+            onChange={(val) => handlePriceChange(+val)}
             isAllFilters={false}
             isCalendar={false}
             moveIn={moveIn}
@@ -275,7 +275,7 @@ export const CatalogFilter: React.FC<Props> = ({
           <Dropdown
             options={propertyTypes}
             value={propertyType.toLowerCase()}
-            onChange={val => setPropertyType(val as string)}
+            onChange={(val) => setPropertyType(val as string)}
             isAllFilters={false}
             isCalendar={false}
             moveIn={moveIn}

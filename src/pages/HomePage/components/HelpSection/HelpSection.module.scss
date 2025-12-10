@@ -1,0 +1,52 @@
+@use "../../../../shared/mixins/mixins" as *;
+@use "../../../../shared/variables/variables" as *;
+
+.helpSection {
+  margin-top: 80px;
+
+  @include container;
+}
+
+.helpSection__title {
+  width: max-content;
+  margin: 0 auto auto;
+  color: rgba(29, 29, 29, 1);
+
+  @include semi-bold-text(44px, 1.2);
+}
+
+.helpSection__list {
+  margin-top: 24px;
+  gap: 16px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.helpSection__link {
+  margin-top: 18px;
+  gap: 8px;
+
+  display: flex;
+  justify-content: center;
+
+  @include standard-text(16px, 1.4);
+}
+
+.helpSection__link span {
+  color: rgba(0, 0, 0, 1);
+}
+
+.helpSection__link a {
+  color: $btn-default-color;
+  border-bottom: 1px solid $btn-default-color;
+  cursor: pointer;
+
+  &:hover {
+    color: $btn-hover-color;
+  }
+
+  &:active {
+    color: $btn-pressed-color;
+  }
+}

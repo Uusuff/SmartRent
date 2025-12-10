@@ -1,0 +1,30 @@
+@use "../../../../../../shared/mixins/mixins" as *;
+@use "../../../../../../shared/variables/variables" as *;
+
+.item {
+  padding: 24px 32px;
+
+  background-color: rgba(237, 242, 241, 1);
+  border-radius: 20px;
+}
+.item__header {
+  justify-content: space-between;
+
+  @include flex-center;
+}
+.item__icon {
+  @include icon-size(24px);
+}
+
+.item__question {
+  color: rgba(29, 29, 29, 1);
+  margin-bottom: 16px;
+
+  @include medium-text(32px, 1.2);
+}
+
+.item__body {
+  color: rgba(52, 58, 64, 1);
+
+  @include standard-text(18px, 1.5);
+}

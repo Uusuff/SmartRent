@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useTranslation } from 'react-i18next';
-import { useFavorites } from '../../../contexts/FavoritesContext';
-import { CatalogList } from '../../../components/CatalogList/CatalogList';
+import { useFavorites } from '../../contexts/FavoritesContext';
+import { CatalogList } from '../../components/CatalogList/CatalogList';
 import styles from './Favorites.module.scss';
 
 export const Favorites = () => {

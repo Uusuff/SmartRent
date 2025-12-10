@@ -5,6 +5,7 @@ import regionsUA from '../../../../../../api/Regions/regions-UA.json';
 import regionsENG from '../../../../../../api/Regions/regions-ENG.json';
 import i18n from 'i18next';
 import styles from './SearchLocation.module.scss';
+import { locations } from '../../../../../../api/Locations/locations';
 
 type SearchLocationProps = {
   location: string | null;
@@ -51,6 +52,8 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
   const [filteredCities, setFilteredCities] = useState<FilteredCities>([]);
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
+
+  const existingLocations = locations;
 
   const openRegion = (region: RegionEntry) => {
     setSelectedRegion(region);
@@ -192,7 +195,7 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
                 {'< назад'}
               </li>
 
-              {Object.keys(selectedRegion[1]).map(district => (
+              {Object.keys(selectedRegion[1]).map((district) => (
                 <li
                   key={district}
                   className={styles.city_item}
@@ -214,10 +217,14 @@ export const SearchLocation: React.FC<SearchLocationProps> = ({
                 {'< назад'}
               </li>
 
-              {selectedRegion[1][selectedDistrict].map(cityObj => (
+              {selectedRegion[1][selectedDistrict].map((cityObj) => (
                 <li
                   key={cityObj.abriviatur}
-                  className={styles.city_item}
+                  className={
+                    existingLocations.includes(cityObj.abriviatur.toLowerCase())
+                      ? styles.city_item
+                      : `${styles.city_item} ${styles.disabled}`
+                  }
                   onClick={() => selectCity(cityObj)}
                 >
                   {cityObj.city}

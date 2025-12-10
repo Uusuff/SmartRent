@@ -1,0 +1,42 @@
+@use "../../../../shared/variables/variables.scss" as *;
+@use "../../../../shared/mixins/mixins.scss" as *;
+
+.become_a_landlord {
+  margin-top: 80px;
+  gap: 24px;
+  justify-content: space-between;
+
+  @include container;
+  @include flex-center;
+}
+
+.become_a_landlord__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.content_title {
+  color: rgba(29, 29, 29, 1);
+  margin-bottom: 8px;
+
+  @include semi-bold-text(44px, 1.2);
+}
+
+.content_description {
+  color: rgba(52, 58, 64, 1);
+  margin-bottom: 32px;
+
+  @include standard-text(16px, 1.4);
+}
+
+.content_button {
+  padding: 17px 40px;
+
+  @include primary-button;
+}
+
+.become_a_landlord__image_wrapper {
+  width: 55%;
+  flex-shrink: 0;
+}

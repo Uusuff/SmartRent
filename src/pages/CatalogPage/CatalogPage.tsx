@@ -1,19 +1,19 @@
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable no-console */
-import { CatalogFilter } from '../../../components/CatalogFilter/CatalogFilter';
-import { useApartments } from '../../../contexts/ApartmentsContext';
+import { CatalogFilter } from '../../components/CatalogFilter/CatalogFilter';
+import { useApartments } from '../../contexts/ApartmentsContext';
 import styles from './CatalogPage.module.scss';
 import { useEffect, useState } from 'react';
-import { CatalogList } from '../../../components/CatalogList/CatalogList';
-import { Pagination } from '../../../components/Pagination/pagination';
+import { CatalogList } from '../../components/CatalogList/CatalogList';
+import { Pagination } from '../../components/Pagination/pagination';
 import { useSearchParams } from 'react-router-dom';
-import { Apartment } from '../../../types/Apartment';
-import ApartmentMap from '../../../components/apartmentMap/apartmentMap';
-import { Loader } from '../../../components/Loader/Loader';
+import { Apartment } from '../../types/Apartment';
+import ApartmentMap from '../../components/apartmentMap/apartmentMap';
+import { Loader } from '../../components/Loader/Loader';
 import { useTranslation } from 'react-i18next';
-import { useCurrency } from '../../../contexts/CurrencyContext';
-import { conversionRates } from '../../../shared/utils/currencyUtils';
+import { useCurrency } from '../../contexts/CurrencyContext';
+import { conversionRates } from '../../shared/utils/currencyUtils';
 
 export const CatalogPage = () => {
   const { t } = useTranslation();
@@ -89,7 +89,7 @@ export const CatalogPage = () => {
       params.city = cityKey;
 
       result = result.filter(
-        a => a.city.ENG.toLowerCase() === cityKey.toLowerCase(),
+        (a) => a.city.ENG.toLowerCase() === cityKey.toLowerCase(),
       );
     }
 
@@ -97,7 +97,7 @@ export const CatalogPage = () => {
       params.neighborhood = neighborhood;
 
       result = result.filter(
-        a => a.neighborhood.ENG.toLowerCase() === neighborhood.toLowerCase(),
+        (a) => a.neighborhood.ENG.toLowerCase() === neighborhood.toLowerCase(),
       );
     }
 
@@ -106,14 +106,14 @@ export const CatalogPage = () => {
 
       const priceInUSD = Number(price) / conversionRates[currency];
 
-      result = result.filter(a => a.price <= priceInUSD);
+      result = result.filter((a) => a.price <= priceInUSD);
     }
 
     if (propertyType && propertyType !== 'showAll') {
       params.propertyType = propertyType;
 
       result = result.filter(
-        a => a.propertyType.ENG.toLowerCase() === propertyType.toLowerCase(),
+        (a) => a.propertyType.ENG.toLowerCase() === propertyType.toLowerCase(),
       );
     }
 
@@ -123,7 +123,7 @@ export const CatalogPage = () => {
 
       moveInDate.setHours(0, 0, 0, 0);
 
-      result = result.filter(a => {
+      result = result.filter((a) => {
         const availableFromDate = new Date(a.availableFrom);
 
         availableFromDate.setHours(0, 0, 0, 0);
@@ -139,8 +139,6 @@ export const CatalogPage = () => {
     if (currentPage > 1) {
       params.page = currentPage.toString();
     }
-
-    console.log(propertyType);
 
     setSearchParams(params);
     setFilteredApartments(result);

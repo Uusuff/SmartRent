@@ -149,3 +149,17 @@
     border-bottom: none;
   }
 }
+
+.disabled {
+  background-color: $btn-disabled-color;
+  color: rgba(173, 181, 189, 1);
+
+  &:hover {
+    background-color: $btn-disabled-color;
+    color: rgba(173, 181, 189, 1);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
