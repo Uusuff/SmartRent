@@ -167,6 +167,7 @@ const resources = {
         item: '1 favorite',
         items: '{{count}} favorites',
         'no-favorites': 'You have no favorites!',
+        backHome: ' Back home',
       },
 
       apartment_page: {
@@ -237,6 +238,7 @@ const resources = {
           applyButton: 'Apply to rent',
           contactButton: 'Text Landlord',
           publishedBy: 'Published by',
+          date: 'Choose date',
         },
         specs: {
           bedroom: 'bedroom',
@@ -583,6 +585,7 @@ const resources = {
           applyButton: 'Solicitar alquiler',
           contactButton: 'Texto del propietario',
           publishedBy: 'Publicado por',
+          date: 'Elegir',
         },
         specs: {
           bedroom: 'dormitorio',
@@ -707,10 +710,12 @@ const resources = {
         item: '1 favorito',
         items: '{{count}} favoritas',
         'no-favorites': 'No tienes favoritas',
+        backHome: 'De vuelta a casa',
       },
 
       errors: {
         notFound: '¡No se han encontrado resultados!',
+        pageNotFound: 'Página no encontrada',
       },
     },
   },
@@ -935,6 +940,7 @@ const resources = {
           applyButton: 'Bewerben Sie sich um eine Mietwohnung',
           contactButton: 'Text Vermieter',
           publishedBy: 'Herausgegeben von',
+          date: 'Wählen',
         },
         specs: {
           bedroom: 'schlafzimmer',
@@ -1059,10 +1065,12 @@ const resources = {
         item: '1 favoritin',
         items: '{{count}} favoriten',
         'no-favorites': 'Es sind keine Favoriten gespeichert',
+        backHome: 'Zurück nach Hause',
       },
 
       errors: {
         notFound: 'Es wurden keine Ergebnisse gefunden!',
+        pageNotFound: 'Seite nicht gefunden',
       },
     },
   },
@@ -1288,6 +1296,7 @@ const resources = {
           applyButton: "Richiedi l'affitto",
           contactButton: 'Invia un messaggio al proprietario',
           publishedBy: 'Pubblicato da',
+          date: 'Scegliere',
         },
         specs: {
           bedroom: 'camera da letto',
@@ -1412,10 +1421,12 @@ const resources = {
         item: '1 preferita',
         items: '{{count}} preferite',
         'no-favorites': 'Non hai preferiti',
+        backHome: 'Di ritorno a casa',
       },
 
       errors: {
         notFound: 'Nessun risultato trovato!',
+        pageNotFound: 'Pagina non trovata',
       },
     },
   },
@@ -1632,7 +1643,7 @@ const resources = {
         },
         applyToRent: {
           landlordPhoto: 'Photo du propriétaire',
-          moveIn: "Date d'emménagement",
+          moveIn: "Date d'arrivée",
           moveOut: 'Date de départ',
           firstMonth: 'Loyer du premier mois',
           utilities: 'Charges mensuelles',
@@ -1641,6 +1652,7 @@ const resources = {
           applyButton: 'Demande de location',
           contactButton: 'Propriétaire par SMS',
           publishedBy: 'Publié par',
+          date: 'Choisir',
         },
         specs: {
           bedroom: 'chambre à coucher',
@@ -1765,10 +1777,12 @@ const resources = {
         item: '1 préférée',
         items: '{{count}} favoris',
         'no-favorites': "Vous n'avez pas de favoris",
+        backHome: 'Retour à la maison',
       },
 
       errors: {
         notFound: 'Aucun résultat trouvé !',
+        pageNotFound: 'Page introuvable',
       },
     },
   },
@@ -1988,6 +2002,7 @@ const resources = {
           applyButton: 'Подати заявку на оренду',
           contactButton: "Зв'язатись з орендодавцем",
           publishedBy: 'Опубліковано',
+          date: 'Вибрати дату',
         },
         specs: {
           bedroom: 'спальня',
@@ -2112,10 +2127,12 @@ const resources = {
         item: '1 обране',
         items: '{{count}} обраних',
         'no-favorites': 'У вас немає обраних',
+        backHome: 'На головну',
       },
 
       errors: {
         notFound: 'Результатів не знайдено!',
+        pageNotFound: 'Сторінку не знайдено',
       },
     },
   },

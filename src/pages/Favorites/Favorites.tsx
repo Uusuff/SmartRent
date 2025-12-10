@@ -18,7 +18,7 @@ export const Favorites = () => {
       </p>
 
       <a href="#" className={styles.favorites__homeLink}>
-        Back home
+        {t('favorites.backHome')}
       </a>
 
       {favorites.length > 0 ? (

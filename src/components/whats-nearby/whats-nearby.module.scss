@@ -135,19 +135,29 @@
 
   .leaflet-popup-content {
     margin: 0;
+    margin-right: 15px;
     padding: 8px 16px;
   }
 
   .leaflet-container a.leaflet-popup-close-button {
     @include icon-size(16px);
 
-    top: 11px;
+    top: 10px;
     right: 16px;
   }
 
   .leaflet-popup-content-wrapper {
     box-shadow: none;
   }
+
+  .myCustomPopup {
+    .leaflet-popup-close-button {
+      top: 6px !important;
+      right: 5px
+    }
+  }
+
+
 }
 
 .popup-name {

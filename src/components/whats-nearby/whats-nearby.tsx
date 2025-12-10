@@ -230,12 +230,10 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
       html: `<div style="
         width: 60px;
         height: 65px;
-        background-image: url(${homeIcon});
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
         cursor: pointer;
-      "></div>`,
+      ">
+      <img src="${homeIcon}" />
+      </div>`,
       iconSize: [50, 50],
       iconAnchor: [25, 50],
       popupAnchor: [0, -50],
@@ -277,13 +275,18 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
         return 'parking';
       }
 
+      const parkTags = [
+        'park',
+        'garden',
+        'nature_reserve',
+        'recreation_ground',
+        'grass',
+        'forest',
+      ];
+
       if (
-        el.tags.leisure === 'park' ||
-        el.tags.leisure === 'garden' ||
-        el.tags.leisure === 'nature_reserve' ||
-        el.tags.landuse === 'forest' ||
-        el.tags.leisure === 'recreation_ground' ||
-        el.tags.leisure === 'grass'
+        (el.tags.leisure && parkTags.includes(el.tags.leisure)) ||
+        (el.tags.landuse && parkTags.includes(el.tags.landuse))
       ) {
         return 'park';
       }
@@ -567,7 +570,9 @@ export const WhatsNearby: React.FC<WhatsNearbyProps> = ({
               position={[apartmentLat, apartmentLng]}
               icon={getApartmentIcon()}
             >
-              <Popup>{t('apartment_page.whatsNearby.apartment')}</Popup>
+              <Popup className="myCustomPopup">
+                {t('apartment_page.whatsNearby.apartment')}
+              </Popup>
             </Marker>
 
             <button
