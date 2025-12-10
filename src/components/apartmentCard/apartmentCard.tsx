@@ -163,7 +163,7 @@ export const ApartmentCard: React.FC<Props> = ({
                   ? `mailto:${apartment.contact}`
                   : `tel:${apartment.contact}`
               }
-              onClick={(e) => e.stopPropagation()}
+              onClick={e => e.stopPropagation()}
               className={`${styles.apartmentCard__contactsText} ${isMapOpened && styles[`apartmentCard__contactsText--mapOpened`]}`}
             >
               {t('apartment_card.apartment_card_details.contacts')}

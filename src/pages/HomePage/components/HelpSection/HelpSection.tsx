@@ -83,13 +83,13 @@ export const HelpSection = () => {
       </h2>
 
       <ul className={styles.helpSection__list}>
-        {faqData.map((item) => (
+        {faqData.map(item => (
           <FAQItem
             key={item.id}
             {...item}
             isOpen={openId === item.id}
             onToggle={() =>
-              setOpenId((prev) => (prev === item.id ? null : item.id))
+              setOpenId(prev => (prev === item.id ? null : item.id))
             }
           />
         ))}

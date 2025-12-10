@@ -7,11 +7,13 @@
   background-color: rgba(237, 242, 241, 1);
   border-radius: 20px;
 }
+
 .item__header {
   justify-content: space-between;
 
   @include flex-center;
 }
+
 .item__icon {
   @include icon-size(24px);
 }
