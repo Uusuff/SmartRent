@@ -1,39 +1,57 @@
+import i18n from '../../../../i18m';
 import styles from './HowItWorks.module.scss';
 
 export const HowItWorks = () => {
+  const { t } = i18n;
+
   return (
     <div className={styles.how_it_works}>
-      <h2 className={styles.how_it_works__title}>How It Works</h2>
+      <h2 className={styles.how_it_works__title}>
+        {t('homePage.howItWorks.title')}
+      </h2>
       <div className={styles.how_it_works__steps}>
         <div className={styles.step}>
-          <h2 className={styles.step_number}>1</h2>
-          <h3 className={styles.step_title}>Find an apartment</h3>
+          <h2 className={styles.step_number}>
+            {t('homePage.howItWorks.step1.number')}
+          </h2>
+          <h3 className={styles.step_title}>
+            {t('homePage.howItWorks.step1.title')}
+          </h3>
           <p className={styles.step_description}>
-            Search by location, price, type, or amenities to find the perfect
-            rental
+            {t('homePage.howItWorks.step1.description')}
           </p>
         </div>
         <div className={styles.step}>
-          <h2 className={styles.step_number}>2</h2>
-          <h3 className={styles.step_title}>Contact the owner</h3>
+          <h2 className={styles.step_number}>
+            {t('homePage.howItWorks.step2.number')}
+          </h2>
+          <h3 className={styles.step_title}>
+            {t('homePage.howItWorks.step2.title')}
+          </h3>
           <p className={styles.step_description}>
-            Message landlords directly through SmartRent’s secure chat platform
+            {t('homePage.howItWorks.step2.description')}
           </p>
         </div>
         <div className={styles.step}>
-          <h2 className={styles.step_number}>3</h2>
-          <h3 className={styles.step_title}>Schedule a viewing</h3>
+          <h2 className={styles.step_number}>
+            {t('homePage.howItWorks.step3.number')}
+          </h2>
+          <h3 className={styles.step_title}>
+            {t('homePage.howItWorks.step3.title')}
+          </h3>
           <p className={styles.step_description}>
-            Pick a convenient date and time to see the apartment in person
-            easily
+            {t('homePage.howItWorks.step3.description')}
           </p>
         </div>
         <div className={styles.step}>
-          <h2 className={styles.step_number}>4</h2>
-          <h3 className={styles.step_title}>Secure your payment</h3>
+          <h2 className={styles.step_number}>
+            {t('homePage.howItWorks.step4.number')}
+          </h2>
+          <h3 className={styles.step_title}>
+            {t('homePage.howItWorks.step4.title')}
+          </h3>
           <p className={styles.step_description}>
-            Confirm the rental and make safe, seamless payments through the
-            platform
+            {t('homePage.howItWorks.step4.description')}
           </p>
         </div>
       </div>

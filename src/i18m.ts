@@ -11,8 +11,144 @@ const resources = {
         dropdownCurrency: 'Currency',
       },
 
-      omePage: {
-        regions: 'RE',
+      homePage: {
+        apartmentSearch: {
+          title: 'FIND YOUR HOME',
+          subtitle: 'Rent without the commission',
+          buttonText: 'Search',
+          searchLocation: {
+            placeholder: 'Enter city, region, or address',
+            goBack: 'Go back',
+          },
+          searchDate: {
+            moveInPlaceholder: 'Move-in date',
+            moveOutPlaceholder: 'Move-out date',
+          },
+        },
+        platformStats: {
+          item1: {
+            count: '+10000',
+            text: 'TENANTS',
+          },
+          item2: {
+            count: '+20000',
+            text: 'PROPERTIES',
+          },
+          item3: {
+            count: '+100',
+            text: 'CITIES',
+          },
+        },
+        howItWorks: {
+          title: 'How It Works',
+          step1: {
+            number: '1',
+            title: 'Find an apartment',
+            description:
+              'Search by location, price, type, or amenities to find the perfect rental',
+          },
+          step2: {
+            number: '2',
+            title: 'Contact the owner',
+            description:
+              'Message landlords directly through SmartRent’s secure chat platform',
+          },
+          step3: {
+            number: '3',
+            title: 'Sign the lease',
+            description:
+              'E-sign your lease agreement securely and conveniently online',
+          },
+          step4: {
+            number: '4',
+            title: 'Secure your payment',
+            description:
+              'Confirm the rental and make safe, seamless payments through the platform',
+          },
+        },
+        infoSlider: {
+          title: 'The smart way to rent',
+          slides: {
+            slide1: {
+              title: 'Direct communication',
+              description:
+                'Talk directly with property owners — no agents involved. Skip middlemen, avoid extra fees, and get honest deals faster. Communicate, negotiate, and arrange viewings quickly, all in one place.',
+            },
+            slide2: {
+              title: 'Flexible leases',
+              description:
+                'Choose from options — long-term or month-to-month. Easily renew or end your lease whenever you need. Enjoy the freedom to live life on your terms.',
+            },
+            slide3: {
+              title: 'Verified listings',
+              description:
+                'All listings are verified for accuracy and safety. Browse confidently knowing every property and landlord  has passed our quality check.',
+            },
+            slide4: {
+              title: 'Secure payments',
+              description:
+                'Pay rent safely through our platform. Track all transactions, receive instant confirmations, and avoid hidden fees or risks.',
+            },
+            slide5: {
+              title: 'Global access',
+              description:
+                'Find trusted rentals anywhere — from city centers to coastal escapes. Access listings worldwide and connect with verified landlords in minutes.',
+            },
+          },
+        },
+        becomeALandlord: {
+          title: 'Become a Landlord',
+          description:
+            'Join our community of trusted landlords and start earning steady income without the hassle. We help you find reliable tenants, manage contracts, and handle everything online. Rent out your property with confidence — simple, safe, and stress-free.',
+          buttonText: 'Find out more',
+        },
+        helpSection: {
+          title: 'Still trying to figure it out?',
+          helpItems: {
+            question1: {
+              question: 'How to create an account?',
+              answer:
+                'SmartRent connects tenants and landlords directly. You can search for apartments, communicate with property owners via chat, and arrange rentals without agents or additional fees.',
+            },
+            question2: {
+              question: 'Is it free to use SmartRent?',
+              answer:
+                'Yes, SmartRent is completely free for tenants. Landlords can list properties at no cost, with optional premium features available.',
+            },
+            question3: {
+              question: 'How does SmartRent verify landlords and listings?',
+              answer:
+                'We verify landlords and listings through a combination of identity checks, document validation, and listing reviews to ensure safety and reliability.',
+            },
+            question4: {
+              question: 'How can I contact the landlord or tenant?',
+              answer:
+                'You can contact landlords or tenants directly through the built-in messaging system. Contact details are available after you express interest in a listing.',
+            },
+            question5: {
+              question: 'Can I visit the apartment before renting?',
+              answer:
+                'Yes, you can arrange a visit with the landlord or property manager before finalizing your rental to make sure the apartment meets your expectations.',
+            },
+            question6: {
+              question: 'What if I want to cancel my stay?',
+              answer:
+                'Cancellation terms depend on the agreement with the landlord. Please review the listing details and communicate directly with the property owner for specific policies.',
+            },
+            question7: {
+              question: 'Are utilities included in the rent?',
+              answer:
+                'Utility inclusion varies by listing. Some apartments include utilities in the rental price, while others charge them separately. Always check the listing details.',
+            },
+            question8: {
+              question: 'Is SmartRent available in my city?',
+              answer:
+                'SmartRent is continuously expanding to new cities. You can check availability by searching for listings in your desired location.',
+            },
+          },
+          question: 'Have a different question?',
+          seeMore: 'See more',
+        },
       },
 
       footer: {
@@ -366,10 +502,152 @@ const resources = {
   ES: {
     translation: {
       header: {
-        buttonText: 'Jag är en hyresvärd',
-        dropdownLanguage: 'Språk',
-        dropdownCurrency: 'Valuta',
+        buttonText: 'Soy un arrendador',
+        dropdownLanguage: 'Idioma',
+        dropdownCurrency: 'Moneda',
       },
+
+      homePage: {
+        apartmentSearch: {
+          title: 'ENCUENTRA TU CASA',
+          subtitle: 'Alquila sin comisión',
+          buttonText: 'Buscar',
+          searchLocation: {
+            placeholder: 'Ingrese ciudad, región o dirección',
+            goBack: 'Regresar',
+          },
+          searchDate: {
+            moveInPlaceholder: 'Fecha de mudanza',
+            moveOutPlaceholder: 'Fecha de salida',
+          },
+        },
+        platformStats: {
+          item1: {
+            count: '+10000',
+            text: 'INQUILINOS',
+          },
+          item2: {
+            count: '+20000',
+            text: 'PROPIEDADES',
+          },
+          item3: {
+            count: '+100',
+            text: 'CIUDADES',
+          },
+        },
+        howItWorks: {
+          title: 'Cómo funciona',
+          step1: {
+            number: '1',
+            title: 'Encontrar un apartamento',
+            description:
+              'Buscar por ubicación, precio, tipo o comodidades para encontrar el alquiler perfecto',
+          },
+          step2: {
+            number: '2',
+            title: 'Contactar al propietario',
+            description:
+              'Enviar mensajes a los propietarios directamente a través de la plataforma de chat segura de SmartRent',
+          },
+          step3: {
+            number: '3',
+            title: 'Programe una visita',
+            description:
+              'Firmar electrónicamente su contrato de arrendamiento de manera segura y conveniente en línea',
+          },
+          step4: {
+            number: '4',
+            title: 'Asegurar su pago',
+            description:
+              'Confirmar el alquiler y realizar pagos seguros y sin problemas a través de la plataforma',
+          },
+        },
+        infoSlider: {
+          title: 'La forma inteligente de alquilar',
+          slides: {
+            slide1: {
+              title: 'Comunicación directa',
+              description:
+                'Hable directamente con los propietarios, sin intermediarios. Evite intermediarios, evite comisiones adicionales y consiga acuerdos honestos más rápido. Comuníquese, negocie y programe visitas rápidamente, todo en un solo lugar.',
+            },
+            slide2: {
+              title: 'Contratos flexibles',
+              description:
+                'Elija entre opciones: a largo plazo o mes a mes. Renueve o finalice su contrato fácilmente cuando lo necesite. Disfrute de la libertad de vivir según sus términos.',
+            },
+            slide3: {
+              title: 'Listados verificados',
+              description:
+                'Todos los listados están verificados para garantizar precisión y seguridad. Navegue con confianza sabiendo que cada propiedad y propietario ha pasado nuestro control de calidad.',
+            },
+            slide4: {
+              title: 'Pagos seguros',
+              description:
+                'Pague el alquiler de forma segura a través de nuestra plataforma. Realice un seguimiento de todas las transacciones, reciba confirmaciones instantáneas y evite tarifas ocultas o riesgos.',
+            },
+            slide5: {
+              title: 'Acceso global',
+              description:
+                'Encuentre alquileres confiables en cualquier lugar, desde el centro de la ciudad hasta escapadas costeras. Acceda a listados en todo el mundo y conéctese con propietarios verificados en minutos.',
+            },
+          },
+        },
+        becomeALandlord: {
+          title: 'Conviértete en propietario',
+          description:
+            'Únete a nuestra comunidad de propietarios de confianza y empieza a generar ingresos estables sin complicaciones. Te ayudamos a encontrar inquilinos confiables, a gestionar contratos y a gestionar todo online. Alquila tu propiedad con confianza: sencillo, seguro y sin estrés.',
+          buttonText: 'Descubre más',
+        },
+        helpSection: {
+          title: 'Versuchen Sie es immer noch herauszufinden?',
+          helpItems: {
+            question1: {
+              question: 'Wie erstelle ich ein Konto?',
+              answer:
+                'SmartRent verbindet Mieter und Vermieter direkt. Sie können nach Wohnungen suchen, mit Eigentümern über den Chat kommunizieren und Mietverträge ohne Makler oder zusätzliche Gebühren arrangieren.',
+            },
+            question2: {
+              question: 'Ist die Nutzung von SmartRent kostenlos?',
+              answer:
+                'Ja, SmartRent ist für Mieter völlig kostenlos. Vermieter können Immobilien kostenlos inserieren, mit optionalen Premium-Funktionen.',
+            },
+            question3: {
+              question: 'Wie überprüft SmartRent Vermieter und Einträge?',
+              answer:
+                'Wir überprüfen Vermieter und Einträge durch eine Kombination aus Identitätsprüfungen, Dokumentenvalidierung und Eintragsbewertungen, um Sicherheit und Zuverlässigkeit zu gewährleisten.',
+            },
+            question4: {
+              question: 'Wie kann ich den Vermieter oder Mieter kontaktieren?',
+              answer:
+                'Sie können Vermieter oder Mieter direkt über das integrierte Nachrichtensystem kontaktieren. Kontaktdaten sind verfügbar, nachdem Sie Interesse an einem Eintrag bekundet haben.',
+            },
+            question5: {
+              question: 'Kann ich die Wohnung vor der Anmietung besichtigen?',
+              answer:
+                'Ja, Sie können vor Abschluss Ihres Mietvertrags einen Besuch mit dem Vermieter oder Verwalter vereinbaren, um sicherzustellen, dass die Wohnung Ihren Erwartungen entspricht.',
+            },
+            question6: {
+              question:
+                'Was passiert, wenn ich meinen Aufenthalt stornieren möchte?',
+              answer:
+                'Die Stornierungsbedingungen hängen von der Vereinbarung mit dem Vermieter ab. Bitte überprüfen Sie die Details des Eintrags und kommunizieren Sie direkt mit dem Eigentümer der Immobilie für spezifische Richtlinien.',
+            },
+            question7: {
+              question: 'Sind Nebenkosten in der Miete enthalten?',
+              answer:
+                'Die Einbeziehung von Nebenkosten variiert je nach Eintrag. Einige Wohnungen beinhalten Nebenkosten im Mietpreis, während andere sie separat berechnen. Überprüfen Sie immer die Details des Eintrags.',
+            },
+            question8: {
+              question: 'Ist SmartRent in meiner Stadt verfügbar?',
+              answer:
+                'SmartRent erweitert sich kontinuierlich auf neue Städte. Sie können die Verfügbarkeit überprüfen, indem Sie nach Einträgen in Ihrem gewünschten Standort suchen.',
+            },
+          },
+          question: 'Haben Sie eine andere Frage?',
+          seeMore: 'Mehr sehen',
+        },
+      },
+
       footer: {
         footer_top_social_media: {
           subtitle: 'Din pålitliga partner',
@@ -726,6 +1004,148 @@ const resources = {
         dropdownLanguage: 'Sprache',
         dropdownCurrency: 'Währung',
       },
+
+      homePage: {
+        apartmentSearch: {
+          title: 'FINDEN SIE IHR ZUHAUSE',
+          subtitle: 'Mieten ohne Provision',
+          buttonText: 'Suchen',
+          searchLocation: {
+            placeholder: 'Geben Sie Stadt, Region oder Adresse ein',
+            goBack: 'Zurück',
+          },
+          searchDate: {
+            moveInPlaceholder: 'Einzugsdatum',
+            moveOutPlaceholder: 'Auszugsdatum',
+          },
+        },
+        platformStats: {
+          item1: {
+            count: '+10000',
+            text: 'MIETER',
+          },
+          item2: {
+            count: '+20000',
+            text: 'IMMOBILIEN',
+          },
+          item3: {
+            count: '+100',
+            text: 'STÄDTE',
+          },
+        },
+        howItWorks: {
+          title: 'Wie es funktioniert',
+          step1: {
+            number: '1',
+            title: 'Finden Sie eine Wohnung',
+            description:
+              'Suchen Sie nach Standort, Preis, Typ oder Annehmlichkeiten, um die perfekte Mietwohnung zu finden',
+          },
+          step2: {
+            number: '2',
+            title: 'Kontaktieren Sie den Vermieter',
+            description:
+              'Senden Sie Nachrichten direkt an die Vermieter über die sichere Chat-Plattform von SmartRent',
+          },
+          step3: {
+            number: '3',
+            title: 'Besichtigung vereinbaren',
+            description:
+              'Vereinbaren Sie eine Besichtigung sicher und bequem online',
+          },
+          step4: {
+            number: '4',
+            title: 'Zahlung sichern',
+            description:
+              'Bestätigen Sie die Miete und tätigen Sie sichere, nahtlose Zahlungen über die Plattform',
+          },
+        },
+        infoSlider: {
+          title: 'Die clevere Art zu mieten',
+          slides: {
+            slide1: {
+              title: 'Direkte Kommunikation',
+              description:
+                'Sprechen Sie direkt mit den Vermietern, ohne Zwischenhändler. Vermeiden Sie zusätzliche Gebühren und erzielen Sie schnellere, ehrliche Vereinbarungen. Kommunizieren, verhandeln und vereinbaren Sie Besichtigungen schnell, alles an einem Ort.',
+            },
+            slide2: {
+              title: 'Flexible Verträge',
+              description:
+                'Wählen Sie zwischen Optionen: langfristig oder monatlich. Erneuern oder beenden Sie Ihren Vertrag einfach, wann immer Sie möchten. Genießen Sie die Freiheit, nach Ihren Bedingungen zu leben.',
+            },
+            slide3: {
+              title: 'Verifizierte Einträge',
+              description:
+                'Alle Einträge sind verifiziert, um Genauigkeit und Sicherheit zu gewährleisten. Durchsuchen Sie mit Vertrauen, da jede Immobilie und jeder Vermieter unsere Qualitätskontrolle bestanden hat.',
+            },
+            slide4: {
+              title: 'Sichere Zahlungen',
+              description:
+                'Zahlen Sie die Miete sicher über unsere Plattform. Verfolgen Sie alle Transaktionen, erhalten Sie sofortige Bestätigungen und vermeiden Sie versteckte Gebühren oder Risiken.',
+            },
+            slide5: {
+              title: 'Globaler Zugang',
+              description:
+                'Finden Sie zuverlässige Mietobjekte überall, von der Innenstadt bis zu Küstenfluchten. Greifen Sie auf Angebote weltweit zu und verbinden Sie sich in Minuten mit verifizierten Vermietern.',
+            },
+          },
+        },
+        becomeALandlord: {
+          title: 'Werden Sie Vermieter',
+          description:
+            'Werden Sie Teil unserer Gemeinschaft vertrauenswürdiger Vermieter und sichern Sie sich ein regelmäßiges Einkommen ohne großen Aufwand. Wir unterstützen Sie bei der Mietersuche, der Vertragsverwaltung und der gesamten Online-Abwicklung. Vermieten Sie Ihre Immobilie sorgenfrei – einfach, sicher und stressfrei.',
+          buttonText: 'Erfahren Sie mehr',
+        },
+        helpSection: {
+          title: 'Immer noch am Rätseln?',
+          helpItems: {
+            question1: {
+              question: 'Wie erstelle ich ein Konto?',
+              answer:
+                'SmartRent verbindet Mieter und Vermieter direkt. Sie können nach Wohnungen suchen, mit Eigentümern über den Chat kommunizieren und Mietverträge ohne Makler oder zusätzliche Gebühren abschließen.',
+            },
+            question2: {
+              question: 'Ist die Nutzung von SmartRent kostenlos?',
+              answer:
+                'Ja, SmartRent ist für Mieter völlig kostenlos. Vermieter können Immobilien kostenlos inserieren, mit optionalen Premium-Funktionen.',
+            },
+            question3: {
+              question: 'Wie verifiziert SmartRent Vermieter und Einträge?',
+              answer:
+                'Wir verifizieren Vermieter und Einträge durch eine Kombination aus Identitätsprüfungen, Dokumentenvalidierung und Überprüfung der Einträge, um Sicherheit und Zuverlässigkeit zu gewährleisten.',
+            },
+            question4: {
+              question: 'Wie kann ich den Vermieter oder Mieter kontaktieren?',
+              answer:
+                'Sie können Vermieter oder Mieter direkt über das integrierte Nachrichtensystem kontaktieren. Kontaktdaten sind verfügbar, nachdem Sie Interesse an einem Eintrag bekundet haben.',
+            },
+            question5: {
+              question: 'Kann ich die Wohnung vor der Anmietung besichtigen?',
+              answer:
+                'Ja, Sie können vor Abschluss des Mietvertrags einen Besuch mit dem Vermieter oder Verwalter vereinbaren, um sicherzustellen, dass die Wohnung Ihren Erwartungen entspricht.',
+            },
+            question6: {
+              question:
+                'Was passiert, wenn ich meinen Aufenthalt stornieren möchte?',
+              answer:
+                'Die Stornierungsbedingungen hängen von der Vereinbarung mit dem Vermieter ab. Bitte überprüfen Sie die Details des Eintrags und kommunizieren Sie direkt mit dem Eigentümer für spezifische Richtlinien.',
+            },
+            question7: {
+              question: 'Sind Nebenkosten in der Miete enthalten?',
+              answer:
+                'Nebenkosten sind je nach Eintrag unterschiedlich. Einige Wohnungen beinhalten Nebenkosten im Mietpreis, während andere diese separat berechnen. Bitte überprüfen Sie immer die Details des Eintrags.',
+            },
+            question8: {
+              question: 'Ist SmartRent in meiner Stadt verfügbar?',
+              answer:
+                'SmartRent erweitert sich kontinuierlich auf neue Städte. Sie können die Verfügbarkeit überprüfen, indem Sie nach Einträgen in Ihrem gewünschten Standort suchen.',
+            },
+          },
+          question: 'Haben Sie eine andere Frage?',
+          seeMore: 'Mehr anzeigen',
+        },
+      },
+
       footer: {
         footer_top_social_media: {
           subtitle: 'Ihr vertrauenswürdiger Partner',
@@ -1081,6 +1501,147 @@ const resources = {
         dropdownLanguage: 'Lingua',
         dropdownCurrency: 'Moneta',
       },
+
+      homePage: {
+        apartmentSearch: {
+          title: 'TROVA LA TUA CASA',
+          subtitle: 'Affitto senza provvigione',
+          buttonText: 'Ricerca',
+          searchLocation: {
+            placeholder: 'Inserisci città, regione o indirizzo',
+            goBack: 'Torna indietro',
+          },
+          searchDate: {
+            moveInPlaceholder: 'Data di ingresso',
+            moveOutPlaceholder: 'Data di uscita',
+          },
+        },
+        platformStats: {
+          item1: {
+            count: '+10000',
+            text: 'INQUILINI',
+          },
+          item2: {
+            count: '+20000',
+            text: 'PROPRIETÀ',
+          },
+          item3: {
+            count: '+100',
+            text: 'CITTÀ',
+          },
+        },
+        howItWorks: {
+          title: 'Come funziona',
+          step1: {
+            number: '1',
+            title: 'Trova un appartamento',
+            description:
+              "Cerca per posizione, prezzo, tipo o servizi per trovare l'appartamento perfetto in affitto",
+          },
+          step2: {
+            number: '2',
+            title: 'Contatta il proprietario',
+            description:
+              'Invia messaggi direttamente ai proprietari tramite la piattaforma di chat sicura di SmartRent',
+          },
+          step3: {
+            number: '3',
+            title: 'Fissa una visita',
+            description: 'Fissa una visita in modo sicuro e comodo online',
+          },
+          step4: {
+            number: '4',
+            title: 'Assicurare il pagamento',
+            description:
+              "Conferma l'affitto e effettua pagamenti sicuri e senza interruzioni tramite la piattaforma",
+          },
+        },
+        infoSlider: {
+          title: 'Il modo intelligente di affittare',
+          slides: {
+            slide1: {
+              title: 'Comunicazione diretta',
+              description:
+                'Parla direttamente con i proprietari, senza intermediari. Evita costi aggiuntivi e raggiungi accordi più rapidi e onesti. Comunica, negozia e organizza visite rapidamente, tutto in un unico posto.',
+            },
+            slide2: {
+              title: 'Contratti flessibili',
+              description:
+                'Scegli tra opzioni: a lungo termine o mensile. Rinnova o termina il tuo contratto facilmente, quando vuoi. Goditi la libertà di vivere alle tue condizioni.',
+            },
+            slide3: {
+              title: 'Inserzioni verificate',
+              description:
+                'Tutte le inserzioni sono verificate per garantire accuratezza e sicurezza. Naviga con fiducia, poiché ogni proprietà e proprietario ha superato il nostro controllo di qualità.',
+            },
+            slide4: {
+              title: 'Pagamenti sicuri',
+              description:
+                "Effettua il pagamento dell'affitto in modo sicuro tramite la nostra piattaforma. Monitora tutte le transazioni, ricevi conferme immediate ed evita costi nascosti o rischi.",
+            },
+            slide5: {
+              title: 'Accesso globale',
+              description:
+                'Trova immobili in affitto affidabili ovunque, dal centro città alle fughe costiere. Accedi alle offerte in tutto il mondo e connettiti in pochi minuti con proprietari verificati.',
+            },
+          },
+        },
+        becomeALandlord: {
+          title: 'Diventa un proprietario',
+          description:
+            'Unisciti alla nostra comunità di proprietari affidabili e inizia a guadagnare un reddito stabile senza problemi. Ti aiutiamo a trovare inquilini affidabili, gestire i contratti e gestire tutto online. Affitta la tua proprietà con fiducia: semplice, sicuro e senza stress.',
+          buttonText: 'Scopri di più',
+        },
+        helpSection: {
+          title: 'Stai ancora cercando di capirlo?',
+          helpItems: {
+            question1: {
+              question: 'Come creare un account?',
+              answer:
+                'SmartRent mette in contatto diretto inquilini e proprietari. Puoi cercare appartamenti, comunicare con i proprietari tramite chat e organizzare affitti senza intermediari o costi aggiuntivi.',
+            },
+            question2: {
+              question: "L'utilizzo di SmartRent è gratuito?",
+              answer:
+                'Sì, SmartRent è completamente gratuito per gli inquilini. I proprietari possono inserire le proprietà senza costi, con funzionalità premium opzionali disponibili.',
+            },
+            question3: {
+              question:
+                'Come verifica SmartRent i proprietari e le inserzioni?',
+              answer:
+                'Verifichiamo i proprietari e le inserzioni attraverso una combinazione di controlli di identità, convalida dei documenti e revisioni delle inserzioni per garantire sicurezza e affidabilità.',
+            },
+            question4: {
+              question: "Come posso contattare il proprietario o l'inquilino?",
+              answer:
+                "Puoi contattare direttamente i proprietari o gli inquilini tramite il sistema di messaggistica integrato. I dettagli di contatto sono disponibili dopo aver espresso interesse per un'inserzione.",
+            },
+            question5: {
+              question: "Posso visitare l'appartamento prima di affittarlo?",
+              answer:
+                "Sì, puoi organizzare una visita con il proprietario o l'amministratore dell'immobile prima di finalizzare l'affitto per assicurarti che l'appartamento soddisfi le tue aspettative.",
+            },
+            question6: {
+              question: 'Cosa succede se voglio cancellare il mio soggiorno?',
+              answer:
+                "I termini di cancellazione dipendono dall'accordo con il proprietario. Si prega di consultare i dettagli dell'inserzione e comunicare direttamente con il proprietario per le politiche specifiche.",
+            },
+            question7: {
+              question: "Le utenze sono incluse nell'affitto?",
+              answer:
+                "L'inclusione delle utenze varia a seconda dell'inserzione. Alcuni appartamenti includono le utenze nel prezzo dell'affitto, mentre altri le addebitano separatamente. Controlla sempre i dettagli dell'inserzione.",
+            },
+            question8: {
+              question: 'SmartRent è disponibile nella mia città?',
+              answer:
+                'SmartRent è in continua espansione in nuove città. Puoi verificare la disponibilità cercando inserzioni nella tua località desiderata.',
+            },
+          },
+          question: 'Hai una domanda diversa?',
+          seeMore: 'Vedi di più',
+        },
+      },
+
       footer: {
         footer_top_social_media: {
           subtitle: 'Il tuo partner di fiducia',
@@ -1437,6 +1998,149 @@ const resources = {
         dropdownLanguage: 'Langue',
         dropdownCurrency: 'Monnaie',
       },
+
+      homePage: {
+        apartmentSearch: {
+          title: 'TROUVEZ VOTRE MAISON',
+          subtitle: 'Location sans commission',
+          buttonText: 'Rechercher',
+          searchLocation: {
+            placeholder: 'Entrez une ville, une région ou une adresse',
+            goBack: 'Revenir',
+          },
+          searchDate: {
+            moveInPlaceholder: "Date d'entrée",
+            moveOutPlaceholder: 'Date de sortie',
+          },
+        },
+        platformStats: {
+          item1: {
+            count: '+10000',
+            text: 'LOCATAIRES',
+          },
+          item2: {
+            count: '+20000',
+            text: 'BIENS IMMOBILIERS',
+          },
+          item3: {
+            count: '+100',
+            text: 'VILLES',
+          },
+        },
+        howItWorks: {
+          title: 'Comment ça marche',
+          step1: {
+            number: '1',
+            title: 'Trouvez un appartement',
+            description:
+              "Recherchez par emplacement, prix, type ou équipements pour trouver l'appartement idéal à louer",
+          },
+          step2: {
+            number: '2',
+            title: 'Contactez le propriétaire',
+            description:
+              'Envoyez des messages directement aux propriétaires via la plateforme de chat sécurisée de SmartRent',
+          },
+          step3: {
+            number: '3',
+            title: 'Planifiez une visite',
+            description:
+              'Planifiez une visite en toute sécurité et commodité en ligne',
+          },
+          step4: {
+            number: '4',
+            title: 'Assurer le paiement',
+            description:
+              'Confirmez la location et effectuez des paiements sécurisés et sans interruption via la plateforme',
+          },
+        },
+        infoSlider: {
+          title: 'La solution intelligente pour louer',
+          slides: {
+            slide1: {
+              title: 'Communication directe',
+              description:
+                'Parlez directement aux propriétaires, sans intermédiaires. Évitez les frais supplémentaires et concluez des accords plus rapides et plus honnêtes. Communiquez, négociez et organisez des visites rapidement, le tout en un seul endroit.',
+            },
+            slide2: {
+              title: 'Contrats flexibles',
+              description:
+                'Choisissez parmi des options : à long terme ou mensuel. Renouvelez ou terminez votre contrat facilement, quand vous le souhaitez. Profitez de la liberté de vivre selon vos conditions.',
+            },
+            slide3: {
+              title: 'Annonces vérifiées',
+              description:
+                'Toutes les annonces sont vérifiées pour garantir précision et sécurité. Naviguez en toute confiance, car chaque propriété et propriétaire a passé notre contrôle qualité.',
+            },
+            slide4: {
+              title: 'Paiements sécurisés',
+              description:
+                'Effectuez le paiement du loyer en toute sécurité via notre plateforme. Suivez toutes les transactions, recevez des confirmations immédiates et évitez les coûts cachés ou les risques.',
+            },
+            slide5: {
+              title: 'Accès global',
+              description:
+                'Trouvez des biens immobiliers fiables à louer partout, du centre-ville aux escapades côtières. Accédez aux offres dans le monde entier et connectez-vous en quelques minutes avec des propriétaires vérifiés.',
+            },
+          },
+        },
+        becomeALandlord: {
+          title: 'Devenir propriétaire',
+          description:
+            'Rejoignez notre communauté de propriétaires de confiance et commencez à gagner un revenu stable sans tracas. Nous vous aidons à trouver des locataires fiables, à gérer les contrats et à tout gérer en ligne. Louez votre propriété en toute confiance — simple, sûr et sans stress.',
+          buttonText: 'En savoir plus',
+        },
+        helpSection: {
+          title: 'Vous essayez encore de comprendre?',
+          helpItems: {
+            question1: {
+              question: 'Comment créer un compte ?',
+              answer:
+                'SmartRent met directement en relation locataires et propriétaires. Vous pouvez rechercher des appartements, communiquer avec les propriétaires par chat et conclure des locations sans agence ni frais supplémentaires.',
+            },
+            question2: {
+              question: "L'utilisation de SmartRent est-elle gratuite ?",
+              answer:
+                'Oui, SmartRent est entièrement gratuit pour les locataires. Les propriétaires peuvent publier des annonces sans frais, avec des fonctionnalités premium optionnelles disponibles.',
+            },
+            question3: {
+              question:
+                'Comment SmartRent vérifie-t-il les propriétaires et les annonces ?',
+              answer:
+                "Nous vérifions les propriétaires et les annonces grâce à une combinaison de contrôles d'identité, de validation de documents et de revues des annonces pour garantir la sécurité et la fiabilité.",
+            },
+            question4: {
+              question:
+                'Comment puis-je contacter le propriétaire ou le locataire ?',
+              answer:
+                'Vous pouvez contacter directement les propriétaires ou les locataires via le système de messagerie intégré. Les coordonnées sont disponibles après avoir manifesté votre intérêt pour une annonce.',
+            },
+            question5: {
+              question: "Puis-je visiter l'appartement avant de louer ?",
+              answer:
+                "Oui, vous pouvez organiser une visite avec le propriétaire ou le gestionnaire immobilier avant de finaliser votre location pour vous assurer que l'appartement répond à vos attentes.",
+            },
+            question6: {
+              question: 'Que se passe-t-il si je veux annuler mon séjour ?',
+              answer:
+                "Les conditions d'annulation dépendent de l'accord avec le propriétaire. Veuillez consulter les détails de l'annonce et communiquer directement avec le propriétaire pour connaître les politiques spécifiques.",
+            },
+            question7: {
+              question: 'Les charges sont-elles incluses dans le loyer ?',
+              answer:
+                "L'inclusion des charges varie selon les annonces. Certains appartements incluent les charges dans le prix du loyer, tandis que d'autres les facturent séparément. Vérifiez toujours les détails de l'annonce.",
+            },
+            question8: {
+              question: 'SmartRent est-il disponible dans ma ville ?',
+              answer:
+                "SmartRent s'étend continuellement à de nouvelles villes. Vous pouvez vérifier la disponibilité en recherchant des annonces dans votre lieu souhaité.",
+            },
+          },
+          question: 'Avez-vous une autre question ?',
+          seeMore: 'Voir plus',
+        },
+      },
+
       footer: {
         footer_top_social_media: {
           subtitle: 'Votre partenaire de confiance',
@@ -1793,6 +2497,146 @@ const resources = {
         dropdownLanguage: 'Мова',
         dropdownCurrency: 'Валюта',
       },
+
+      homePage: {
+        apartmentSearch: {
+          title: 'ЗНАЙДІТЬ СВІЙ ДІМ',
+          subtitle: 'Оренда без комісії',
+          buttonText: 'Пошук',
+          searchLocation: {
+            placeholder: 'Введіть місто, регіон або адресу',
+            goBack: 'Повернутися',
+          },
+          searchDate: {
+            moveInPlaceholder: 'Дата заїзду',
+            moveOutPlaceholder: 'Дата виїзду',
+          },
+        },
+        platformStats: {
+          item1: {
+            count: '+10000',
+            text: 'ОРЕНДАРІВ',
+          },
+          item2: {
+            count: '+20000',
+            text: `ОБ'ЄКТІВ НЕРУХОМОСТІ`,
+          },
+          item3: {
+            count: '+100',
+            text: 'МІСТ',
+          },
+        },
+        howItWorks: {
+          title: 'Як це працює',
+          step1: {
+            number: '1',
+            title: 'Знайдіть квартиру',
+            description:
+              'Шукайте за місцем розташування, ціною, типом або зручностями, щоб знайти ідеальну квартиру для оренди',
+          },
+          step2: {
+            number: '2',
+            title: "Зв'яжіться з орендодавцем",
+            description:
+              'Надсилайте повідомлення безпосередньо орендодавцям через захищену чат-платформу SmartRent',
+          },
+          step3: {
+            number: '3',
+            title: 'Заплануйте перегляд',
+            description: 'Безпечно та зручно заплануйте перегляд онлайн',
+          },
+          step4: {
+            number: '4',
+            title: 'Забезпечте оплату',
+            description:
+              'Підтвердьте оренду та здійснюйте безпечні та безперебійні платежі через платформу',
+          },
+        },
+        infoSlider: {
+          title: 'Розумний спосіб оренди',
+          slides: {
+            slide1: {
+              title: 'Пряме спілкування',
+              description:
+                'Спілкуйтеся безпосередньо з орендодавцями, без посередників. Уникайте додаткових зборів і укладайте швидші та чесніші угоди. Спілкуйтеся, домовляйтеся та організовуйте перегляди швидко, все в одному місці.',
+            },
+            slide2: {
+              title: 'Гнучкі контракти',
+              description:
+                'Вибирайте з варіантів: довгостроковий або щомісячний. Легко поновлюйте або припиняйте контракт, коли забажаєте. Насолоджуйтеся свободою жити за своїми умовами.',
+            },
+            slide3: {
+              title: 'Перевірені оголошення',
+              description:
+                'Всі оголошення перевірені для забезпечення точності та безпеки. Переглядайте з упевненістю, адже кожна власність і власник пройшли нашу перевірку якості.',
+            },
+            slide4: {
+              title: 'Безпечні платежі',
+              description:
+                'Виконуйте оплату оренди безпечно через нашу платформу. Відстежуйте всі транзакції, отримуйте миттєві підтвердження та уникайте прихованих витрат або ризиків.',
+            },
+            slide5: {
+              title: 'Глобальний доступ',
+              description:
+                'Знаходьте надійну нерухомість для оренди скрізь, від центру міста до прибережних курортів. Отримуйте доступ до пропозицій по всьому світу та зв’язуйтеся за кілька хвилин з перевіреними орендодавцями.',
+            },
+          },
+        },
+        becomeALandlord: {
+          title: 'Стати орендодавцем',
+          description:
+            'Приєднуйтесь до нашої спільноти надійних орендодавців і починайте отримувати стабільний дохід без зайвих турбот. Ми допомагаємо вам знаходити надійних орендарів, керувати контрактами та вирішувати всі питання онлайн. Здавайте свою власність з упевненістю — просто, безпечно та без стресу.',
+          buttonText: 'Дізнатися більше',
+        },
+        helpSection: {
+          title: 'Все ще намагаєтеся розібратися?',
+          helpItems: {
+            question1: {
+              question: 'Як створити обліковий запис?',
+              answer:
+                "SmartRent безпосередньо з'єднує орендарів та орендодавців. Ви можете шукати квартири, спілкуватися з власниками нерухомості через чат та домовлятися про оренду без агентів чи додаткових зборів.",
+            },
+            question2: {
+              question: 'Чи безкоштовно користуватися SmartRent?',
+              answer:
+                'Так, SmartRent повністю безкоштовний для орендарів. Орендодавці можуть безкоштовно розміщувати оголошення з можливістю використання додаткових преміум-функцій.',
+            },
+            question3: {
+              question: 'Як SmartRent перевіряє орендодавців та оголошення?',
+              answer:
+                'Ми перевіряємо орендодавців та оголошення за допомогою комбінації перевірок особистості, валідації документів та оглядів оголошень для забезпечення безпеки та надійності.',
+            },
+            question4: {
+              question: 'Як я можу зв’язатися з орендодавцем або орендарем?',
+              answer:
+                'Ви можете безпосередньо зв’язатися з орендодавцями або орендарями через вбудовану систему обміну повідомленнями. Контактні дані доступні після того, як ви висловите зацікавленість у оголошенні.',
+            },
+            question5: {
+              question: 'Чи можу я відвідати квартиру перед орендою?',
+              answer:
+                'Так, ви можете домовитися про візит з орендодавцем або керуючим нерухомістю перед остаточним укладенням договору, щоб переконатися, що квартира відповідає вашим очікуванням.',
+            },
+            question6: {
+              question: 'Що робити, якщо я хочу скасувати своє перебування?',
+              answer:
+                'Умови скасування залежать від угоди з орендодавцем. Будь ласка, перегляньте деталі оголошення та зв’яжіться безпосередньо з власником нерухомості для отримання конкретної інформації.',
+            },
+            question7: {
+              question: 'Чи включені комунальні послуги у вартість оренди?',
+              answer:
+                'Включення комунальних послуг залежить від оголошення. Деякі квартири включають комунальні послуги у вартість оренди, тоді як інші стягують їх окремо. Завжди перевіряйте деталі оголошення.',
+            },
+            question8: {
+              question: 'Чи доступний SmartRent у моєму місті?',
+              answer:
+                'SmartRent постійно розширюється на нові міста. Ви можете перевірити доступність, шукаючи оголошення у бажаному місці.',
+            },
+          },
+          question: 'Маєте інше питання?',
+          seeMore: 'Дивитися більше',
+        },
+      },
+
       footer: {
         footer_top_social_media: {
           subtitle: 'Ваш надійний партнер',

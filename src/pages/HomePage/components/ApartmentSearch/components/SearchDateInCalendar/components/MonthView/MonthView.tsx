@@ -151,7 +151,7 @@ export const MonthView: React.FC<MonthViewProps> = ({
 
       <div className={styles.monthFooter}>
         <div className={styles.weekdaysRow}>
-          {['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map(d => (
+          {['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].map((d) => (
             <div key={d} className={styles.weekday}>
               {d}
             </div>
@@ -169,9 +169,10 @@ export const MonthView: React.FC<MonthViewProps> = ({
 
             return (
               <button
-                key={i}
+                key={`${data.year}-${data.month}-${i}`}
                 className={`${styles.dayCell} ${cls}`}
                 onClick={() => handleClick(day)}
+                translate="no"
               >
                 {showMinStay && (
                   <span className={styles.minStayLabel}>

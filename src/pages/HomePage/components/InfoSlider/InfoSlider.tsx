@@ -9,47 +9,35 @@ import arrRight from '../../../../assets/icons/SliderIco/arrow_right.png';
 import arrLeftActive from '../../../../assets/icons/SliderIco/activeArrL.png';
 import arrRightActive from '../../../../assets/icons/SliderIco/activeArrR.png';
 import styles from './InfoSlider.module.scss';
+import i18n from '../../../../i18m';
+
+const { t } = i18n;
 
 const slides = [
   {
     img: slide1,
-    title: 'Direct communication',
-    description:
-      'Talk directly with property owners — no agents involved. ' +
-      'Skip middlemen, avoid extra fees, and get honest deals faster. ' +
-      ' Communicate, negotiate, and arrange viewings quickly, ' +
-      'all in one place.',
+    title: t('homePage.infoSlider.slides.slide1.title'),
+    description: t('homePage.infoSlider.slides.slide1.description'),
   },
   {
     img: slide2,
-    title: 'Flexible leases',
-    description:
-      'Choose from options — long-term or month-to-month. Easily renew ' +
-      'or end your lease whenever you need. Enjoy the freedom to live ' +
-      'life on your terms.',
+    title: t('homePage.infoSlider.slides.slide2.title'),
+    description: t('homePage.infoSlider.slides.slide2.description'),
   },
   {
     img: slide3,
-    title: 'Verified listings',
-    description:
-      'All listings are verified for accuracy and safety. ' +
-      'Browse confidently knowing every property and landlord ' +
-      'has passed our quality check.',
+    title: t('homePage.infoSlider.slides.slide3.title'),
+    description: t('homePage.infoSlider.slides.slide3.description'),
   },
   {
     img: slide4,
-    title: 'Secure payments',
-    description:
-      'Pay rent safely through our platform. Track all transactions, ' +
-      'receive instant confirmations, and avoid hidden fees or risks.',
+    title: t('homePage.infoSlider.slides.slide4.title'),
+    description: t('homePage.infoSlider.slides.slide4.description'),
   },
   {
     img: slide5,
-    title: 'Global access',
-    description:
-      'Find trusted rentals anywhere — from city centers to coastal escapes. ' +
-      'Access listings worldwide and connect with verified landlords ' +
-      'in minutes.',
+    title: t('homePage.infoSlider.slides.slide5.title'),
+    description: t('homePage.infoSlider.slides.slide5.description'),
   },
 ];
 
@@ -57,9 +45,9 @@ export const InfoSlider = () => {
   const [current, setCurrent] = useState(0);
   const [isClicked, setIsClicked] = useState<string | boolean>(false);
 
-  const nextSlide = () => setCurrent(prev => (prev + 1) % slides.length);
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
   const prevSlide = () =>
-    setCurrent(prev => (prev - 1 + slides.length) % slides.length);
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -74,7 +62,7 @@ export const InfoSlider = () => {
   return (
     <div className={styles.info_slider}>
       <div className={styles.info_slider__top}>
-        <h2 className={styles.top__title}>The smart way to rent</h2>
+        <h2 className={styles.top__title}>{t('homePage.infoSlider.title')}</h2>
         <div className={styles.top__buttons}>
           <button
             className={styles.buttons__btn}

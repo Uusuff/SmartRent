@@ -4,8 +4,10 @@ import { SearchDateInCalendar } from './components/SearchDateInCalendar';
 import { useNavigate } from 'react-router-dom';
 import searchIcon from '../../../../assets/icons/ApartSearchIco/search.png';
 import styles from './ApartmentSearch.module.scss';
+import i18n from '../../../../i18m';
 
 export const ApartmentSearch = () => {
+  const { t } = i18n;
   const [location, setLocation] = useState<string | null>(null);
   const [selectCity, setSelectCity] = useState<string | null>(null);
   const [reservation, setReservation] = useState<{
@@ -43,9 +45,11 @@ export const ApartmentSearch = () => {
 
   return (
     <div className={styles.apartment_search}>
-      <h1 className={styles.apartment_search__title}>FIND YOUR HOME</h1>
+      <h1 className={styles.apartment_search__title}>
+        {t('homePage.apartmentSearch.title')}
+      </h1>
       <p className={styles.apartment_search__subtitle}>
-        Rent without the commission
+        {t('homePage.apartmentSearch.subtitle')}
       </p>
       <div className={styles.apartment_search__inputContainer}>
         <SearchLocation
@@ -62,7 +66,7 @@ export const ApartmentSearch = () => {
           onClick={handleSearch}
         >
           <img src={searchIcon} alt="Search Icon" />
-          Search
+          {t('homePage.apartmentSearch.buttonText')}
         </button>
       </div>
     </div>
