@@ -10,16 +10,15 @@
 
 ---
 
-# React Phone Catalog
+# SmartRent
 
-A React-based **phone catalog** showcasing Apple devices (iPhone, iPad, Apple Watch).
-This project is a responsive product listing / landing/catalog app with browsing, filtering and product details — ideal as a shop landing or demo catalog.
+SmartRent connects tenants and landlords directly. You can search for apartments, contact owners through chat, and arrange rentals without agents or extra fees.
 
 ---
 
 ## 🚀 Features
 
-- Responsive product catalog (iPhone, iPad, Apple Watch)
+- Apartment catalog
 - Filtering and search
 - Product details view
 - Favorites and cart stored in **localStorage**

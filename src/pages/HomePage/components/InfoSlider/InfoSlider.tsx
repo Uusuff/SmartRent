@@ -44,9 +44,9 @@ export const InfoSlider = () => {
     },
   ];
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
+  const nextSlide = () => setCurrent(prev => (prev + 1) % slides.length);
   const prevSlide = () =>
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+    setCurrent(prev => (prev - 1 + slides.length) % slides.length);
 
   useEffect(() => {
     const timer = setInterval(() => {
