@@ -33,11 +33,19 @@ SmartRent connects tenants and landlords directly. You can search for apartments
 ---
 
 ## 🧩 Tech Stack
+Frontend
 
 - React (functional components + hooks)
 - CSS / SCSS (project styles)
 - Optional: React Router (for routing between list / details)
 - Bundler: your project setup Vite
+
+Backend
+
+- Node.js
+- Express
+- REST API
+- Deployed on Vercel
 
 ---
 
