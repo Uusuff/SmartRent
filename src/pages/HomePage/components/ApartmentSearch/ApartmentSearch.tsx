@@ -4,10 +4,10 @@ import { SearchDateInCalendar } from './components/SearchDateInCalendar';
 import { useNavigate } from 'react-router-dom';
 import searchIcon from '../../../../assets/icons/ApartSearchIco/search.png';
 import styles from './ApartmentSearch.module.scss';
-import i18n from '../../../../i18m';
+import { useTranslation } from 'react-i18next';
 
 export const ApartmentSearch = () => {
-  const { t } = i18n;
+  const { t } = useTranslation();
   const [location, setLocation] = useState<string | null>(null);
   const [selectCity, setSelectCity] = useState<string | null>(null);
   const [reservation, setReservation] = useState<{

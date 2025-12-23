@@ -90,7 +90,7 @@ export const SearchDateInCalendar: React.FC<SearchDateInCalendarProps> = ({
       {openCalendar && (
         <div
           className={styles.calendarWrapper}
-          onClick={(e) => e.stopPropagation()}
+          onClick={e => e.stopPropagation()}
         >
           <Calendar
             onChange={handleCalendarChange}

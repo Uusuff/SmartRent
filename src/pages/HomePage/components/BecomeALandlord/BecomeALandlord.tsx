@@ -1,9 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import imgBAL from '../../../../assets/images/HomePageImg/becomeALandlord.png';
-import i18n from '../../../../i18m';
 import styles from './BecomeALandlord.module.scss';
 
 export const BecomeALandlord: React.FC = () => {
-  const { t } = i18n;
+  const { t } = useTranslation();
 
   return (
     <div className={styles.become_a_landlord}>

@@ -9,41 +9,40 @@ import arrRight from '../../../../assets/icons/SliderIco/arrow_right.png';
 import arrLeftActive from '../../../../assets/icons/SliderIco/activeArrL.png';
 import arrRightActive from '../../../../assets/icons/SliderIco/activeArrR.png';
 import styles from './InfoSlider.module.scss';
-import i18n from '../../../../i18m';
-
-const { t } = i18n;
-
-const slides = [
-  {
-    img: slide1,
-    title: t('homePage.infoSlider.slides.slide1.title'),
-    description: t('homePage.infoSlider.slides.slide1.description'),
-  },
-  {
-    img: slide2,
-    title: t('homePage.infoSlider.slides.slide2.title'),
-    description: t('homePage.infoSlider.slides.slide2.description'),
-  },
-  {
-    img: slide3,
-    title: t('homePage.infoSlider.slides.slide3.title'),
-    description: t('homePage.infoSlider.slides.slide3.description'),
-  },
-  {
-    img: slide4,
-    title: t('homePage.infoSlider.slides.slide4.title'),
-    description: t('homePage.infoSlider.slides.slide4.description'),
-  },
-  {
-    img: slide5,
-    title: t('homePage.infoSlider.slides.slide5.title'),
-    description: t('homePage.infoSlider.slides.slide5.description'),
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 export const InfoSlider = () => {
   const [current, setCurrent] = useState(0);
   const [isClicked, setIsClicked] = useState<string | boolean>(false);
+  const { t } = useTranslation();
+
+  const slides = [
+    {
+      img: slide1,
+      title: t('homePage.infoSlider.slides.slide1.title'),
+      description: t('homePage.infoSlider.slides.slide1.description'),
+    },
+    {
+      img: slide2,
+      title: t('homePage.infoSlider.slides.slide2.title'),
+      description: t('homePage.infoSlider.slides.slide2.description'),
+    },
+    {
+      img: slide3,
+      title: t('homePage.infoSlider.slides.slide3.title'),
+      description: t('homePage.infoSlider.slides.slide3.description'),
+    },
+    {
+      img: slide4,
+      title: t('homePage.infoSlider.slides.slide4.title'),
+      description: t('homePage.infoSlider.slides.slide4.description'),
+    },
+    {
+      img: slide5,
+      title: t('homePage.infoSlider.slides.slide5.title'),
+      description: t('homePage.infoSlider.slides.slide5.description'),
+    },
+  ];
 
   const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
   const prevSlide = () =>

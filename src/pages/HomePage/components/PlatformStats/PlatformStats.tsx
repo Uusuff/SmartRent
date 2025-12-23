@@ -1,8 +1,8 @@
-import i18n from '../../../../i18m';
+import { useTranslation } from 'react-i18next';
 import style from './PlatformStats.module.scss';
 
 export const PlatformStats = () => {
-  const { t } = i18n;
+  const { t } = useTranslation();
 
   return (
     <div className={style.platform_stats}>

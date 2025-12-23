@@ -1,8 +1,8 @@
-import i18n from '../../../../i18m';
+import { useTranslation } from 'react-i18next';
 import styles from './HowItWorks.module.scss';
 
 export const HowItWorks = () => {
-  const { t } = i18n;
+  const { t } = useTranslation();
 
   return (
     <div className={styles.how_it_works}>
