@@ -1,0 +1,11 @@
+@use './shared/mixins/mixins.scss' as *;
+
+.app{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main_content {
+  margin: 0;
+}

@@ -1,0 +1,258 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+/* stylelint-disable no-descending-specificity */
+@use '../../shared/variables/variables.scss' as *;
+@use '../../shared/mixins/mixins.scss' as *;
+
+.overlay {
+  @include overlay-styles;
+}
+
+.map-wrapper {
+  @include map-styles;
+
+  height: 610px;
+  border-radius: 15px;
+
+  :global {
+    .leaflet-control-zoom {
+      border: none !important;
+      margin: 0 !important;
+      background-color: none;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      top: 650px;
+      left: 24px;
+      border-radius: 20px;
+      overflow: hidden;
+      z-index: 1000;
+
+      a {
+        z-index: 500;
+        background-color: $btn-color-white;
+        color: $black-color;
+        transition: all 0.2s ease;
+        border-radius: 50%;
+
+        &:hover {
+          background-color: $white-color;
+        }
+      }
+    }
+  }
+
+  .map-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .map-wrapper__button {
+    @include secondary-button;
+    @include flex-center;
+
+    position: absolute;
+    top: 16px;
+    justify-content: center;
+    width: 137px;
+    height: 48px;
+    gap: 8px;
+    z-index: 500;
+    background-color: $btn-color-white;
+    border-radius: 15px;
+    cursor: pointer;
+
+    &--hideMap {
+      left: 16px;
+    }
+
+    &--mapSize {
+      right: 16px;
+    }
+  }
+
+  &__buttonIcon {
+    @include icons-styles;
+
+    padding-right: 10px;
+
+    &--hide {
+      background-image: url('../../assets/icons/mapIcons/closeLocation.svg');
+    }
+
+    &--expand {
+      background-image: url('../../assets/icons/mapIcons/expand.svg');
+    }
+
+    &--collapse {
+      background-image: url('../../assets/icons/mapIcons/collapse.svg');
+    }
+  }
+}
+
+:global {
+  .leaflet-container {
+    position: relative;
+    border-radius: 15px !important;
+  }
+
+  .leaflet-right {
+    display: none;
+  }
+
+  .leaflet-control-zoom {
+    border: none !important;
+    margin: 0 !important;
+    background-color: none;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    top: 500px;
+    left: 24px;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 1000;
+
+    a {
+      z-index: 500;
+      background-color: $btn-color-white;
+      color: $black-color;
+      transition: all 0.2s ease;
+      border-radius: 50%;
+
+      &:hover {
+        background-color: $white-color;
+      }
+    }
+  }
+
+  .leaflet-touch .leaflet-bar a {
+    @include icon-size(40px);
+
+    line-height: 35px;
+  }
+
+  .leaflet-popup-content {
+    margin: 0;
+    margin-right: 15px;
+    padding: 8px 16px;
+  }
+
+  .leaflet-container a.leaflet-popup-close-button {
+    @include icon-size(16px);
+
+    top: 10px;
+    right: 16px;
+  }
+
+  .leaflet-popup-content-wrapper {
+    box-shadow: none;
+  }
+
+  .myCustomPopup {
+    .leaflet-popup-close-button {
+      top: 6px !important;
+      right: 5px
+    }
+  }
+
+
+}
+
+.popup-name {
+  @include medium-text(20px, 1.4);
+
+  display: block;
+  color: $black-color;
+  margin-bottom: 16px;
+  margin-right: 40px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.popup-distance {
+  @include standard-text(12px, 1.4);
+
+  display: block;
+  border-top: 1px solid $filter-border;
+  padding-top: 8px;
+  color: $gray-text;
+}
+
+.popup-address {
+  @include standard-text(14px, 1.4);
+
+  color: $btn-color-strong-gray;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.popup-stars {
+  @include flex-center;
+
+  gap: 2px;
+  margin-bottom: 8px;
+
+  &__star {
+    @include icon-size(16px);
+
+    display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &--active {
+      background-image: url('../../assets/icons/apartmentIcons/star.svg');
+    }
+
+    &--inactive {
+      background-image: url('../../assets/icons/apartmentIcons/star-disabled.svg');
+    }
+  }
+}
+
+.popup-rate {
+  @include standard-text(14px, 1.4);
+
+  color: $black-color;
+  padding-right: 4px;
+}
+
+.whatsNearby {
+  grid-column: 1/-1;
+
+  &__title {
+    @include medium-text(24px, 1.4);
+
+    margin-bottom: 16px;
+  }
+
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__filterButton {
+    @include secondary-button;
+    @include standard-text(14px, 1.4);
+    @include flex-center;
+    @include button-on-hover;
+
+    gap: 4px;
+    height: 48px;
+    padding: 14px;
+    border: 1px solid $pagination-bullet-bg;
+    border-radius: 1000px;
+
+    &--active {
+      background-color: $option-hover;
+      border-radius: 1000px;
+    }
+  }
+
+  &__mapMarker {
+    background-color: $option-hover;
+    border-radius: 10000px;
+  }
+}

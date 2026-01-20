@@ -1,12 +1,14 @@
+import { Footer } from './modules/Footer';
 import { Header } from './modules/Header';
+import styles from './App.module.scss';
 import './styles/resetStyles.scss';
+import { Outlet } from 'react-router-dom';
 
 export const App = () => (
-  // <ProductsProvider>
-  <div className="app">
+  <div className={styles.app}>
     <Header />
-    <main className="main-content">{/* <Outlet /> */}</main>
-    {/* <Footer /> */}
+
+    <main className={styles.main_content}>{<Outlet />}</main>
+    <Footer />
   </div>
-  // </ProductsProvider>
 );

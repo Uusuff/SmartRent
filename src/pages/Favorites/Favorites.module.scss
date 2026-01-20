@@ -1,0 +1,47 @@
+@use '../../shared/variables/variables.scss' as *;
+@use '../../shared/mixins/mixins.scss' as *;
+
+.favorites {
+  max-width: $max-width;
+  margin-inline: auto;
+  padding-top: 40px;
+
+  &__homeLink {
+    position: relative;
+    margin-left: 20px;
+
+    @include link-styles;
+
+    &::before {
+      @include icon-size(16px);
+
+      position: absolute;
+      display: block;
+      content: '';
+      top: 2px;
+      left: -20px;
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowLeft.svg');
+      background-position: center;
+    }
+  }
+
+  &__title {
+    @include medium-text(32px, 1.2);
+
+    color: $black-color;
+  }
+
+  &__quantity {
+    margin-top: 8px;
+    margin-bottom: 30px;
+    line-height: 21px;
+    color: $gray-text;
+  }
+
+  &__noResults{
+    @include medium-text(24px, 1.4);
+
+    color: $gray-text;
+    margin-block: 40px;
+  }
+}

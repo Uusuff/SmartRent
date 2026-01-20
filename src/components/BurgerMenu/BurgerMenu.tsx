@@ -1,5 +1,5 @@
 import iconUK from '../../assets/icons/BurgerMenuIcons/ukraine.png';
-import iconUS from '../../assets/icons/BurgerMenuIcons/USA.png';
+import iconENG from '../../assets/icons/BurgerMenuIcons/USA.png';
 import iconFR from '../../assets/icons/BurgerMenuIcons/france.png';
 import iconES from '../../assets/icons/BurgerMenuIcons/spain.png';
 import iconDE from '../../assets/icons/BurgerMenuIcons/germany.png';
@@ -9,18 +9,17 @@ import arrowUp from '../../assets/icons/BurgerMenuIcons/ArrowUp.png';
 import styles from './BurgerMenu.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { Dropdown } from './Dropdawn/Dropdawn';
+import { useCurrency } from '../../contexts/CurrencyContext';
+import { useLang } from '../../contexts/LangContext';
 
 export const BurgerMenu = () => {
+  const { currency } = useCurrency();
+  const { lang } = useLang();
   const [isOpen, setIsOpen] = useState(false);
-  const [currency, setCurrency] = useState('UAH');
-  const [language, setLanguage] = useState({
-    lang: 'Українська',
-    abbreviated: 'UA',
-  });
 
   const flagIcons: Record<string, string> = {
     UA: iconUK,
-    US: iconUS,
+    ENG: iconENG,
     FR: iconFR,
     ES: iconES,
     DE: iconDE,
@@ -44,12 +43,10 @@ export const BurgerMenu = () => {
   return (
     <div className={styles.burger_menu} ref={menuRef}>
       <div className={styles.burger_menu__img}>
-        <img src={flagIcons[language.abbreviated]} alt={language.lang} />
+        <img src={flagIcons[lang]} alt={lang} />
       </div>
 
-      <span className={styles.burger_menu__text}>
-        {`${language.abbreviated}, ${currency}`}
-      </span>
+      <span className={styles.burger_menu__text}>{`${lang}, ${currency}`}</span>
 
       <div
         className={styles.burger_menu__arrow}
@@ -58,15 +55,7 @@ export const BurgerMenu = () => {
         <img src={isOpen ? arrowUp : arrowDown} alt="arrow" />
       </div>
 
-      {isOpen && (
-        <Dropdown
-          language={language}
-          currency={currency}
-          setLanguage={setLanguage}
-          setCurrency={setCurrency}
-          closeDropdown={() => setIsOpen(false)}
-        />
-      )}
+      {isOpen && <Dropdown closeDropdown={() => setIsOpen(false)} />}
     </div>
   );
 };

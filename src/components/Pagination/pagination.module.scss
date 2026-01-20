@@ -1,0 +1,57 @@
+@use '../../shared/variables/variables.scss' as *;
+@use '../../shared/mixins/mixins.scss' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+
+  &__button {
+    @include icons-styles;
+    @include icon-size(40px);
+
+    background-size: 24px 24px;
+
+    &--prev{
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowLeft.svg');
+    }
+
+    &--prev-disabled{
+      cursor: auto;
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowLeftDisabled.svg');
+    }
+
+    &--next{
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowRight.svg');
+    }
+
+    &--next-disabled{
+      cursor: auto;
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowRightDisabled.svg');
+    }
+  }
+
+  &__itemList {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+  }
+
+  &__item {
+    @include flex-center;
+    @include icon-size(40px);
+
+    justify-content: center;
+    border-radius: 50%;
+
+    &--active {
+      color: $white-color;
+      background-color: $black-color;
+    }
+  }
+
+  &__link {
+    text-align: center;
+    text-decoration: none;
+  }
+}

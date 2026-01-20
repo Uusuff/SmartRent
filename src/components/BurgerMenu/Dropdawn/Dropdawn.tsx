@@ -1,53 +1,48 @@
+import { useTranslation } from 'react-i18next';
 import styles from './Dropdawn.module.scss';
 import { useState } from 'react';
+import { useLang } from '../../../contexts/LangContext';
+import { useCurrency } from '../../../contexts/CurrencyContext';
 
 interface DropdownProps {
-  language: { lang: string; abbreviated: string };
-  currency: string;
-  setLanguage: (lang: { lang: string; abbreviated: string }) => void;
-  setCurrency: (curr: string) => void;
   closeDropdown: () => void;
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({
-  language,
-  currency,
-  setLanguage,
-  setCurrency,
-  closeDropdown,
-}) => {
-  const [selectedLang, setSelectedLang] = useState(language);
-  const [selectedCurr, setSelectedCurr] = useState(currency);
+export const Dropdown: React.FC<DropdownProps> = ({ closeDropdown }) => {
+  const { currency, setCurrency } = useCurrency();
+  const { lang, setLang } = useLang();
+  const { t, i18n } = useTranslation();
 
   const languages = [
-    {
-      lang: 'English',
-      abbreviated: 'US',
-    },
-    {
-      lang: 'Español',
-      abbreviated: 'ES',
-    },
-    {
-      lang: 'Deutsch',
-      abbreviated: 'DE',
-    },
-    {
-      lang: 'Italiano',
-      abbreviated: 'IT',
-    },
-    {
-      lang: 'Français',
-      abbreviated: 'FR',
-    },
-    {
-      lang: 'Українська',
-      abbreviated: 'UA',
-    },
+    { lang: 'English', abbreviated: 'ENG' },
+    { lang: 'Español', abbreviated: 'ES' },
+    { lang: 'Deutsch', abbreviated: 'DE' },
+    { lang: 'Italiano', abbreviated: 'IT' },
+    { lang: 'Français', abbreviated: 'FR' },
+    { lang: 'Українська', abbreviated: 'UA' },
   ];
 
+  const langMap: Record<string, string> = {
+    ENG: 'ENG',
+    ES: 'ES',
+    DE: 'DE',
+    IT: 'IT',
+    FR: 'FR',
+    UA: 'UA',
+  };
+
+  const [selectedLang, setSelectedLang] = useState(
+    languages.find(l => langMap[l.abbreviated] === lang)?.abbreviated || 'ENG',
+  );
+
+  const [selectedCurr, setSelectedCurr] = useState(currency);
+
   const handleApply = () => {
-    setLanguage(selectedLang);
+    const langCode = langMap[selectedLang];
+
+    setLang(langCode);
+    i18n.changeLanguage(langCode);
+
     setCurrency(selectedCurr);
     closeDropdown();
   };
@@ -56,23 +51,30 @@ export const Dropdown: React.FC<DropdownProps> = ({
     <div className={styles.dropdown_menu}>
       <div className={styles.dropdown_menu__sections}>
         <div>
-          <h4 className={styles.dropdown_menu__title}>Language</h4>
+          <h4 className={styles.dropdown_menu__title}>
+            {t('header.dropdownLanguage')}
+          </h4>
+
           <div className={styles.options}>
             {languages.map(value => (
-              <label key={value.lang}>
+              <label key={value.abbreviated}>
                 <input
                   type="radio"
                   name="lang"
-                  checked={selectedLang.lang === value.lang}
-                  onChange={() => setSelectedLang(value)}
+                  checked={selectedLang === value.abbreviated}
+                  onChange={() => setSelectedLang(value.abbreviated)}
                 />
                 {value.lang}
               </label>
             ))}
           </div>
         </div>
+
         <div>
-          <h4 className={styles.dropdown_menu__title}>Currency</h4>
+          <h4 className={styles.dropdown_menu__title}>
+            {t('header.dropdownCurrency')}
+          </h4>
+
           <div className={styles.options}>
             {['USD', 'PLN', 'EUR', 'CHF', 'GBP', 'UAH'].map(curr => (
               <label key={curr}>
@@ -85,7 +87,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 {curr === 'USD' && '$ '}
                 {curr === 'PLN' && 'zł '}
                 {curr === 'EUR' && '€ '}
-                {curr === 'CHF' && ''}
                 {curr === 'GBP' && '£ '}
                 {curr === 'UAH' && '₴ '}
                 {curr}
@@ -98,7 +99,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       <button
         className={styles.apply_btn}
         onClick={handleApply}
-        disabled={language === selectedLang && currency === selectedCurr}
+        disabled={lang === langMap[selectedLang] && currency === selectedCurr}
       >
         Apply
       </button>

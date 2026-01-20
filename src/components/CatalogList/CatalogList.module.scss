@@ -1,0 +1,11 @@
+@use '../../shared/variables/variables.scss' as *;
+
+.catalogList{
+  &__content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+}

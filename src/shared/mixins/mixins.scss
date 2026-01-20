@@ -14,16 +14,241 @@
   height: $size;
 }
 
-@mixin standard-text {
+@mixin standard-text($size: 16px, $height: 1.2) {
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: $size;
+  line-height: ($size * $height);
   letter-spacing: 0;
 }
 
-@mixin medium-text($size) {
+@mixin medium-text($size, $height) {
   font-weight: 500;
   font-size: $size;
-  line-height: ($size * 1.4);
+  line-height: ($size * $height);
   letter-spacing: 0;
+}
+
+@mixin icons-styles {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+@mixin icons-styles-map-opened {
+  width: 16px;
+  height: 16px;
+}
+
+@mixin link-styles {
+  color: $btn-default-color;
+  font-size: 16px;
+  font-weight: 400;
+  border-bottom: 1px solid $btn-default-color;
+  cursor: pointer;
+
+  &:hover {
+    color: $btn-hover-color;
+  }
+
+  &:disabled {
+    color: $btn-disabled-color;
+  }
+
+  &:active {
+    color: $btn-pressed-color;
+  }
+}
+
+@mixin button-on-hover {
+  transition: all 0.5s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+@mixin card-button {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 3;
+  background-color: $white-color;
+  padding: 8px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin availability-icon {
+  position: absolute;
+  content: "";
+  display: block;
+  background-size: contain;
+  background-position: center;
+  width: 12px;
+  height: 12px;
+  left: 0;
+  top: 23px;
+}
+
+@mixin card-on-map {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: $btn-color-white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 3000;
+  animation: fade-in 0.15s ease-out;
+  pointer-events: none;
+}
+
+@mixin semi-bold-text($size: 48px, $height: 1.2) {
+  font-weight: 600;
+  font-size: $size;
+  line-height: ($size * $height);
+  letter-spacing: 0;
+}
+
+@mixin primary-button {
+  color: $btn-color-white;
+  border-radius: $border-radius;
+  background-color: $btn-default-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $btn-hover-color;
+  }
+
+  &:active {
+    background-color: $btn-pressed-color;
+  }
+
+  &:disabled {
+    color: $btn-color-gray;
+    background-color: $btn-disabled-color;
+  }
+}
+
+@mixin secondary-button {
+  color: $btn-color-strong-gray;
+  border-radius: $border-radius;
+  border: 1px solid $btn-default-color;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $btn-hover-color;
+  }
+
+  &:active {
+    border: 1px solid $btn-pressed-color;
+  }
+
+  &:disabled {
+    color: $btn-color-gray;
+    border: 1px solid $btn-disabled-color;
+  }
+}
+
+@mixin small-button {
+  background-color: $btn-disabled-color;
+
+  &:hover {
+    background-color: rgba(222, 226, 230, 1);
+  }
+
+  &:active {
+    background-color: rgba(73, 80, 87, 1);
+  }
+
+  &:disabled {
+    background-color: $btn-disabled-color;
+  }
+}
+
+@mixin search-input {
+  color: rgba(29, 29, 29, 1);
+  border-radius: $border-radius;
+  background-color: rgb(228, 230, 233);
+  padding: 17px 16px;
+
+  @include standard-text;
+
+  &::placeholder {
+    color: $btn-disabled-color;
+  }
+
+  &:focus-within {
+    border: 1px solid rgba(134, 142, 150, 1);
+  }
+
+  &:disabled {
+    background-color: rgba(248, 249, 250, 1);
+    color: rgba(173, 181, 189, 1);
+  }
+}
+
+@mixin apartment-page-button {
+  @include standard-text(16px, 1.4);
+  @include secondary-button;
+  @include button-on-hover;
+
+  color: $btn-color-strong-gray;
+  min-width: 184px;
+  height: 48px;
+  margin-bottom: 32px;
+  padding: 13px 12px;
+}
+
+@mixin overlay-styles {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  animation: fade-in 0.3s ease;
+}
+
+@mixin map-styles {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  z-index: 21;
+  transition: height 0.5s ease;
+  transition:
+    height 0.5s ease,
+    width 0.5s ease,
+    left 0.5s ease,
+    top 0.5s ease,
+    transform 0.5s ease;
+
+  &--expanded {
+    z-index: 1000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    height: 90vh;
+    transform: translate(-50%, -50%);
+  }
 }

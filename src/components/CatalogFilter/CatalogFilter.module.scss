@@ -1,0 +1,29 @@
+@use '../../shared/variables/variables.scss' as *;
+@use '../../shared/mixins/mixins.scss' as *;
+
+.filter {
+  padding-block: 40px;
+  border-block: 1px solid $filter-border;
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  &__element{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &:last-child {
+      align-self: flex-end;
+    }
+  }
+
+  &__label{
+    @include medium-text(20px, 1.4);
+
+    color: $black-color;
+  }
+}

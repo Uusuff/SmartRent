@@ -1,0 +1,280 @@
+{
+  "Київська область": {
+    "Київський район": [
+      { "city": "Київ", "abriviatur": "Kyiv" },
+      { "city": "Бровари", "abriviatur": "Brovary" }
+    ],
+    "Бучанський район": [
+      { "city": "Буча", "abriviatur": "Bucha" },
+      { "city": "Ірпінь", "abriviatur": "Irpin" },
+      { "city": "Вишневе", "abriviatur": "Vyshneve" }
+    ],
+    "Білоцерківський район": [
+      { "city": "Біла Церква", "abriviatur": "Bila Tserkva" },
+      { "city": "Тетіїв", "abriviatur": "Tetiyiv" },
+      { "city": "Рокитне", "abriviatur": "Rokytne" }
+    ]
+  },
+  "Львівська область": {
+    "Львівський район": [
+      { "city": "Львів", "abriviatur": "Lviv" },
+      { "city": "Винники", "abriviatur": "Vynnyky" },
+      { "city": "Брюховичі", "abriviatur": "Bryukhovychi" }
+    ],
+    "Дрогобицький район": [
+      { "city": "Дрогобич", "abriviatur": "Drohobych" },
+      { "city": "Трускавець", "abriviatur": "Truskavets" },
+      { "city": "Борислав", "abriviatur": "Boryslav" }
+    ]
+  },
+  "Вінницька область": {
+    "Вінницький район": [
+      { "city": "Вінниця", "abriviatur": "Vinnytsia" },
+      { "city": "Стрижавка", "abriviatur": "Stryzhavka" },
+      { "city": "Агрономічне", "abriviatur": "Ahronomichne" }
+    ],
+    "Гайсинський район": [
+      { "city": "Гайсин", "abriviatur": "Haisyn" },
+      { "city": "Ладижин", "abriviatur": "Ladyzhyn" }
+    ]
+  },
+  "Волинська область": {
+    "Луцький район": [
+      { "city": "Луцьк", "abriviatur": "Lutsk" },
+      { "city": "Рокині", "abriviatur": "Rokyni" },
+      { "city": "Городок", "abriviatur": "Horodok" }
+    ],
+    "Ковельський район": [
+      { "city": "Ковель", "abriviatur": "Kovel" },
+      { "city": "Люблинець", "abriviatur": "Lyublynets" }
+    ]
+  },
+  "Дніпропетровська область": {
+    "Дніпровський район": [
+      { "city": "Дніпро", "abriviatur": "Dnipro" },
+      { "city": "Підгородне", "abriviatur": "Pidhodne" },
+      { "city": "Слобожанське", "abriviatur": "Slobozhanske" }
+    ],
+    "Криворізький район": [
+      { "city": "Кривий Ріг", "abriviatur": "Kryvyi Rih" },
+      { "city": "Апостолове", "abriviatur": "Apostolove" },
+      { "city": "Інгулець", "abriviatur": "Inhulets" }
+    ]
+  },
+  "Житомирська область": {
+    "Житомирський район": [
+      { "city": "Житомир", "abriviatur": "Zhytomyr" },
+      { "city": "Новоград-Волинський", "abriviatur": "Novograd-Volynskyi" },
+      { "city": "Радомишль", "abriviatur": "Radomyshl" }
+    ],
+    "Коростенський район": [
+      { "city": "Коростень", "abriviatur": "Korosten" },
+      { "city": "Овруч", "abriviatur": "Ovruch" },
+      { "city": "Бердичів", "abriviatur": "Berdychiv" }
+    ]
+  },
+  "Закарпатська область": {
+    "Ужгородський район": [
+      { "city": "Ужгород", "abriviatur": "Uzhhorod" },
+      { "city": "Чоп", "abriviatur": "Chop" },
+      { "city": "Перечин", "abriviatur": "Perechyn" }
+    ],
+    "Мукачівський район": [
+      { "city": "Мукачево", "abriviatur": "Mukachevo" },
+      { "city": "Виноградів", "abriviatur": "Vynohradiv" },
+      { "city": "Іршава", "abriviatur": "Irshava" }
+    ]
+  },
+  "Запорізька область": {
+    "Запорізький район": [
+      { "city": "Запоріжжя", "abriviatur": "Zaporizhzhia" },
+      { "city": "Оріхів", "abriviatur": "Orikhiv" },
+      { "city": "Токмак", "abriviatur": "Tokmak" }
+    ],
+    "Мелітопольський район": [
+      { "city": "Мелітополь", "abriviatur": "Melitopol" },
+      { "city": "Якимівка", "abriviatur": "Yakymivka" },
+      { "city": "Більмак", "abriviatur": "Bilmak" }
+    ]
+  },
+  "Івано-Франківська область": {
+    "Івано-Франківський район": [
+      { "city": "Івано-Франківськ", "abriviatur": "Ivano-Frankivsk" },
+      { "city": "Богородчани", "abriviatur": "Bohorodchany" },
+      { "city": "Калуш", "abriviatur": "Kalush" }
+    ],
+    "Коломийський район": [
+      { "city": "Коломия", "abriviatur": "Kolomyia" },
+      { "city": "Снятин", "abriviatur": "Sniatyn" },
+      { "city": "Печеніжин", "abriviatur": "Pechenizhyn" }
+    ]
+  },
+  "Кіровоградська область": {
+    "Кропивницький район": [
+      { "city": "Кропивницький", "abriviatur": "Kropyvnytskyi" },
+      { "city": "Олександрія", "abriviatur": "Oleksandriia" },
+      { "city": "Світловодськ", "abriviatur": "Svitlovodsk" }
+    ],
+    "Маловисківський район": [
+      { "city": "Мала Виска", "abriviatur": "Mala Vyska" },
+      { "city": "Новомиргород", "abriviatur": "Novomyrhorod" }
+    ]
+  },
+  "Луганська область": {
+    "Сєвєродонецький район": [
+      { "city": "Сєвєродонецьк", "abriviatur": "Sievierodonetsk" },
+      { "city": "Лисичанськ", "abriviatur": "Lysychansk" },
+      { "city": "Рубіжне", "abriviatur": "Rubizhne" }
+    ],
+    "Старобільський район": [
+      { "city": "Старобільськ", "abriviatur": "Starobilsk" },
+      { "city": "Біловодськ", "abriviatur": "Bilovodsk" },
+      { "city": "Сватове", "abriviatur": "Svatove" }
+    ]
+  },
+  "Миколаївська область": {
+    "Миколаївський район": [
+      { "city": "Миколаїв", "abriviatur": "Mykolaiv" },
+      { "city": "Вознесенськ", "abriviatur": "Voznesensk" },
+      { "city": "Очаків", "abriviatur": "Ochakiv" }
+    ],
+    "Кривоозерський район": [
+      { "city": "Криве Озеро", "abriviatur": "Kryve Ozero" },
+      { "city": "Новий Буг", "abriviatur": "Novyi Buh" }
+    ]
+  },
+  "Одеська область": {
+    "Одеський район": [
+      { "city": "Одеса", "abriviatur": "Odesa" },
+      { "city": "Чорноморськ", "abriviatur": "Chornomorsk" },
+      { "city": "Іллічівськ", "abriviatur": "Illichivsk" }
+    ],
+    "Білгород-Дністровський район": [
+      { "city": "Білгород-Дністровський", "abriviatur": "Bilhorod-Dnistrovskyi" },
+      { "city": "Саратська", "abriviatur": "Saratska" },
+      { "city": "Татарбунари", "abriviatur": "Tatarbunary" }
+    ]
+  },
+  "Полтавська область": {
+    "Полтавський район": [
+      { "city": "Полтава", "abriviatur": "Poltava" },
+      { "city": "Кременчук", "abriviatur": "Kremenchuk" },
+      { "city": "Лубни", "abriviatur": "Lubny" }
+    ],
+    "Кременчуцький район": [
+      { "city": "Градизьк", "abriviatur": "Hradizk" },
+      { "city": "Миргород", "abriviatur": "Myrhorod" },
+      { "city": "Хорол", "abriviatur": "Khorol" }
+    ]
+  },
+  "Рівненська область": {
+    "Рівненський район": [
+      { "city": "Рівне", "abriviatur": "Rivne" },
+      { "city": "Клевань", "abriviatur": "Klevan" },
+      { "city": "Млинів", "abriviatur": "Mlyniv" }
+    ],
+    "Дубенський район": [
+      { "city": "Дубно", "abriviatur": "Dubno" },
+      { "city": "Радивилів", "abriviatur": "Radyvyliv" }
+    ]
+  },
+  "Сумська область": {
+    "Сумський район": [
+      { "city": "Суми", "abriviatur": "Sumy" },
+      { "city": "Конотоп", "abriviatur": "Konotop" },
+      { "city": "Шостка", "abriviatur": "Shostka" }
+    ],
+    "Глухівський район": [
+      { "city": "Глухів", "abriviatur": "Hlukhiv" },
+      { "city": "Велика Писарівка", "abriviatur": "Velyka Pysarivka" }
+    ]
+  },
+  "Тернопільська область": {
+    "Тернопільський район": [
+      { "city": "Тернопіль", "abriviatur": "Ternopil" },
+      { "city": "Збараж", "abriviatur": "Zbarazh" },
+      { "city": "Бережани", "abriviatur": "Berezhany" }
+    ],
+    "Чортківський район": [
+      { "city": "Чортків", "abriviatur": "Chortkiv" },
+      { "city": "Бучач", "abriviatur": "Buchach" }
+    ]
+  },
+  "Харківська область": {
+    "Харківський район": [
+      { "city": "Харків", "abriviatur": "Kharkiv" },
+      { "city": "Лозова", "abriviatur": "Lozova" },
+      { "city": "Ізюм", "abriviatur": "Izium" }
+    ],
+    "Чугуївський район": [
+      { "city": "Чугуїв", "abriviatur": "Chuhuiv" },
+      { "city": "Куп’янськ", "abriviatur": "Kupiansk" }
+    ]
+  },
+  "Херсонська область": {
+    "Херсонський район": [
+      { "city": "Херсон", "abriviatur": "Kherson" },
+      { "city": "Нова Каховка", "abriviatur": "Nova Kakhovka" },
+      { "city": "Каховка", "abriviatur": "Kakhovka" }
+    ],
+    "Каховський район": [
+      { "city": "Генічеськ", "abriviatur": "Henichesk" },
+      { "city": "Скадовськ", "abriviatur": "Skadovsk" }
+    ]
+  },
+  "Хмельницька область": {
+    "Хмельницький район": [
+      { "city": "Хмельницький", "abriviatur": "Khmelnytskyi" },
+      { "city": "Шепетівка", "abriviatur": "Shepetivka" },
+      { "city": "Нетішин", "abriviatur": "Netishyn" }
+    ],
+    "Кам’янець-Подільський район": [
+      { "city": "Кам’янець-Подільський", "abriviatur": "Kamianets-Podilskyi" },
+      { "city": "Дунаївці", "abriviatur": "Dunaivtsi" }
+    ]
+  },
+  "Черкаська область": {
+    "Черкаський район": [
+      { "city": "Черкаси", "abriviatur": "Cherkasy" },
+      { "city": "Золотоноша", "abriviatur": "Zolotonosha" },
+      { "city": "Умань", "abriviatur": "Uman" }
+    ],
+    "Канівський район": [
+      { "city": "Канів", "abriviatur": "Kaniv" },
+      { "city": "Сміла", "abriviatur": "Smila" }
+    ]
+  },
+  "Чернівецька область": {
+    "Чернівецький район": [
+      { "city": "Чернівці", "abriviatur": "Chernivtsi" },
+      { "city": "Новодністровськ", "abriviatur": "Novodnistrovsk" }
+    ],
+    "Хотинський район": [
+      { "city": "Хотин", "abriviatur": "Khotyn" },
+      { "city": "Кельменці", "abriviatur": "Kelmentsi" }
+    ]
+  },
+  "Чернігівська область": {
+    "Чернігівський район": [
+      { "city": "Чернігів", "abriviatur": "Chernihiv" },
+      { "city": "Ніжин", "abriviatur": "Nizhyn" },
+      { "city": "Прилуки", "abriviatur": "Pryluky" }
+    ],
+    "Бахмацький район": [
+      { "city": "Бахмач", "abriviatur": "Bakhmach" },
+      { "city": "Мена", "abriviatur": "Mena" }
+    ]
+  },
+  "Донецька область": {
+    "Донецький район": [
+      { "city": "Донецьк", "abriviatur": "Donetsk" },
+      { "city": "Авдіївка", "abriviatur": "Avdiivka" },
+      { "city": "Мар’їнка", "abriviatur": "Maryinka" }
+    ],
+    "Маріупольський район": [
+      { "city": "Маріуполь", "abriviatur": "Mariupol" },
+      { "city": "Волноваха", "abriviatur": "Volnovakha" },
+      { "city": "Мангуш", "abriviatur": "Mangush" }
+    ]
+  }
+}

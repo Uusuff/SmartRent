@@ -2,6 +2,7 @@
 @use "../../../shared/variables/variables.scss" as *;
 
 .dropdown_menu {
+  z-index: 101;
   position: absolute;
   top: 76px;
   right: 170px;
@@ -31,7 +32,7 @@
     font-weight: 600;
     margin-bottom: 8px;
 
-    @include medium-text(20px);
+    @include medium-text(20px, 1.4);
   }
 
   .options {
@@ -57,27 +58,13 @@
     width: 126px;
     height: 56px;
     margin-left: auto;
-    background: $btn-default-color;
-    color: $btn-color-white;
     border: none;
-    border-radius: 6px;
     padding: 8px 0;
     cursor: pointer;
     transition: background 0.2s ease;
 
     @include standard-text;
-
-    &:hover {
-      background: $btn-hover-color;
-    }
-
-    &:active {
-      background: $btn-pressed-color;
-    }
-    &:disabled {
-      background: $btn-disabled-color;
-      color: $btn-color-gray;
-    }
+    @include primary-button;
   }
 }
 

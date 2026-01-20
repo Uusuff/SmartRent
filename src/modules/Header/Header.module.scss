@@ -8,32 +8,35 @@
   @include flex-center;
 }
 
-.header__logo {
-  width: 155px;
-  height: 45px;
-
-  @include flex-center;
-}
-
 .header__buttons {
   display: flex;
   align-items: center;
 }
 
 .header__button {
-  @include icon-size(24px);
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include icon-size(40px);
 }
 
 .landlord__button {
   padding: 17px 42px;
   margin-right: 32px;
-  border: 1px solid rgba(173, 181, 189, 1);
-  border-radius: 10px;
 
   @include standard-text;
+  @include secondary-button;
 }
 
-.favorites__button img {
-  margin-right: 4px;
+.header__button:last-child {
+  margin-left: 4px;
+}
+
+.favorites__button {
+  @include icon-size(24px);
+}
+
+.user__button {
+  @include icon-size(24px);
 }

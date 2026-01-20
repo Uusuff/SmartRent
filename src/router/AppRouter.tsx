@@ -1,6 +1,10 @@
 import { createHashRouter } from 'react-router-dom';
 import { App } from '../App';
 import { HomePage } from '../pages/HomePage';
+import { CatalogPage } from '../pages/CatalogPage/CatalogPage';
+import { Favorites } from '../pages/Favorites/Favorites';
+import { ApartmentPage } from '../pages/ApartmentPage/ApartmentPage';
+import { NotFound } from '../pages/notFoundPage/notFoundPage';
 
 export const router = createHashRouter([
   {
@@ -8,15 +12,10 @@ export const router = createHashRouter([
     element: <App />,
     children: [
       { index: true, element: <HomePage /> },
-      // { path: 'phones', element: <PhonesPage /> },
-      // { path: 'phones/:id', element: <PhonesPage /> },
-      // { path: 'tablets', element: <TabletsPage /> },
-      // { path: 'tablets/:id', element: <TabletsPage /> },
-      // { path: 'accessories', element: <AccessoriesPage /> },
-      // { path: 'accessories/:id', element: <AccessoriesPage /> },
-      // { path: 'favorites', element: <FavoritesPage /> },
-      // { path: 'cart', element: <CartPage /> },
-      // { path: '*', element: <NotFoundPage /> },
+      { path: 'apartments', element: <CatalogPage /> },
+      { path: 'favorites', element: <Favorites /> },
+      { path: 'apartment/:id', element: <ApartmentPage /> },
+      { path: '*', element: <NotFound /> },
     ],
   },
 ]);

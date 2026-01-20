@@ -1,0 +1,97 @@
+@use "../../../../shared/mixins/mixins.scss" as *;
+@use "../../../../shared/variables/variables.scss" as *;
+
+.info_slider {
+  margin-top: 80px;
+}
+
+.info_slider__top {
+  justify-content: space-between;
+
+  @include flex-center;
+  @include container;
+}
+
+.top__title {
+  color: rgba(29, 29, 29, 1);
+
+  @include semi-bold-text(44px, 1.2);
+}
+
+.top__buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.buttons__btn {
+  border-radius: 50%;
+  justify-content: center;
+
+  @include small-button;
+  @include flex-center;
+  @include icon-size(40px);
+}
+
+.buttons__btn img {
+  @include icon-size(24px);
+}
+
+.info_slider__bottom {
+  width: 100%;
+  height: 707px;
+  margin-top: 24px;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition:
+    background-image 0.4s ease,
+    opacity 0.4s ease;
+  animation: fade-in 0.8s ease;
+  justify-content: flex-end;
+  padding-right: 108px;
+
+  @include flex-center;
+}
+
+.slide__content {
+  width: 496px;
+  background: $btn-color-white;
+  border-radius: 15px;
+  padding: 40px;
+}
+
+.slide__count {
+  color: $btn-color-gray;
+  margin-bottom: 16px;
+
+  @include standard-text(16px, 1.4);
+}
+
+.slide__title {
+  margin-bottom: 8px;
+  color: rgba(29, 29, 29, 1);
+
+  @include medium-text(32px, 1.2);
+}
+
+.slide__desccription {
+  color: rgba(52, 58, 64, 1);
+
+  @include standard-text(16px, 1.4);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

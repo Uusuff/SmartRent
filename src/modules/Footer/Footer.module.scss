@@ -1,3 +1,140 @@
+@use "../../shared/mixins/mixins.scss" as *;
+@use "../../shared/variables/variables.scss" as *;
+
 .footer {
+  margin-top: 80px;
+
+  @include container;
+}
+
+.footer__top {
   display: flex;
+  justify-content: space-between;
+}
+
+.social_media__title {
+  color: rgba(52, 58, 64, 1);
+  margin: 8px 0 24px;
+
+  @include standard-text;
+}
+
+.social_media__icons {
+  gap: 8px;
+
+  @include flex-center;
+}
+
+.social_media__icons img {
+  cursor: pointer;
+  transition:
+    border 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include icon-size(40px);
+}
+
+.top__info {
+  display: flex;
+  gap: 24px;
+}
+
+.info__item {
+  display: inline-block;
+  width: 184px;
+}
+
+.item__title {
+  margin-bottom: 8px;
+  color: rgba(29, 29, 29, 1);
+  cursor: pointer;
+
+  @include medium-text(20px, 1.4);
+}
+
+.item__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list__element {
+  display: block;
+  position: relative;
+  color: rgba(52, 58, 64, 1);
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0%;
+    height: 1px;
+    background: currentColor;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  @include standard-text;
+}
+
+.footer__bottom {
+  margin-top: 40px;
+  padding: 16px 0 56px;
+  border-top: 1px solid rgba(241, 243, 245, 1);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottom__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+.button__BackToTop {
+  display: flex;
+  align-items: center;
+  color: $btn-default-color;
+
+  cursor: pointer;
+
+  &:hover {
+    color: $btn-hover-color;
+    transform: scale(1.02);
+  }
+
+  &:active {
+    color: $btn-pressed-color;
+  }
+}
+
+.BackToTop__text {
+  border-bottom: 1px solid $btn-default-color;
+
+  @include standard-text;
+
+  &:hover {
+    border-bottom: 1px solid $btn-hover-color;
+    transform: scale(1.02);
+  }
+
+  &:active {
+    border-bottom: 1px solid $btn-pressed-color;
+  }
+}
+
+.BackToTop__img {
+  @include icon-size(24px);
 }

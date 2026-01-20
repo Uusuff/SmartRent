@@ -1,0 +1,200 @@
+/* stylelint-disable no-descending-specificity, no-duplicate-selectors */
+@use '../../shared/variables/variables.scss' as *;
+@use '../../shared/mixins/mixins.scss' as *;
+
+.dropdown {
+  z-index: 100;
+  position: relative;
+
+  &__arrow {
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+
+    &--up {
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowUp.png');
+    }
+
+    &--down {
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowDown.png');
+    }
+  }
+
+  &--apartmentPage{
+    position: static;
+  }
+
+  &__toggle {
+    @include standard-text(16px, 1.4);
+    @include flex-center;
+
+    width: 190px;
+    height: 56px;
+    justify-content: space-between;
+    color: $black-color;
+    border: 1px solid $dropdown-border;
+    border-radius: 10px;
+    padding: 16px;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $btn-default-color;
+    }
+
+    &:focus {
+      filter: drop-shadow(0 2px 4px rgba(16, 65, 44, 0.21));
+      border-width: 1.5px;
+      border-color: $btn-default-color;
+    }
+
+    &:disabled {
+      cursor: auto;
+      color: $filter-border;
+      border-color: $filter-border;
+
+      .dropdown__arrow {
+        background-image: url('../../assets/icons/BurgerMenuIcons/ArrowDownDisabled.svg');
+      }
+    }
+
+    &--allFilters {
+      @include secondary-button;
+
+      padding: 16px 43.6px;
+    }
+
+    &--date{
+      padding: 10px;
+      width: 210px;
+    }
+
+    &--apartmentPage{
+      width: 176px;
+      height: 56px;
+      padding: 16px;
+    }
+  }
+
+  &__arrow {
+    @include icon-size(24px);
+
+    background-size: contain;
+
+    &--up {
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowUp.png');
+    }
+
+    &--down {
+      background-image: url('../../assets/icons/BurgerMenuIcons/ArrowDown.png');
+    }
+  }
+
+  &__calendar{
+    @include icon-size(24px);
+
+    display: inline-block;
+    background-image: url('../../assets/icons/apartmentIcons/calendar.svg');
+
+  }
+
+  &__menu {
+    max-height: 288px;
+    overflow-y: auto;
+    background-color: $btn-color-white;
+    position: absolute;
+    z-index: 100;
+    top: 100%;
+    right: 0;
+    left: 0;
+    margin-top: 8px;
+    padding: 8px;
+    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.1));
+    border-radius: 8px;
+    list-style: none;
+  }
+
+  &__menu::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &__menu::-webkit-scrollbar-thumb {
+    background-color: $filter-border;
+  }
+
+  &__item {
+    @include standard-text(16px, 1.4);
+
+    position: relative;
+    cursor: pointer;
+    padding: 12px;
+    padding-left: 44px;
+    padding-right: 36px;
+    color: $black-color;
+    word-wrap: break-word;
+
+    &:hover {
+      background-color: $option-hover;
+    }
+
+    &::before {
+      @include icon-size(24px);
+
+      position: absolute;
+      display: block;
+      content: '';
+      background-image: url('../../assets/icons/FilterIcons/optionCircle.svg');
+      top: 12px;
+      left: 12px;
+    }
+
+    &::after {
+      @include icon-size(24px);
+
+      position: absolute;
+      display: block;
+      content: '';
+      background-image: url('../../assets/icons/FilterIcons/optionSquare.svg');
+      top: 11px;
+      right: 12px;
+    }
+
+    &--disabled {
+      color: $filter-border;
+
+      &::before {
+        background-image: url('../../assets/icons/FilterIcons/optionCircleDisabled.svg');
+      }
+
+      &::after {
+        background-image: url('../../assets/icons/FilterIcons/optionSquareDisabled.svg');
+      }
+
+      &:hover {
+        background-color: $btn-color-white;
+        color: $filter-border;
+        cursor: auto;
+      }
+    }
+
+    &--active {
+      &::before {
+        background-image: url('../../assets/icons/FilterIcons/optionCircleSelected.svg');
+      }
+
+      &::after {
+        background-image: url('../../assets/icons/FilterIcons/optionSquareSelected.svg');
+      }
+    }
+  }
+
+  &__filterIcon {
+    @include icon-size(24px);
+
+    background-image: url('../../assets/icons/FilterIcons/allFilters.svg');
+
+    &--disabled {
+      background-image: url('../../assets/icons/FilterIcons/allFiltersDisabled.svg');
+    }
+  }
+}
